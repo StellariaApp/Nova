@@ -65,6 +65,6 @@ const cssDisabled = css`
     }
 `
 
-export const cvPropsButton = cv({
+export const cvStylesButton = cv({
     disabled: cssDisabled,
 })
