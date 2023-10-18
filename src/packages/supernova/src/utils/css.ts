@@ -1,6 +1,7 @@
 'use client'
 
-import { cx } from '@emotion/css'
+import type { CSSInterpolation } from '@emotion/css'
+import { css, cx } from '@emotion/css'
 
 type VBase = {
     base?: string
@@ -25,5 +26,8 @@ export const cv =
         const vart = varts[variant]
         return cx([base, vart])
     }
+
+export const cssWithProps = (props: { actions?: CSSInterpolation }) =>
+    cx([css(props), css(props.actions)])
 
 export { css, keyframes, cx, merge } from '@emotion/css'
