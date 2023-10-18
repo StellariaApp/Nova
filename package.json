@@ -15,7 +15,7 @@
   "name": "nova",
   "packageManager": "yarn@1.22.19",
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "src/apps/*",
+    "src/packages/*"
   ]
 }
