@@ -1,20 +1,22 @@
-"use client"
-import { css, cx } from "@emotion/css"
-import type { AtomButtonProps } from "./types"
+'use client'
+import { css, cx } from '@emotion/css'
+import type { AtomButtonProps } from './types'
 
 const cssBase = css`
- width: max-content;
+    width: max-content;
     height: max-content;
 `
-
-
 
 export const AtomButton = (props: AtomButtonProps) => {
     const { children, className } = props
 
     const styles = cx(cssBase, className)
 
-    return <button className={styles} {...props}>{children}</button>
+    return (
+        <button className={styles} {...props}>
+            <span>{children}</span>
+        </button>
+    )
 }
 
-export type * from "./types"
+export type * from './types'
