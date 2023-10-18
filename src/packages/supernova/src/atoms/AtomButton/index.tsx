@@ -1,22 +1,40 @@
 'use client'
+import { motion } from 'framer-motion'
 import { css, cx } from '@emotion/css'
+import type { Ref } from 'react'
+import { forwardRef } from 'react'
 import type { AtomButtonProps } from './types'
 
 const cssBase = css`
     width: max-content;
     height: max-content;
+    background-color: red;
 `
 
-export const AtomButton = (props: AtomButtonProps) => {
-    const { children, className } = props
+const animation = {
+    initial: {
+        opacity: 0,
+    },
+    animate: {
+        opacity: 1,
+    },
+    exit: {
+        opacity: 0,
+    },
+}
 
-    const styles = cx(cssBase, className)
+const Button = (props: AtomButtonProps, ref: Ref<HTMLButtonElement>) => {
+    const { className, children, ...rest } = props
+
+    const classes = cx(cssBase, className)
 
     return (
-        <button className={styles} {...props}>
-            <span>{children}</span>
-        </button>
+        <motion.button {...rest} {...animation} className={classes} ref={ref}>
+            {children}
+        </motion.button>
     )
 }
+
+export const AtomButton = forwardRef(Button)
 
 export type * from './types'
