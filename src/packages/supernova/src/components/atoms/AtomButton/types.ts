@@ -6,6 +6,10 @@ export type IButtonHTML = React.DetailedHTMLProps<
 >
 export type IButton = IButtonHTML & HTMLMotionProps<'button'>
 
+export type AsTypeButton = 'flat' | 'outline' | 'none'
+
 export type AtomButtonProps = IButton & {
-    children: React.ReactNode
+    disabled?: boolean
+    astype?: AsTypeButton
+    children?: React.ReactNode
 }

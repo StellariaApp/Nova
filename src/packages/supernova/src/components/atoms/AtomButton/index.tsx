@@ -1,35 +1,26 @@
-'use client'
 import { motion } from 'framer-motion'
-import { css, cx } from '@emotion/css'
-import type { Ref } from 'react'
 import { forwardRef } from 'react'
+import type { Ref } from 'react'
+import { cx } from '../../../utils/css'
+import { AnimationFadeInOut } from '../../../animations/fade'
 import type { AtomButtonProps } from './types'
-
-const cssBase = css`
-    width: max-content;
-    height: max-content;
-    background-color: red;
-`
-
-const animation = {
-    initial: {
-        opacity: 0,
-    },
-    animate: {
-        opacity: 1,
-    },
-    exit: {
-        opacity: 0,
-    },
-}
+import { cvAsTypeButton, cvPropsButton } from './css'
 
 const Button = (props: AtomButtonProps, ref: Ref<HTMLButtonElement>) => {
-    const { className, children, ...rest } = props
+    const { className, children, astype = 'flat' } = props
 
-    const classes = cx(cssBase, className)
+    const cssAsType = cvAsTypeButton(astype)
+    const cssProps = cvPropsButton(props)
+
+    const classes = cx(cssAsType, cssProps, className)
 
     return (
-        <motion.button {...rest} {...animation} className={classes} ref={ref}>
+        <motion.button
+            {...props}
+            {...AnimationFadeInOut}
+            className={classes}
+            ref={ref}
+        >
             {children}
         </motion.button>
     )
