@@ -13,7 +13,7 @@ const ShowButton = () => {
                         setShow((prev) => !prev)
                     }}
                 >
-                    Open & Close
+                    Get Started
                 </AtomButton>
                 {show ? (
                     <AtomButton key="supernova-atom-button">

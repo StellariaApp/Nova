@@ -33,16 +33,20 @@ export default function Page(): JSX.Element {
                 Custom CSS
             </AtomButton>
             <AtomButton
-                actions={{
-                    ':hover': {
-                        backgroundColor: '#345fd3',
-                        borderColor: '#345fd3',
-                    },
-                }}
                 backgroundColor="#4572f0"
                 border="1px solid #4572f0"
                 color="#ffffff"
                 height={50}
+                interactions={{
+                    ':hover': {
+                        backgroundColor: '#345fd3',
+                        borderColor: '#345fd3',
+                    },
+                    ':active': {
+                        backgroundColor: '#4c76e9',
+                        borderColor: '#4c76e9',
+                    },
+                }}
                 width={200}
             >
                 With Props

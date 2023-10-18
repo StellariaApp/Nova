@@ -2,7 +2,7 @@ import type { Pseudos, Properties } from 'csstype'
 
 export type CSSPseudos = Partial<Record<Pseudos, CSSProperties>>
 export type CSSProperties = Properties<number | string> & {
-    actions?: CSSPseudos
+    interactions?: CSSPseudos
     css?: string
 }
 

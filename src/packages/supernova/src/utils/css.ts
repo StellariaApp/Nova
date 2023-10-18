@@ -27,7 +27,10 @@ export const cv =
         return cx([base, vart])
     }
 
-export const cssWithProps = (props: { actions?: CSSPseudos }) =>
-    cx([css(props as CSSInterpolation), css(props.actions as CSSInterpolation)])
+export const cssWithProps = (props: { interactions?: CSSPseudos }) =>
+    cx([
+        css(props as CSSInterpolation),
+        css(props.interactions as CSSInterpolation),
+    ])
 
 export { css, keyframes, cx, merge } from '@emotion/css'

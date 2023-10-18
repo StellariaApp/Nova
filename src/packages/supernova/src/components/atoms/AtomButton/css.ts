@@ -3,7 +3,7 @@ import { css, cv } from '../../../utils/css'
 const cssBase = css`
     width: max-content;
     height: max-content;
-    padding: 0.5rem 1.3rem;
+    padding: 0.5rem 1.125rem;
     border-radius: 0.2rem;
     border: none;
     cursor: pointer;
