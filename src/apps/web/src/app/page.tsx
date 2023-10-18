@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { AtomButton } from "ui";
 
 function Gradient({
   conic,
@@ -123,6 +124,9 @@ export default function Page(): JSX.Element {
         </div>
       </div>
 
+      <AtomButton>
+        1234
+      </AtomButton>
       <div className={styles.grid}>
         {LINKS.map(({ title, href, description }) => (
           <a className={styles.card} href={href} key={title} title={title}>
