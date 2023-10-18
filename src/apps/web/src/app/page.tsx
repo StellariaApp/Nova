@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { AtomButton } from "ui";
+import { AtomButton } from "@stellaria/supernova";
 
 function Gradient({
   conic,
