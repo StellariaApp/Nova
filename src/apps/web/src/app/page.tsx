@@ -1,4 +1,5 @@
-import { AtomButton } from '@stellaria/supernova'
+'use client'
+import { AtomButton, css } from '@stellaria/supernova'
 import ShowButton from '../components/show-button'
 
 export default function Page(): JSX.Element {
@@ -12,10 +13,40 @@ export default function Page(): JSX.Element {
             }}
         >
             <ShowButton />
-            <AtomButton astype="flat">Flat Button</AtomButton>
-            <AtomButton astype="outline">Outline Button</AtomButton>
-            <AtomButton astype="none">None Button</AtomButton>
-            <AtomButton disabled>Disable Button</AtomButton>
+            <AtomButton astype="flat">Flat</AtomButton>
+            <AtomButton astype="outline">Outline</AtomButton>
+            <AtomButton astype="none">None</AtomButton>
+            <AtomButton disabled>Disable</AtomButton>
+            <AtomButton
+                css={css`
+                    width: 100%;
+                    background-color: #ff4949;
+                    border-color: #e03737;
+                    color: #ffffff;
+                    padding: 1rem;
+                    :hover {
+                        background-color: #f04545;
+                        border-color: #f04545;
+                    }
+                `}
+            >
+                Custom CSS
+            </AtomButton>
+            <AtomButton
+                actions={{
+                    ':hover': {
+                        backgroundColor: '#345fd3',
+                        borderColor: '#345fd3',
+                    },
+                }}
+                backgroundColor="#4572f0"
+                border="1px solid #4572f0"
+                color="#ffffff"
+                height={50}
+                width={200}
+            >
+                With Props
+            </AtomButton>
         </main>
     )
 }
