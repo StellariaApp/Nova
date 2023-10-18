@@ -1,16 +1,15 @@
 'use client'
-import { AtomButton, css } from '@stellaria/supernova'
+import { AtomButton, AtomWrapper, css } from '@stellaria/supernova'
 import ShowButton from '../components/show-button'
 
 export default function Page(): JSX.Element {
     return (
-        <main
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1rem',
-                padding: '1rem',
-            }}
+        <AtomWrapper
+            css={css`
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            `}
         >
             <ShowButton />
             <AtomButton astype="flat">Flat</AtomButton>
@@ -51,6 +50,6 @@ export default function Page(): JSX.Element {
             >
                 With Props
             </AtomButton>
-        </main>
+        </AtomWrapper>
     )
 }

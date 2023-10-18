@@ -7,9 +7,9 @@ import type { AtomButtonProps } from './types'
 import { cvAsTypeButton, cvStylesButton } from './css'
 
 const Button = (props: AtomButtonProps, ref: Ref<HTMLButtonElement>) => {
-    const { className, children, astype = 'flat' } = props
+    const { className, children, astype } = props
 
-    const cssAsType = cvAsTypeButton(astype)
+    const cssAsType = cvAsTypeButton(astype ?? 'flat')
     const cssStyles = cvStylesButton(props)
     const cssProps = cssWithProps(props)
 
