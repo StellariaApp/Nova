@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { injectGlobal } from '@emotion/css'
+import { injectGlobal } from '@emotion/css';
 
 injectGlobal`
   *{
@@ -91,8 +91,8 @@ injectGlobal`
   button {
     -webkit-tap-highlight-color: transparent;
   }
-`
+`;
 
-const GlobalStyles = () => null
+const GlobalStyles = () => null;
 
-export default GlobalStyles
+export default GlobalStyles;

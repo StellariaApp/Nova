@@ -3,7 +3,8 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "turbo run lint"
+    "lint": "turbo run lint",
+    "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx|d.ts)\" --write"
   },
   "devDependencies": {
     "eslint": "^8.48.0",
