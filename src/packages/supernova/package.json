@@ -20,7 +20,8 @@
     },
     "dependencies": {
         "@emotion/css": "^11.11.2",
+        "csstype": "3.1.2",
         "framer-motion": "^10.16.4",
-        "csstype": "3.1.2"
+        "jotai": "^2.4.3"
     }
 }
