@@ -27,10 +27,17 @@ export const cv =
         return cx([base, vart])
     }
 
-export const cssWithProps = (props: { interactions?: CSSPseudos }) =>
-    cx([
-        css(props as CSSInterpolation),
-        css(props.interactions as CSSInterpolation),
-    ])
+type Props = {
+    [key: string]: CSSPseudos | string | number | undefined
+    interactions?: CSSPseudos
+}
+export const cssWithProps = (propsUnknown: unknown) => {
+    const props = propsUnknown as Props
+    const { interactions, children: _, css: __, ...rest } = props
+    const cssProps = css(rest as CSSInterpolation)
+    const cssInteractions = css(interactions as CSSInterpolation)
+    const styles = cx([cssProps, cssInteractions])
+    return styles
+}
 
 export { css, keyframes, cx, merge } from '@emotion/css'
