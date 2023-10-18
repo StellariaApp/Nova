@@ -3,12 +3,12 @@ import { css, cv } from '../../../utils/css'
 const cssBase = css`
     width: max-content;
     height: max-content;
-    padding: 0.45rem 1.3rem;
+    padding: 0.5rem 1.3rem;
     border-radius: 0.2rem;
     border: none;
     cursor: pointer;
     font-size: 0.875rem;
-    line-height: 1.25rem;
+    line-height: 1.125rem;
     font-weight: 600;
     color: white;
     transition: all 0.2s ease-in-out;
@@ -57,7 +57,7 @@ const cssDisabled = css`
     box-shadow: none;
     color: #afafaf;
     cursor: not-allowed;
-    opacity: 0.9 !important;
+    opacity: 0.8 !important;
     :hover {
         box-shadow: none;
         background-color: #ebebeb;
