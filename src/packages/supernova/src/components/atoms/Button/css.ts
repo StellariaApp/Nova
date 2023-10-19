@@ -42,7 +42,7 @@ const cssNone = css`
   color: #18181b;
 `;
 
-export const cvAsTypeButton = cv({
+export const cvVariantButton = cv({
   base: cssBase,
   flat: cssFlat,
   none: cssNone,

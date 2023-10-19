@@ -14,9 +14,9 @@ export default function Page(): JSX.Element {
     >
       <ToggleTheme />
       <ShowButton />
-      <Button astype="flat">Flat</Button>
-      <Button astype="outline">Outline</Button>
-      <Button astype="none">None</Button>
+      <Button variant="flat">Flat</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="none">None</Button>
       <Button disabled>Disable</Button>
       <Button
         css={() => css`

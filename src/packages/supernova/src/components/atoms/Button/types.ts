@@ -7,11 +7,11 @@ export type IButtonHTML = React.DetailedHTMLProps<
 >;
 export type IButton = IButtonHTML & HTMLMotionProps<'button'>;
 
-export type AsTypeButton = 'flat' | 'outline' | 'none';
+export type VariantButton = 'flat' | 'outline' | 'none';
 
 export type ButtonProps = IButton &
   CSSProperties & {
     disabled?: boolean;
-    astype?: AsTypeButton;
+    variant?: VariantButton;
     children?: React.ReactNode;
   };

@@ -5,18 +5,18 @@ import { cssWithProps, cx } from '../../../utils/css';
 import { AnimationFadeInOut } from '../../../animations/fade';
 import { useTheme } from '../../../hooks/useTheme';
 import type { ButtonProps } from './types';
-import { cvAsTypeButton, cvStylesButton } from './css';
+import { cvVariantButton, cvStylesButton } from './css';
 
 const ButtonRef = (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
-  const { className, children, astype } = props;
+  const { className, children, variant } = props;
   const { cssWithTheme } = useTheme();
 
-  const cssAsType = cvAsTypeButton(astype ?? 'flat');
+  const cssVariant = cvVariantButton(variant ?? 'flat');
   const cssStyles = cvStylesButton(props);
   const cssProps = cssWithProps(props);
   const cssTheme = cssWithTheme(props, 'button');
 
-  const classes = cx([cssAsType, cssStyles, cssProps, className, cssTheme]);
+  const classes = cx([cssVariant, cssStyles, cssProps, className, cssTheme]);
 
   return (
     <motion.button
