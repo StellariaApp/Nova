@@ -1,1 +1,3 @@
-export type Theme = object;
+import type { Palette } from './palette';
+
+export type Theme = Record<string, Palette>;

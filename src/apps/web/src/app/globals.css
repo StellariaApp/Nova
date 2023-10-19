@@ -1,5 +1,7 @@
 :root {
   --background-color: #ffffff;
+
+  --component-atombutton-backgroundColor: #ffffff;
 }
 
 :root[data-theme='dark'] {

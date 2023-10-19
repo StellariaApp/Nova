@@ -6,7 +6,7 @@ import ToggleTheme from '../components/ToggleTheme';
 export default function Page(): JSX.Element {
   return (
     <AtomWrapper
-      css={css`
+      css={() => css`
         flex-direction: column;
         gap: 1rem;
         padding: 1rem;
@@ -19,7 +19,7 @@ export default function Page(): JSX.Element {
       <AtomButton astype="none">None</AtomButton>
       <AtomButton disabled>Disable</AtomButton>
       <AtomButton
-        css={css`
+        css={() => css`
           width: 100%;
           background-color: #ff4949;
           border-color: #e03737;

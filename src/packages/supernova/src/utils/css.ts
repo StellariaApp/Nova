@@ -1,7 +1,8 @@
 'use client';
 
 import { css, cx } from '@emotion/css';
-import type { CSSPseudos, CSSInterpolation } from '../types/css';
+import type { CSSPseudos, CSSInterpolation, CSSTheme } from '../types/css';
+import type { Palette } from '../types/palette';
 
 type VBase = {
   base?: string;
@@ -27,17 +28,30 @@ export const cv =
     return cx([base, vart]);
   };
 
-type Props = {
+type WithProps = {
   [key: string]: CSSPseudos | string | number | undefined;
   interactions?: CSSPseudos;
 };
 export const cssWithProps = (propsUnknown: unknown) => {
-  const props = propsUnknown as Props;
+  const props = propsUnknown as WithProps;
   const { interactions, children: _, css: __, ...rest } = props;
   const cssProps = css(rest as CSSInterpolation);
   const cssInteractions = css(interactions as CSSInterpolation);
   const styles = cx([cssProps, cssInteractions]);
   return styles;
+};
+
+type WithTheme = {
+  [key: string]: CSSTheme | string | number | undefined;
+  css?: CSSTheme;
+};
+
+export const cssWithTheme = (propsUnknown?: unknown, theme?: Palette) => {
+  const props = propsUnknown as WithTheme;
+  if (!props.css || !theme) return null;
+  if (typeof props.css !== 'function') return null;
+  const csspropsWithTheme = props.css(theme);
+  return csspropsWithTheme;
 };
 
 export { css, keyframes, cx, merge } from '@emotion/css';
