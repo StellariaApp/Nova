@@ -1,6 +1,7 @@
 'use client';
 import { AtomButton, AtomWrapper, css } from '@stellaria/supernova';
 import ShowButton from '../components/show-button';
+import ToggleTheme from '../components/ToggleTheme';
 
 export default function Page(): JSX.Element {
   return (
@@ -11,6 +12,7 @@ export default function Page(): JSX.Element {
         padding: 1rem;
       `}
     >
+      <ToggleTheme />
       <ShowButton />
       <AtomButton astype="flat">Flat</AtomButton>
       <AtomButton astype="outline">Outline</AtomButton>

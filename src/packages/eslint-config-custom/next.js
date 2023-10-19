@@ -44,6 +44,8 @@ module.exports = {
     'react/button-has-type': 'off',
     "react-hooks/exhaustive-deps": "off",
     "react-hooks/rules-of-hooks": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/array-type": "off",
+    "unicorn/filename-case": "off",
   }
 };

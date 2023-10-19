@@ -1,123 +1,65 @@
-import { atom, useAtom, useSetAtom } from 'jotai';
-import { useEffect, useLayoutEffect } from 'react';
+'use client';
+import { useSetAtom } from 'jotai';
+import { useEffect } from 'react';
+import type { Theme } from '../types/theme';
+import type { IThemeAtom } from '../jotai/theme';
+import { ThemeAtom } from '../jotai/theme';
 
-type CreateThemeOpts<T extends object> = {
+export type IConfig<T extends Theme> = {
+  themes: T;
   default?: keyof T;
 };
 
-type Theme = object;
+export const SetupTheme = <T extends Theme>(config: IConfig<T>) => {
+  const setTheme = useSetAtom(ThemeAtom);
 
-type ThemeAtom = {
-  default: keyof Theme;
-  theme: Theme[keyof Theme];
-  themes: Theme;
-  key: keyof Theme;
-  keys: Array<keyof Theme>;
-  toggle: () => void;
-  set: (key: keyof Theme) => void;
-  get: () => Theme[keyof Theme];
-};
+  useEffect(() => {
+    const themes = config.themes;
 
-const ThemeAtom = atom({
-  default: null,
-  theme: null,
-  themes: [],
-  key: null,
-  keys: [],
-  toggle: () => null,
-  set: () => null,
-  get: () => null
-} as unknown as ThemeAtom);
+    const keys = Object.keys(themes) as Array<keyof T>;
+    const firstKey = keys[0];
+    const defaultKey = config.default ?? firstKey;
+    const defaultTheme = themes[defaultKey];
 
-export const createTheme = <T extends Theme>(
-  themes: T,
-  options: CreateThemeOpts<T>
-) => {
-  const SetupTheme = useSetupTheme({ themes, options });
-
-  return {
-    SetupTheme
-  };
-};
-
-type IConfig<T extends Theme> = {
-  themes: T;
-  options: CreateThemeOpts<T>;
-};
-
-export const useSetupTheme =
-  <T extends Theme>(config: IConfig<T>) =>
-  () => {
-    const setTheme = useSetAtom(ThemeAtom);
-
-    useEffect(() => {
-      const themes = config.themes;
-      const options = config.options;
-
-      const keys = Object.keys(themes) as Array<keyof T>;
-      const firstKey = keys[0];
-      const defaultKey = options.default ?? firstKey;
-      const defaultTheme = themes[defaultKey];
-
-      const set = (key: keyof T) => {
-        document.documentElement.dataset.theme = key.toString();
-        localStorage.setItem('theme', key.toString());
-        window.dispatchEvent(new Event('storage'));
-        setTheme((prev) => {
-          const newAtom = {
-            ...prev,
-            key,
-            theme: themes[key]
-          } as ThemeAtom;
-          return newAtom;
-        });
-      };
-
-      const toggle = () => {
-        const getTheme = document.documentElement.dataset.theme as
-          | keyof T
-          | null;
-        const index = keys.indexOf(getTheme ?? defaultKey);
-        const next = keys[(index + 1) % keys.length];
-        set(next);
-      };
-
-      const get = () => {
-        const getTheme = document.documentElement.dataset.theme as keyof T;
-        return getTheme;
-      };
-
-      const state = {
-        default: defaultKey,
-        theme: defaultTheme,
-        key: defaultKey,
-        themes,
-        keys,
-        toggle,
-        set,
-        get
-      } as unknown as ThemeAtom;
-
-      setTheme(state);
-    }, [config]);
-
-    return null;
-  };
-
-export const useTheme = () => {
-  const [theme, setTheme] = useAtom(ThemeAtom);
-
-  const listener = () => {
-    theme.set(theme.get());
-  };
-
-  useLayoutEffect(() => {
-    listener();
-    window.addEventListener('storage', listener);
-    return () => {
-      window.removeEventListener('storage', listener);
+    const set = (key: keyof T) => {
+      document.documentElement.dataset.theme = key.toString();
+      localStorage.setItem('theme', key.toString());
+      window.dispatchEvent(new Event('storage'));
+      setTheme((prev) => {
+        const newAtom = {
+          ...prev,
+          key,
+          theme: themes[key]
+        } as IThemeAtom;
+        return newAtom;
+      });
     };
-  }, []);
 
-  return [theme, setTheme] as const;
+    const toggle = () => {
+      const getTheme = document.documentElement.dataset.theme as keyof T | null;
+      const index = keys.indexOf(getTheme ?? defaultKey);
+      const next = keys[(index + 1) % keys.length];
+      set(next);
+    };
+
+    const get = () => {
+      const getTheme = document.documentElement.dataset.theme as keyof T;
+      return getTheme;
+    };
+
+    const state = {
+      default: defaultKey,
+      theme: defaultTheme,
+      key: defaultKey,
+      themes,
+      keys,
+      toggle,
+      set,
+      get
+    } as unknown as IThemeAtom;
+
+    setTheme(state);
+  }, [config]);
+
+  return null;
 };

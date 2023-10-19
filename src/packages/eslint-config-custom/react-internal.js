@@ -42,5 +42,7 @@ module.exports = {
     "@typescript-eslint/array-type": "off",
     "react-hooks/exhaustive-deps": "off",
     "react-hooks/rules-of-hooks": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "unicorn/filename-case": "off",
   }
 };
