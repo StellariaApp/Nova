@@ -27,7 +27,6 @@ To get started with Supernova in your project, simply follow these steps:
 Supernova provides easily usable reusable components. Here's an example of how to use the Button component:
 
 ```javascript
-import React from 'react';
 import { Button, Wrapper } from '@stellaria/supernova';
 
 const App = () => {
