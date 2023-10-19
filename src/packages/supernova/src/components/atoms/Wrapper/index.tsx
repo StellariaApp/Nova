@@ -7,7 +7,7 @@ import { useTheme } from '../../../hooks/useTheme';
 import type { WrapperProps } from './types';
 import { cvStylesWrapper } from './css';
 
-const Wrapper = (props: WrapperProps, ref: Ref<HTMLDivElement>) => {
+const WrapperRef = (props: WrapperProps, ref: Ref<HTMLDivElement>) => {
   const { className, children } = props;
   const { cssWithTheme } = useTheme();
 
@@ -29,6 +29,6 @@ const Wrapper = (props: WrapperProps, ref: Ref<HTMLDivElement>) => {
   );
 };
 
-export const Wrapper = forwardRef(Wrapper);
+export const Wrapper = forwardRef(WrapperRef);
 
 export type * from './types';
