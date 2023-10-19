@@ -11,7 +11,6 @@ const cssBase = css`
   line-height: 1.125rem;
   font-weight: 600;
   color: white;
-  transition: all 0.2s ease-in-out;
 `;
 
 const cssFlat = css`

@@ -5,7 +5,6 @@ const cssBase = css`
   flex-direction: column;
   width: 100%;
   height: max-content;
-  transition: all 0.2s ease-in-out;
 `;
 
 const cssDisabled = css`
