@@ -4,16 +4,16 @@ import type { Ref } from 'react';
 import { cssWithProps, cx } from '../../../utils/css';
 import { AnimationFadeInOut } from '../../../animations/fade';
 import { useTheme } from '../../../hooks/useTheme';
-import type { AtomWrapperProps } from './types';
+import type { WrapperProps } from './types';
 import { cvStylesWrapper } from './css';
 
-const Wrapper = (props: AtomWrapperProps, ref: Ref<HTMLDivElement>) => {
+const Wrapper = (props: WrapperProps, ref: Ref<HTMLDivElement>) => {
   const { className, children } = props;
   const { cssWithTheme } = useTheme();
 
   const cssStyles = cvStylesWrapper(props);
   const cssProps = cssWithProps(props);
-  const cssTheme = cssWithTheme(props, 'AtomWrapper');
+  const cssTheme = cssWithTheme(props, 'Wrapper');
 
   const classes = cx([cssStyles, cssProps, className, cssTheme]);
 
@@ -29,6 +29,6 @@ const Wrapper = (props: AtomWrapperProps, ref: Ref<HTMLDivElement>) => {
   );
 };
 
-export const AtomWrapper = forwardRef(Wrapper);
+export const Wrapper = forwardRef(Wrapper);
 
 export type * from './types';

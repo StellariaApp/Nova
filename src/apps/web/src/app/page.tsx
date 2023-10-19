@@ -1,11 +1,11 @@
 'use client';
-import { Button, AtomWrapper, css } from '@stellaria/supernova';
+import { Button, Wrapper, css } from '@stellaria/supernova';
 import ShowButton from '../components/show-button';
 import ToggleTheme from '../components/ToggleTheme';
 
 export default function Page(): JSX.Element {
   return (
-    <AtomWrapper
+    <Wrapper
       css={() => css`
         flex-direction: column;
         gap: 1rem;
@@ -52,6 +52,6 @@ export default function Page(): JSX.Element {
       >
         With Props
       </Button>
-    </AtomWrapper>
+    </Wrapper>
   );
 }

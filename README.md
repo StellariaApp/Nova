@@ -28,13 +28,13 @@ Supernova provides easily usable reusable components. Here's an example of how t
 
 ```javascript
 import React from 'react';
-import { Button, AtomWrapper } from '@stellaria/supernova';
+import { Button, Wrapper } from '@stellaria/supernova';
 
 const App = () => {
   return (
-    <AtomWrapper>
+    <Wrapper>
       <Button variant="primary">Click Me</Button>
-    </AtomWrapper>
+    </Wrapper>
   );
 };
 

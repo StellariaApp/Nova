@@ -7,7 +7,7 @@ export type IWrapperHTML = React.DetailedHTMLProps<
 >;
 export type IWrapper = IWrapperHTML & HTMLMotionProps<'button'>;
 
-export type AtomWrapperProps = IWrapper &
+export type WrapperProps = IWrapper &
   CSSProperties & {
     disabled?: boolean;
     children?: React.ReactNode;
