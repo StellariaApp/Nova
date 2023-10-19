@@ -13,7 +13,7 @@ const WrapperRef = (props: WrapperProps, ref: Ref<HTMLDivElement>) => {
 
   const cssStyles = cvStylesWrapper(props);
   const cssProps = cssWithProps(props);
-  const cssTheme = cssWithTheme(props, 'Wrapper');
+  const cssTheme = cssWithTheme(props, 'wrapper');
 
   const classes = cx([cssStyles, cssProps, className, cssTheme]);
 
