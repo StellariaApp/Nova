@@ -1,3 +1,13 @@
+import type { CSSTheme } from './css';
+
 export type Palette = {
-  components: Partial<Record<string, Partial<Record<string, string>>>>;
+  Components?: Partial<
+    Record<
+      string,
+      {
+        [key: string]: CSSTheme | string | number | undefined;
+        css?: CSSTheme;
+      }
+    >
+  >;
 };

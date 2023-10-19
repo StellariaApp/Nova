@@ -46,12 +46,18 @@ type WithTheme = {
   css?: CSSTheme;
 };
 
-export const cssWithTheme = (propsUnknown?: unknown, theme?: Palette) => {
-  const props = propsUnknown as WithTheme;
-  if (!props.css || !theme) return null;
-  if (typeof props.css !== 'function') return null;
-  const csspropsWithTheme = props.css(theme);
-  return csspropsWithTheme;
+export const cssWithTheme = (
+  propsUnknown?: unknown,
+  theme?: Palette,
+  key?: string
+) => {
+  const props = propsUnknown as WithTheme | undefined;
+  if (!theme) return null;
+
+  const cssPropsWithThemeComponent =
+    theme.Components?.[key ?? '']?.css?.(theme);
+  const csspropsWithTheme = props?.css?.(theme);
+  return cx([cssPropsWithThemeComponent, csspropsWithTheme]);
 };
 
 export { css, keyframes, cx, merge } from '@emotion/css';

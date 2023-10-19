@@ -31,7 +31,8 @@ export const SetupTheme = <T extends Theme>(config: IConfig<T>) => {
           ...prev,
           key,
           theme: themes[key],
-          cssWithTheme: (props: unknown) => cssWithTheme(props, defaultTheme)
+          cssWithTheme: (props: unknown, keycomponent) =>
+            cssWithTheme(props, defaultTheme, keycomponent)
         } as IThemeAtom;
         return newAtom;
       });
@@ -58,7 +59,8 @@ export const SetupTheme = <T extends Theme>(config: IConfig<T>) => {
       toggle,
       set,
       get,
-      cssWithTheme: (props: unknown) => cssWithTheme(props, defaultTheme)
+      cssWithTheme: (props: unknown, keycomponent: string) =>
+        cssWithTheme(props, defaultTheme, keycomponent)
     } as unknown as IThemeAtom;
 
     setTheme(state);
