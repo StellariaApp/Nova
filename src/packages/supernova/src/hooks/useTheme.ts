@@ -1,5 +1,3 @@
-'use client';
-
 import { useAtomValue } from 'jotai';
 import { useLayoutEffect } from 'react';
 import { ThemeAtom } from '../jotai/theme';

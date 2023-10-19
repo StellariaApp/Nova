@@ -14,7 +14,7 @@ const Button = (props: AtomButtonProps, ref: Ref<HTMLButtonElement>) => {
   const cssAsType = cvAsTypeButton(astype ?? 'flat');
   const cssStyles = cvStylesButton(props);
   const cssProps = cssWithProps(props);
-  const cssTheme = cssWithTheme(props);
+  const cssTheme = cssWithTheme(props, 'AtomButton');
 
   const classes = cx([cssAsType, cssStyles, cssProps, className, cssTheme]);
 

@@ -1,5 +1,3 @@
-'use client';
-
 import { css, cx } from '@emotion/css';
 import type { CSSPseudos, CSSInterpolation, CSSTheme } from '../types/css';
 import type { Palette } from '../types/palette';
@@ -55,7 +53,7 @@ export const cssWithTheme = (
   if (!theme) return null;
 
   const cssPropsWithThemeComponent =
-    theme.Components?.[key ?? '']?.css?.(theme);
+    theme.components?.[key ?? '']?.css?.(theme);
   const csspropsWithTheme = props?.css?.(theme);
   return cx([cssPropsWithThemeComponent, csspropsWithTheme]);
 };

@@ -13,7 +13,7 @@ const Wrapper = (props: AtomWrapperProps, ref: Ref<HTMLDivElement>) => {
 
   const cssStyles = cvStylesWrapper(props);
   const cssProps = cssWithProps(props);
-  const cssTheme = cssWithTheme(props);
+  const cssTheme = cssWithTheme(props, 'AtomWrapper');
 
   const classes = cx([cssStyles, cssProps, className, cssTheme]);
 
