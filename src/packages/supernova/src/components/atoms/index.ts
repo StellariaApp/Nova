@@ -1,2 +1,2 @@
-export * from './AtomButton';
+export * from './Button';
 export * from './AtomWrapper';

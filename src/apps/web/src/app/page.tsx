@@ -1,5 +1,5 @@
 'use client';
-import { AtomButton, AtomWrapper, css } from '@stellaria/supernova';
+import { Button, AtomWrapper, css } from '@stellaria/supernova';
 import ShowButton from '../components/show-button';
 import ToggleTheme from '../components/ToggleTheme';
 
@@ -14,11 +14,11 @@ export default function Page(): JSX.Element {
     >
       <ToggleTheme />
       <ShowButton />
-      <AtomButton astype="flat">Flat</AtomButton>
-      <AtomButton astype="outline">Outline</AtomButton>
-      <AtomButton astype="none">None</AtomButton>
-      <AtomButton disabled>Disable</AtomButton>
-      <AtomButton
+      <Button astype="flat">Flat</Button>
+      <Button astype="outline">Outline</Button>
+      <Button astype="none">None</Button>
+      <Button disabled>Disable</Button>
+      <Button
         css={() => css`
           width: 100%;
           background-color: #ff4949;
@@ -32,8 +32,8 @@ export default function Page(): JSX.Element {
         `}
       >
         Custom CSS
-      </AtomButton>
-      <AtomButton
+      </Button>
+      <Button
         backgroundColor="#4572f0"
         border="1px solid #4572f0"
         color="#ffffff"
@@ -51,7 +51,7 @@ export default function Page(): JSX.Element {
         width={200}
       >
         With Props
-      </AtomButton>
+      </Button>
     </AtomWrapper>
   );
 }

@@ -1,4 +1,3 @@
-
 # Supernova - UI Library
 
 ![Nebula Banner](https://storage.googleapis.com/stackly-assets/stellaria/supernova/banner.png)
@@ -28,13 +27,13 @@ To get started with Supernova in your project, simply follow these steps:
 Supernova provides easily usable reusable components. Here's an example of how to use the Button component:
 
 ```javascript
-import React from "react";
-import { AtomButton, AtomWrapper } from "@stellaria/supernova";
+import React from 'react';
+import { Button, AtomWrapper } from '@stellaria/supernova';
 
 const App = () => {
   return (
     <AtomWrapper>
-      <AtomButton variant="primary">Click Me</AtomButton>
+      <Button variant="primary">Click Me</Button>
     </AtomWrapper>
   );
 };

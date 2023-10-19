@@ -1,16 +1,16 @@
 'use client';
-import { AtomButton, useTheme } from '@stellaria/supernova';
+import { Button, useTheme } from '@stellaria/supernova';
 
 const ToggleTheme = () => {
   const { toggle } = useTheme();
   return (
-    <AtomButton
+    <Button
       onClick={() => {
         toggle();
       }}
     >
       ToggleTheme
-    </AtomButton>
+    </Button>
   );
 };
 
