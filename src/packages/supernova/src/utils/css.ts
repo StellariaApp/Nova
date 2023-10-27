@@ -108,8 +108,8 @@ export const cssTheme = (
   const props = propsUnknown as WithTheme | undefined;
   if (!theme) return null;
 
-  const cssPropsWithThemeComponent =
-    theme.components?.[key ?? '']?.css?.(theme);
+  // const cssPropsWithThemeComponent = theme.components?.[key]?.(theme);
+  const cssPropsWithThemeComponent = key;
   const csspropsWithTheme = props?.css?.(theme);
   return cx([cssPropsWithThemeComponent, csspropsWithTheme]);
 };
