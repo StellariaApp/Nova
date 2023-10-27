@@ -100,7 +100,7 @@ type WithTheme = {
   css?: CSSTheme;
 };
 
-export const cssWithTheme = (
+export const cssTheme = (
   propsUnknown?: unknown,
   theme?: Palette,
   key?: string

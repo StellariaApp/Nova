@@ -1,21 +1,14 @@
 import { motion } from 'framer-motion';
 import { forwardRef } from 'react';
 import type { Ref } from 'react';
-import { cssWithProps, cx } from '../../../utils/css';
 import { AnimationFadeInOut } from '../../../animations/fade';
-import { useTheme } from '../../../hooks/useTheme';
 import type { ButtonProps } from './types';
-import { StylesButton } from './css';
+import { styles } from './styles';
 
 const ButtonRef = (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
-  const { className, children } = props;
-  const { cssWithTheme } = useTheme();
+  const { children } = props;
 
-  const Styles = StylesButton(props);
-  const cssProps = cssWithProps(props);
-  const cssTheme = cssWithTheme(props, 'button');
-
-  const classes = cx([Styles, cssProps, className, cssTheme]);
+  const { classes } = styles(props);
 
   return (
     <motion.button

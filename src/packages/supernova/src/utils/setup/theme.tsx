@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import type { Theme } from '../../types/theme';
 import type { IThemeAtom } from '../../jotai/theme';
 import { ThemeAtom } from '../../jotai/theme';
-import { cssWithTheme } from '../css';
+import { cssTheme } from '../css';
 
 export type IConfig<T extends Theme> = {
   themes: T;
@@ -30,8 +30,8 @@ export const SetupTheme = <T extends Theme>(config: IConfig<T>) => {
           ...prev,
           key,
           theme: themes[key],
-          cssWithTheme: (props: unknown, keycomponent) =>
-            cssWithTheme(props, defaultTheme, keycomponent)
+          cssTheme: (props: unknown, keycomponent) =>
+            cssTheme(props, defaultTheme, keycomponent)
         } as IThemeAtom;
         return newAtom;
       });
@@ -58,8 +58,8 @@ export const SetupTheme = <T extends Theme>(config: IConfig<T>) => {
       toggle,
       set,
       get,
-      cssWithTheme: (props: unknown, keycomponent: string) =>
-        cssWithTheme(props, defaultTheme, keycomponent)
+      cssTheme: (props: unknown, keycomponent: string) =>
+        cssTheme(props, defaultTheme, keycomponent)
     } as unknown as IThemeAtom;
 
     setTheme(state);

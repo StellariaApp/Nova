@@ -10,7 +10,7 @@ export type IThemeAtom = {
   toggle: () => void;
   set: (key: keyof Theme) => void;
   get: () => keyof Theme;
-  cssWithTheme: (props?: unknown, key?: string) => string | null;
+  cssTheme: (props?: unknown, key?: string) => string | null;
 };
 
 export const ThemeAtom = atom({
@@ -22,5 +22,5 @@ export const ThemeAtom = atom({
   toggle: () => null,
   set: () => null,
   get: () => null,
-  cssWithTheme: () => null
+  cssTheme: () => null
 } as unknown as IThemeAtom);

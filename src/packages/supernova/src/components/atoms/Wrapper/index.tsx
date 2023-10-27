@@ -9,13 +9,13 @@ import { cvStylesWrapper } from './css';
 
 const WrapperRef = (props: WrapperProps, ref: Ref<HTMLDivElement>) => {
   const { className, children } = props;
-  const { cssWithTheme } = useTheme();
+  const { cssTheme } = useTheme();
 
   const cssStyles = cvStylesWrapper(props);
   const cssProps = cssWithProps(props);
-  const cssTheme = cssWithTheme(props, 'wrapper');
+  const cssWithTheme = cssTheme(props, 'wrapper');
 
-  const classes = cx([cssStyles, cssProps, className, cssTheme]);
+  const classes = cx([cssStyles, cssProps, className, cssWithTheme]);
 
   return (
     <motion.div
