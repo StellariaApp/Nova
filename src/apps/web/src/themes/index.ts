@@ -4,9 +4,7 @@ import type { Components, Palette, Theme } from '@stellaria/supernova';
 import { css } from '@stellaria/supernova';
 
 const components: Components = {
-  button: {
-    css: () => css``
-  }
+  button: () => css``
 };
 
 const dark: Palette = {

@@ -3,7 +3,7 @@ import type { CSSTheme } from '../../types/css';
 import type { Palette } from '../../types/palette';
 
 type WithTheme = {
-  [key: string]: CSSTheme | string | number | undefined;
+  [key: string]: unknown;
   css?: CSSTheme;
 };
 
@@ -12,11 +12,11 @@ export const cssTheme = (
   theme?: Palette,
   key?: string
 ) => {
-  const props = propsUnknown as WithTheme | undefined;
   if (!theme) return null;
 
-  // const cssPropsWithThemeComponent = theme.components?.[key]?.(theme);
-  const cssPropsWithThemeComponent = key;
-  const csspropsWithTheme = props?.css?.(theme);
-  return cx([cssPropsWithThemeComponent, csspropsWithTheme]);
+  const props = propsUnknown as WithTheme | undefined;
+
+  const cssPropsComponent = theme.components?.[key ?? '']?.(theme, props);
+  const cssProps = props?.css?.(theme, props);
+  return cx([cssPropsComponent, cssProps]);
 };
