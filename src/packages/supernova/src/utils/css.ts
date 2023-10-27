@@ -86,12 +86,12 @@ type WithProps = {
   [key: string]: CSSPseudos | string | number | undefined;
   interactions?: CSSPseudos;
 };
-export const cssWithProps = (propsUnknown: unknown) => {
+export const cssProps = (propsUnknown: unknown) => {
   const props = propsUnknown as WithProps;
   const { interactions, children: _, css: __, ...rest } = props;
-  const cssProps = css(rest as CSSInterpolation);
+  const cssWithProps = css(rest as CSSInterpolation);
   const cssInteractions = css(interactions as CSSInterpolation);
-  const styles = cx([cssProps, cssInteractions]);
+  const styles = cx([cssWithProps, cssInteractions]);
   return styles;
 };
 

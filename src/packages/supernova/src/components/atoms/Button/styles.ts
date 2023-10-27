@@ -1,5 +1,5 @@
 import { useTheme } from '../../../hooks/useTheme';
-import { cssWithProps, cx } from '../../../utils/css';
+import { cssProps, cx } from '../../../utils/css';
 import { StylesButton } from './css';
 import type { ButtonProps } from './types';
 
@@ -8,10 +8,10 @@ export const styles = (props: ButtonProps) => {
   const { cssTheme } = useTheme();
 
   const Styles = StylesButton(props);
-  const cssProps = cssWithProps(props);
+  const cssWithProps = cssProps(props);
   const cssWithTheme = cssTheme(props, 'button');
 
-  const classes = cx([Styles, cssProps, className, cssWithTheme]);
+  const classes = cx([Styles, cssWithProps, className, cssWithTheme]);
 
   return {
     classes
