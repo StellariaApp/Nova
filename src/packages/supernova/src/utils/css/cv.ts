@@ -1,6 +1,4 @@
-import { css, cx } from '@emotion/css';
-import type { CSSPseudos, CSSInterpolation, CSSTheme } from '../types/css';
-import type { Palette } from '../types/palette';
+import { cx } from '@emotion/css';
 
 type IVartsKeys<T> = {
   [key in keyof T]:
@@ -81,37 +79,3 @@ export const cv =
 
     return cx(styles);
   };
-
-type WithProps = {
-  [key: string]: CSSPseudos | string | number | undefined;
-  interactions?: CSSPseudos;
-};
-export const cssProps = (propsUnknown: unknown) => {
-  const props = propsUnknown as WithProps;
-  const { interactions, children: _, css: __, ...rest } = props;
-  const cssWithProps = css(rest as CSSInterpolation);
-  const cssInteractions = css(interactions as CSSInterpolation);
-  const styles = cx([cssWithProps, cssInteractions]);
-  return styles;
-};
-
-type WithTheme = {
-  [key: string]: CSSTheme | string | number | undefined;
-  css?: CSSTheme;
-};
-
-export const cssTheme = (
-  propsUnknown?: unknown,
-  theme?: Palette,
-  key?: string
-) => {
-  const props = propsUnknown as WithTheme | undefined;
-  if (!theme) return null;
-
-  // const cssPropsWithThemeComponent = theme.components?.[key]?.(theme);
-  const cssPropsWithThemeComponent = key;
-  const csspropsWithTheme = props?.css?.(theme);
-  return cx([cssPropsWithThemeComponent, csspropsWithTheme]);
-};
-
-export { css, keyframes, cx, merge } from '@emotion/css';
