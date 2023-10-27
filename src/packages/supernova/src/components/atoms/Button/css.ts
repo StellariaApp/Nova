@@ -1,6 +1,6 @@
 import { css, cv } from '../../../utils/css';
 
-const cssBase = css`
+const base = css`
   width: max-content;
   height: max-content;
   padding: 0.5rem 1.125rem;
@@ -13,7 +13,7 @@ const cssBase = css`
   color: white;
 `;
 
-const cssFlat = css`
+const flat = css`
   box-shadow: 0px 0px 8px #00000025;
   background-color: #18181b;
   border: 1px solid #18181b;
@@ -24,7 +24,7 @@ const cssFlat = css`
   }
 `;
 
-const cssOutline = css`
+const outline = css`
   box-shadow: 0px 0px 4px #0000000c;
   background-color: transparent;
   border: 1px solid #d6d6d6;
@@ -36,20 +36,13 @@ const cssOutline = css`
   }
 `;
 
-const cssNone = css`
+const none = css`
   padding: 0;
   background-color: transparent;
   color: #18181b;
 `;
 
-export const cssVariantButton = cv({
-  base: cssBase,
-  flat: cssFlat,
-  none: cssNone,
-  outline: cssOutline
-});
-
-const cssDisabled = css`
+const disabled = css`
   background-color: #ebebeb;
   box-shadow: 0px 0px 4px #0000001e;
   border: 1px solid #d6d6d6;
@@ -64,6 +57,13 @@ const cssDisabled = css`
   }
 `;
 
-export const cssStylesButton = cv({
-  disabled: cssDisabled
+export const StylesButton = cv({
+  base,
+  disabled,
+  variant: {
+    default: 'flat',
+    flat,
+    none,
+    outline
+  }
 });

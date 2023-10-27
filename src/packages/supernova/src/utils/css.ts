@@ -2,28 +2,68 @@ import { css, cx } from '@emotion/css';
 import type { CSSPseudos, CSSInterpolation, CSSTheme } from '../types/css';
 import type { Palette } from '../types/palette';
 
-type VBase = {
+type VBaseWithDefaultRecord<T> = {
+  [key in keyof T]?: string | VBaseWithDefault<T[key]>;
+};
+
+type VBaseWithDefault<T> = VBaseWithDefaultRecord<T> & {
+  default?: keyof T;
+};
+
+type VBaseWithBaseRecord<T> = {
+  [key in keyof T]?: string | VBaseWithDefault<T[key]>;
+};
+
+type VBaseWithBase<T> = VBaseWithBaseRecord<T> & {
   base?: string;
 };
 
+type VBase<T> = VBaseWithBase<T>;
+
+type StyleVariant<T> = {
+  [key in keyof T]?:
+    | (T[key] extends object ? StyleVariant<Omit<T[key], 'default'>> : boolean)
+    | (T[key] extends object ? keyof Omit<T[key], 'default'> : boolean);
+};
+
 export const cv =
-  <T extends object>(variants: T & VBase) =>
-  (variant: keyof T | Partial<Record<keyof T, boolean>>) => {
-    const base = variants.base ?? '';
+  <T extends object, V = T>(variants: VBase<V>) =>
+  (variant: StyleVariant<Omit<T, 'base'>>) => {
+    // const getValueKey = (obj: unknown, keys: string[]) =>
+    //   keys.reduce((acc: unknown, curr: string) => {
+    //     const isObject;
+    //   }, {
+    //     values: false
+    //   });
 
-    const isObject = typeof variant === 'object';
+    // const isValidKey = (keys: (string | object | boolean)[]) => {
+    //   const isObject = typeof key === 'object';
+    //   if (isObject) return isValidKey(key);
+    // };
+    // const entries = Object.entries(variants);
+    // console.log('entries', entries);
+    // console.log('variants', variants);
+    // console.log('variant', variant);
+    // const base = variants.base ?? '';
 
-    if (isObject) {
-      const varts = Object.entries(variant as Record<keyof T, boolean>)
-        .filter(([, value]) => value)
-        .map(([key]) => variants[key as keyof T]);
-      const vartsArray = varts as string[];
+    // const isObject = typeof variant === 'object';
 
-      return cx([base, ...vartsArray]);
-    }
-    const varts = variants as Record<keyof T, string>;
-    const vart = varts[variant];
-    return cx([base, vart]);
+    // if (isObject) {
+    //   const entries = Object.entries(variant);
+
+    //   const varts = Object.entries(variant as Record<keyof T, boolean>)
+    //     .filter(([[key], value]) => value || key === value)
+    //     .map(([key]) => variants[key as keyof T]);
+    //   const vartsArray = varts as string[];
+
+    //   return cx([base, ...vartsArray]);
+    // }
+    // const varts = variants as Record<keyof T, string>;
+    // const vart = varts[variant];
+    // return cx([base, vart]);
+
+    return [variants, variant];
+    return cx([]);
   };
 
 type WithProps = {
