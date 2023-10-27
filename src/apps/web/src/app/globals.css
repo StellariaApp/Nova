@@ -1,13 +1,11 @@
 :root {
-  --background-color: #ffffff;
-
-  --component-atombutton-backgroundColor: #ffffff;
+  --background: #ffffff;
 }
 
 :root[data-theme='dark'] {
-  --background-color: #09090b;
+  --background: #09090b;
 }
 
 html {
-  background-color: var(--background-color);
+  background-color: var(--background);
 }
