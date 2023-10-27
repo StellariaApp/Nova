@@ -22,7 +22,7 @@ const cssDisabled = css`
   }
 `;
 
-export const cvStylesWrapper = cv({
+export const StylesWrapper = cv({
   base: cssBase,
   disabled: cssDisabled
 });
