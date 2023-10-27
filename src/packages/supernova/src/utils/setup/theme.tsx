@@ -1,9 +1,9 @@
 import { useSetAtom } from 'jotai';
 import { useEffect } from 'react';
-import type { Theme } from '../types/theme';
-import type { IThemeAtom } from '../jotai/theme';
-import { ThemeAtom } from '../jotai/theme';
-import { cssWithTheme } from './css';
+import type { Theme } from '../../types/theme';
+import type { IThemeAtom } from '../../jotai/theme';
+import { ThemeAtom } from '../../jotai/theme';
+import { cssWithTheme } from '../css';
 
 export type IConfig<T extends Theme> = {
   themes: T;
