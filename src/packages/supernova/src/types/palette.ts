@@ -1,16 +1,14 @@
-import type { CSSTheme } from './css';
+export type EnumComponent = 'button' | 'input' | 'select' | 'textarea';
 
-export type Component = {
-  [key: string]: CSSTheme | string | number | undefined;
-  css?: CSSTheme;
+export type Components = {
+  [key in EnumComponent]?: string;
+} & Record<string, string | undefined>;
+
+export type Colors = {
+  [key: string]: string | Colors | undefined;
 };
 
-export type Components = Record<string, Component>;
-
 export type Palette = {
-  [key: string]:
-    | Record<string, string | number | undefined>
-    | Components
-    | undefined;
+  colors: Colors;
   components?: Components;
 };
