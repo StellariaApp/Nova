@@ -44,5 +44,6 @@ module.exports = {
     "react-hooks/rules-of-hooks": "off",
     "@typescript-eslint/no-unsafe-assignment": "off",
     "unicorn/filename-case": "off",
+    "@typescript-eslint/no-unnecessary-type-assertion": "off",
   }
 };

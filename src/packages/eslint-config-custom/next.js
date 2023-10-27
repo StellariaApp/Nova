@@ -47,5 +47,7 @@ module.exports = {
     "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/array-type": "off",
     "unicorn/filename-case": "off",
+    "@typescript-eslint/no-unnecessary-type-assertion": "off",
+
   }
 };

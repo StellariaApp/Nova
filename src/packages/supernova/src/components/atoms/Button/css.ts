@@ -59,11 +59,11 @@ const disabled = css`
 
 export const StylesButton = cv({
   base,
-  disabled,
   variant: {
     default: 'flat',
     flat,
     none,
     outline
-  }
+  },
+  disabled
 });

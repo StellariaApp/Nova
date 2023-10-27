@@ -2,68 +2,84 @@ import { css, cx } from '@emotion/css';
 import type { CSSPseudos, CSSInterpolation, CSSTheme } from '../types/css';
 import type { Palette } from '../types/palette';
 
-type VBaseWithDefaultRecord<T> = {
-  [key in keyof T]?: string | VBaseWithDefault<T[key]>;
+type IVartsKeys<T> = {
+  [key in keyof T]:
+    | (IVartsKeys<T[key]> & {
+        default?: keyof Omit<T[key], 'default'>;
+      })
+    | string;
 };
 
-type VBaseWithDefault<T> = VBaseWithDefaultRecord<T> & {
-  default?: keyof T;
-};
-
-type VBaseWithBaseRecord<T> = {
-  [key in keyof T]?: string | VBaseWithDefault<T[key]>;
-};
-
-type VBaseWithBase<T> = VBaseWithBaseRecord<T> & {
+type IVarts<T> = IVartsKeys<T> & {
   base?: string;
 };
 
-type VBase<T> = VBaseWithBase<T>;
-
-type StyleVariant<T> = {
-  [key in keyof T]?:
-    | (T[key] extends object ? StyleVariant<Omit<T[key], 'default'>> : boolean)
-    | (T[key] extends object ? keyof Omit<T[key], 'default'> : boolean);
+type IVart<T> = {
+  [key in keyof Omit<T, 'default' | 'base'>]?:
+    | boolean
+    | IVart<T[key]>
+    | keyof T[key];
 };
 
 export const cv =
-  <T extends object, V = T>(variants: VBase<V>) =>
-  (variant: StyleVariant<Omit<T, 'base'>>) => {
-    // const getValueKey = (obj: unknown, keys: string[]) =>
-    //   keys.reduce((acc: unknown, curr: string) => {
-    //     const isObject;
-    //   }, {
-    //     values: false
-    //   });
+  <T extends object>(variants: IVarts<T>) =>
+  (variant: IVart<T>) => {
+    const { base, ...objVart } = variants;
 
-    // const isValidKey = (keys: (string | object | boolean)[]) => {
-    //   const isObject = typeof key === 'object';
-    //   if (isObject) return isValidKey(key);
-    // };
-    // const entries = Object.entries(variants);
-    // console.log('entries', entries);
-    // console.log('variants', variants);
-    // console.log('variant', variant);
-    // const base = variants.base ?? '';
+    const getStyle = (
+      styles: Record<string, string | object>,
+      actions: Record<string, unknown>,
+      def?: string
+    ) => {
+      const entries = Object.entries(styles);
 
-    // const isObject = typeof variant === 'object';
+      const classes = entries.reduce(
+        (acc, [key, value]) => {
+          const valueWithDefault = value as Record<string, string>;
+          const action =
+            typeof actions === 'object'
+              ? actions[key] ?? valueWithDefault.default
+              : actions;
 
-    // if (isObject) {
-    //   const entries = Object.entries(variant);
+          const isUndefined = typeof action === 'undefined';
+          if (isUndefined) return acc;
 
-    //   const varts = Object.entries(variant as Record<keyof T, boolean>)
-    //     .filter(([[key], value]) => value || key === value)
-    //     .map(([key]) => variants[key as keyof T]);
-    //   const vartsArray = varts as string[];
+          const isObject = typeof value === 'object';
+          if (isObject) {
+            const stylesObject = getStyle(
+              value as Record<string, string>,
+              action as Record<string, unknown>
+            ) as string[];
 
-    //   return cx([base, ...vartsArray]);
-    // }
-    // const varts = variants as Record<keyof T, string>;
-    // const vart = varts[variant];
-    // return cx([base, vart]);
+            return [...acc, ...stylesObject];
+          }
 
-    return [variants, variant];
-    return cx([]);
+          const isString = typeof action === 'string';
+          if (isString) {
+            const classString = styles[action];
+            const isClassString = typeof classString === 'string';
+            if (!isClassString) return acc;
+            const isKey = key === action && classString !== def;
+            if (!isKey) return acc;
+            return [...acc, classString];
+          }
+
+          const isBoolean = typeof action === 'boolean';
+          if (isBoolean) {
+            return [...acc, value];
+          }
+
+          return acc;
+        },
+        def ? [def] : []
+      );
+
+      return classes;
+    };
+
+    const styles = getStyle(objVart, variant, base);
+
+    return cx(styles);
   };
 
 type WithProps = {
