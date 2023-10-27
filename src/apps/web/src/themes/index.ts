@@ -1,28 +1,35 @@
 'use client';
 
+import type { Components, Palette, Theme } from '@stellaria/supernova';
 import { css } from '@stellaria/supernova';
-import type { Palette } from '@stellaria/supernova/src/types/palette';
+
+const components: Components = {
+  button: {
+    css: () => css``
+  }
+};
 
 const dark: Palette = {
   colors: {
     primary: '#000000',
-    secondary: '#ffffff'
-  }
+    secondary: '#ffffff',
+
+    background: '#000000'
+  },
+  components
 };
 
 const light: Palette = {
   colors: {
     primary: '#ffffff',
-    secondary: '#000000'
+    secondary: '#000000',
+
+    background: '#ffffff'
   },
-  components: {
-    button: {
-      css: () => css``
-    }
-  }
+  components
 };
 
-const themes = {
+const themes: Theme = {
   dark,
   light
 };

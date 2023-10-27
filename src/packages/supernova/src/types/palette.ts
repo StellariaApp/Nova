@@ -5,12 +5,12 @@ export type Component = {
   css?: CSSTheme;
 };
 
-export type PaletteComponents = Record<string, Component>;
+export type Components = Record<string, Component>;
 
 export type Palette = {
   [key: string]:
     | Record<string, string | number | undefined>
-    | PaletteComponents
+    | Components
     | undefined;
-  components?: PaletteComponents;
+  components?: Components;
 };
