@@ -6,13 +6,6 @@ const baseContainer: CSSTheme = () => css`
   height: max-content;
   user-select: none;
   transition: all 0.2s ease-in-out;
-
-  details[open] > summary {
-  }
-
-  details[open] > p {
-    opacity: 1;
-  }
 `;
 
 export const StylesAccordionContainer = cv({
@@ -52,14 +45,10 @@ export const StylesAccordionTrigger = cv({
 
 const baseContent: CSSTheme = (theme) => css`
   width: 100%;
-  height: max-content;
   padding: 4px 16px;
   font-size: 14px;
   font-weight: 600;
   color: ${theme?.colors?.textSecondary ?? '#000'};
-
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
 `;
 
 export const StylesAccordionContent = cv({
