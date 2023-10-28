@@ -9,20 +9,32 @@ const components: Components = {
 
 const dark: Palette = {
   colors: {
-    primary: '#000000',
-    secondary: '#ffffff',
+    primary: '#fafafa',
+    primaryHover: '#e2e2e2',
 
-    background: '#000000'
+    text: '#ffffff',
+    textAlt: '#18181b',
+
+    background: '#000000',
+
+    border: '1px solid #18181b',
+    shadow: '0px 0px 8px #00000025'
   },
   components
 };
 
 const light: Palette = {
   colors: {
-    primary: '#ffffff',
-    secondary: '#000000',
+    primary: '#18181b',
+    primaryHover: '#272727',
 
-    background: '#ffffff'
+    text: '#18181b',
+    textAlt: '#ffffff',
+
+    background: '#ffffff',
+
+    border: '1px solid #d6d6d6',
+    shadow: '0px 0px 8px #00000080'
   },
   components
 };

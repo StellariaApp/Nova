@@ -1,6 +1,7 @@
+import type { CSSTheme } from '../../../types';
 import { css, cv } from '../../../utils/css';
 
-const base = css`
+const base: CSSTheme = (theme) => css`
   width: max-content;
   height: max-content;
   padding: 0.5rem 1.125rem;
@@ -10,21 +11,22 @@ const base = css`
   font-size: 0.875rem;
   line-height: 1.125rem;
   font-weight: 600;
-  color: white;
+  color: ${theme?.colors?.text ?? '#ffffff'};
 `;
 
-const flat = css`
+const flat: CSSTheme = (theme) => css`
   box-shadow: 0px 0px 8px #00000025;
-  background-color: #18181b;
-  border: 1px solid #18181b;
+  background-color: ${theme?.colors?.primary ?? '#18181b'};
+  border: 1px solid ${theme?.colors?.primary ?? '#18181b'};
+  color: ${theme?.colors?.textAlt ?? '#ffffff'};
   :hover {
-    box-shadow: 0px 0px 8px #00000080;
-    background-color: #272727;
-    border: 1px solid #272727;
+    box-shadow: ${theme?.colors?.shadow ?? '0px 0px 8px #00000080'};
+    background-color: ${theme?.colors?.primaryHover ?? '#272727'};
+    border: 1px solid ${theme?.colors?.primaryHover ?? '#272727'};
   }
 `;
 
-const outline = css`
+const outline: CSSTheme = () => css`
   box-shadow: 0px 0px 4px #0000000c;
   background-color: transparent;
   border: 1px solid #d6d6d6;
@@ -36,13 +38,13 @@ const outline = css`
   }
 `;
 
-const none = css`
+const none: CSSTheme = () => css`
   padding: 0;
   background-color: transparent;
   color: #18181b;
 `;
 
-const disabled = css`
+const disabled: CSSTheme = () => css`
   background-color: #ebebeb;
   box-shadow: 0px 0px 4px #0000001e;
   border: 1px solid #d6d6d6;

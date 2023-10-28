@@ -11,6 +11,6 @@ export type Colors = {
 };
 
 export type Palette = {
-  colors: Colors;
+  colors?: Colors;
   components?: Components;
 };

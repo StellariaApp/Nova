@@ -5,9 +5,9 @@ import type { ButtonProps } from './types';
 
 export const styles = (props: ButtonProps) => {
   const { className } = props;
-  const { cssTheme } = useTheme();
+  const { cssTheme, theme } = useTheme();
 
-  const Styles = StylesButton(props);
+  const Styles = StylesButton(props, theme);
   const cssWithProps = cssProps(props);
   const cssWithTheme = cssTheme(props, 'button');
 
