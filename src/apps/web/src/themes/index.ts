@@ -16,6 +16,7 @@ const dark: Palette = {
     secondaryHover: '#272727',
 
     text: '#ffffff',
+    textSecondary: '#888888',
     textAlt: '#18181b',
 
     background: '#000000',
@@ -35,9 +36,10 @@ const light: Palette = {
     primaryHover: '#272727',
 
     secondary: '#fcfcfc',
-    secondaryHover: '#ebebeb',
+    secondaryHover: '#cecece',
 
     text: '#18181b',
+    textSecondary: '#a1a1a1',
     textAlt: '#ffffff',
 
     background: '#ffffff',

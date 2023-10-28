@@ -45,5 +45,6 @@ module.exports = {
     "@typescript-eslint/no-unsafe-assignment": "off",
     "unicorn/filename-case": "off",
     "@typescript-eslint/no-unnecessary-type-assertion": "off",
+    "react/display-name": "off",
   }
 };

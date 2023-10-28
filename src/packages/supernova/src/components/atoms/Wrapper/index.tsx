@@ -11,7 +11,7 @@ const WrapperRef = (props: WrapperProps, ref: Ref<HTMLDivElement>) => {
   const { classes } = styles(props);
 
   return (
-    <motion.div {...props} {...AnimationFade} className={classes} ref={ref}>
+    <motion.div {...AnimationFade} {...props} className={classes} ref={ref}>
       {children}
     </motion.div>
   );

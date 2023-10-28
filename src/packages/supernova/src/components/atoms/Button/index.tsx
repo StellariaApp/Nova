@@ -12,8 +12,8 @@ const ButtonRef = (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
 
   return (
     <motion.button
-      {...props}
       {...AnimationFadeZoom}
+      {...props}
       className={classes}
       ref={ref}
     >

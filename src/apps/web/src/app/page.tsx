@@ -1,5 +1,5 @@
 'use client';
-import { Button, Wrapper, css } from '@stellaria/supernova';
+import { Accordion, Button, Wrapper, css } from '@stellaria/supernova';
 import ShowButton from '../components/show-button';
 import ToggleTheme from '../components/ToggleTheme';
 
@@ -18,40 +18,39 @@ export default function Page(): JSX.Element {
       <Button variant="outline">Outline</Button>
       <Button variant="none">None</Button>
       <Button disabled>Disable</Button>
-      <Button
-        css={() => css`
-          width: 100%;
-          background-color: #ff4949;
-          border-color: #e03737;
-          color: #ffffff;
-          padding: 1rem;
-          :hover {
-            background-color: #f04545;
-            border-color: #f04545;
-          }
-        `}
-      >
-        Custom CSS
-      </Button>
-      <Button
-        backgroundColor="#4572f0"
-        border="1px solid #4572f0"
-        color="#ffffff"
-        height={50}
-        interactions={{
-          ':hover': {
-            backgroundColor: '#345fd3',
-            borderColor: '#345fd3'
+
+      <Accordion
+        items={[
+          {
+            id: '1',
+            open: true,
+            title:
+              'Is it possible to use the same component for the accordion and the accordion item?',
+            content:
+              'Yes, it is possible to use the same component for the accordion and the accordion item.'
           },
-          ':active': {
-            backgroundColor: '#4c76e9',
-            borderColor: '#4c76e9'
+          {
+            id: '2',
+            title:
+              "What's the difference between a controlled and an uncontrolled component?",
+            content:
+              'A controlled component has its state controlled by React. An uncontrolled component has its state controlled by the DOM.'
+          },
+          {
+            id: '3',
+            title:
+              'What is the difference between a fragment and a document fragment?',
+            content:
+              'A fragment is a component that does not render a DOM element. A document fragment is a DOM node that is not part of the main DOM tree.'
           }
-        }}
-        width={200}
-      >
-        With Props
-      </Button>
+        ]}
+      />
+      <Accordion.Container>
+        <Accordion.Item>
+          <Accordion.Trigger>Title 1</Accordion.Trigger>
+          <Accordion.Content>Content 1</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Container>
     </Wrapper>
   );
 }
