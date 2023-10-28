@@ -1,12 +1,14 @@
 import type { CSSTheme } from './css';
-
-export type EnumComponent = 'button' | 'input' | 'select' | 'textarea';
+import type { EnumColors } from './enums/colors';
+import type { EnumComponent } from './enums/components';
 
 export type Components = {
   [key in EnumComponent]?: CSSTheme;
 } & Record<string, CSSTheme | undefined>;
 
 export type Colors = {
+  [key in EnumColors]?: string | Colors | undefined;
+} & {
   [key: string]: string | Colors | undefined;
 };
 

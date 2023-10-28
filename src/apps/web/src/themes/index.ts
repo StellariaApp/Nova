@@ -20,8 +20,8 @@ const dark: Palette = {
 
     background: '#000000',
 
-    borderColor: '#3f3f3f',
     border: `1px solid #3f3f3f`,
+    borderAlt: `1px solid #d6d6d6`,
 
     shadow: '0px 0px 8px #00000025',
     shadowAlt: '0px 0px 4px #0000000c'
@@ -42,8 +42,8 @@ const light: Palette = {
 
     background: '#ffffff',
 
-    borderColor: '#d6d6d6',
     border: `1px solid #d6d6d6`,
+    borderAlt: `1px solid #3f3f3f`,
 
     shadow: '0px 0px 8px #00000080',
     shadowAlt: '0px 0px 4px #0000003a'
