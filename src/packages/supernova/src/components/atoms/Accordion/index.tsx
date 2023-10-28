@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { forwardRef } from 'react';
 import type { Ref } from 'react';
+import { Icon } from '../Icon';
 import type {
   AccordionProps,
   AccordionContainerProps,
@@ -64,7 +65,10 @@ const AccordionTrigger = forwardRef(
     const { classes } = stylesTrigger(props);
     return (
       <motion.summary {...props} className={classes} ref={ref}>
-        {children}
+        <>
+          {children}
+          <Icon icon="chevron-down" />
+        </>
       </motion.summary>
     );
   }

@@ -6,6 +6,14 @@ const baseContainer: CSSTheme = () => css`
   height: max-content;
   user-select: none;
   transition: all 0.2s ease-in-out;
+
+  details[open] {
+    summary {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
 `;
 
 export const StylesAccordionContainer = cv({
