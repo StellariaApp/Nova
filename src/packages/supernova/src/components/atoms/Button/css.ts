@@ -26,22 +26,22 @@ const flat: CSSTheme = (theme) => css`
   }
 `;
 
-const outline: CSSTheme = () => css`
-  box-shadow: 0px 0px 4px #0000000c;
+const outline: CSSTheme = (theme) => css`
+  box-shadow: ${theme?.colors?.shadowAlt ?? '0px 0px 4px #0000000c'};
   background-color: transparent;
-  border: 1px solid #d6d6d6;
-  color: #474747;
+  border: ${theme?.colors?.border ?? '1px solid #d6d6d6'};
+  color: ${theme?.colors?.text ?? '#ffffff'};
   :hover {
-    box-shadow: 0px 0px 4px #0000003a;
-    background-color: #fcfcfc;
-    color: #474747;
+    box-shadow: ${theme?.colors?.shadowAlt ?? '0px 0px 4px #0000000c'};
+    background-color: ${theme?.colors?.secondary ?? '#fcfcfc'};
+    color: ${theme?.colors?.text ?? '#474747'};
   }
 `;
 
-const none: CSSTheme = () => css`
+const none: CSSTheme = (theme) => css`
   padding: 0;
   background-color: transparent;
-  color: #18181b;
+  color: ${theme?.colors?.text ?? '#18181b'};
 `;
 
 const disabled: CSSTheme = () => css`

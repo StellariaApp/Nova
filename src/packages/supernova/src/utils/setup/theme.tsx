@@ -1,4 +1,4 @@
-import { useSetAtom } from 'jotai';
+import { useAtom } from 'jotai';
 import { useEffect } from 'react';
 import type { Theme } from '../../types/theme';
 import type { IThemeAtom } from '../../jotai/theme';
@@ -11,7 +11,7 @@ export type IConfig<T extends Theme> = {
 };
 
 export const SetupTheme = <T extends Theme>(config: IConfig<T>) => {
-  const setTheme = useSetAtom(ThemeAtom);
+  const [theme, setTheme] = useAtom(ThemeAtom);
 
   useEffect(() => {
     const themes = config.themes;
@@ -64,6 +64,11 @@ export const SetupTheme = <T extends Theme>(config: IConfig<T>) => {
 
     setTheme(state);
   }, [config]);
+
+  useEffect(() => {
+    const { get, set } = theme;
+    set(get());
+  }, [theme.set]);
 
   return null;
 };

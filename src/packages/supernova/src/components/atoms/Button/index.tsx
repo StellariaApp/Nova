@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { forwardRef } from 'react';
 import type { Ref } from 'react';
-import { AnimationFadeInOut } from '../../../animations/fade';
+import { AnimationFadeZoom } from '../../../animations/fade';
 import type { ButtonProps } from './types';
 import { styles } from './styles';
 
@@ -13,7 +13,7 @@ const ButtonRef = (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
   return (
     <motion.button
       {...props}
-      {...AnimationFadeInOut}
+      {...AnimationFadeZoom}
       className={classes}
       ref={ref}
     >
