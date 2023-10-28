@@ -20,6 +20,7 @@ export default function Page(): JSX.Element {
       <Button disabled>Disable</Button>
 
       <Accordion
+        autohide
         items={[
           {
             id: '1',

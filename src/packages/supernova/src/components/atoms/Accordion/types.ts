@@ -2,7 +2,9 @@ import type { HTMLMotionProps } from 'framer-motion';
 import type { CSSProperties } from '../../../types/css';
 
 export type AccordionContainerProps = HTMLMotionProps<'section'> &
-  CSSProperties;
+  CSSProperties & {
+    autohide?: boolean;
+  };
 export type AccordionItemProps = HTMLMotionProps<'details'> & CSSProperties;
 export type AccordionTriggerProps = HTMLMotionProps<'summary'> & CSSProperties;
 export type AccordionContentProps = HTMLMotionProps<'p'> & CSSProperties;
@@ -17,6 +19,7 @@ type ItemAccordion = {
 type ItemsAccordion = ItemAccordion[];
 
 export type AccordionProps = {
+  autohide?: boolean;
   items?: ItemsAccordion;
   components?: {
     container?: AccordionContainerProps;

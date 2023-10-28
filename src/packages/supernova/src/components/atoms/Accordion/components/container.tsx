@@ -1,0 +1,22 @@
+import { motion } from 'framer-motion';
+import type { Ref } from 'react';
+import { forwardRef } from 'react';
+import type { AccordionContainerProps } from '../types';
+import { stylesContainer } from '../styles';
+import useAutoClose from '../hooks/useAutoClose';
+
+export const AccordionContainer = forwardRef(
+  (props: AccordionContainerProps, ref: Ref<HTMLElement>) => {
+    const { children, autohide } = props;
+
+    const { classes } = stylesContainer(props);
+
+    const { id } = useAutoClose({ autohide });
+
+    return (
+      <motion.section id={id} {...props} className={classes} ref={ref}>
+        {children}
+      </motion.section>
+    );
+  }
+);

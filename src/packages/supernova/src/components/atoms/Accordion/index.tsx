@@ -1,26 +1,19 @@
-import { motion } from 'framer-motion';
-import { forwardRef } from 'react';
 import type { Ref } from 'react';
-import { Icon } from '../Icon';
-import type {
-  AccordionProps,
-  AccordionContainerProps,
-  AccordionItemProps,
-  AccordionTriggerProps,
-  AccordionContentProps
-} from './types';
-import {
-  stylesContainer,
-  stylesContent,
-  stylesItem,
-  stylesTrigger
-} from './styles';
+import type { AccordionProps } from './types';
+import { AccordionContainer } from './components/container';
+import { AccordionItem } from './components/item';
+import { AccordionTrigger } from './components/trigger';
+import { AccordionContent } from './components/content';
 
 const Accordion = (props: AccordionProps, ref: Ref<HTMLElement>) => {
-  const { items, components } = props;
+  const { items, components, autohide } = props;
 
   return (
-    <AccordionContainer ref={ref} {...components?.container}>
+    <AccordionContainer
+      autohide={autohide}
+      ref={ref}
+      {...components?.container}
+    >
       {items?.map((item) => (
         <AccordionItem key={item.id} open={item.open} {...components?.item}>
           <AccordionTrigger {...components?.trigger}>
@@ -34,57 +27,6 @@ const Accordion = (props: AccordionProps, ref: Ref<HTMLElement>) => {
     </AccordionContainer>
   );
 };
-
-const AccordionContainer = forwardRef(
-  (props: AccordionContainerProps, ref: Ref<HTMLElement>) => {
-    const { children } = props;
-    const { classes } = stylesContainer(props);
-    return (
-      <motion.section {...props} className={classes} ref={ref}>
-        {children}
-      </motion.section>
-    );
-  }
-);
-
-const AccordionItem = forwardRef(
-  (props: AccordionItemProps, ref: Ref<HTMLDetailsElement>) => {
-    const { children } = props;
-    const { classes } = stylesItem(props);
-    return (
-      <motion.details {...props} className={classes} ref={ref}>
-        {children}
-      </motion.details>
-    );
-  }
-);
-
-const AccordionTrigger = forwardRef(
-  (props: AccordionTriggerProps, ref: Ref<HTMLElement>) => {
-    const { children } = props;
-    const { classes } = stylesTrigger(props);
-    return (
-      <motion.summary {...props} className={classes} ref={ref}>
-        <>
-          {children}
-          <Icon icon="chevron-down" />
-        </>
-      </motion.summary>
-    );
-  }
-);
-
-const AccordionContent = forwardRef(
-  (props: AccordionContentProps, ref: Ref<HTMLParagraphElement>) => {
-    const { children } = props;
-    const { classes } = stylesContent(props);
-    return (
-      <motion.p {...props} className={classes} ref={ref}>
-        {children}
-      </motion.p>
-    );
-  }
-);
 
 Accordion.Container = AccordionContainer;
 Accordion.Item = AccordionItem;
