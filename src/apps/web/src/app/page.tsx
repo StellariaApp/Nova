@@ -20,7 +20,7 @@ export default function Page(): JSX.Element {
       <Button disabled>Disable</Button>
 
       <Accordion
-        autohide
+        autoHide
         items={[
           {
             id: '1',
@@ -46,10 +46,26 @@ export default function Page(): JSX.Element {
           }
         ]}
       />
-      <Accordion.Container>
+      <Accordion.Container autoHide>
+        <Accordion.Item open>
+          <Accordion.Trigger>
+            Is it possible to use the same component for the accordion and the
+            accordion item?
+          </Accordion.Trigger>
+          <Accordion.Content>
+            Yes, it is possible to use the same component for the accordion and
+            the accordion item.
+          </Accordion.Content>
+        </Accordion.Item>
         <Accordion.Item>
-          <Accordion.Trigger>Title 1</Accordion.Trigger>
-          <Accordion.Content>Content 1</Accordion.Content>
+          <Accordion.Trigger>
+            Whats the difference between a controlled and an uncontrolled
+            component?
+          </Accordion.Trigger>
+          <Accordion.Content>
+            A controlled component has its state controlled by React. An
+            uncontrolled component has its state controlled by the DOM.
+          </Accordion.Content>
         </Accordion.Item>
       </Accordion.Container>
     </Wrapper>

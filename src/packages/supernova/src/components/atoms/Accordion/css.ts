@@ -5,7 +5,6 @@ const baseContainer: CSSTheme = () => css`
   width: 100%;
   height: max-content;
   user-select: none;
-  transition: all 0.2s ease-in-out;
 
   details[open] {
     summary {
@@ -14,6 +13,8 @@ const baseContainer: CSSTheme = () => css`
       }
     }
   }
+
+  transition: all 0.2s ease-in-out;
 `;
 
 export const StylesAccordionContainer = cv({
@@ -44,6 +45,7 @@ const baseTrigger: CSSTheme = (theme) => css`
   font-size: 14px;
   font-weight: 600;
   color: ${theme?.colors?.text ?? '#000'};
+
   transition: all 0.2s ease-in-out;
 `;
 
@@ -57,6 +59,7 @@ const baseContent: CSSTheme = (theme) => css`
   font-size: 14px;
   font-weight: 600;
   color: ${theme?.colors?.textSecondary ?? '#000'};
+  transition: all 0.2s ease-in-out;
 `;
 
 export const StylesAccordionContent = cv({

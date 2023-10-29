@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 
 type Props = {
-  autohide?: boolean;
+  autoHide?: boolean;
 };
 
 const useAutoClose = (props: Props) => {
-  const { autohide } = props;
+  const { autoHide } = props;
 
   const id = crypto.randomUUID();
 
   useEffect(() => {
-    if (!autohide && id) return;
+    if (!autoHide && id) return;
     const section = document.getElementById(id);
     const details = section?.querySelectorAll('details');
     details?.forEach((detail, index) => {

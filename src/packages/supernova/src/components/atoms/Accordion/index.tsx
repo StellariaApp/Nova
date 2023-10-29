@@ -6,11 +6,11 @@ import { AccordionTrigger } from './components/trigger';
 import { AccordionContent } from './components/content';
 
 const Accordion = (props: AccordionProps, ref: Ref<HTMLElement>) => {
-  const { items, components, autohide } = props;
+  const { items, components, autoHide } = props;
 
   return (
     <AccordionContainer
-      autohide={autohide}
+      autoHide={autoHide}
       ref={ref}
       {...components?.container}
     >

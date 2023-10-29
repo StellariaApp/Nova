@@ -3,7 +3,7 @@ import type { CSSProperties } from '../../../types/css';
 
 export type AccordionContainerProps = HTMLMotionProps<'section'> &
   CSSProperties & {
-    autohide?: boolean;
+    autoHide?: boolean;
   };
 export type AccordionItemProps = HTMLMotionProps<'details'> & CSSProperties;
 export type AccordionTriggerProps = HTMLMotionProps<'summary'> & CSSProperties;
@@ -19,7 +19,7 @@ type ItemAccordion = {
 type ItemsAccordion = ItemAccordion[];
 
 export type AccordionProps = {
-  autohide?: boolean;
+  autoHide?: boolean;
   items?: ItemsAccordion;
   components?: {
     container?: AccordionContainerProps;

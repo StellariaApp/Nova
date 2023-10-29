@@ -7,11 +7,11 @@ import useAutoClose from '../hooks/useAutoClose';
 
 export const AccordionContainer = forwardRef(
   (props: AccordionContainerProps, ref: Ref<HTMLElement>) => {
-    const { children, autohide } = props;
+    const { children, autoHide } = props;
 
     const { classes } = stylesContainer(props);
 
-    const { id } = useAutoClose({ autohide });
+    const { id } = useAutoClose({ autoHide });
 
     return (
       <motion.section id={id} {...props} className={classes} ref={ref}>
