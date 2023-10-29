@@ -1,21 +1,28 @@
 import type { CSSTheme } from '../../../types';
 import { css, cv } from '../../../utils/css';
+import type { AccordionContainerProps } from './types';
 
-const baseContainer: CSSTheme = () => css`
-  width: 100%;
-  height: max-content;
-  user-select: none;
+const baseContainer: CSSTheme = (_, props) => {
+  const { rotateIcon = true } = props as AccordionContainerProps;
+  return css`
+    width: 100%;
+    height: max-content;
+    user-select: none;
 
-  details[open] {
-    summary {
-      svg {
-        transform: rotate(180deg);
+    ${rotateIcon &&
+    css`
+      details[open] {
+        summary {
+          svg {
+            transform: rotate(180deg);
+          }
+        }
       }
-    }
-  }
+    `}
 
-  transition: all 0.2s ease-in-out;
-`;
+    transition: all 0.2s ease-in-out;
+  `;
+};
 
 export const StylesAccordionContainer = cv({
   base: baseContainer

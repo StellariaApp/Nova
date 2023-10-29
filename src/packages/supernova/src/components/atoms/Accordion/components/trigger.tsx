@@ -13,7 +13,7 @@ export const AccordionTrigger = forwardRef(
       <motion.summary {...props} className={classes} ref={ref}>
         <>
           {children}
-          <Icon height={10} icon="chevron-down" width={10} {...icon} />
+          <Icon height={10} width={10} icon="chevron-down" {...icon} />
         </>
       </motion.summary>
     );

@@ -5,6 +5,7 @@ import type { IconProps } from '../Icon';
 export type AccordionContainerProps = HTMLMotionProps<'section'> &
   CSSProperties & {
     autoHide?: boolean;
+    rotateIcon?: boolean;
   };
 export type AccordionItemProps = HTMLMotionProps<'details'> & CSSProperties;
 export type AccordionTriggerProps = HTMLMotionProps<'summary'> &
@@ -24,6 +25,7 @@ type ItemAccordion = {
 type ItemsAccordion = ItemAccordion[];
 
 export type AccordionProps = {
+  rotateIcon?: boolean;
   autoHide?: boolean;
   items?: ItemsAccordion;
   components?: {

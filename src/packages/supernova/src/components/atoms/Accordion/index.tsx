@@ -6,12 +6,13 @@ import { AccordionTrigger } from './components/trigger';
 import { AccordionContent } from './components/content';
 
 const Accordion = (props: AccordionProps, ref: Ref<HTMLElement>) => {
-  const { items, components, autoHide } = props;
+  const { items, components, autoHide, rotateIcon } = props;
 
   return (
     <AccordionContainer
       autoHide={autoHide}
       ref={ref}
+      rotateIcon={rotateIcon}
       {...components?.container}
     >
       {items?.map((item) => {
