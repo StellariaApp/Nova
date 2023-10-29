@@ -6,6 +6,7 @@ export type IIcon = SVGMotionProps<SVGSVGElement>;
 
 export type IconProps = Partial<IIcon> &
   CSSProperties & {
+    className?: string;
     variant?: EnumIconType;
     icon?: EnumIcon;
     children?: React.ReactNode;
