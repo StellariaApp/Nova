@@ -14,16 +14,25 @@ const Accordion = (props: AccordionProps, ref: Ref<HTMLElement>) => {
       ref={ref}
       {...components?.container}
     >
-      {items?.map((item) => (
-        <AccordionItem key={item.id} open={item.open} {...components?.item}>
-          <AccordionTrigger {...components?.trigger}>
-            {item.title}
-          </AccordionTrigger>
-          <AccordionContent {...components?.content}>
-            {item.content}
-          </AccordionContent>
-        </AccordionItem>
-      ))}
+      {items?.map((item) => {
+        const trigger = {
+          ...components?.trigger,
+          icon: {
+            ...components?.trigger?.icon,
+            icon: item.icon ?? 'chevron-down',
+            ...components?.icon
+          }
+        };
+
+        return (
+          <AccordionItem key={item.id} open={item.open} {...components?.item}>
+            <AccordionTrigger {...trigger}>{item.title}</AccordionTrigger>
+            <AccordionContent {...components?.content}>
+              {item.content}
+            </AccordionContent>
+          </AccordionItem>
+        );
+      })}
     </AccordionContainer>
   );
 };

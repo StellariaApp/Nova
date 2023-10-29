@@ -7,13 +7,13 @@ import { Icon } from '../../Icon';
 
 export const AccordionTrigger = forwardRef(
   (props: AccordionTriggerProps, ref: Ref<HTMLElement>) => {
-    const { children } = props;
+    const { children, icon } = props;
     const { classes } = stylesTrigger(props);
     return (
       <motion.summary {...props} className={classes} ref={ref}>
         <>
           {children}
-          <Icon icon="chevron-down" />
+          <Icon height={10} icon="chevron-down" width={10} {...icon} />
         </>
       </motion.summary>
     );
