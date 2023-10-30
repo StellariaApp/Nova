@@ -8,7 +8,7 @@ const Alert = (props: AlertProps) => {
   const { title, description, icon } = props;
   return (
     <AlertContainer>
-      <Icon name={icon} />
+      <Icon width={14} height={14} icon={icon ?? 'info'} />
       <AlertTitle>{title}</AlertTitle>
       <AlertDescription>{description}</AlertDescription>
     </AlertContainer>
