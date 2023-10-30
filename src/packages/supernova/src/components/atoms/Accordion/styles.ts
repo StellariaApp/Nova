@@ -12,7 +12,7 @@ import type {
   AccordionItemProps
 } from './types';
 
-export const stylesContainer = (props: AccordionContainerProps) => {
+export const StylesContainer = (props: AccordionContainerProps) => {
   const { className } = props;
   const { cssTheme, theme } = useTheme();
 
@@ -27,7 +27,7 @@ export const stylesContainer = (props: AccordionContainerProps) => {
   };
 };
 
-export const stylesItem = (props: AccordionItemProps) => {
+export const StylesItem = (props: AccordionItemProps) => {
   const { className } = props;
   const { cssTheme, theme } = useTheme();
 
@@ -42,7 +42,7 @@ export const stylesItem = (props: AccordionItemProps) => {
   };
 };
 
-export const stylesTrigger = (props: AccordionItemProps) => {
+export const StylesTrigger = (props: AccordionItemProps) => {
   const { className } = props;
   const { cssTheme, theme } = useTheme();
 
@@ -57,7 +57,7 @@ export const stylesTrigger = (props: AccordionItemProps) => {
   };
 };
 
-export const stylesContent = (props: AccordionContentProps) => {
+export const StylesContent = (props: AccordionContentProps) => {
   const { className } = props;
   const { cssTheme, theme } = useTheme();
 
