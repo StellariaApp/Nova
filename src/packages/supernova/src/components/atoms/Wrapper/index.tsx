@@ -3,12 +3,12 @@ import { forwardRef } from 'react';
 import type { Ref } from 'react';
 import { AnimationFade } from '../../../animations/fade';
 import type { WrapperProps } from './types';
-import { styles } from './styles';
+import { Styles } from './styles';
 
 const WrapperRef = (props: WrapperProps, ref: Ref<HTMLDivElement>) => {
   const { children } = props;
 
-  const { classes } = styles(props);
+  const { classes } = Styles(props);
 
   return (
     <motion.div {...AnimationFade} {...props} className={classes} ref={ref}>

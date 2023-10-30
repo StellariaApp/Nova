@@ -3,15 +3,15 @@ import { cssProps, cx } from '../../../utils/css';
 import { StylesWrapper } from './css';
 import type { WrapperProps } from './types';
 
-export const styles = (props: WrapperProps) => {
+export const Styles = (props: WrapperProps) => {
   const { className } = props;
   const { cssTheme } = useTheme();
 
-  const Styles = StylesWrapper(props);
+  const styles = StylesWrapper(props);
   const cssWithProps = cssProps(props);
   const cssWithTheme = cssTheme(props, 'button');
 
-  const classes = cx([Styles, cssWithProps, className, cssWithTheme]);
+  const classes = cx([styles, cssWithProps, className, cssWithTheme]);
 
   return {
     classes

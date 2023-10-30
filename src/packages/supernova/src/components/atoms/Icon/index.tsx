@@ -3,12 +3,12 @@ import { forwardRef } from 'react';
 import type { Ref } from 'react';
 import { getIcon } from '../../../utils/icons';
 import type { IconProps } from './types';
-import { styles } from './styles';
+import { Styles } from './styles';
 
 const IconRef = (props: IconProps, ref: Ref<SVGSVGElement>) => {
   const { children, variant = 'solid', icon = 'trash-can' } = props;
 
-  const { classes } = styles(props);
+  const { classes } = Styles(props);
 
   const { viewBox, paths } = getIcon(variant, icon);
 
