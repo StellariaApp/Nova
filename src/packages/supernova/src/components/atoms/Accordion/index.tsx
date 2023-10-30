@@ -4,6 +4,7 @@ import { AccordionContainer } from './components/container';
 import { AccordionItem } from './components/item';
 import { AccordionTrigger } from './components/trigger';
 import { AccordionContent } from './components/content';
+import { CreateTrigger } from './utils/trigger';
 
 const Accordion = (props: AccordionProps, ref: Ref<HTMLElement>) => {
   const { items, components, autoHide, rotateIcon } = props;
@@ -16,15 +17,7 @@ const Accordion = (props: AccordionProps, ref: Ref<HTMLElement>) => {
       {...components?.container}
     >
       {items?.map((item) => {
-        const trigger = {
-          ...components?.trigger,
-          icon: {
-            ...components?.trigger?.icon,
-            icon: item.icon ?? 'chevron-down',
-            ...components?.icon
-          }
-        };
-
+        const trigger = CreateTrigger(props, item);
         return (
           <AccordionItem key={item.id} open={item.open} {...components?.item}>
             <AccordionTrigger {...trigger}>{item.title}</AccordionTrigger>

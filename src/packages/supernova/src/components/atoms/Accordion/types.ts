@@ -14,7 +14,7 @@ export type AccordionTriggerProps = HTMLMotionProps<'summary'> &
   };
 export type AccordionContentProps = HTMLMotionProps<'p'> & CSSProperties;
 
-type ItemAccordion = {
+export type ItemAccordion = {
   id: string;
   title: string;
   icon?: IconProps['icon'];
