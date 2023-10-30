@@ -7,6 +7,16 @@ const components: Components = {
   button: () => css``
 };
 
+const sizes = {
+  xxsmall: '4px',
+  xsmall: '8px',
+  small: '12px',
+  medium: '16px',
+  large: '20px',
+  xlarge: '24px',
+  xxlarge: '28px'
+};
+
 const dark: Palette = {
   colors: {
     primary: '#fafafa',
@@ -29,6 +39,7 @@ const dark: Palette = {
     shadow: '0px 0px 8px #00000025',
     shadowAlt: '0px 0px 4px #0000000c'
   },
+  sizes,
   components
 };
 
@@ -54,6 +65,7 @@ const light: Palette = {
     shadow: '0px 0px 8px #00000080',
     shadowAlt: '0px 0px 4px #0000003a'
   },
+  sizes,
   components
 };
 
