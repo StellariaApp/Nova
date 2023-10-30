@@ -11,7 +11,7 @@ import type {
   AlertDescriptionProps
 } from './types';
 
-export const stylesContainer = (props: AlertContainerProps) => {
+export const StylesContainer = (props: AlertContainerProps) => {
   const { className } = props;
   const { cssTheme, theme } = useTheme();
 
@@ -26,7 +26,7 @@ export const stylesContainer = (props: AlertContainerProps) => {
   };
 };
 
-export const stylesTitle = (props: AlertDescriptionProps) => {
+export const StylesTitle = (props: AlertDescriptionProps) => {
   const { className } = props;
   const { cssTheme, theme } = useTheme();
 
@@ -41,7 +41,7 @@ export const stylesTitle = (props: AlertDescriptionProps) => {
   };
 };
 
-export const stylesDescription = (props: AlertTitleProps) => {
+export const StylesDescription = (props: AlertTitleProps) => {
   const { className } = props;
   const { cssTheme, theme } = useTheme();
 
