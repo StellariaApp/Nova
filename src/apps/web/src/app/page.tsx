@@ -1,5 +1,5 @@
 'use client';
-import { Accordion, Button, Wrapper, css } from '@stellaria/supernova';
+import { Accordion, Alert, Button, Wrapper, css } from '@stellaria/supernova';
 import ShowButton from '../components/show-button';
 import ToggleTheme from '../components/ToggleTheme';
 
@@ -72,6 +72,10 @@ export default function Page(): JSX.Element {
           </Accordion.Content>
         </Accordion.Item>
       </Accordion.Container>
+
+      <Alert />
+      <Alert />
+      <Alert />
     </Wrapper>
   );
 }
