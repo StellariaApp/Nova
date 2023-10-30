@@ -50,7 +50,7 @@ export default function Page(): JSX.Element {
           }
         ]}
       />
-      <Accordion.Container autoHide>
+      {/* <Accordion.Container autoHide>
         <Accordion.Item open>
           <Accordion.Trigger>
             Is it possible to use the same component for the accordion and the
@@ -71,11 +71,14 @@ export default function Page(): JSX.Element {
             uncontrolled component has its state controlled by the DOM.
           </Accordion.Content>
         </Accordion.Item>
-      </Accordion.Container>
+      </Accordion.Container> */}
 
       <Alert />
-      <Alert />
-      <Alert />
+      <Alert
+        variant="success"
+        title="This is a success alert"
+        description="This is a success alert description"
+      />
     </Wrapper>
   );
 }

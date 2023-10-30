@@ -10,7 +10,7 @@ export const AlertDescription = forwardRef(
     const { classes } = StylesDescription(props);
     return (
       <motion.p {...props} className={classes} ref={ref}>
-        {children}
+        {children ?? 'Description Alert Example'}
       </motion.p>
     );
   }

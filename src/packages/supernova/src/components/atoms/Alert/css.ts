@@ -1,10 +1,14 @@
 import type { CSSTheme } from '../../../types';
 import { css, cv } from '../../../utils/css';
 
-const baseContainer: CSSTheme = () => css`
+const baseContainer: CSSTheme = (theme) => css`
   width: 100%;
   height: max-content;
-  user-select: none;
+  border: ${theme?.colors?.border ?? '1px solid #e5e5e5'};
+  border-radius: ${theme?.colors?.borderRadius ?? '4px'};
+  padding: 12px;
+  display: grid;
+  grid-template-columns: max-content 1fr;
 
   transition: all 0.2s ease-in-out;
 `;
@@ -34,7 +38,6 @@ export const StylesAlertTitle = cv({
 
 const baseDescription: CSSTheme = (theme) => css`
   width: 100%;
-  padding: 4px 16px;
   font-size: 14px;
   font-weight: 600;
   color: ${theme?.colors?.textSecondary ?? '#000'};

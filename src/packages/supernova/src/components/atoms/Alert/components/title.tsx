@@ -10,7 +10,7 @@ export const AlertTitle = forwardRef(
     const { classes } = StylesTitle(props);
     return (
       <motion.summary {...props} className={classes} ref={ref}>
-        {children}
+        {children ?? 'Title Alert Example'}
       </motion.summary>
     );
   }
