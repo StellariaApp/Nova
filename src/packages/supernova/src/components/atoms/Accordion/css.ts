@@ -66,6 +66,7 @@ const baseContent: CSSTheme = (theme) => css`
   font-size: 14px;
   font-weight: 600;
   color: ${theme?.colors?.textSecondary ?? '#000'};
+
   transition: all 0.2s ease-in-out;
 `;
 
