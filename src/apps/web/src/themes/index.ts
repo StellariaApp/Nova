@@ -49,7 +49,7 @@ const light: Palette = {
     primaryHover: '#272727',
 
     secondary: '#fcfcfc',
-    secondaryHover: '#cecece',
+    secondaryHover: '#eeeeee',
 
     text: '#18181b',
     textSecondary: '#a1a1a1',

@@ -29,7 +29,7 @@ export const StylesAlertContainer = cv({
         border-top: ${theme?.colors?.border ?? '1px solid #3f3f3f'};
         border-right: ${theme?.colors?.border ?? '1px solid #3f3f3f'};
         background-color: ${theme?.colors?.secondary ?? '#18181b'};
-        transition: all 1s linear;
+        transition: all 0.2s ease-in-out, width 1s linear;
       }
 
       transition: all 0.2s ease-in-out;
@@ -60,8 +60,10 @@ export const StylesAlertButton = cv({
     background-color: transparent;
     border: none;
     background-color: ${theme?.colors?.secondary ?? '#18181b'};
+    box-shadow: none;
     :hover {
       border: none;
+      box-shadow: none;
       background-color: ${theme?.colors?.secondaryHover ?? '#272727'};
     }
 
