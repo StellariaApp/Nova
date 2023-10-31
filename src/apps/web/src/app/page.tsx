@@ -51,7 +51,7 @@ export default function Page(): JSX.Element {
           }
         ]}
       />
-      <Accordion.Container autoHide>
+      <Accordion.Container>
         <Accordion.Item open>
           <Accordion.Trigger>
             Is it possible to use the same component for the accordion and the
