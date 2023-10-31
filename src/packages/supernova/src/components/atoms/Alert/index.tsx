@@ -1,16 +1,21 @@
 import { Icon } from '../Icon';
 import { AlertContainer } from './components/container';
 import { AlertTitle } from './components/title';
+import { AlertIcon } from './components/icon';
+import { AlertButton } from './components/button';
 import { AlertDescription } from './components/description';
 import type { AlertProps } from './types';
 
 const Alert = (props: AlertProps) => {
-  const { title, description, icon } = props;
+  const { title, description, icon, components, percentage, onClick } = props;
   return (
-    <AlertContainer>
-      <Icon width={14} height={14} icon={icon ?? 'info'} />
-      <AlertTitle>{title}</AlertTitle>
-      <AlertDescription>{description}</AlertDescription>
+    <AlertContainer percentage={percentage} {...components?.container}>
+      <AlertIcon icon={icon} {...components?.icon} />
+      <AlertTitle {...components?.title}>{title}</AlertTitle>
+      <AlertDescription {...components?.description}>
+        {description}
+      </AlertDescription>
+      <AlertButton onClick={onClick} {...components?.button} />
     </AlertContainer>
   );
 };
@@ -19,6 +24,7 @@ Alert.Container = AlertContainer;
 Alert.Icon = Icon;
 Alert.Title = AlertTitle;
 Alert.Description = AlertDescription;
+Alert.Button = AlertButton;
 
 export { Alert };
 

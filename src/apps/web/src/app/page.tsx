@@ -2,6 +2,7 @@
 import { Accordion, Alert, Button, Wrapper, css } from '@stellaria/supernova';
 import ShowButton from '../components/show-button';
 import ToggleTheme from '../components/ToggleTheme';
+import AlertWithTime from '../components/AlertWithTime';
 
 export default function Page(): JSX.Element {
   return (
@@ -74,11 +75,7 @@ export default function Page(): JSX.Element {
       </Accordion.Container>
 
       <Alert />
-      <Alert
-        variant="success"
-        title="This is a success alert"
-        description="This is a success alert description"
-      />
+      <AlertWithTime />
     </Wrapper>
   );
 }

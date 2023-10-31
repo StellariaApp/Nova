@@ -4,14 +4,14 @@ import { forwardRef } from 'react';
 import type { AlertTitleProps } from '../types';
 import { StylesTitle } from '../styles';
 
-export const AlertTitle = forwardRef(
-  (props: AlertTitleProps, ref: Ref<HTMLElement>) => {
-    const { children } = props;
-    const { classes } = StylesTitle(props);
-    return (
-      <motion.summary {...props} className={classes} ref={ref}>
-        {children ?? 'Title Alert Example'}
-      </motion.summary>
-    );
-  }
-);
+const AlertTitleRef = (props: AlertTitleProps, ref: Ref<HTMLElement>) => {
+  const { children } = props;
+  const { classes } = StylesTitle(props);
+  return (
+    <motion.figcaption {...props} className={classes} ref={ref}>
+      {children ?? 'Title Alert Example'}
+    </motion.figcaption>
+  );
+};
+
+export const AlertTitle = forwardRef(AlertTitleRef);

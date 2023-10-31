@@ -4,16 +4,19 @@ import { forwardRef } from 'react';
 import type { AlertContainerProps } from '../types';
 import { StylesContainer } from '../styles';
 
-export const AlertContainer = forwardRef(
-  (props: AlertContainerProps, ref: Ref<HTMLElement>) => {
-    const { children } = props;
+const AlertContainerRef = (
+  props: AlertContainerProps,
+  ref: Ref<HTMLElement>
+) => {
+  const { children } = props;
 
-    const { classes } = StylesContainer(props);
+  const { classes } = StylesContainer(props);
 
-    return (
-      <motion.section {...props} className={classes} ref={ref}>
-        {children}
-      </motion.section>
-    );
-  }
-);
+  return (
+    <motion.figure {...props} className={classes} ref={ref}>
+      {children}
+    </motion.figure>
+  );
+};
+
+export const AlertContainer = forwardRef(AlertContainerRef);

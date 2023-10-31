@@ -5,18 +5,21 @@ import type { AccordionContainerProps } from '../types';
 import { StylesContainer } from '../styles';
 import useAutoClose from '../hooks/useAutoClose';
 
-export const AccordionContainer = forwardRef(
-  (props: AccordionContainerProps, ref: Ref<HTMLElement>) => {
-    const { children, autoHide } = props;
+const AccordionContainerRef = (
+  props: AccordionContainerProps,
+  ref: Ref<HTMLElement>
+) => {
+  const { children, autoHide } = props;
 
-    const { classes } = StylesContainer(props);
+  const { classes } = StylesContainer(props);
 
-    const { id } = useAutoClose({ autoHide });
+  const { id } = useAutoClose({ autoHide });
 
-    return (
-      <motion.section id={id} {...props} className={classes} ref={ref}>
-        {children}
-      </motion.section>
-    );
-  }
-);
+  return (
+    <motion.section id={id} {...props} className={classes} ref={ref}>
+      {children}
+    </motion.section>
+  );
+};
+
+export const AccordionContainer = forwardRef(AccordionContainerRef);

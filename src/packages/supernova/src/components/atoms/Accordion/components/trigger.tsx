@@ -5,17 +5,20 @@ import type { AccordionTriggerProps } from '../types';
 import { StylesTrigger } from '../styles';
 import { Icon } from '../../Icon';
 
-export const AccordionTrigger = forwardRef(
-  (props: AccordionTriggerProps, ref: Ref<HTMLElement>) => {
-    const { children, icon } = props;
-    const { classes } = StylesTrigger(props);
-    return (
-      <motion.summary {...props} className={classes} ref={ref}>
-        <>
-          {children}
-          <Icon height={10} width={10} icon="chevron-down" {...icon} />
-        </>
-      </motion.summary>
-    );
-  }
-);
+const AccordionTriggerRef = (
+  props: AccordionTriggerProps,
+  ref: Ref<HTMLElement>
+) => {
+  const { children, icon } = props;
+  const { classes } = StylesTrigger(props);
+  return (
+    <motion.summary {...props} className={classes} ref={ref}>
+      <>
+        {children}
+        <Icon height={10} width={10} icon="chevron-down" {...icon} />
+      </>
+    </motion.summary>
+  );
+};
+
+export const AccordionTrigger = forwardRef(AccordionTriggerRef);
