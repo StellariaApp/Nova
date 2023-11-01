@@ -1,10 +1,10 @@
 'use client';
 import { Accordion, Toast, Button, Wrapper, css } from '@stellaria/supernova';
-import ShowButton from '../components/show-button';
-import ToggleTheme from '../components/ToggleTheme';
-import ToastWithTime from '../components/ToastWithTimer';
+import ShowButton from '../../../components/show-button';
+import ToggleTheme from '../../../components/ToggleTheme';
+import ToastWithTime from '../../../components/ToastWithTimer';
 
-const Page = () => {
+const PageDocs = () => {
   return (
     <Wrapper
       css={() => css`
@@ -80,4 +80,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default PageDocs;

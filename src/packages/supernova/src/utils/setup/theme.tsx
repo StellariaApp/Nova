@@ -22,6 +22,7 @@ export const SetupTheme = <T extends Theme>(config: IConfig<T>) => {
     const defaultTheme = themes[defaultKey];
 
     const set = (key: keyof T) => {
+      if (!key) return;
       document.documentElement.dataset.theme = key.toString();
       localStorage.setItem('theme', key.toString());
       window.dispatchEvent(new Event('storage'));
