@@ -6,10 +6,11 @@ type DictionaryItemWithFullPath = DictionaryItem & {
 };
 
 export const findDictionary = (paths: string[]) => {
-  const dictiopnary = paths.reduce(
+  const pathNormalized = paths.length > 2 ? paths.slice(1) : paths;
+  const dictiopnary = pathNormalized.reduce(
     (acc, path) => {
       const dictionary = acc.dictionary.find(
-        (item) => item.path?.substring(1) === path
+        (item) => item.path?.replace('/', '') === path
       );
       if (!dictionary) return acc;
 
@@ -21,7 +22,7 @@ export const findDictionary = (paths: string[]) => {
 
       return {
         find: dictionaryItem,
-        dictionary: dictionary.paths ?? []
+        dictionary: dictionaryItem.paths ?? []
       };
     },
     {

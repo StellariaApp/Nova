@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { findDictionary } from '../../../utils/findDictionary';
+import SideBarDocs from '../../../components/complex/sidebars/docs';
 
 type Props = {
   children: React.ReactNode;
@@ -15,7 +16,7 @@ export const generateMetadata = (props: MetadataProps) => {
   const { params } = props;
   const { path } = params;
 
-  const getPath = path ?? [''];
+  const getPath = ['', ...(path ?? [])];
 
   const dictionary = findDictionary(getPath as string[]);
 
@@ -31,7 +32,12 @@ export const generateMetadata = (props: MetadataProps) => {
 const RootLayout = (props: Props) => {
   const { children } = props;
 
-  return <main lang="en">{children}</main>;
+  return (
+    <main lang="en">
+      <SideBarDocs />
+      {children}
+    </main>
+  );
 };
 
 export default RootLayout;

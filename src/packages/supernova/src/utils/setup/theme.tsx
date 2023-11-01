@@ -25,7 +25,7 @@ export const SetupTheme = <T extends Theme>(config: IConfig<T>) => {
       if (!key) return;
       document.documentElement.dataset.theme = key.toString();
       localStorage.setItem('theme', key.toString());
-      window.dispatchEvent(new Event('storage'));
+      // window.dispatchEvent(new Event('storage')) do use in the future
       setTheme((prev) => {
         const newAtom = {
           ...prev,
@@ -67,6 +67,8 @@ export const SetupTheme = <T extends Theme>(config: IConfig<T>) => {
   }, [config]);
 
   useEffect(() => {
+    const isBrowser = typeof window !== 'undefined';
+    if (!isBrowser) return;
     const { get, set } = theme;
     set(get());
   }, [theme.set]);

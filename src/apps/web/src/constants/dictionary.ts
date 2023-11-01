@@ -1,5 +1,5 @@
 export type DictionaryItem = {
-  id?: string;
+  id: string;
   title: string;
   description?: string;
   path?: string;
@@ -13,7 +13,7 @@ export const Dictionary = [
     id: 'getting-started',
     title: 'Getting Started',
     description: 'Get started with the basics',
-    path: '/',
+    path: '',
     paths: [
       {
         id: 'getting-started-introduction',
@@ -32,6 +32,12 @@ export const Dictionary = [
         title: 'Theming',
         description: 'Theming guide',
         path: '/theming'
+      },
+      {
+        id: 'getting-started-components',
+        title: 'Components',
+        description: 'Components guide',
+        path: '/components'
       },
       {
         id: 'getting-started-changelog',
@@ -58,7 +64,7 @@ export const Dictionary = [
         id: 'installation-nextjs',
         title: 'NextJS',
         description: 'Installation guide for NextJS',
-        path: '/installation/nextjs'
+        path: '/nextjs'
       }
     ]
   },
@@ -72,7 +78,7 @@ export const Dictionary = [
         id: 'theming-nextjs',
         title: 'NextJS',
         description: 'Theming guide for NextJS',
-        path: '/theming/nextjs'
+        path: '/nextjs'
       }
     ]
   },
@@ -86,19 +92,19 @@ export const Dictionary = [
         id: 'components-accordion',
         title: 'Accordion',
         description: 'Accordion component',
-        path: '/components/accordion'
+        path: '/accordion'
       },
       {
         id: 'components-button',
         title: 'Button',
         description: 'Button component',
-        path: '/components/button'
+        path: '/button'
       },
       {
         id: 'components-toast',
         title: 'Toast',
         description: 'Toast component',
-        path: '/components/toast'
+        path: '/toast'
       }
     ]
   }
