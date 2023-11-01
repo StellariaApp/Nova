@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { findDictionary } from '../../../utils/findDictionary';
-import SideBarDocs from '../../../components/complex/sidebars/docs';
+import { findDictionary } from '../../utils/findDictionary';
+import SideBarDocs from '../../components/complex/sidebars/docs';
 
 type Props = {
   children: React.ReactNode;
