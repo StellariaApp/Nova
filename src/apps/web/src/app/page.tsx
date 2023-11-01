@@ -1,8 +1,8 @@
 'use client';
-import { Accordion, Alert, Button, Wrapper, css } from '@stellaria/supernova';
+import { Accordion, Toast, Button, Wrapper, css } from '@stellaria/supernova';
 import ShowButton from '../components/show-button';
 import ToggleTheme from '../components/ToggleTheme';
-import AlertWithTime from '../components/AlertWithTime';
+import ToastWithTime from '../components/ToastWithTimer';
 
 export default function Page(): JSX.Element {
   return (
@@ -74,8 +74,8 @@ export default function Page(): JSX.Element {
         </Accordion.Item>
       </Accordion.Container>
 
-      <Alert />
-      <AlertWithTime />
+      <Toast />
+      <ToastWithTime />
     </Wrapper>
   );
 }

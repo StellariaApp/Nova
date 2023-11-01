@@ -3,25 +3,25 @@ import { cssProps, cx } from '../../../utils/css';
 import type { ButtonProps } from '../Button';
 import type { IconProps } from '../Icon';
 import {
-  StylesAlertButton,
-  StylesAlertContainer,
-  StylesAlertDescription,
-  StylesAlertIcon,
-  StylesAlertTitle
+  StylesToastButton,
+  StylesToastContainer,
+  StylesToastDescription,
+  StylesToastIcon,
+  StylesToastTitle
 } from './css';
 import type {
-  AlertContainerProps,
-  AlertTitleProps,
-  AlertDescriptionProps
+  ToastContainerProps,
+  ToastTitleProps,
+  ToastDescriptionProps
 } from './types';
 
-export const StylesContainer = (props: AlertContainerProps) => {
+export const StylesContainer = (props: ToastContainerProps) => {
   const { className } = props;
   const { cssTheme, theme } = useTheme();
 
-  const styles = StylesAlertContainer(props, theme);
+  const styles = StylesToastContainer(props, theme);
   const cssWithProps = cssProps(props);
-  const cssWithTheme = cssTheme(props, 'alert.container');
+  const cssWithTheme = cssTheme(props, 'toast.container');
 
   const classes = cx([styles, cssWithProps, className, cssWithTheme]);
 
@@ -34,9 +34,9 @@ export const StylesIcon = (props: IconProps) => {
   const { className } = props;
   const { cssTheme, theme } = useTheme();
 
-  const styles = StylesAlertIcon(props, theme);
+  const styles = StylesToastIcon(props, theme);
   const cssWithProps = cssProps(props);
-  const cssWithTheme = cssTheme(props, 'alert.icon');
+  const cssWithTheme = cssTheme(props, 'toast.icon');
 
   const classes = cx([styles, cssWithProps, className, cssWithTheme]);
 
@@ -49,9 +49,9 @@ export const StylesButton = (props: ButtonProps) => {
   const { className } = props;
   const { cssTheme, theme } = useTheme();
 
-  const styles = StylesAlertButton(props, theme);
+  const styles = StylesToastButton(props, theme);
   const cssWithProps = cssProps(props);
-  const cssWithTheme = cssTheme(props, 'alert.button');
+  const cssWithTheme = cssTheme(props, 'toast.button');
 
   const classes = cx([styles, cssWithProps, className, cssWithTheme]);
 
@@ -60,13 +60,13 @@ export const StylesButton = (props: ButtonProps) => {
   };
 };
 
-export const StylesTitle = (props: AlertDescriptionProps) => {
+export const StylesTitle = (props: ToastDescriptionProps) => {
   const { className } = props;
   const { cssTheme, theme } = useTheme();
 
-  const styles = StylesAlertTitle(props, theme);
+  const styles = StylesToastTitle(props, theme);
   const cssWithProps = cssProps(props);
-  const cssWithTheme = cssTheme(props, 'alert.title');
+  const cssWithTheme = cssTheme(props, 'toast.title');
 
   const classes = cx([styles, cssWithProps, className, cssWithTheme]);
 
@@ -75,13 +75,13 @@ export const StylesTitle = (props: AlertDescriptionProps) => {
   };
 };
 
-export const StylesDescription = (props: AlertTitleProps) => {
+export const StylesDescription = (props: ToastTitleProps) => {
   const { className } = props;
   const { cssTheme, theme } = useTheme();
 
-  const styles = StylesAlertDescription(props, theme);
+  const styles = StylesToastDescription(props, theme);
   const cssWithProps = cssProps(props);
-  const cssWithTheme = cssTheme(props, 'alert.description');
+  const cssWithTheme = cssTheme(props, 'toast.description');
 
   const classes = cx([styles, cssWithProps, className, cssWithTheme]);
 

@@ -1,6 +1,6 @@
 import type { MotionProps } from 'framer-motion';
 
-export const AnimationFade: MotionProps = {
+export const InOut: MotionProps = {
   initial: {
     opacity: 0
   },
@@ -16,18 +16,53 @@ export const AnimationFade: MotionProps = {
   }
 };
 
-export const AnimationFadeZoom: MotionProps = {
+export const InOutSlow: MotionProps = {
+  initial: {
+    opacity: 0
+  },
+  animate: {
+    opacity: 1
+  },
+  exit: {
+    opacity: 0
+  },
+  transition: {
+    duration: 0.6,
+    ease: 'easeInOut'
+  }
+};
+
+export const InOutToast: MotionProps = {
   initial: {
     opacity: 0,
-    transform: 'perspective(600px) translate3d(0, 0, -20px)'
+    y: 20
   },
   animate: {
     opacity: 1,
-    transform: 'perspective(600px) translate3d(0, 0, 0px)'
+    y: 0
   },
   exit: {
     opacity: 0,
-    transform: 'perspective(600px) translate3d(0, 0, -20px)'
+    y: 20
+  },
+  transition: {
+    duration: 0.18,
+    ease: 'easeInOut'
+  }
+};
+
+export const InOutZoom: MotionProps = {
+  initial: {
+    opacity: 0,
+    z: -20
+  },
+  animate: {
+    opacity: 1,
+    z: 0
+  },
+  exit: {
+    opacity: 0,
+    z: -20
   },
   transition: {
     duration: 0.18,

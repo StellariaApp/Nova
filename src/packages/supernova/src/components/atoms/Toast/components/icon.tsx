@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import { Icon, type IconProps } from '../../Icon';
 import { StylesIcon } from '../styles';
 
-const AlertIconRef = (props: IconProps, ref: Ref<SVGSVGElement>) => {
+const ToastIconRef = (props: IconProps, ref: Ref<SVGSVGElement>) => {
   const { icon } = props;
   const { classes } = StylesIcon(props);
   return (
@@ -18,4 +18,4 @@ const AlertIconRef = (props: IconProps, ref: Ref<SVGSVGElement>) => {
   );
 };
 
-export const AlertIcon = forwardRef(AlertIconRef);
+export const ToastIcon = forwardRef(ToastIconRef);

@@ -1,4 +1,4 @@
 export * from './Accordion';
-export * from './Alert';
+export * from './Toast';
 export * from './Button';
 export * from './Wrapper';

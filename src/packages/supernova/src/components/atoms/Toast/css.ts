@@ -1,15 +1,15 @@
 import { css, cv } from '../../../utils/css';
-import type { AlertContainerProps } from './types';
+import type { ToastContainerProps } from './types';
 
-export const StylesAlertContainer = cv({
+export const StylesToastContainer = cv({
   base: (theme, props) => {
-    const { percentage = 0 } = props as AlertContainerProps;
+    const { percentage = 0 } = props as ToastContainerProps;
     return css`
       width: max-content;
       height: max-content;
       border: ${theme?.colors?.border ?? '1px solid #e5e5e5'};
       border-radius: ${theme?.colors?.borderRadius ?? '4px'};
-      padding: 12px 16px ${percentage > 0 ? 18 : 16}px 16px;
+      padding: 12px 16px ${percentage > 0 ? 20 : 12}px 16px;
       display: grid;
       grid-template-areas:
         'icon title close'
@@ -37,7 +37,7 @@ export const StylesAlertContainer = cv({
   }
 });
 
-export const StylesAlertIcon = cv({
+export const StylesToastIcon = cv({
   base: () => css`
     width: 16px;
     height: 16px;
@@ -50,9 +50,10 @@ export const StylesAlertIcon = cv({
   `
 });
 
-export const StylesAlertButton = cv({
+export const StylesToastButton = cv({
   base: (theme) => css`
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: center;
     padding: 2px;
@@ -61,6 +62,15 @@ export const StylesAlertButton = cv({
     border: none;
     background-color: ${theme?.colors?.secondary ?? '#18181b'};
     box-shadow: none;
+    :before {
+      content: '';
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      background-color: transparent;
+      z-index: -1;
+      transition: all 0.2s ease-in-out;
+    }
     :hover {
       border: none;
       box-shadow: none;
@@ -76,7 +86,7 @@ export const StylesAlertButton = cv({
   `
 });
 
-export const StylesAlertTitle = cv({
+export const StylesToastTitle = cv({
   base: (theme) => css`
     width: 100%;
     display: flex;
@@ -89,12 +99,13 @@ export const StylesAlertTitle = cv({
     font-weight: 600;
     color: ${theme?.colors?.text ?? '#000'};
     grid-area: title;
+    user-select: none;
 
     transition: all 0.2s ease-in-out;
   `
 });
 
-export const StylesAlertDescription = cv({
+export const StylesToastDescription = cv({
   base: (theme) => css`
     width: 100%;
     font-size: 12px;
@@ -102,6 +113,7 @@ export const StylesAlertDescription = cv({
     font-weight: 500;
     color: ${theme?.colors?.textSecondary ?? '#000'};
     grid-area: description;
+    user-select: none;
 
     transition: all 0.2s ease-in-out;
   `

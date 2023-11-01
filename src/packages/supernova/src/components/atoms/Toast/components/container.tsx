@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import type { Ref } from 'react';
 import { forwardRef } from 'react';
-import type { AlertContainerProps } from '../types';
+import type { ToastContainerProps } from '../types';
 import { StylesContainer } from '../styles';
 
-const AlertContainerRef = (
-  props: AlertContainerProps,
+const ToastContainerRef = (
+  props: ToastContainerProps,
   ref: Ref<HTMLElement>
 ) => {
   const { children } = props;
@@ -19,4 +19,4 @@ const AlertContainerRef = (
   );
 };
 
-export const AlertContainer = forwardRef(AlertContainerRef);
+export const ToastContainer = forwardRef(ToastContainerRef);

@@ -1,9 +1,8 @@
 'use client';
 
-export * from './src/components/atoms';
-export * from './src/hooks/useTheme';
-export * from './src/utils/css';
-export * from './src/utils/setup';
+export * from './src/components';
+export * from './src/hooks';
+export * from './src/utils';
 export * from './src/types';
 
 export { default as GlobalStyles } from './src/styles/globalStyles';
