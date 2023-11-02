@@ -1,4 +1,4 @@
-import { GlobalStyles, SetupSupernova } from '@stellaria/supernova';
+import { SetupSuperNova, StyleRegistry } from '@stellaria/supernova';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -21,9 +21,8 @@ const RootLayout = (props: Props) => {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <SetupSupernova default="light" themes={themes} />
-        {children}
-        <GlobalStyles />
+        <SetupSuperNova default="light" themes={themes} />
+        <StyleRegistry>{children}</StyleRegistry>
       </body>
     </html>
   );

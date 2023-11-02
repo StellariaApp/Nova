@@ -8,6 +8,7 @@ import { cssTheme } from '../css';
 export type IConfig<T extends Theme> = {
   themes: T;
   default?: keyof T;
+  children?: React.ReactNode;
 };
 
 export const SetupTheme = <T extends Theme>(config: IConfig<T>) => {
