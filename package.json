@@ -1,20 +1,24 @@
 {
+  "name": "@stellaria/supernova",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx|d.ts)\" --write"
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "turbo run lint"
   },
   "devDependencies": {
+    "esbuild": "^0.18.11",
     "eslint": "^8.48.0",
+    "prettier": "^2.5.1",
     "tsconfig": "*",
-    "turbo": "latest"
+    "tsx": "^3.12.7",
+    "turbo": "latest",
+    "typescript": "^5.1.6"
   },
-  "name": "nova",
-  "packageManager": "yarn@1.22.19",
-  "workspaces": [
-    "src/apps/*",
-    "src/packages/*"
-  ]
+  "packageManager": "yarn@1.22.19"
 }
