@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@stellaria/supernova": "*",
+    "jotai": "^2.4.3",
     "preact": "^10.16.0"
   },
   "devDependencies": {

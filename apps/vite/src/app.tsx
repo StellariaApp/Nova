@@ -1,35 +1,43 @@
-import { css, variables } from "@stellaria/supernova";
+import { css } from "@stellaria/supernova";
 import AtomButton from "./components/atom/button";
-
-const vars = variables({
-  wrapper: {
-    backgroundColor: "#3d3d3d",
-  },
-});
+import SuperNovaTheme from "./themes/theme";
+import { theme } from "./themes";
 
 const wrapper = css`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${vars.wrapper.backgroundColor};
+  background-color: ${theme?.colors?.background};
 `;
 
 const content = css`
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
 const App = () => {
+  const [key] = SuperNovaTheme.use();
   return (
     <div className={wrapper}>
       <div className={content}>
-        <AtomButton />
+        <AtomButton
+          onClick={() => {
+            SuperNovaTheme.toggle();
+          }}
+        />
+        <span
+          className={css`
+            color: ${theme?.colors?.text};
+          `}
+        >
+          Theme key: {key}
+        </span>
       </div>
     </div>
   );

@@ -3,16 +3,20 @@ import { themes } from "@stellaria/supernova";
 export const theme = themes({
   light: {
     colors: {
-      primary: "#0072f5",
-      secondary: "#00d1b2",
+      primary: "#242424",
+      primaryHover: "#3b3b3b",
       background: "#ffffff",
+      text: "#242424",
+      textAlt: "#ffffff",
     },
   },
   dark: {
     colors: {
-      primary: "#00d1b2",
-      secondary: "#0072f5",
-      background: "#000000",
+      primary: "#ffffff",
+      primaryHover: "#f5f5f5",
+      background: "#242424",
+      text: "#ffffff",
+      textAlt: "#242424",
     },
   },
 });

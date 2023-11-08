@@ -7,11 +7,12 @@ const button = css`
   width: max-content;
   padding: 0.7rem 1rem;
   border-radius: 0.32rem;
-  border: 2px solid ${varsButton?.button?.base?.border};
-  color: ${varsButton?.button?.base?.text};
+  border: 1px solid ${theme?.colors?.primary};
+  color: ${theme?.colors?.textAlt};
   box-shadow: ${varsButton?.button?.base?.boxShadow};
   &:hover {
-    background-color: ${varsButton?.button?.base?.hoverBackground};
+    border: 1px solid ${theme?.colors?.primaryHover};
+    background-color: ${theme?.colors?.primaryHover};
     transform: scale(1.12);
   }
   &:active {
@@ -21,8 +22,16 @@ const button = css`
   transition: all 0.2s ease-in-out;
 `;
 
-const AtomButton = () => {
-  return <button className={button}>Server Side Button </button>;
+type AtomButtonProps = {
+  onClick?: () => void;
+};
+
+const AtomButton = (props: AtomButtonProps) => {
+  return (
+    <button {...props} className={button}>
+      Toggle theme
+    </button>
+  );
 };
 
 export default AtomButton;
