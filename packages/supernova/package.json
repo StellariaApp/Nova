@@ -59,10 +59,10 @@
   "typesVersions": {
     "*": {
       "config": [
-        "./dist/config"
+        "./dist/core/config"
       ],
       "compiler": [
-        "./dist/compiler"
+        "./dist/core/compiler"
       ],
       "vite": [
         "./dist/plugins/vite"

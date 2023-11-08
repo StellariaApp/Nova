@@ -33,7 +33,7 @@ export type TransformOptions = Config & {
   fileId?: string;
 };
 
-export const transform = (code: string, config: TransformOptions): Result => {
+export const compiler = (code: string, config: TransformOptions): Result => {
   const { fileId } = config ?? {};
   var css = "";
 
@@ -96,4 +96,4 @@ export const transform = (code: string, config: TransformOptions): Result => {
   };
 };
 
-export default transform;
+export default compiler;
