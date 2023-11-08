@@ -26,13 +26,11 @@ export type TransformOptions = Config & {
 };
 
 export const compiler = (code: string, config: TransformOptions): Result => {
-  const { fileId } = config ?? {};
-
   const notMatched = { code, css: "", map: "", type: "Ok" } as Result;
   const hasImport = code.match(ImportRegex);
   if (!hasImport) return notMatched;
 
-  code = compileVars(code, fileId);
+  code = compileVars(code, config);
   code = compileStyles(code, config);
 
   const css = setVariables();

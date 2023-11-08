@@ -3,7 +3,7 @@ import AtomButton from "./components/atom/button";
 
 const vars = variables({
   wrapper: {
-    backgroundColor: "#242424",
+    backgroundColor: "#3d3d3d",
   },
 });
 

@@ -11,11 +11,10 @@ export const compileStyles = (code: string, config?: TransformOptions) => {
   const stylesObjectRaw = code.match(new RegExp(CSSObjectRegex, "g"));
 
   stylesRaw?.forEach((style) => {
-    const {
-      var: varType,
-      name,
-      css,
-    } = style.match(CSSConstRegex)?.groups ?? {};
+    const styles = style.match(CSSConstRegex)?.groups ?? {};
+    const { var: varType, name, css } = styles;
+
+    style.match(CSSConstRegex)?.groups ?? {};
     const hash = generateHash(fileId + name + varType);
     code = code.replace(style, `${varType} ${name} = "${hash}"`);
     StyleSheet.set(hash, {

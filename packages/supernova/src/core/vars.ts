@@ -1,17 +1,22 @@
 import { parseObject } from "./object.ts";
 import { Variables, StyleSheet } from "./map.ts";
+import { TransformOptions } from "./compiler.ts";
 
 const VariablesRegex =
-  /(const|var|let)\s+([\w$]+)\s*=\s*variables\(([\s\S]+?)\);/;
+  /(const|var|let)\s+([\w$]+)\s*=\s*variables\(([\s\S]+?)\)($|;)/;
+
+const VariablesMultipleRegex =
+  /(export\s+)?(const|var|let)\s+([\w$]+)\s*=\s*variables\(([\s\S]+?)\)($|;)/;
 
 const CSSRegex = /css\s*`(?<css>[^]*?)`/;
 
-export const compileVars = (code: string, _?: string) => {
+export const compileVars = (code: string, _config?: TransformOptions) => {
   const match = code.match(VariablesRegex);
-  const matchmultiple = code.match(new RegExp(VariablesRegex, "g"));
+  const matchmultiple = code.match(new RegExp(VariablesMultipleRegex, "g"));
 
   if (!match) {
     const matchCSS = code.match(new RegExp(CSSRegex, "g"));
+
     matchCSS?.forEach((match) => {
       const vars = match.match(/\${([\w$(\?.)]+)}/g);
       vars?.forEach((variable) => {
@@ -28,6 +33,7 @@ export const compileVars = (code: string, _?: string) => {
 
   matchmultiple?.forEach((match) => {
     const matchVar = match.match(VariablesRegex);
+
     if (!matchVar) return;
 
     const typeVar = matchVar?.[1];
@@ -41,18 +47,19 @@ export const compileVars = (code: string, _?: string) => {
 
     let jsonParsed = eval(`(${objectFormat})`);
 
-    // const nameVarHash = generateHash(`${fileId}-${nameVar}`);
-
     const { parsed, variables } = parseObject(jsonParsed, nameVar);
 
     variables.forEach(({ variable, value }) => {
       Variables.set(variable, { key: variable, value });
     });
 
-    code = code.replace(
-      match,
-      `${typeVar} ${nameVar} = variables(${JSON.stringify(parsed)});`
-    );
+    const hasExport = match.includes("export");
+
+    const newVar = `${
+      hasExport ? "export " : ""
+    }${typeVar} ${nameVar} = variables(${JSON.stringify(parsed)});`;
+
+    code = code.replace(match, newVar);
 
     variables.forEach(({ key, variable }) => {
       const regex = new RegExp(

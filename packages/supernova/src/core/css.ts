@@ -1,7 +1,7 @@
 import { Config } from "./config.ts";
 
 export const css = (_template: TemplateStringsArray, ..._args: any[]) => {
-  return "comet";
+  return "supernova";
 };
 
 export const variables = <T = {}>(vars: T) => vars;
