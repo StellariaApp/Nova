@@ -83,7 +83,7 @@ export const setVariables = () => {
 
   const { root, data } = setTheme();
 
-  const rootVars = `:root{\n${root}\n${vars}\n}\n${data}`;
+  const rootVars = `:root{${root}\n${vars}\n}\n${data}`;
 
   css = Array.from(StyleSheet.values())
     .map(({ hash, css }) => `.${hash}{${css}}`)
