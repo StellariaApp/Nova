@@ -1,12 +1,12 @@
 import { parseObject } from "./object.ts";
-import { Variables } from "./map.ts";
+import { Variables, StyleSheet } from "./map.ts";
 
 const VariablesRegex =
   /(const|var|let)\s+([\w$]+)\s*=\s*variables\(([\s\S]+?)\);/;
 
 const CSSRegex = /css\s*`(?<css>[^]*?)`/;
 
-export const getVars = (code: string, _?: string) => {
+export const compileVars = (code: string, _?: string) => {
   const match = code.match(VariablesRegex);
   const matchmultiple = code.match(new RegExp(VariablesRegex, "g"));
 
@@ -64,4 +64,21 @@ export const getVars = (code: string, _?: string) => {
   });
 
   return code;
+};
+
+export const setVariables = () => {
+  let css = "";
+  const vars = Array.from(Variables.values())
+    .map(({ key, value }) => `${key}:${value};`)
+    .join("\n");
+
+  const rootVars = `:root{\n${vars}\n}`;
+
+  css = Array.from(StyleSheet.values())
+    .map(({ hash, css }) => `.${hash}{${css}}`)
+    .join("\n");
+
+  css = `${rootVars}\n${css}`;
+
+  return css;
 };
