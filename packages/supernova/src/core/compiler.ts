@@ -1,6 +1,6 @@
-import { generateHash } from "./core/hash.ts";
-import { StyleSheet, Variables } from "./core/map.ts";
-import { getVars } from "./core/vars.ts";
+import { generateHash } from "./hash.ts";
+import { StyleSheet, Variables } from "./map.ts";
+import { getVars } from "./vars.ts";
 
 export type Config = {
   filename: string;

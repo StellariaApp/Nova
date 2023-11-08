@@ -1,4 +1,4 @@
-import type { FilterPattern } from "./utils/createFilter.ts";
+import type { FilterPattern } from "../utils/createFilter.ts";
 
 export type Variants = Record<string, string | number>;
 

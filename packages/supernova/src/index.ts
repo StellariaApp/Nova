@@ -1,5 +1,6 @@
-export { transform } from "./compiler.ts";
-export * from "./css.ts";
-export { FILE_ID } from "./FILE_ID.ts";
-export { ex } from "./ex.ts";
-export type { Ex } from "./ex.ts";
+export * from "./core/css.ts";
+export * from "./core/file.ts";
+
+import _ from "./core/compiler.ts";
+
+_;

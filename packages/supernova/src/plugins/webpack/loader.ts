@@ -2,7 +2,7 @@ import type { LoaderContext, LoaderDefinitionFunction } from "webpack";
 import { generateFileId } from "../../utils/generateFileId.ts";
 import type { ResolvedConfig } from "../../utils/loadConfig.ts";
 import { CSS_PATH } from "./plugin.ts";
-import transform from "../../compiler.ts";
+import transform from "../../core/compiler.ts";
 
 type WebpackLoaderParams = Parameters<LoaderDefinitionFunction<never>>;
 export const CSS_PARAM_NAME = "css";

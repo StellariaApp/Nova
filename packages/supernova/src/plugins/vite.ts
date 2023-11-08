@@ -2,7 +2,7 @@ import type * as Vite from "vite";
 import { generateFileId } from "../utils/generateFileId.ts";
 import type { ResolvedConfig } from "../utils/loadConfig.ts";
 import { loadConfig } from "../utils/loadConfig.ts";
-import transform from "../compiler.ts";
+import transform from "../core/compiler.ts";
 
 const VIRTUAL_MODULE_ID = "virtual:supernova.css";
 const RESOLVED_VIRTUAL_MODULE_ID = "\0" + VIRTUAL_MODULE_ID;

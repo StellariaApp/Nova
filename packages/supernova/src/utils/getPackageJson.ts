@@ -1,5 +1,5 @@
 import fs from "node:fs";
-import { PACKAGE_JSON } from "../constants.ts";
+import { PACKAGE_JSON } from "../constants/index.ts";
 import { lookupFile } from "./lookupFile.ts";
 
 type PackageJson = {
@@ -18,7 +18,7 @@ export function getPackageJson(dir: string): Result | undefined {
     ? {
         filename,
         packageJson: JSON.parse(
-          fs.readFileSync(filename, "utf8").toString(),
+          fs.readFileSync(filename, "utf8").toString()
         ) as PackageJson,
       }
     : undefined;
