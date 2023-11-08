@@ -19,7 +19,7 @@ const button = css`
     transform: scale(0.98);
   }
 
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
 `;
 
 type AtomButtonProps = {

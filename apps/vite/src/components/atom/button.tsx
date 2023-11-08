@@ -1,5 +1,4 @@
 import { css } from "@stellaria/supernova";
-import { varsButton } from "../../vars/button";
 import { theme } from "../../themes";
 
 const button = css`
@@ -9,7 +8,6 @@ const button = css`
   border-radius: 0.32rem;
   border: 1px solid ${theme?.colors?.primary};
   color: ${theme?.colors?.textAlt};
-  box-shadow: ${varsButton?.button?.base?.boxShadow};
   &:hover {
     border: 1px solid ${theme?.colors?.primaryHover};
     background-color: ${theme?.colors?.primaryHover};
@@ -19,7 +17,7 @@ const button = css`
     transform: scale(0.98);
   }
 
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
 `;
 
 type AtomButtonProps = {

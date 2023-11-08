@@ -18,7 +18,7 @@ const useTheme = () => {
     };
   }, []);
 
-  return [getter, setter] as const;
+  return [getter ?? "Loading...", setter] as const;
 };
 
 export default useTheme;

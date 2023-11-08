@@ -3,6 +3,8 @@ import Toggle from "../components/complex/toggle";
 import { theme } from "../themes";
 import { css } from "@stellaria/supernova";
 
+theme;
+
 const wrapper = css`
   width: 100%;
   height: 100vh;
@@ -10,6 +12,7 @@ const wrapper = css`
   justify-content: center;
   align-items: center;
   background-color: ${theme?.colors?.background};
+  transition: all 0.3s ease-in-out;
 `;
 
 const content = css`

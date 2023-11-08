@@ -1,3 +1,3 @@
 import { atom } from "jotai";
 
-export const ThemeAtom = atom("light");
+export const ThemeAtom = atom(null as unknown as string);

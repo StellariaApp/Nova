@@ -10,6 +10,7 @@ const wrapper = css`
   justify-content: center;
   align-items: center;
   background-color: ${theme?.colors?.background};
+  transition: background-color 0.3s ease-in-out;
 `;
 
 const content = css`
@@ -38,6 +39,11 @@ const App = () => {
         >
           Theme key: {key}
         </span>
+        <span
+          className={css`
+            color: ${theme?.colors?.text};
+          `}
+        ></span>
       </div>
     </div>
   );
