@@ -16,6 +16,9 @@ const button = css`
   &:active {
     transform: scale(0.98);
   }
+  &:focus {
+    outline: 1px solid ${theme?.colors?.textAlt};
+  }
 
   transition: all 0.3s ease-in-out;
 `;
