@@ -5,6 +5,7 @@ export const css = (_template: TemplateStringsArray, ..._args: any[]) => {
 };
 
 export const variables = <T = {}>(vars: T) => vars;
+export const themes = <T = {}>(themes: Record<string, T>) => themes;
 
 export const cx = (clases: string[]) => {
   return clases.filter(Boolean).join(" ");

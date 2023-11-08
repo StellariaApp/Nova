@@ -1,5 +1,5 @@
 import { css } from "@stellaria/supernova";
-import { varsButton } from "../../vars/variables";
+import { varsButton } from "../../vars/button";
 
 const button = css`
   background-color: ${varsButton?.button?.base?.background};
