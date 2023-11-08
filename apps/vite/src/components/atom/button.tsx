@@ -1,8 +1,9 @@
 import { css } from "@stellaria/supernova";
 import { varsButton } from "../../vars/button";
+import { theme } from "../../themes";
 
 const button = css`
-  background-color: ${varsButton?.button?.base?.background};
+  background-color: ${theme?.colors?.primary};
   width: max-content;
   padding: 0.7rem 1rem;
   border-radius: 0.32rem;

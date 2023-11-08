@@ -1,3 +1,5 @@
+import { FlatObject } from "./object.ts";
+
 type Style = {
   var: string;
   name: string;
@@ -12,3 +14,4 @@ type Variable = {
 
 export const StyleSheet = new Map<string, Style>();
 export const Variables = new Map<string, Variable>();
+export const Themes = new Map<string, FlatObject[]>();

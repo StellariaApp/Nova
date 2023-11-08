@@ -1,6 +1,7 @@
 import { parseObject } from "./object.ts";
 import { Variables, StyleSheet } from "./map.ts";
 import { TransformOptions } from "./compiler.ts";
+import { setTheme } from "./themes.ts";
 
 const VariablesRegex =
   /(const|var|let)\s+([\w$]+)\s*=\s*variables\(([\s\S]+?)\)($|;)/;
@@ -75,11 +76,14 @@ export const compileVars = (code: string, _config?: TransformOptions) => {
 
 export const setVariables = () => {
   let css = "";
+
   const vars = Array.from(Variables.values())
     .map(({ key, value }) => `${key}:${value};`)
     .join("\n");
 
-  const rootVars = `:root{\n${vars}\n}`;
+  const { root, data } = setTheme();
+
+  const rootVars = `:root{\n${root}\n${vars}\n}\n${data}`;
 
   css = Array.from(StyleSheet.values())
     .map(({ hash, css }) => `.${hash}{${css}}`)

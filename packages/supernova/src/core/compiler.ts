@@ -1,6 +1,7 @@
 import { compileVars, setVariables } from "./vars.ts";
 import { compileStyles } from "./styles.ts";
 import { ImportRegex } from "./regex.ts";
+import { compileThemes } from "./themes.ts";
 
 export type Config = {
   filename: string;
@@ -30,6 +31,7 @@ export const compiler = (code: string, config: TransformOptions): Result => {
   const hasImport = code.match(ImportRegex);
   if (!hasImport) return notMatched;
 
+  code = compileThemes(code, config);
   code = compileVars(code, config);
   code = compileStyles(code, config);
 
