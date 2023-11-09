@@ -2,33 +2,24 @@ import fs from "node:fs";
 import path from "node:path";
 import url from "node:url";
 import * as esbuild from "esbuild";
-import type { Config } from "../core/config.ts";
-import { CONFIG_FILES_THEME, DEFAULT_INCLUDE } from "../constants/index.ts";
-import { createFilter, type Filter } from "./createFilter.ts";
+import { CONFIG_FILES_THEME } from "../constants/index.ts";
 import { dynamicImport } from "./dynamicImport.ts";
 import { getIsESM } from "./getIsESM.ts";
-import { getPackageJson } from "./getPackageJson.ts";
 import { lookupFile } from "./lookupFile.ts";
 
-export type ResolvedConfig = {
-  root: string;
-  packageName: string;
-  filter: Filter;
-  helper?: string | undefined;
-  dependencies: string[];
+type Theme = {
+  [key: string]: Theme | string | number | undefined;
 };
 
-export async function loadTheme(root: string): Promise<ResolvedConfig> {
+export type Themes = Record<string, Theme>;
+
+export async function loadTheme(root: string): Promise<Themes> {
   const filename = lookupFile(root, CONFIG_FILES_THEME);
 
-  let config: Config | undefined;
-
-  let dependencies: string[] = [];
+  let config = {} as Themes;
 
   if (filename) {
     try {
-      dependencies.push(filename);
-
       const isESM = getIsESM(filename);
       const result = await esbuild.build({
         absWorkingDir: root,
@@ -45,10 +36,6 @@ export async function loadTheme(root: string): Promise<ResolvedConfig> {
 
       const code = result.outputFiles[0]?.text ?? "";
 
-      dependencies = Object.keys(result.metafile.inputs).map((input) => {
-        return path.resolve(root, input);
-      });
-
       if (code) {
         const { dir, name } = path.parse(filename);
         const outputFilename = path.join(
@@ -61,7 +48,7 @@ export async function loadTheme(root: string): Promise<ResolvedConfig> {
           const module = (await dynamicImport(
             isESM ? url.pathToFileURL(outputFilename).href : outputFilename,
             isESM
-          )) as { default?: Config };
+          )) as { default?: Themes };
 
           if (module.default) config = module.default;
         } finally {
@@ -73,25 +60,5 @@ export async function loadTheme(root: string): Promise<ResolvedConfig> {
     }
   }
 
-  let packageName = config?.packageName ?? "unknown";
-
-  try {
-    if (config && config.packageName === undefined) {
-      const result = getPackageJson(root);
-      if (result?.packageJson.name) {
-        packageName = result.packageJson.name;
-        dependencies.push(result.filename);
-      }
-    }
-  } catch {
-    /* empty */
-  }
-
-  return {
-    root,
-    packageName,
-    filter: createFilter(config?.include ?? DEFAULT_INCLUDE, config?.exclude),
-    helper: config?.helper,
-    dependencies,
-  };
+  return config;
 }

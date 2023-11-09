@@ -15,3 +15,13 @@ type Variable = {
 export const StyleSheet = new Map<string, Style>();
 export const Variables = new Map<string, Variable>();
 export const Themes = new Map<string, FlatObject[]>();
+
+type Config = {
+  themeLoaded: boolean;
+};
+
+export const Config = new Map(
+  Object.entries({
+    themeLoaded: false,
+  } as Config)
+);

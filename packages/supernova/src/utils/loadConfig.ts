@@ -73,7 +73,7 @@ export async function loadConfig(root: string): Promise<ResolvedConfig> {
     }
   }
 
-  let packageName = config?.packageName ?? "unknown";
+  let packageName = config?.packageName ?? "supernova";
 
   try {
     if (config && config.packageName === undefined) {

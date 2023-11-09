@@ -3,12 +3,14 @@ import { generateFileId } from "../../utils/generateFileId.ts";
 import type { ResolvedConfig } from "../../utils/loadConfig.ts";
 import { CSS_PATH } from "./plugin.ts";
 import compiler from "../../core/compiler.ts";
+import type { Themes } from "../../utils/loadTheme.ts";
 
 type WebpackLoaderParams = Parameters<LoaderDefinitionFunction<never>>;
 export const CSS_PARAM_NAME = "css";
 
 export type LoaderOption = {
   config: () => ResolvedConfig;
+  theme: () => Themes;
 };
 
 export default function loader(
@@ -18,6 +20,7 @@ export default function loader(
 ) {
   try {
     const config = this.getOptions().config();
+    const themes = this.getOptions().theme();
 
     if (!config.filter(this.resourcePath)) {
       this.callback(undefined, code, map);
@@ -38,6 +41,7 @@ export default function loader(
       filename: this.resourcePath,
       fileId,
       helper: config.helper,
+      themes,
     });
 
     if (result.type === "Ok") {

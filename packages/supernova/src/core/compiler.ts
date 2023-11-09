@@ -1,7 +1,8 @@
 import { compileVars, setVariables } from "./vars.ts";
 import { compileStyles } from "./styles.ts";
 import { ImportRegex } from "./regex.ts";
-import { compileThemes } from "./themes.ts";
+import { compileThemes, setThemes } from "./themes.ts";
+import { Themes } from "../utils/loadTheme.ts";
 
 export type Config = {
   filename: string;
@@ -24,12 +25,15 @@ export type Result =
 export type TransformOptions = Config & {
   filename?: string;
   fileId?: string;
+  themes?: Themes;
 };
 
 export const compiler = (code: string, config: TransformOptions): Result => {
   const notMatched = { code, css: "", map: "", type: "Ok" } as Result;
   const hasImport = code.match(ImportRegex);
   if (!hasImport) return notMatched;
+
+  setThemes(config.themes);
 
   code = compileThemes(code, config);
   code = compileVars(code, config);
