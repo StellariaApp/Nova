@@ -1,7 +1,7 @@
-import ThemeKey from "../components/complex/themeKey";
-import Toggle from "../components/complex/toggle";
-import theme from "../themes";
+import ThemeKey from "@/components/complex/themeKey";
 import { css } from "@stellaria/supernova";
+import Toggle from "@/components/complex/toggle";
+import theme from "@/themes";
 
 const wrapper = css`
   width: 100%;

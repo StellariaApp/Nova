@@ -51,9 +51,6 @@ export const setTheme = () => {
   let root = "";
   let data = "";
 
-  const isLoaded = Config.get("themeLoaded");
-  if (isLoaded) return { root, data };
-
   const themes = Array.from(Themes.entries());
 
   themes.forEach(([key, theme], idx) => {

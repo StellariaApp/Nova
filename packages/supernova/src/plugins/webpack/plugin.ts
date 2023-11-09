@@ -39,9 +39,22 @@ export default class Plugin {
       await this.loadConfig(compiler.context);
     });
 
-    compiler.hooks.watchRun.tapPromise("supernova:watch", async (_) => {
-      await this.loadConfig(compiler.context);
-    });
+    compiler.hooks.watchRun.tapPromise(
+      "supernova:watchRun",
+      async (compilation) => {
+        if (this._config) {
+          const isConfigChanged = this._config.dependencies
+            .map((dependency) => compilation.modifiedFiles?.has(dependency))
+            .includes(true);
+
+          if (isConfigChanged) {
+            await this.loadConfig(compiler.context);
+          }
+        } else {
+          await this.loadConfig(compiler.context);
+        }
+      }
+    );
 
     compiler.options.module.rules.push(
       {

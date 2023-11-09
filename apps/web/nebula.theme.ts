@@ -14,7 +14,7 @@ const theme = defineThemes({
     colors: {
       primary: "#ffffff",
       primaryHover: "#f5f5f5",
-      background: "#fd5c5c",
+      background: "#242424",
       text: "#ffffff",
       textAlt: "#242424",
     },
