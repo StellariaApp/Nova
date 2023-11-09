@@ -1,6 +1,6 @@
-import { themes } from "@stellaria/supernova";
+import { createThemes } from "@stellaria/supernova";
 
-export const theme = themes({
+createThemes({
   light: {
     colors: {
       primary: "#242424",
@@ -20,5 +20,3 @@ export const theme = themes({
     },
   },
 });
-
-export default theme;

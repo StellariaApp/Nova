@@ -16,4 +16,20 @@ export const CONFIG_FILES = [
   "nebula.config.mjs",
 ];
 
+export const CONFIG_FILES_THEME = [
+  "supernova.theme.ts",
+  "supernova.theme.cts",
+  "supernova.theme.mts",
+  "supernova.theme.js",
+  "supernova.theme.cjs",
+  "supernova.theme.mjs",
+
+  "nebula.theme.ts",
+  "nebula.theme.cts",
+  "nebula.theme.mts",
+  "nebula.theme.js",
+  "nebula.theme.cjs",
+  "nebula.theme.mjs",
+];
+
 export const DEFAULT_INCLUDE = /\.(js|jsx|ts|tsx)$/;

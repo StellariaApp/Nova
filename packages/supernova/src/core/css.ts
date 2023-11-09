@@ -10,6 +10,11 @@ export const themes = <T = {}>(themes: Record<string, T>) => {
   const defTheme = themes[defKey];
   return (defTheme ?? {}) as T;
 };
+export const createThemes = <T = {}>(themes: Record<string, T>) => {
+  const defKey = Object.keys(themes)[0] as keyof typeof themes;
+  const defTheme = themes[defKey];
+  return (defTheme ?? {}) as T;
+};
 
 export const cx = (clases: string[]) => {
   return clases.filter(Boolean).join(" ");

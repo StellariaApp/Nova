@@ -3,6 +3,7 @@ import type { Compiler } from "webpack";
 import type { ResolvedConfig } from "../../utils/loadConfig.ts";
 import { loadConfig } from "../../utils/loadConfig.ts";
 import type { LoaderOption } from "./loader.ts";
+import { loadTheme } from "../../utils/loadTheme.ts";
 
 declare const require: NodeRequire;
 const _require = __ESM__ ? createRequire(import.meta.url) : require;
@@ -11,12 +12,15 @@ export const CSS_PATH = _require.resolve("@stellaria/supernova/assets/ex.css");
 
 export default class Plugin {
   _config: ResolvedConfig | undefined;
+  _theme: ResolvedConfig | undefined;
 
   // constructor() {}
 
   async loadConfig(root: string) {
     const config = await loadConfig(root);
+    const theme = await loadTheme(root);
     this._config = config;
+    this._theme = theme;
   }
 
   config() {
