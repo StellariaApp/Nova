@@ -11,7 +11,9 @@ type Theme = {
   [key: string]: Theme | string | number | undefined;
 };
 
-export type Themes = Record<string, Theme>;
+export type Themes = {
+  themes?: Record<string, Theme>;
+};
 
 export async function loadTheme(root: string): Promise<Themes> {
   const filename = lookupFile(root, CONFIG_FILES_THEME);
@@ -50,7 +52,7 @@ export async function loadTheme(root: string): Promise<Themes> {
             isESM
           )) as { default?: Themes };
 
-          if (module.default) config = module.default;
+          if (module.default?.themes) config = module.default.themes;
         } finally {
           fs.rmSync(outputFilename);
         }

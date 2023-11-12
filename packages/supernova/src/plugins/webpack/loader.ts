@@ -46,19 +46,17 @@ export default function loader(
 
     if (result.type === "Ok") {
       if (result.css) {
+        // console.log(result.css);
         for (const dependency of config.dependencies) {
           this.addDependency(dependency);
         }
         const params = new URLSearchParams({ [CSS_PARAM_NAME]: result.css });
+        const cssPath = `${this.utils.contextify(this.context, CSS_PATH)}`;
+        const cssParse = JSON.stringify(`${cssPath}?${params.toString()}`);
+        const importCSS = `/* supernova-css */\nimport ${cssParse};\n`;
+        const newCode = `${result.code}\n${importCSS}`;
 
-        const importCSS = `import ${JSON.stringify(
-          `${this.utils.contextify(
-            this.context,
-            CSS_PATH
-          )}?${params.toString()}`
-        )};`;
-
-        this.callback(undefined, `${result.code}\n${importCSS}`);
+        this.callback(undefined, newCode);
       } else {
         this.callback(undefined, code, map);
       }

@@ -1,7 +1,6 @@
-import { compileVars, setVariables } from "./vars.ts";
+import { setVariables } from "./vars.ts";
 import { compileStyles } from "./styles.ts";
 import { ImportRegex } from "./regex.ts";
-import { compileThemes, setThemes } from "./themes.ts";
 import { Themes } from "../utils/loadTheme.ts";
 
 export type Config = {
@@ -33,10 +32,10 @@ export const compiler = (code: string, config: TransformOptions): Result => {
   const hasImport = code.match(ImportRegex);
   if (!hasImport) return notMatched;
 
-  setThemes(config.themes);
+  // setThemes(config.themes);
 
-  code = compileThemes(code, config);
-  code = compileVars(code, config);
+  // code = compileThemes(code, config);
+  // code = compileVars(code, config);
   code = compileStyles(code, config);
 
   const css = setVariables();

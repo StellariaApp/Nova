@@ -5,7 +5,6 @@ import { CSSConstRegex, CSSObjectRegex } from "./regex.ts";
 
 export const compileStyles = (code: string, config?: TransformOptions) => {
   const { fileId = "supernova" } = config ?? {};
-  console.log("compileStyles", fileId);
 
   const stylesRaw = code.match(new RegExp(CSSConstRegex, "g"));
 

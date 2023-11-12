@@ -1,6 +1,6 @@
-import { defineThemes } from "@stellaria/supernova";
+import { defineTheme } from "@stellaria/supernova";
 
-const theme = defineThemes({
+const theme = defineTheme({
   light: {
     colors: {
       primary: "#242424",
