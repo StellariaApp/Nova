@@ -1,8 +1,8 @@
-
-export type ButtonProps = {}
+import { ButtonStyles } from "./styles";
+import { ButtonProps } from "./types";
 
 export const Button = (props: ButtonProps) => {
-    return (
-        <div>Button Nova</div>
-    )
-}
+  const { children } = props;
+  const styles = ButtonStyles(props);
+  return <button {...styles}>{children ?? "Nova Button"}</button>;
+};
