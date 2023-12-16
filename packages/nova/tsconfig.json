@@ -1,8 +1,0 @@
-{
-  "extends": "@stellaria/typescript-config/react-library.json",
-  "compilerOptions": {
-    "outDir": "dist"
-  },
-  "include": ["turbo","src/**/*"],
-  "exclude": ["node_modules", "dist"]
-}
