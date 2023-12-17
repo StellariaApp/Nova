@@ -3,10 +3,18 @@ import stylex from "@stylexjs/stylex";
 const DARK = "@media (prefers-color-scheme: dark)";
 
 export const colors = stylex.defineVars({
-  primary: { default: "#18181b", [DARK]: "#fafafa" },
-  primaryHover: { default: "#272727", [DARK]: "#e2e2e2" },
-  secondary: { default: "#fcfcfc", [DARK]: "#18181b" },
-  secondaryHover: { default: "#eeeeee", [DARK]: "#272727" },
+  primary: "#006FEE",
+  primaryHover: "#005BC4",
+  primaryActive: "#338EF7",
+
+  secondary: "#7828C8",
+  secondaryHover: "#6020A0",
+  secondaryActive: "#9353D3",
+
+  tertiary: "#FFC107",
+  tertiaryHover: "#FFB300",
+  tertiaryActive: "#FFCA28",
+
   text: { default: "#18181b", [DARK]: "#ffffff" },
   textSecondary: { default: "#a1a1a1", [DARK]: "#888888" },
   textAlt: { default: "#ffffff", [DARK]: "#18181b" },

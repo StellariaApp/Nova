@@ -1,6 +1,7 @@
-import { Button } from "@stellaria/nova";
+import { Button, theme } from "@stellaria/nova";
 
 export default function Home() {
+  console.log(theme);
   return (
     <main>
       <div
