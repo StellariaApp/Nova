@@ -1,7 +1,6 @@
 import stylex from "@stylexjs/stylex";
 import {
   borderRadius,
-  colors,
   fonts,
   properties,
   sizes,

@@ -22,7 +22,7 @@ export const GetColorContrast = (
   const color = HexToRGB(hex);
   const output = NetColor(color);
   if (output.black > output.white) {
-    return opt?.black ?? "#344767";
+    return opt?.black ?? "#000000";
   }
   return opt?.white ?? "#ffffff";
 };
