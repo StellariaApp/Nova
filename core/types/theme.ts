@@ -1,4 +1,6 @@
-import { colors } from "..";
+import { colors, theme } from "..";
+
+export type ITheme = typeof theme;
 
 export type IColorsKeys = keyof typeof colors;
 

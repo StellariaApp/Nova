@@ -52,8 +52,6 @@ export const colorsRaw = {
   "disabled.lightness": "#D4D4D8",
 };
 
-export const colors = stylex.defineVars(colorsRaw);
-
 export const propertiesRaw = {
   white: "#ffffff",
   "white.dark": "#f2f2f2",
@@ -89,9 +87,7 @@ export const propertiesRaw = {
   shadowAlt: "0px 0px 4px #0000003a",
 };
 
-export const properties = stylex.defineVars(propertiesRaw);
-
-export const sizes = stylex.defineVars({
+export const sizesRaw = {
   xxsmall: "0.25rem",
   xsmall: "0.5rem",
   small: "0.75rem",
@@ -100,26 +96,41 @@ export const sizes = stylex.defineVars({
   large: "1.25rem",
   xlarge: "1.5rem",
   xxlarge: "1.75rem",
-});
+};
 
-export const spacing = stylex.defineVars({
+export const spacingRaw = {
   xsmall: "0.5rem",
   small: "0.75rem",
   medium: "1rem",
   large: "1.25rem",
   xlarge: "1.5rem",
   xxlarge: "1.75rem",
-});
-
-export const borderRadius = stylex.defineVars({
+};
+export const borderRadiusRaw = {
   small: "0.25rem",
   medium: "0.5rem",
   large: "0.75rem",
   xlarge: "1rem",
-});
+};
 
-export const fonts = stylex.defineVars({
+export const fontsRaw = {
   primary: `"Inter", ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
   "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
   "Fira Mono", "Droid Sans Mono", "Courier New", monospace`,
-});
+};
+
+export const colors = stylex.defineVars(colorsRaw);
+export const properties = stylex.defineVars(propertiesRaw);
+export const sizes = stylex.defineVars(sizesRaw);
+export const spacing = stylex.defineVars(spacingRaw);
+export const borderRadius = stylex.defineVars(borderRadiusRaw);
+export const fonts = stylex.defineVars(fontsRaw);
+
+export const theme = {
+  colors,
+  properties,
+  sizes,
+  spacing,
+  borderRadius,
+  fonts,
+};

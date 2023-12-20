@@ -10,6 +10,7 @@ import { ButtonProps } from "./types";
 import { GetColorKey, GetColorVar } from "../../../utils/theme";
 import { FindCSSVar } from "../../../utils/style";
 import { GetColorContrast } from "../../../utils/color";
+import { PropsWithTheme } from "../../../utils/props";
 
 const button = stylex.create({
   base: {
@@ -24,6 +25,7 @@ const button = stylex.create({
     fontWeight: 600,
     fontFamily: fonts.primary,
     color: properties.text,
+    userSelect: "none",
   },
   disabled: {
     backgroundColor: "#ebebeb",
@@ -78,7 +80,8 @@ export const ButtonStyles = (props: ButtonProps) => {
   const styles = stylex.props(
     button.base,
     variants[variant]?.(props),
-    props.disabled && button.disabled
+    props.disabled && button.disabled,
+    PropsWithTheme(props)
   );
   return styles;
 };
