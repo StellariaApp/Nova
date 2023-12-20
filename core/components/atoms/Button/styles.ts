@@ -3,10 +3,14 @@ import {
   borderRadius,
   colors,
   fonts,
+  properties,
   sizes,
   spacing,
 } from "../../../themes/index.stylex";
 import { ButtonProps } from "./types";
+import { GetColorKey, GetColorVar } from "../../../utils/theme";
+import { FindCSSVar } from "../../../utils/style";
+import { GetColorContrast } from "../../../utils/color";
 
 const button = stylex.create({
   base: {
@@ -19,8 +23,8 @@ const button = stylex.create({
     fontSize: sizes.button,
     lineHeight: "1.125rem",
     fontWeight: 600,
-    color: colors.text,
     fontFamily: fonts.primary,
+    color: properties.text,
   },
   disabled: {
     backgroundColor: "#ebebeb",
@@ -38,40 +42,43 @@ const button = stylex.create({
 });
 
 const variants = stylex.create({
-  flat: {
+  flat: (props: ButtonProps) => ({
     boxShadow: "0px 0px 8px #00000025",
-    backgroundColor: colors.primary,
-    border: `1px solid ${colors.primary}`,
-    color: colors.textAlt,
+    backgroundColor: GetColorVar(props.color, props.colorVariant),
+    color: GetColorContrast(
+      FindCSSVar(GetColorKey(props.color, props.colorVariant))
+    ),
+    border: "1px solid transparent",
+    borderColor: GetColorVar(props.color, props.colorVariant),
     ":hover": {
-      boxShadow: colors.shadow,
-      backgroundColor: colors.primaryHover,
-      border: `1px solid ${colors.primaryHover}`,
+      backgroundColor: GetColorVar(props.color, "dark"),
+      color: GetColorContrast(FindCSSVar(GetColorKey(props.color, "dark"))),
+      borderColor: GetColorVar(props.color, "dark"),
+      boxShadow: properties.shadow,
     },
-  },
-  outline: {
-    boxShadow: colors.shadowAlt,
+  }),
+  outline: (props: ButtonProps) => ({
+    boxShadow: properties.shadowAlt,
     backgroundColor: "transparent",
-    border: `1px solid ${colors.border}`,
-    color: colors.text,
+    border: "1px solid transparent",
+    borderColor: GetColorVar(props.color, props.colorVariant),
+    color: GetColorVar(props.color, props.colorVariant),
     ":hover": {
-      boxShadow: colors.shadowAlt,
-      backgroundColor: colors.secondary,
-      color: colors.text,
+      backgroundColor: GetColorVar(props.color, "dark"),
+      color: GetColorContrast(FindCSSVar(GetColorKey(props.color, "dark"))),
     },
-  },
-  none: {
+  }),
+  none: (props: ButtonProps) => ({
     padding: 0,
     backgroundColor: "transparent",
-    color: colors.text,
-  },
+  }),
 });
 
 export const ButtonStyles = (props: ButtonProps) => {
   const { variant = "flat" } = props;
   const styles = stylex.props(
     button.base,
-    variants[variant],
+    variants[variant]?.(props),
     props.disabled && button.disabled
   );
   return styles;
