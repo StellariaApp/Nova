@@ -45,11 +45,11 @@ export const colorsRaw = {
   "info.light": "#A5EEFD",
   "info.lightness": "#A5EEFD",
 
-  disabled: "#71717A",
-  "disabled.dark": "#5C5C66",
-  "disabled.darkness": "#3F3F46",
-  "disabled.light": "#A1A1AA",
-  "disabled.lightness": "#D4D4D8",
+  disabled: "#ebebeb",
+  "disabled.dark": "#a4a4a4",
+  "disabled.darkness": "#626262",
+  "disabled.light": "#fafafa",
+  "disabled.lightness": "#ffffff",
 };
 
 export const propertiesRaw = {

@@ -1,6 +1,7 @@
 import stylex from "@stylexjs/stylex";
 import {
   borderRadius,
+  colors,
   fonts,
   properties,
   sizes,
@@ -21,7 +22,7 @@ const button = stylex.create({
     height: "max-content",
     padding: `${spacing.xsmall} ${spacing.large}`,
     borderRadius: borderRadius.small,
-    border: "none",
+    border: "1px solid transparent",
     cursor: "pointer",
     fontSize: sizes.button,
     lineHeight: "1.125rem",
@@ -31,16 +32,17 @@ const button = stylex.create({
     userSelect: "none",
   },
   disabled: {
-    backgroundColor: "#ebebeb",
+    backgroundColor: colors.disabled,
     boxShadow: "0px 0px 4px #0000001e",
-    border: "1px solid #d6d6d6",
-    color: "#afafaf",
+    borderColor: colors["disabled.dark"],
+    color: colors["disabled.dark"],
     cursor: "not-allowed",
     opacity: 0.8,
     ":hover": {
       boxShadow: "none",
-      backgroundColor: "#ebebeb",
-      border: "1px solid #d6d6d6",
+      backgroundColor: colors.disabled,
+      borderColor: colors["disabled.dark"],
+      color: colors["disabled.dark"],
     },
   },
 });
@@ -52,7 +54,6 @@ const variants = stylex.create({
     color: GetColorContrast(
       FindCSSVar(GetColorKey(props.color, props.colorvariant))
     ),
-    border: "1px solid transparent",
     borderColor: GetColorVar(props.color, props.colorvariant),
     ":hover": {
       backgroundColor: GetColorVar(props.color, "dark"),
