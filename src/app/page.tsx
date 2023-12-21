@@ -1,19 +1,21 @@
 import stylex from "@stylexjs/stylex";
 import { Button, theme } from "@stellaria/nova";
+import { Fragment } from "react";
 
 const styles = stylex.create({
   container: {
     display: "flex",
+    overflow: "auto",
     flexDirection: "column",
     gap: "1rem",
-    padding: "1rem",
     justifyContent: "center",
     alignItems: "center",
   },
   wrapper: {
     display: "flex",
-    width: "max-content",
+    width: "100%",
     flexDirection: "row",
+    flexWrap: "wrap",
     gap: "1rem",
     padding: "1rem",
     justifyContent: "center",
@@ -21,15 +23,35 @@ const styles = stylex.create({
   },
   button: () => ({
     backgroundColor: theme.colors["secondary.dark"],
-    borderColor: `1px solid ${theme.colors["secondary.lightness"]}`,
+    borderColor: theme.colors["secondary.light"],
     color: theme.colors["secondary.lightness"],
     ":hover": {
       backgroundColor: theme.colors["secondary.darkness"],
       color: theme.colors["secondary.lightness"],
-      borderColor: `1px solid ${theme.colors["secondary.darkness"]}`,
+      borderColor: theme.colors["secondary.lightness"],
     },
   }),
 });
+
+const COLORS = [
+  "primary",
+  "secondary",
+  "success",
+  "warning",
+  "danger",
+  "sweet",
+  "info",
+] as const;
+
+const COLOR_VARIANTS = [
+  "darkness",
+  "dark",
+  undefined,
+  "light",
+  "lightness",
+] as const;
+
+const VARIANTS = ["flat", "glow", "gradient", "outline"] as const;
 
 const Home = () => (
   <main {...stylex.props(styles.container)}>
@@ -50,119 +72,32 @@ const Home = () => (
         colorvariant="darkness"
         className={styles.button()}
       />
+      <Button variant="gradient" gradient={["primary", "primary"]} />
+      <Button variant="gradient" gradient={["secondary", "secondary"]} />
       <Button disabled />
     </div>
-    <div {...stylex.props(styles.wrapper)}>
-      <Button variant="flat" color="primary" colorvariant="darkness" />
-      <Button variant="flat" color="primary" colorvariant="dark" />
-      <Button variant="flat" color="primary" />
-      <Button variant="flat" color="primary" colorvariant="light" />
-      <Button variant="flat" color="primary" colorvariant="lightness" />
-    </div>
-
-    <div {...stylex.props(styles.wrapper)}>
-      <Button variant="flat" color="secondary" colorvariant="darkness" />
-      <Button variant="flat" color="secondary" colorvariant="dark" />
-      <Button variant="flat" color="secondary" />
-      <Button variant="flat" color="secondary" colorvariant="light" />
-      <Button variant="flat" color="secondary" colorvariant="lightness" />
-    </div>
-
-    <div {...stylex.props(styles.wrapper)}>
-      <Button variant="flat" color="success" colorvariant="darkness" />
-      <Button variant="flat" color="success" colorvariant="dark" />
-      <Button variant="flat" color="success" />
-      <Button variant="flat" color="success" colorvariant="light" />
-      <Button variant="flat" color="success" colorvariant="lightness" />
-    </div>
-
-    <div {...stylex.props(styles.wrapper)}>
-      <Button variant="flat" color="warning" colorvariant="darkness" />
-      <Button variant="flat" color="warning" colorvariant="dark" />
-      <Button variant="flat" color="warning" />
-      <Button variant="flat" color="warning" colorvariant="light" />
-      <Button variant="flat" color="warning" colorvariant="lightness" />
-    </div>
-
-    <div {...stylex.props(styles.wrapper)}>
-      <Button variant="flat" color="danger" colorvariant="darkness" />
-      <Button variant="flat" color="danger" colorvariant="dark" />
-      <Button variant="flat" color="danger" />
-      <Button variant="flat" color="danger" colorvariant="light" />
-      <Button variant="flat" color="danger" colorvariant="lightness" />
-    </div>
-
-    <div {...stylex.props(styles.wrapper)}>
-      <Button variant="flat" color="sweet" colorvariant="darkness" />
-      <Button variant="flat" color="sweet" colorvariant="dark" />
-      <Button variant="flat" color="sweet" />
-      <Button variant="flat" color="sweet" colorvariant="light" />
-      <Button variant="flat" color="sweet" colorvariant="lightness" />
-    </div>
-
-    <div {...stylex.props(styles.wrapper)}>
-      <Button variant="flat" color="info" colorvariant="darkness" />
-      <Button variant="flat" color="info" colorvariant="dark" />
-      <Button variant="flat" color="info" />
-      <Button variant="flat" color="info" colorvariant="light" />
-      <Button variant="flat" color="info" colorvariant="lightness" />
-    </div>
-
-    <div {...stylex.props(styles.wrapper)}>
-      <Button variant="outline" color="primary" colorvariant="darkness" />
-      <Button variant="outline" color="primary" colorvariant="dark" />
-      <Button variant="outline" color="primary" />
-      <Button variant="outline" color="primary" colorvariant="light" />
-      <Button variant="outline" color="primary" colorvariant="lightness" />
-    </div>
-
-    <div {...stylex.props(styles.wrapper)}>
-      <Button variant="outline" color="secondary" colorvariant="darkness" />
-      <Button variant="outline" color="secondary" colorvariant="dark" />
-      <Button variant="outline" color="secondary" />
-      <Button variant="outline" color="secondary" colorvariant="light" />
-      <Button variant="outline" color="secondary" colorvariant="lightness" />
-    </div>
-
-    <div {...stylex.props(styles.wrapper)}>
-      <Button variant="outline" color="success" colorvariant="darkness" />
-      <Button variant="outline" color="success" colorvariant="dark" />
-      <Button variant="outline" color="success" />
-      <Button variant="outline" color="success" colorvariant="light" />
-      <Button variant="outline" color="success" colorvariant="lightness" />
-    </div>
-
-    <div {...stylex.props(styles.wrapper)}>
-      <Button variant="outline" color="warning" colorvariant="darkness" />
-      <Button variant="outline" color="warning" colorvariant="dark" />
-      <Button variant="outline" color="warning" />
-      <Button variant="outline" color="warning" colorvariant="light" />
-      <Button variant="outline" color="warning" colorvariant="lightness" />
-    </div>
-
-    <div {...stylex.props(styles.wrapper)}>
-      <Button variant="outline" color="danger" colorvariant="darkness" />
-      <Button variant="outline" color="danger" colorvariant="dark" />
-      <Button variant="outline" color="danger" />
-      <Button variant="outline" color="danger" colorvariant="light" />
-      <Button variant="outline" color="danger" colorvariant="lightness" />
-    </div>
-
-    <div {...stylex.props(styles.wrapper)}>
-      <Button variant="outline" color="sweet" colorvariant="darkness" />
-      <Button variant="outline" color="sweet" colorvariant="dark" />
-      <Button variant="outline" color="sweet" />
-      <Button variant="outline" color="sweet" colorvariant="light" />
-      <Button variant="outline" color="sweet" colorvariant="lightness" />
-    </div>
-
-    <div {...stylex.props(styles.wrapper)}>
-      <Button variant="outline" color="info" colorvariant="darkness" />
-      <Button variant="outline" color="info" colorvariant="dark" />
-      <Button variant="outline" color="info" />
-      <Button variant="outline" color="info" colorvariant="light" />
-      <Button variant="outline" color="info" colorvariant="lightness" />
-    </div>
+    {VARIANTS.map((variant) => (
+      <Fragment key={variant}>
+        {COLORS.map((color, colorIndex, colorArray) => (
+          <div {...stylex.props(styles.wrapper)} key={variant + color}>
+            {COLOR_VARIANTS.map((colorvariant) => (
+              <Button
+                key={variant + color + colorvariant}
+                variant={variant}
+                color={color}
+                colorvariant={colorvariant}
+                gradient={[
+                  colorArray[colorIndex],
+                  colorArray[
+                    colorIndex + 1 === colorArray.length ? 0 : colorIndex + 1
+                  ],
+                ]}
+              />
+            ))}
+          </div>
+        ))}
+      </Fragment>
+    ))}
   </main>
 );
 

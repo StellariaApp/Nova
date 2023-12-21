@@ -20,3 +20,13 @@ export type IColorsVariant =
   | "light"
   | "lightness"
   | undefined;
+
+export type IColorsGradient = [IColors, IColors];
+
+export type IColorsGradientVariant = [IColorsVariant, IColorsVariant];
+
+export type IColorsGradientDirection =
+  | "to top"
+  | "to right"
+  | "to bottom"
+  | "to left";

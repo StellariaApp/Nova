@@ -8,13 +8,20 @@ import {
   spacing,
 } from "../../../themes/index.stylex";
 import { ButtonProps } from "./types";
-import { GetColorKey, GetColorVar } from "../../../utils/theme";
+import {
+  GenerateGradient,
+  GetColorKey,
+  GetColorVar,
+} from "../../../utils/theme";
 import {
   FindCSSVar,
   StyleWithProps,
   StyleWithTheme,
 } from "../../../utils/style";
-import { GetColorContrast } from "../../../utils/color";
+import {
+  ChangeColorTransparency,
+  GetColorContrast,
+} from "../../../utils/color";
 
 const button = stylex.create({
   base: {
@@ -28,8 +35,9 @@ const button = stylex.create({
     lineHeight: "1.125rem",
     fontWeight: 600,
     fontFamily: fonts.primary,
-    color: properties.text,
+    color: properties.textAlt,
     userSelect: "none",
+    transition: "all 0.32s ease",
   },
   disabled: {
     backgroundColor: colors.disabled,
@@ -51,9 +59,6 @@ const variants = stylex.create({
   flat: (props: ButtonProps) => ({
     boxShadow: "0px 0px 8px #00000025",
     backgroundColor: GetColorVar(props.color, props.colorvariant),
-    color: GetColorContrast(
-      FindCSSVar(GetColorKey(props.color, props.colorvariant))
-    ),
     borderColor: GetColorVar(props.color, props.colorvariant),
     ":hover": {
       backgroundColor: GetColorVar(props.color, "dark"),
@@ -65,12 +70,45 @@ const variants = stylex.create({
   outline: (props: ButtonProps) => ({
     boxShadow: properties.shadowAlt,
     backgroundColor: "transparent",
-    border: "1px solid transparent",
     borderColor: GetColorVar(props.color, props.colorvariant),
     color: GetColorVar(props.color, props.colorvariant),
     ":hover": {
       backgroundColor: GetColorVar(props.color, "dark"),
       color: GetColorContrast(FindCSSVar(GetColorKey(props.color, "dark"))),
+    },
+  }),
+  glow: (props: ButtonProps) => ({
+    boxShadow: `0px 0px 4px -2px ${GetColorVar(
+      props.color,
+      props.colorvariant
+    )}, 0px 0px 12px -2px ${GetColorVar(props.color, props.colorvariant)}`,
+    backgroundColor: ChangeColorTransparency(
+      FindCSSVar(GetColorKey(props.color, props.colorvariant)),
+      0.45
+    ),
+    color: GetColorVar(props.color, "lightness"),
+    borderColor: GetColorVar(props.color, "lightness"),
+    ":hover": {
+      boxShadow: `0px 0px 4px ${GetColorVar(
+        props.color,
+        props.colorvariant
+      )}, 0px 0px 12px ${GetColorVar(props.color, props.colorvariant)}`,
+      backgroundColor: ChangeColorTransparency(
+        FindCSSVar(GetColorKey(props.color, props.colorvariant)),
+        0.6
+      ),
+      color: GetColorVar(props.color, "lightness"),
+    },
+  }),
+  gradient: (props: ButtonProps) => ({
+    backgroundImage: GenerateGradient(
+      props.gradient,
+      props.gradientvariant,
+      props.gradientdirection
+    ),
+    borderColor: GetColorVar(props.gradient?.[1], props.gradientvariant?.[1]),
+    ":hover": {
+      borderColor: GetColorVar(props.gradient?.[0], props.gradientvariant?.[0]),
     },
   }),
   none: (props: ButtonProps) => ({
