@@ -8,9 +8,12 @@ import {
 } from "../../../themes/index.stylex";
 import { ButtonProps } from "./types";
 import { GetColorKey, GetColorVar } from "../../../utils/theme";
-import { FindCSSVar } from "../../../utils/style";
+import {
+  FindCSSVar,
+  StyleWithProps,
+  StyleWithTheme,
+} from "../../../utils/style";
 import { GetColorContrast } from "../../../utils/color";
-import { PropsWithTheme } from "../../../utils/props";
 
 const button = stylex.create({
   base: {
@@ -45,12 +48,12 @@ const button = stylex.create({
 const variants = stylex.create({
   flat: (props: ButtonProps) => ({
     boxShadow: "0px 0px 8px #00000025",
-    backgroundColor: GetColorVar(props.color, props.colorVariant),
+    backgroundColor: GetColorVar(props.color, props.colorvariant),
     color: GetColorContrast(
-      FindCSSVar(GetColorKey(props.color, props.colorVariant))
+      FindCSSVar(GetColorKey(props.color, props.colorvariant))
     ),
     border: "1px solid transparent",
-    borderColor: GetColorVar(props.color, props.colorVariant),
+    borderColor: GetColorVar(props.color, props.colorvariant),
     ":hover": {
       backgroundColor: GetColorVar(props.color, "dark"),
       color: GetColorContrast(FindCSSVar(GetColorKey(props.color, "dark"))),
@@ -62,8 +65,8 @@ const variants = stylex.create({
     boxShadow: properties.shadowAlt,
     backgroundColor: "transparent",
     border: "1px solid transparent",
-    borderColor: GetColorVar(props.color, props.colorVariant),
-    color: GetColorVar(props.color, props.colorVariant),
+    borderColor: GetColorVar(props.color, props.colorvariant),
+    color: GetColorVar(props.color, props.colorvariant),
     ":hover": {
       backgroundColor: GetColorVar(props.color, "dark"),
       color: GetColorContrast(FindCSSVar(GetColorKey(props.color, "dark"))),
@@ -81,7 +84,7 @@ export const ButtonStyles = (props: ButtonProps) => {
     button.base,
     variants[variant]?.(props),
     props.disabled && button.disabled,
-    PropsWithTheme(props)
+    StyleWithTheme(props)
   );
-  return styles;
+  return StyleWithProps(props, styles);
 };
