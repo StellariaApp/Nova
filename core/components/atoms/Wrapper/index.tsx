@@ -1,19 +1,14 @@
 import { WrapperStyles } from "./styles";
-import { AsWrapper, WrapperProps } from "./types";
+import { WrapperProps } from "./types";
 
-export type SelectorAsWrapper = Record<
-  AsWrapper,
-  (props: Omit<WrapperProps, "className">) => JSX.Element
->;
-
-const SelectorAsWrapper: SelectorAsWrapper = {
-  div: (props) => <div {...props} />,
-  article: (props) => <article {...props} />,
-  section: (props) => <section {...props} />,
-  main: (props) => <main {...props} />,
-  footer: (props) => <footer {...props} />,
-  nav: (props) => <nav {...props} />,
-};
+const SelectorAsWrapper = {
+  div: (props: WrapperProps) => <div {...props} />,
+  article: (props: WrapperProps) => <article {...props} />,
+  section: (props: WrapperProps) => <section {...props} />,
+  main: (props: WrapperProps) => <main {...props} />,
+  footer: (props: WrapperProps) => <footer {...props} />,
+  nav: (props: WrapperProps) => <nav {...props} />,
+} as const;
 
 export const Wrapper = (props: WrapperProps) => {
   const { as = "div" } = props;

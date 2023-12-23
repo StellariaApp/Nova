@@ -5,9 +5,6 @@ import { Fragment } from "react";
 const styles = stylex.create({
   container: {
     display: "flex",
-    width: "100vw",
-    height: "100vh",
-    backgroundColor: "red",
     overflow: "auto",
     flexDirection: "column",
     gap: "1rem",
@@ -57,8 +54,8 @@ const COLOR_VARIANTS = [
 const VARIANTS = ["flat", "glow", "gradient", "outline"] as const;
 
 const Home = () => (
-  <Wrapper as="main" className={styles.container}>
-    <Wrapper as="section" className={styles.wrapper}>
+  <Wrapper as="main" stylex={styles.container}>
+    <Wrapper as="section" stylex={styles.wrapper}>
       <Button
         variant="flat"
         color="primary"
@@ -73,7 +70,7 @@ const Home = () => (
         variant="flat"
         color="primary"
         colorvariant="darkness"
-        className={styles.button()}
+        stylex={styles.button()}
       />
       <Button variant="gradient" gradient={["primary", "primary"]} />
       <Button variant="gradient" gradient={["secondary", "secondary"]} />
@@ -82,7 +79,7 @@ const Home = () => (
     {VARIANTS.map((variant) => (
       <Fragment key={variant}>
         {COLORS.map((color, colorIndex, colorArray) => (
-          <Wrapper className={styles.wrapper} key={variant + color}>
+          <Wrapper stylex={styles.wrapper} key={variant + color}>
             {COLOR_VARIANTS.map((colorvariant) => (
               <Button
                 key={variant + color + colorvariant}

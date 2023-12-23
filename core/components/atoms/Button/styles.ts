@@ -13,11 +13,7 @@ import {
   GetColorKey,
   GetColorVar,
 } from "../../../utils/theme";
-import {
-  FindCSSVar,
-  StyleWithProps,
-  StyleWithTheme,
-} from "../../../utils/style";
+import { FindCSSVar, StyleWithProps } from "../../../utils/style";
 import {
   ChangeColorTransparency,
   GetColorContrast,
@@ -122,8 +118,8 @@ export const ButtonStyles = (props: ButtonProps) => {
   const styles = stylex.props(
     button.base,
     variants[variant]?.(props),
-    props.disabled && button.disabled,
-    StyleWithTheme(props)
+    props.disabled && button.disabled
   );
-  return StyleWithProps(props, styles);
+  const stylesWithProps = StyleWithProps(styles, props);
+  return stylesWithProps;
 };

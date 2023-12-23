@@ -1,5 +1,5 @@
 import stylex from "@stylexjs/stylex";
-import { StyleWithProps, StyleWithTheme } from "../../../utils/style";
+import { StyleWithProps } from "../../../utils/style";
 import { WrapperProps } from "./types";
 
 const wrapper = stylex.create({
@@ -12,6 +12,7 @@ const wrapper = stylex.create({
 });
 
 export const WrapperStyles = (props: WrapperProps) => {
-  const styles = stylex.props(wrapper.base, StyleWithTheme(props));
-  return StyleWithProps(props, styles);
+  const styles = stylex.props(wrapper.base);
+  const stylesWithProps = StyleWithProps(styles, props);
+  return stylesWithProps;
 };
