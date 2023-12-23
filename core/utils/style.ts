@@ -26,9 +26,9 @@ export const StyleWithProps = <T>(props: T, style: IStyle) => {
   const propsWithClassName = props as { className?: string | object };
   const isClassName = typeof propsWithClassName.className === "string";
   const classNameProps = isClassName ? propsWithClassName.className ?? "" : "";
-  const classNameObject = isClassName
-    ? {}
-    : stylex.props(propsWithClassName.className as CompiledStyles);
+  const classNameObject = stylex.props(
+    propsWithClassName.className as CompiledStyles
+  );
 
   const className = `${style.className} ${classNameProps}`;
   const styleProps = {

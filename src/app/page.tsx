@@ -1,10 +1,13 @@
 import stylex from "@stylexjs/stylex";
-import { Button, theme } from "@stellaria/nova";
+import { Wrapper, Button, theme } from "@stellaria/nova";
 import { Fragment } from "react";
 
 const styles = stylex.create({
   container: {
     display: "flex",
+    width: "100vw",
+    height: "100vh",
+    backgroundColor: "red",
     overflow: "auto",
     flexDirection: "column",
     gap: "1rem",
@@ -54,8 +57,8 @@ const COLOR_VARIANTS = [
 const VARIANTS = ["flat", "glow", "gradient", "outline"] as const;
 
 const Home = () => (
-  <main {...stylex.props(styles.container)}>
-    <div {...stylex.props(styles.wrapper)}>
+  <Wrapper as="main" className={styles.container}>
+    <Wrapper as="section" className={styles.wrapper}>
       <Button
         variant="flat"
         color="primary"
@@ -75,11 +78,11 @@ const Home = () => (
       <Button variant="gradient" gradient={["primary", "primary"]} />
       <Button variant="gradient" gradient={["secondary", "secondary"]} />
       <Button disabled />
-    </div>
+    </Wrapper>
     {VARIANTS.map((variant) => (
       <Fragment key={variant}>
         {COLORS.map((color, colorIndex, colorArray) => (
-          <div {...stylex.props(styles.wrapper)} key={variant + color}>
+          <Wrapper className={styles.wrapper} key={variant + color}>
             {COLOR_VARIANTS.map((colorvariant) => (
               <Button
                 key={variant + color + colorvariant}
@@ -94,11 +97,11 @@ const Home = () => (
                 ]}
               />
             ))}
-          </div>
+          </Wrapper>
         ))}
       </Fragment>
     ))}
-  </main>
+  </Wrapper>
 );
 
 export default Home;
