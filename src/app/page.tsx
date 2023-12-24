@@ -59,7 +59,7 @@ const Home = () => (
   <Wrapper as="main" stylex={styles.container}>
     <Wrapper as="section" stylex={styles.wrapper}>
       {IconsArray.map(({ icon, variant }) => (
-        <Icon key={icon + variant} icon={icon} variant={variant} size="10px" />
+        <Icon key={icon + variant} icon={icon} variant={variant} />
       ))}
     </Wrapper>
     <Wrapper as="section" stylex={styles.wrapper}>
