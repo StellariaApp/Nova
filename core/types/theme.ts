@@ -1,10 +1,12 @@
 import { colors, theme } from "..";
 
-export type ITheme = typeof theme;
+export type Theme = typeof theme;
 
-export type IColorsKeys = keyof typeof colors;
+export type VariantColors = "flat" | "outline" | "glow" | "gradient" | "none";
 
-export type IColors =
+export type ColorsKeys = keyof typeof colors;
+
+export type Colors =
   | "primary"
   | "secondary"
   | "success"
@@ -14,19 +16,31 @@ export type IColors =
   | "info"
   | "disabled";
 
-export type IColorsVariant =
+export type ColorsVariant =
   | "dark"
   | "darkness"
   | "light"
   | "lightness"
   | undefined;
 
-export type IColorsGradient = [IColors, IColors];
+export type ColorsGradient = [Colors, Colors];
 
-export type IColorsGradientVariant = [IColorsVariant, IColorsVariant];
+export type ColorsGradientVariant = [ColorsVariant, ColorsVariant];
 
-export type IColorsGradientDirection =
+export type ColorsGradientDirection =
   | "to top"
   | "to right"
   | "to bottom"
   | "to left";
+
+export type ColorProps = {
+  variant?: VariantColors;
+  color?: Colors;
+  colorvariant?: ColorsVariant;
+};
+
+export type GradientProps = {
+  gradient?: ColorsGradient;
+  gradientvariant?: ColorsGradientVariant;
+  gradientdirection?: ColorsGradientDirection;
+};

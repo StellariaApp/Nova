@@ -1,14 +1,6 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 import { StylexComponent } from "../../../types/stylex";
-import {
-  IColors,
-  IColorsGradient,
-  IColorsGradientDirection,
-  IColorsGradientVariant,
-  IColorsVariant,
-} from "../../../types/theme";
-
-export type VariantButton = "flat" | "outline" | "glow" | "gradient" | "none";
+import { ColorProps, GradientProps } from "../../../types/theme";
 
 type Button = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -16,16 +8,8 @@ type Button = DetailedHTMLProps<
 >;
 
 export type ButtonProps = StylexComponent<
-  Button & {
+  {
     disabled?: boolean;
-    variant?: VariantButton;
-    children?: React.ReactNode;
-
-    color?: IColors;
-    colorvariant?: IColorsVariant;
-
-    gradient?: IColorsGradient;
-    gradientvariant?: IColorsGradientVariant;
-    gradientdirection?: IColorsGradientDirection;
-  }
+  },
+  Button & ColorProps & GradientProps
 >;
