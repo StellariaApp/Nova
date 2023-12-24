@@ -1,28 +1,28 @@
 import {
-  IColorsGradient,
-  IColorsGradientDirection,
-  IColorsGradientVariant,
+  ColorsGradient,
+  ColorsGradientDirection,
+  ColorsGradientVariant,
 } from "../types/theme";
 
 import { colors } from "..";
-import { IColors, IColorsKeys, IColorsVariant } from "../types/theme";
+import { Colors, ColorsKeys, ColorsVariant } from "../types/theme";
 
-export const GetColorKey = (color?: IColors, variant?: IColorsVariant) => {
+export const GetColorKey = (color?: Colors, variant?: ColorsVariant) => {
   const keyColor = color ?? "primary";
   const keyVariant = variant ? `.${variant}` : "";
-  return `${keyColor}${keyVariant}` as IColorsKeys;
+  return `${keyColor}${keyVariant}` as ColorsKeys;
 };
 
-export const GetColorVar = (color?: IColors, variant?: IColorsVariant) => {
+export const GetColorVar = (color?: Colors, variant?: ColorsVariant) => {
   const keyColor = color ?? "primary";
   const keyVariant = variant ? `.${variant}` : "";
-  return colors[`${keyColor}${keyVariant}` as IColorsKeys]?.toString() ?? "";
+  return colors[`${keyColor}${keyVariant}` as ColorsKeys]?.toString() ?? "";
 };
 
 export const GenerateGradient = (
-  gradient: IColorsGradient = ["primary", "primary"],
-  gradientVariant: IColorsGradientVariant = ["dark", "light"],
-  gradientDirection: IColorsGradientDirection = "to bottom"
+  gradient: ColorsGradient = ["primary", "primary"],
+  gradientVariant: ColorsGradientVariant = ["dark", "light"],
+  gradientDirection: ColorsGradientDirection = "to bottom"
 ) => {
   return `linear-gradient(${gradientDirection}, ${GetColorVar(
     gradient[0],
