@@ -58,11 +58,6 @@ const VARIANTS = ["flat", "glow", "gradient", "outline"] as const;
 const Home = () => (
   <Wrapper as="main" stylex={styles.container}>
     <Wrapper as="section" stylex={styles.wrapper}>
-      {IconsArray.map(({ icon, variant }) => (
-        <Icon key={icon + variant} icon={icon} variant={variant} />
-      ))}
-    </Wrapper>
-    <Wrapper as="section" stylex={styles.wrapper}>
       <Button
         variant="flat"
         color="primary"
@@ -105,6 +100,11 @@ const Home = () => (
         ))}
       </Fragment>
     ))}
+    <Wrapper as="section" stylex={styles.wrapper}>
+      {IconsArray.map(({ icon, variant }) => (
+        <Icon key={icon + variant} icon={icon} variant={variant} />
+      ))}
+    </Wrapper>
   </Wrapper>
 );
 
