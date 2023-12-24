@@ -23,6 +23,14 @@ const Icons = {
   solid: iconsSolid,
 };
 
+export const IconsArray = Object.entries(Icons).flatMap(
+  ([keyVariant, valueVariant]) =>
+    Object.entries(valueVariant).map(([keyIcon]) => ({
+      icon: keyIcon as IconName,
+      variant: keyVariant as IconVariant,
+    }))
+);
+
 export const GetIcon = (type?: IconVariant, name?: IconName) => {
   const iconType = Icons[type ?? "solid"] as unknown as Record<string, Icon>;
   const icon = iconType[name ?? "trash-alt"];

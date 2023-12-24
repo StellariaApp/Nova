@@ -4,7 +4,7 @@ import { StyleWithProps } from "../../../utils/style";
 import { svg, path } from "./css";
 
 export const SvgStyles = (props: IconProps) => {
-  const styles = stylex.props(svg.base);
+  const styles = stylex.props(svg.base, svg.size(props));
   const stylesWithProps = StyleWithProps(styles, props);
 
   return stylesWithProps;

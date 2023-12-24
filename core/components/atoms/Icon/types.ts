@@ -9,6 +9,7 @@ export type IconProps = StylexComponent<
     disabled?: boolean;
     variant?: IconVariant;
     icon?: IconName;
+    size?: number | string;
   },
   Icon
 >;

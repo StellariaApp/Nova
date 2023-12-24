@@ -2,6 +2,7 @@ import stylex from "@stylexjs/stylex";
 import { Wrapper, Button, theme } from "@stellaria/nova";
 import { Fragment } from "react";
 import { Icon } from "../../core/components/atoms/Icon";
+import { IconsArray } from "../../core/utils/icon";
 
 const styles = stylex.create({
   container: {
@@ -57,8 +58,9 @@ const VARIANTS = ["flat", "glow", "gradient", "outline"] as const;
 const Home = () => (
   <Wrapper as="main" stylex={styles.container}>
     <Wrapper as="section" stylex={styles.wrapper}>
-      <Icon icon="trash-can" />
-      <Icon icon="star" />
+      {IconsArray.map(({ icon, variant }) => (
+        <Icon key={icon + variant} icon={icon} variant={variant} size="10px" />
+      ))}
     </Wrapper>
     <Wrapper as="section" stylex={styles.wrapper}>
       <Button

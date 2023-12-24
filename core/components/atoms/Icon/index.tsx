@@ -1,6 +1,7 @@
 import { GetIcon } from "../../../utils/icon";
 import { SvgStyles, PathStyles } from "./styles";
 import { IconProps } from "./types";
+import { GetSize } from "./utils/size";
 
 export const Icon = (props: IconProps) => {
   const { children } = props;
@@ -11,8 +12,10 @@ export const Icon = (props: IconProps) => {
 
   const { viewBox, svgPath } = GetIcon(variant, icon);
 
+  const size = GetSize(props);
+
   return (
-    <svg height={12} width={12} viewBox={viewBox} {...svgStyles}>
+    <svg viewBox={viewBox} {...size} {...svgStyles}>
       <path d={svgPath} {...pathStyles} />
       {children}
     </svg>

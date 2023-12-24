@@ -58,7 +58,6 @@ const variants = stylex.create({
     borderColor: GetColorVar(props.color, props.colorvariant),
     ":hover": {
       backgroundColor: GetColorVar(props.color, "dark"),
-      color: GetColorContrast(FindCSSVar(GetColorKey(props.color, "dark"))),
       borderColor: GetColorVar(props.color, "dark"),
       boxShadow: properties.shadow,
     },
@@ -70,7 +69,7 @@ const variants = stylex.create({
     color: GetColorVar(props.color, props.colorvariant),
     ":hover": {
       backgroundColor: GetColorVar(props.color, "dark"),
-      color: GetColorContrast(FindCSSVar(GetColorKey(props.color, "dark"))),
+      color: properties.textAlt,
     },
   }),
   glow: (props: ButtonProps) => ({
