@@ -7,7 +7,7 @@ import {
   properties,
   sizes,
   spacing,
-} from "../../../themes/index.stylex";
+} from "../../themes/index.stylex";
 
 export const template = stylex.create({
   base: {
