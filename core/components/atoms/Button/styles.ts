@@ -5,11 +5,12 @@ import { button, variants } from "./css";
 
 export const Styles = (props: ButtonProps) => {
   const { variant = "flat" } = props;
+
   const styles = stylex.props(
     button.base,
     variants[variant]?.(props),
     props.disabled && button.disabled
   );
-  const stylesWithProps = StyleWithProps(styles, props);
-  return stylesWithProps;
+
+  return StyleWithProps(styles, props);
 };
