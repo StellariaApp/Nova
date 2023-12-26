@@ -3,8 +3,8 @@ import { theme } from "..";
 import { StylexComponent } from "../types/stylex";
 import { IStyle } from "../types/style";
 
-export const StyleWithProps = (styles: IStyle, component: StylexComponent) => {
-  const { stylex: stylexProps, ...rest } = component;
+export const StyleWithProps = <P = {}>(styles: IStyle, component: P) => {
+  const { stylex: stylexProps, ...rest } = component as StylexComponent<P>;
 
   const componentWithStyle = component as { style?: StyleXStyles };
   const comoonentWithClassName = component as { className?: string };

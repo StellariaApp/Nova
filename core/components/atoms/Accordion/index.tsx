@@ -14,9 +14,10 @@ export const Accordion = (props: AccordionProps) => {
     <AccordionContainer>
       {items?.map((item) => (
         <AccordionItem
-          {...item}
           key={item.id}
+          id={item.id}
           autohide={props.autohide}
+          open={item.open}
           hash={hash}
         >
           <AccordionTrigger>{item.title}</AccordionTrigger>

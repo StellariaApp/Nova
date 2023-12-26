@@ -9,9 +9,9 @@ const AccordionItemRef = (
   props: AccordionItemProps,
   ref: Ref<HTMLDetailsElement>
 ) => {
-  const { children, hash, id, autohide } = props;
+  const { children, hash, id } = props;
 
-  const styles = ItemStyles(props);
+  const { autohide, ...styles } = ItemStyles(props);
 
   const onClick = () => {
     if (!autohide) return;
