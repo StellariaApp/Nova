@@ -2,17 +2,10 @@ import stylex from "@stylexjs/stylex";
 import { ButtonProps } from "./types";
 import { StyleWithProps } from "../../../utils/style";
 import { button, variants } from "./css";
+import { SpreadColorGradient } from "../../../utils/spread";
 
 export const Styles = (props: ButtonProps) => {
-  const {
-    variant = "flat",
-    color,
-    colorVariant,
-    gradient,
-    gradientDirection,
-    gradientVariant,
-    ...rest
-  } = props;
+  const { variant = "flat", spread } = SpreadColorGradient(props);
 
   const styles = stylex.props(
     button.base,
@@ -20,5 +13,5 @@ export const Styles = (props: ButtonProps) => {
     props.disabled && button.disabled
   );
 
-  return StyleWithProps(styles, rest);
+  return StyleWithProps(styles, spread);
 };

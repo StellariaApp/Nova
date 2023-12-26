@@ -2,11 +2,12 @@ import stylex from "@stylexjs/stylex";
 import { StyleWithProps } from "../../../utils/style";
 import { WrapperProps } from "./types";
 import { wrapper } from "./css";
+import { SpreadWrapperProps } from "../../../utils/spread";
 
 export const Styles = (props: WrapperProps) => {
-  const { as, ...rest } = props;
+  const { spread } = SpreadWrapperProps(props);
 
   const styles = stylex.props(wrapper.base);
 
-  return StyleWithProps(styles, rest);
+  return StyleWithProps(styles, spread);
 };

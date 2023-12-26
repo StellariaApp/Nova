@@ -46,3 +46,5 @@ export type GradientProps = {
   gradientVariant?: ColorsgradientVariant;
   gradientDirection?: ColorsgradientDirection;
 };
+
+export type ColorGradientProps = ColorProps & GradientProps;
