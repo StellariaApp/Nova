@@ -1,19 +1,16 @@
-import { WrapperStyles } from "./styles";
+import type { Ref } from "react";
+
+import { forwardRef } from "react";
+import { Styles } from "./styles";
 import { WrapperProps } from "./types";
+import { SelectorWrapper } from "./constants/selector";
 
-const SelectorAsWrapper = {
-  div: (props: WrapperProps) => <div {...props} />,
-  article: (props: WrapperProps) => <article {...props} />,
-  section: (props: WrapperProps) => <section {...props} />,
-  main: (props: WrapperProps) => <main {...props} />,
-  footer: (props: WrapperProps) => <footer {...props} />,
-  nav: (props: WrapperProps) => <nav {...props} />,
-} as const;
-
-export const Wrapper = (props: WrapperProps) => {
+const WrapperRef = (props: WrapperProps, ref: Ref<HTMLDivElement>) => {
   const { as = "div" } = props;
-  const Component = SelectorAsWrapper[as];
-  const styles = WrapperStyles(props);
+  const Component = SelectorWrapper[as];
+  const styles = Styles(props);
 
-  return <Component {...styles} />;
+  return <Component {...styles} ref={ref} />;
 };
+
+export const Wrapper = forwardRef(WrapperRef);
