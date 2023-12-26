@@ -31,10 +31,21 @@ export const IconsArray = Object.entries(Icons).flatMap(
     }))
 );
 
-export const GetIcon = (type?: IconVariant, name?: IconName) => {
-  const iconType = Icons[type ?? "solid"] as unknown as Record<string, Icon>;
-  const icon = iconType[name ?? "trash-alt"];
-  const [width, height, _, __, svgPath] = icon;
+export type ArgsIcon = {
+  icon?: IconName;
+  iconvariant?: IconVariant;
+};
+
+export const GetIcon = (args: ArgsIcon) => {
+  const { iconvariant = "solid", icon = "trash-can" } = args;
+
+  const findIconVariant = Icons[iconvariant ?? "solid"] as unknown as Record<
+    IconName,
+    Icon
+  >;
+  const findIcon = findIconVariant[icon ?? "trash-alt"];
+
+  const [width, height, _, __, svgPath] = findIcon;
 
   const viewBox = `0 0 ${width} ${height}`;
 

@@ -20,7 +20,7 @@ export type Colors =
 
 export type ColorsVariant =
   | "dark"
-  | "darkness"
+  | "darker"
   | "light"
   | "lightness"
   | undefined;
