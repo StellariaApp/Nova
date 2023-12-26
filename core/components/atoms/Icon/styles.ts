@@ -3,16 +3,24 @@ import { IconProps } from "./types";
 import { StyleWithProps } from "../../../utils/style";
 import { svg, path } from "./css";
 
-export const SvgStyles = (props: IconProps) => {
+const SvgStyles = (props: IconProps) => {
   const styles = stylex.props(svg.base, svg.size(props));
-  const stylesWithProps = StyleWithProps(styles, props);
 
-  return stylesWithProps;
+  return StyleWithProps(styles, props);
 };
 
-export const PathStyles = (props: IconProps) => {
+const PathStyles = (props: IconProps) => {
   const styles = stylex.props(path.base);
-  const stylesWithProps = StyleWithProps(styles, props);
 
-  return stylesWithProps;
+  return StyleWithProps(styles, props);
+};
+
+export const Styles = (props: IconProps) => {
+  const svgStyles = SvgStyles(props);
+  const pathStyles = PathStyles(props);
+
+  return {
+    svgStyles,
+    pathStyles,
+  };
 };
