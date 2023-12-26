@@ -24,7 +24,7 @@ export const button = stylex.create({
     borderRadius: borderRadius.small,
     border: "1px solid transparent",
     cursor: "pointer",
-    fontSize: sizes.button,
+    fontSize: sizes.regular,
     lineHeight: "1.125rem",
     fontWeight: 600,
     fontFamily: fonts.primary,
