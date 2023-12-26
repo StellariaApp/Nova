@@ -3,7 +3,7 @@ import { ButtonProps } from "./types";
 import { StyleWithProps } from "../../../utils/style";
 import { button, variants } from "./css";
 
-export const ButtonStyles = (props: ButtonProps) => {
+export const Styles = (props: ButtonProps) => {
   const { variant = "flat" } = props;
   const styles = stylex.props(
     button.base,
