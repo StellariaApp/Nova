@@ -18,7 +18,12 @@ const Home = () => (
       <RefButton />
       <Button color="white" />
       {VARIANTS.map((variant) => (
-        <Button key={variant} variant={variant} />
+        <Button
+          key={variant}
+          variant={variant}
+          gradient={["danger", "sweet"]}
+          gradientdirection="to right"
+        />
       ))}
       <Button disabled />
     </Wrapper>
