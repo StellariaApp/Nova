@@ -2,6 +2,7 @@ import stylex from "@stylexjs/stylex";
 import { colors } from "../../../themes/index.stylex";
 import { IconProps } from "./types";
 import { GetSize } from "./utils/size";
+import { GetColorVariable } from "../../../utils";
 
 export const svg = stylex.create({
   base: {
@@ -18,4 +19,22 @@ export const path = stylex.create({
   base: {
     fill: colors.primary,
   },
+});
+
+export const pathVariants = stylex.create({
+  flat: (props: IconProps) => ({
+    fill: GetColorVariable(props),
+  }),
+  outline: (props: IconProps) => ({
+    fill: GetColorVariable(props),
+  }),
+  gradient: (props: IconProps) => ({
+    fill: GetColorVariable(props),
+  }),
+  glow: (props: IconProps) => ({
+    fill: GetColorVariable(props),
+  }),
+  none: (props: IconProps) => ({
+    fill: GetColorVariable(props),
+  }),
 });

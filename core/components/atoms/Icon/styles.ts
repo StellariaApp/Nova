@@ -1,7 +1,7 @@
 import stylex from "@stylexjs/stylex";
 import { IconProps } from "./types";
 import { StyleWithProps } from "../../../utils/style";
-import { svg, path } from "./css";
+import { svg, path, pathVariants } from "./css";
 
 const SvgStyles = (props: IconProps) => {
   const styles = stylex.props(svg.base, svg.size(props));
@@ -10,7 +10,9 @@ const SvgStyles = (props: IconProps) => {
 };
 
 const PathStyles = (props: IconProps) => {
-  const styles = stylex.props(path.base);
+  const { variant = "flat" } = props;
+
+  const styles = stylex.props(path.base, pathVariants[variant]?.(props));
 
   return StyleWithProps(styles, props);
 };
