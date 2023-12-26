@@ -1,20 +1,8 @@
 import stylex, { StyleXStyles } from "@stylexjs/stylex";
-import { colorsRaw, theme } from "..";
+import { theme } from "..";
 import { StylexComponent } from "../types/stylex";
-import { ColorsKeys } from "../types/theme";
+import { IStyle } from "../types/style";
 
-export const FindCSSVar = (variable?: ColorsKeys) => {
-  const keyColor = (variable ?? "primary") as keyof typeof colorsRaw;
-  const color = colorsRaw[keyColor];
-  return color;
-};
-
-type IStyle = {
-  className?: string;
-  style?: {
-    [key: string]: string | number;
-  };
-};
 export const StyleWithProps = (styles: IStyle, component: StylexComponent) => {
   const { stylex: stylexProps, ...rest } = component;
 

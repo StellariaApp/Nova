@@ -47,7 +47,7 @@ export const GetColorContrast = (
   return opt?.white ?? "#ffffff";
 };
 
-export const isColorDarkness = (hex = "#ffffff") => {
+export const isColorDark = (hex = "#ffffff") => {
   const color = HexToRGB(hex);
   const output = NetColor(color);
   if (output.black > output.white) {
@@ -56,7 +56,7 @@ export const isColorDarkness = (hex = "#ffffff") => {
   return false;
 };
 
-export const ChangeColorTransparency = (hex = "#ffffff", alpha = 0.5) => {
+export const ChangeColorOpacity = (hex = "#ffffff", alpha = 0.5) => {
   const isHex = hex.indexOf("#") !== -1;
   const color = isHex ? hex : RGBToHex(hex);
   if (!isHex) throw new Error("Color must be in hex format");
