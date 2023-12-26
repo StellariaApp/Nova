@@ -4,7 +4,9 @@ import { WrapperProps } from "./types";
 import { wrapper } from "./css";
 
 export const Styles = (props: WrapperProps) => {
+  const { as, ...rest } = props;
+
   const styles = stylex.props(wrapper.base);
 
-  return StyleWithProps(styles, props);
+  return StyleWithProps(styles, rest);
 };

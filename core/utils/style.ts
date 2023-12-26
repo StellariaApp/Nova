@@ -3,17 +3,19 @@ import { theme } from "..";
 import { StylexComponent } from "../types/stylex";
 import { IStyle } from "../types/style";
 
-export const StyleWithProps = <P = {}>(
+export const StyleWithProps = <P extends object>(
   styles: IStyle,
-  component: StylexComponent
+  component: P
 ) => {
-  const { stylex: stylexProps, ...rest } = component;
+  const { stylex: stylexProps, ...rest } = component as StylexComponent<P>;
 
   const componentWithStyle = component as { style?: StyleXStyles };
   const comoonentWithClassName = component as { className?: string };
 
   const stylexComponent = stylex.props(
-    typeof stylexProps === "function" ? stylexProps(theme, rest) : stylexProps,
+    typeof stylexProps === "function"
+      ? stylexProps(theme, rest as P)
+      : stylexProps,
     componentWithStyle?.style ?? {}
   );
 
@@ -34,7 +36,7 @@ export const StyleWithProps = <P = {}>(
     ...rest,
     className,
     style,
-  };
+  } as Omit<P, "stylex">;
 
   return props;
 };

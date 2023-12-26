@@ -3,14 +3,18 @@ import { StylexComponent } from "../../../types/stylex";
 import { IconName, IconVariant } from "../../../utils/icon";
 import { ColorProps, GradientProps } from "../../../types";
 
-type Icon = SVGProps<SVGSVGElement>;
+type SVG = SVGProps<SVGSVGElement>;
+type Path = SVGProps<SVGPathElement>;
 
 export type IconProps = StylexComponent<
   {
-    disabled?: boolean;
     iconvariant?: IconVariant;
     icon?: IconName;
     size?: number | string;
+    components?: {
+      svg?: SVG;
+      path?: Path;
+    };
   },
-  Icon & ColorProps & GradientProps
+  ColorProps & GradientProps
 >;

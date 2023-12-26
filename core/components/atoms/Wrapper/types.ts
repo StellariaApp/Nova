@@ -15,8 +15,8 @@ export type Wrapper = DetailedHTMLProps<
 >;
 
 export type WrapperProps = StylexComponent<
-  Wrapper & {
-    children?: React.ReactNode;
+  {
     as?: AsWrapper;
-  }
+  },
+  Wrapper
 >;
