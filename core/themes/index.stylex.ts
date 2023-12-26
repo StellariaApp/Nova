@@ -50,9 +50,7 @@ export const colorsRaw = {
   "disabled.darkness": "#626262",
   "disabled.light": "#fafafa",
   "disabled.lightness": "#ffffff",
-};
 
-export const propertiesRaw = {
   white: "#ffffff",
   "white.dark": "#f2f2f2",
   "white.darkness": "#e6e6e6",
@@ -76,7 +74,9 @@ export const propertiesRaw = {
   "textAlt.darkness": "#5f5f5f",
   "textAlt.light": "#18181b",
   "textAlt.lightness": "#000000",
+};
 
+export const propertiesRaw = {
   background: "#ffffff",
   foreground: "#ffffff",
 

@@ -21,7 +21,7 @@ export const template = stylex.create({
     lineHeight: "1.125rem",
     fontWeight: 600,
     fontFamily: fonts.primary,
-    color: properties.textAlt,
+    color: colors.textAlt,
     userSelect: "none",
     transition: "all 0.32s ease",
   },

@@ -28,7 +28,7 @@ export const button = stylex.create({
     lineHeight: "1.125rem",
     fontWeight: 600,
     fontFamily: fonts.primary,
-    color: properties.textAlt,
+    color: colors.textAlt,
     userSelect: "none",
     transition: "all 0.32s ease",
   },
@@ -66,7 +66,7 @@ export const variants = stylex.create({
     color: GetColorVariable(props),
     ":hover": {
       backgroundColor: GetColorVariable(props, "dark"),
-      color: properties.textAlt,
+      color: colors.textAlt,
     },
   }),
   glow: (props: ButtonProps) => ({
