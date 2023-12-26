@@ -7,4 +7,6 @@ export type StylexComponent<P = {}, A = {}> = {
 } & P &
   A;
 
-export type StylexProp = ((theme: Theme) => CSSPropertiesWithExtras) | object;
+export type StylexProp<P = {}> =
+  | ((theme: Theme, _: P) => CSSPropertiesWithExtras)
+  | object;

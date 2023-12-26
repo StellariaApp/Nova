@@ -11,7 +11,7 @@ const AccordionItemRef = (
 ) => {
   const { children, hash, id } = props;
 
-  const { autohide, ...styles } = ItemStyles(props);
+  const { autohide, ...styles } = ItemStyles(props) as AccordionItemProps;
 
   const onClick = () => {
     if (!autohide) return;

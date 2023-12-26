@@ -3,14 +3,17 @@ import { theme } from "..";
 import { StylexComponent } from "../types/stylex";
 import { IStyle } from "../types/style";
 
-export const StyleWithProps = <P = {}>(styles: IStyle, component: P) => {
-  const { stylex: stylexProps, ...rest } = component as StylexComponent<P>;
+export const StyleWithProps = <P = {}>(
+  styles: IStyle,
+  component: StylexComponent
+) => {
+  const { stylex: stylexProps, ...rest } = component;
 
   const componentWithStyle = component as { style?: StyleXStyles };
   const comoonentWithClassName = component as { className?: string };
 
   const stylexComponent = stylex.props(
-    typeof stylexProps === "function" ? stylexProps(theme) : stylexProps,
+    typeof stylexProps === "function" ? stylexProps(theme, rest) : stylexProps,
     componentWithStyle?.style ?? {}
   );
 
