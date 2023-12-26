@@ -7,10 +7,10 @@ export const Styles = (props: ButtonProps) => {
   const {
     variant = "flat",
     color,
-    colorvariant,
+    colorVariant,
     gradient,
-    gradientdirection,
-    gradientvariant,
+    gradientDirection,
+    gradientVariant,
     ...rest
   } = props;
 

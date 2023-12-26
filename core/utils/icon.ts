@@ -10,7 +10,7 @@ type Icon = [
   svgPathData: string
 ];
 
-export type IconVariant = "brands" | "regular" | "solid";
+export type iconVariant = "brands" | "regular" | "solid";
 
 export type IconName =
   | keyof typeof iconsBrands
@@ -27,23 +27,23 @@ export const IconsArray = Object.entries(Icons).flatMap(
   ([keyVariant, valueVariant]) =>
     Object.entries(valueVariant).map(([keyIcon]) => ({
       icon: keyIcon as IconName,
-      variant: keyVariant as IconVariant,
+      variant: keyVariant as iconVariant,
     }))
 );
 
 export type ArgsIcon = {
   icon?: IconName;
-  iconvariant?: IconVariant;
+  iconVariant?: iconVariant;
 };
 
 export const GetIcon = (args: ArgsIcon) => {
-  const { iconvariant = "solid", icon = "trash-can" } = args;
+  const { iconVariant = "solid", icon = "trash-can" } = args;
 
-  const findIconVariant = Icons[iconvariant ?? "solid"] as unknown as Record<
+  const findiconVariant = Icons[iconVariant ?? "solid"] as unknown as Record<
     IconName,
     Icon
   >;
-  const findIcon = findIconVariant[icon ?? "trash-alt"];
+  const findIcon = findiconVariant[icon ?? "trash-alt"];
 
   const [width, height, _, __, svgPath] = findIcon;
 

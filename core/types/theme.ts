@@ -27,9 +27,9 @@ export type ColorsVariant =
 
 export type ColorsGradient = [Colors, Colors];
 
-export type ColorsGradientVariant = [ColorsVariant, ColorsVariant];
+export type ColorsgradientVariant = [ColorsVariant, ColorsVariant];
 
-export type ColorsGradientDirection =
+export type ColorsgradientDirection =
   | "to top"
   | "to right"
   | "to bottom"
@@ -38,11 +38,11 @@ export type ColorsGradientDirection =
 export type ColorProps = {
   variant?: VariantColors;
   color?: Colors;
-  colorvariant?: ColorsVariant;
+  colorVariant?: ColorsVariant;
 };
 
 export type GradientProps = {
   gradient?: ColorsGradient;
-  gradientvariant?: ColorsGradientVariant;
-  gradientdirection?: ColorsGradientDirection;
+  gradientVariant?: ColorsgradientVariant;
+  gradientDirection?: ColorsgradientDirection;
 };

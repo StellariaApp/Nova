@@ -29,12 +29,12 @@ export const Styles = (props: IconProps) => {
   const {
     variant,
     color,
-    colorvariant,
+    colorVariant,
     gradient,
-    gradientdirection,
-    gradientvariant,
+    gradientDirection,
+    gradientVariant,
     icon,
-    iconvariant,
+    iconVariant,
     size,
     components,
     ...rest

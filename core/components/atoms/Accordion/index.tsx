@@ -16,7 +16,7 @@ export const Accordion = (props: AccordionProps) => {
         <AccordionItem
           key={item.id}
           id={item.id}
-          autohide={props.autohide}
+          autoHide={props.autoHide}
           open={item.open}
           hash={hash}
         >

@@ -1,37 +1,37 @@
 import {
   ColorsGradient,
-  ColorsGradientDirection,
-  ColorsGradientVariant,
+  ColorsgradientDirection,
+  ColorsgradientVariant,
 } from "../types/theme";
 
 import { colors, colorsRaw } from "..";
 import { Colors, ColorsKeys, ColorsVariant } from "../types/theme";
 
-export type ArgsColorVariant = {
+export type ArgscolorVariant = {
   color?: Colors;
-  colorvariant?: ColorsVariant;
+  colorVariant?: ColorsVariant;
 };
 
 export type ArgsGradient = {
   gradient?: ColorsGradient;
-  gradientvariant?: ColorsGradientVariant;
-  gradientdirection?: ColorsGradientDirection;
+  gradientVariant?: ColorsgradientVariant;
+  gradientDirection?: ColorsgradientDirection;
 };
 
-export const GetColorKey = (args?: ArgsColorVariant) => {
-  const { color = "primary", colorvariant } = args ?? {};
+export const GetColorKey = (args?: ArgscolorVariant) => {
+  const { color = "primary", colorVariant } = args ?? {};
 
   const key = color;
-  const variant = colorvariant ? `.${colorvariant}` : "";
+  const variant = colorVariant ? `.${colorVariant}` : "";
 
   return `${key}${variant}` as ColorsKeys;
 };
 
 export const GetColorVariable = (
-  args?: ArgsColorVariant,
-  colorvariant = args?.colorvariant
+  args?: ArgscolorVariant,
+  colorVariant = args?.colorVariant
 ) => {
-  const newArgs = { ...args, colorvariant };
+  const newArgs = { ...args, colorVariant };
   const keyColor = GetColorKey(newArgs);
 
   return colors[keyColor]?.toString() ?? "";
@@ -43,7 +43,7 @@ export const GetCSSVariable = (variable?: ColorsKeys) => {
   return color;
 };
 
-export const GetCSSVariableByColorKey = (args?: ArgsColorVariant) => {
+export const GetCSSVariableByColorKey = (args?: ArgscolorVariant) => {
   const key = GetColorKey(args);
   const cssVariable = GetCSSVariable(key);
 
@@ -53,12 +53,12 @@ export const GetCSSVariableByColorKey = (args?: ArgsColorVariant) => {
 export const GetColorVariableGradient = (args?: ArgsGradient, index = 0) => {
   const {
     gradient = ["primary", "primary"],
-    gradientvariant = ["dark", "light"],
+    gradientVariant = ["dark", "light"],
   } = args ?? {};
 
   const newArgs = {
     color: gradient[index],
-    colorvariant: gradientvariant[index],
+    colorVariant: gradientVariant[index],
   };
 
   const color = GetColorVariable(newArgs);

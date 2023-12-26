@@ -11,7 +11,7 @@ export type AccordionItemProps = StylexComponent<
   {
     hash?: string;
     open?: boolean;
-    autohide?: boolean;
+    autoHide?: boolean;
   },
   AccordionItem
 >;
@@ -19,7 +19,7 @@ export type AccordionTriggerProps = StylexComponent<{}, AccordionTrigger>;
 export type AccordionContentProps = StylexComponent<{}, AccordionContent>;
 
 export type AccordionProps = StylexComponent<{
-  autohide?: boolean;
+  autoHide?: boolean;
   items?: ItemAccordion[];
   icon?: IconProps["icon"] | [IconProps["icon"], IconProps["icon"]];
   iconRotate?: boolean;

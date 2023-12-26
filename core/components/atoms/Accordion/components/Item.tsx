@@ -11,10 +11,10 @@ const AccordionItemRef = (
 ) => {
   const { children, hash, id } = props;
 
-  const { autohide, ...styles } = ItemStyles(props) as AccordionItemProps;
+  const { autoHide, ...styles } = ItemStyles(props) as AccordionItemProps;
 
   const onClick = () => {
-    if (!autohide) return;
+    if (!autoHide) return;
     const elements = Array.from(document.querySelectorAll(`[hash="${hash}"]`));
     const element = elements.find(
       (element) => element.getAttribute("id") === id

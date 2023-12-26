@@ -11,7 +11,7 @@ import { RefButton } from "@/components/RefButton";
 const Home = () => (
   <Wrapper as="main" stylex={page.container}>
     <Wrapper as="section" stylex={page.wrapper}>
-      <Accordion autohide items={ACCORDION_ITEMS} />
+      <Accordion autoHide items={ACCORDION_ITEMS} />
       <Accordion items={ACCORDION_ITEMS} />
     </Wrapper>
     <Wrapper as="section" stylex={page.wrapper}>
@@ -22,7 +22,7 @@ const Home = () => (
           key={variant}
           variant={variant}
           gradient={["danger", "sweet"]}
-          gradientdirection="to right"
+          gradientDirection="to right"
         />
       ))}
       <Button disabled />
