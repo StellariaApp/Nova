@@ -8,8 +8,6 @@ type Button = DetailedHTMLProps<
 >;
 
 export type ButtonProps = StylexComponent<
-  {
-    disabled?: boolean;
-  },
+  {},
   Button & ColorProps & GradientProps
 >;

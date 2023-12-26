@@ -13,7 +13,11 @@ import {
   GetColorVariable,
   GetColorVariableGradient,
 } from "../../../utils/theme";
-import { ChangeColorOpacity, GetColorContrast } from "../../../utils/color";
+import {
+  ChangeColorOpacity,
+  GetColorContrast,
+  isColorDark,
+} from "../../../utils/color";
 import { CreateBoxShadow, CreateGradient } from "../../../utils/css";
 
 export const button = stylex.create({
