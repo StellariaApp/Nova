@@ -14,7 +14,9 @@ export type Colors =
   | "warning"
   | "sweet"
   | "info"
-  | "disabled";
+  | "disabled"
+  | "black"
+  | "white";
 
 export type ColorsVariant =
   | "dark"

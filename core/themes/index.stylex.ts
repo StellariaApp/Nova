@@ -51,29 +51,17 @@ export const colorsRaw = {
   "disabled.light": "#fafafa",
   "disabled.lightness": "#ffffff",
 
-  white: "#ffffff",
-  "white.dark": "#f2f2f2",
-  "white.darkness": "#e6e6e6",
-  "white.light": "#ffffff",
+  white: "#fafafa",
+  "white.dark": "#afafaf",
+  "white.darkness": "#5f5f5f",
+  "white.light": "#fdfdfd",
   "white.lightness": "#ffffff",
 
-  black: "#000000",
+  black: "#18181b",
   "black.dark": "#141414",
   "black.darkness": "#000000",
   "black.light": "#3d3d3d",
   "black.lightness": "#8e8e8e",
-
-  text: "#18181b",
-  "text.dark": "#141414",
-  "text.darkness": "#000000",
-  "text.light": "#3d3d3d",
-  "text.lightness": "#8e8e8e",
-
-  textAlt: "#ffffff",
-  "textAlt.dark": "#afafaf",
-  "textAlt.darkness": "#5f5f5f",
-  "textAlt.light": "#18181b",
-  "textAlt.lightness": "#000000",
 };
 
 export const propertiesRaw = {

@@ -13,7 +13,7 @@ import {
   GetColorVariable,
   GetColorVariableGradient,
 } from "../../../utils/theme";
-import { ChangeColorOpacity } from "../../../utils/color";
+import { ChangeColorOpacity, GetColorContrast } from "../../../utils/color";
 import { CreateBoxShadow, CreateGradient } from "../../../utils/css";
 
 export const button = stylex.create({
@@ -28,7 +28,7 @@ export const button = stylex.create({
     lineHeight: "1.125rem",
     fontWeight: 600,
     fontFamily: fonts.primary,
-    color: colors.textAlt,
+    color: colors.white,
     userSelect: "none",
     transition: "all 0.32s ease",
   },
@@ -53,6 +53,7 @@ export const variants = stylex.create({
     boxShadow: "0px 0px 8px #00000025",
     backgroundColor: GetColorVariable(props),
     borderColor: GetColorVariable(props),
+    color: GetColorContrast(GetCSSVariableByColorKey(props)),
     ":hover": {
       backgroundColor: GetColorVariable(props, "dark"),
       borderColor: GetColorVariable(props, "dark"),
@@ -66,7 +67,7 @@ export const variants = stylex.create({
     color: GetColorVariable(props),
     ":hover": {
       backgroundColor: GetColorVariable(props, "dark"),
-      color: colors.textAlt,
+      color: colors.white,
     },
   }),
   glow: (props: ButtonProps) => ({
@@ -92,6 +93,7 @@ export const variants = stylex.create({
     },
   }),
   gradient: (props: ButtonProps) => ({
+    color: GetColorContrast(GetCSSVariableByColorKey(props)),
     backgroundImage: CreateGradient(props),
     borderColor: GetColorVariableGradient(props, 0),
     ":hover": {
