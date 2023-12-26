@@ -15,7 +15,9 @@ const AccordionTriggerRef = (
   return (
     <summary {...styles} ref={ref}>
       {children}
-      <Icon color="white" height={10} width={10} icon="chevron-down" />
+      <div>
+        <Icon color="white" size="16px" icon="chevron-down" />
+      </div>
     </summary>
   );
 };

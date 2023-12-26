@@ -1,6 +1,11 @@
 import stylex from "@stylexjs/stylex";
 
-import { colors, fonts, sizes } from "../../../themes/index.stylex";
+import {
+  borderRadius,
+  colors,
+  fonts,
+  sizes,
+} from "../../../themes/index.stylex";
 
 export const container = stylex.create({
   base: {
@@ -8,7 +13,7 @@ export const container = stylex.create({
     height: "max-content",
     userSelect: "none",
     backgroundColor: colors["black.dark"],
-    borderRadius: "8px",
+    borderRadius: borderRadius.regular,
     overflow: "hidden",
     padding: "8px",
     transition: "all 0.2s ease-in-out",
@@ -25,9 +30,11 @@ export const item = stylex.create({
     transition: "all 0.2s ease-in-out",
     padding: "12px 8px",
     backgroundColor: colors["black.dark"],
+    borderRadius: 0,
     ":hover": {
+      borderRadius: borderRadius.small,
       backgroundColor: colors.black,
-      borderBottomColor: colors["black.light"],
+      borderBottomColor: colors.black,
     },
     ":last-child": {
       borderBottom: "none",
@@ -42,7 +49,7 @@ export const trigger = stylex.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: "8px",
+    padding: "0px 8px",
     backgroundColor: "transparent",
     fontSize: sizes.regular,
     fontFamily: fonts.primary,
@@ -50,6 +57,7 @@ export const trigger = stylex.create({
     color: colors.white,
     cursor: "pointer",
     transition: "all 0.2s ease-in-out",
+    gap: "18px",
   },
 });
 

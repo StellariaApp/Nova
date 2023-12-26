@@ -58,10 +58,10 @@ export const colorsRaw = {
   "white.lightness": "#ffffff",
 
   black: "#232324",
-  "black.dark": "#141414",
+  "black.dark": "#18181a",
   "black.darker": "#000000",
-  "black.light": "#494949",
-  "black.lightness": "#747474",
+  "black.light": "#303030",
+  "black.lightness": "#4b4b4b",
 };
 
 export const propertiesRaw = {
