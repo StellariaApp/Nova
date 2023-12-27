@@ -27,10 +27,17 @@ const Home = () => (
       <Button disabled />
     </Wrapper>
     <Wrapper as="section" stylex={page.wrapper}>
-      <Icon icon="arrow-left" />
-      <Icon icon="arrow-right" />
+      <Icon icon="arrow-up" />
       <Icon icon="arrow-up" />
       <Icon icon="arrow-down" />
+      <Icon icon="arrow-down" />
+      <Icon icon="arrow-left" />
+      <Icon icon="arrow-right" />
+      <Icon icon="arrow-left" />
+      <Icon icon="arrow-right" />
+      <Icon icon="b" />
+      <Icon icon="a" />
+      <Icon icon="star" />
     </Wrapper>
   </Wrapper>
 );
