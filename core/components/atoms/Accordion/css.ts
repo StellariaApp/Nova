@@ -33,6 +33,9 @@ export const item = stylex.create({
       borderBottom: "none",
     },
     cursor: "pointer",
+    ":focus": {
+      outline: `1px solid ${colors.sweet}`,
+    },
   },
   open: (props: AccordionItemProps) => ({
     borderRadius: props.open
@@ -57,6 +60,7 @@ export const trigger = stylex.create({
     padding: "0px 8px",
     backgroundColor: "transparent",
     fontSize: sizes.regular,
+    lineHeight: "135%",
     fontFamily: fonts.primary,
     fontWeight: 500,
     color: colors.white,
@@ -73,6 +77,7 @@ export const content = stylex.create({
     width: "100%",
     padding: "8px",
     fontSize: sizes.regular,
+    lineHeight: "135%",
     fontFamily: fonts.primary,
     fontWeight: 500,
     color: colors["white.dark"],

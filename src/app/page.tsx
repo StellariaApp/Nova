@@ -43,24 +43,22 @@ const ACCORDION_ITEMS = [
     id: "1",
     open: true,
     title:
-      "Is it possible to use the same component for the accordion and the accordion item?",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     content:
-      "Yes, it is possible to use the same component for the accordion and the accordion item.",
-    icon: "plus",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
   },
   {
     id: "2",
     title:
-      "What's the difference between a controlled and an uncontrolled component?",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     content:
-      "A controlled component has its state controlled by React. An uncontrolled component has its state controlled by the DOM.",
-    icon: "plus",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
   },
   {
     id: "3",
-    title: "What is the difference between a fragment and a document fragment?",
+    title:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     content:
-      "A fragment is a component that does not render a DOM element. A document fragment is a DOM node that is not part of the main DOM tree.",
-    icon: "plus",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
   },
 ] as ItemAccordion[];
