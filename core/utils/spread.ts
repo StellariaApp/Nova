@@ -1,4 +1,4 @@
-import { ColorGradientProps } from "..";
+import { AccordionItemProps, ColorGradientProps } from "..";
 import { IconProps } from "../components/atoms/Icon/types";
 import { WrapperProps } from "../components/atoms/Wrapper/types";
 
@@ -26,6 +26,12 @@ export const SpreadIconProps = (props: IconProps) => {
 
 export const SpreadWrapperProps = (props: WrapperProps) => {
   const { as, ...spread } = props;
+
+  return { ...props, spread };
+};
+
+export const SpreadAccordionItemsProps = (props: AccordionItemProps) => {
+  const { hash, hashId, open, autoClose, ...spread } = props;
 
   return { ...props, spread };
 };

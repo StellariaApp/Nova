@@ -13,5 +13,5 @@ export const Styles = (props: ButtonProps) => {
     props.disabled && button.disabled
   );
 
-  return StyleWithProps(styles, spread);
+  return StyleWithProps(styles, spread, props);
 };

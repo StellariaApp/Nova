@@ -2,7 +2,6 @@ import type { Ref } from "react";
 import { forwardRef } from "react";
 import type { AccordionTriggerProps } from "../types";
 import { TriggerStyles } from "../styles";
-import { Icon } from "../..";
 
 const AccordionTriggerRef = (
   props: AccordionTriggerProps,
@@ -15,9 +14,6 @@ const AccordionTriggerRef = (
   return (
     <summary {...styles} ref={ref}>
       {children}
-      <div>
-        <Icon color="white" size="16px" icon="chevron-down" />
-      </div>
     </summary>
   );
 };

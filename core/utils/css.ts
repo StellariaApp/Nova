@@ -1,7 +1,7 @@
 import { ArgsGradient, ChangeColorOpacity, GetColorVariableGradient } from "..";
 
 export const CreateGradient = (args?: ArgsGradient) => {
-  const { gradientDirection = "to bottom" } = args ?? {};
+  const { gradientDirection = "to right" } = args ?? {};
 
   const initialColor = GetColorVariableGradient(args, 0);
   const finalColor = GetColorVariableGradient(args, 1);

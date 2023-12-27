@@ -5,32 +5,56 @@ import {
 } from "react";
 import { StylexComponent } from "../../../types/stylex";
 import { IconProps } from "../Icon/types";
+import { WrapperProps } from "../Wrapper/types";
 
 export type AccordionContainerProps = StylexComponent<{}, AccordionContainer>;
 export type AccordionItemProps = StylexComponent<
   {
     hash?: string;
+    hashId?: string;
     open?: boolean;
-    autoHide?: boolean;
+    autoClose?: boolean;
   },
   AccordionItem
 >;
 export type AccordionTriggerProps = StylexComponent<{}, AccordionTrigger>;
 export type AccordionContentProps = StylexComponent<{}, AccordionContent>;
 
-export type AccordionProps = StylexComponent<{
-  autoHide?: boolean;
-  items?: ItemAccordion[];
-  icon?: IconProps["icon"] | [IconProps["icon"], IconProps["icon"]];
-  iconRotate?: boolean;
-}>;
+type IconStringArray =
+  | IconProps["icon"]
+  | [IconProps["icon"], IconProps["icon"]];
 
 export type ItemAccordion = {
   id: string;
   title?: string;
   content?: string;
   open?: boolean;
-  icon?: IconProps["icon"] | [IconProps["icon"], IconProps["icon"]];
+  icon?: IconStringArray;
+};
+
+export type AccordionIconProps = {
+  hash?: string;
+  hashId?: string;
+  icon?: IconStringArray;
+  iconRotate?: boolean;
+  components?: {
+    wrapper?: WrapperProps;
+    icon?: IconProps;
+  };
+};
+
+export type AccordionProps = {
+  items?: ItemAccordion[];
+  icon?: IconStringArray;
+  iconRotate?: boolean;
+  autoClose?: boolean;
+  components?: {
+    container?: AccordionContainerProps;
+    item?: AccordionItemProps;
+    trigger?: AccordionTriggerProps;
+    content?: AccordionContentProps;
+    icon?: AccordionIconProps;
+  };
 };
 
 type AccordionContainer = DetailedHTMLProps<

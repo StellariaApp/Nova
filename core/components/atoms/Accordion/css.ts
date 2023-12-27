@@ -6,6 +6,7 @@ import {
   fonts,
   sizes,
 } from "../../../themes/index.stylex";
+import { AccordionItemProps } from ".";
 
 export const container = stylex.create({
   base: {
@@ -25,22 +26,26 @@ export const item = stylex.create({
     width: "100%",
     height: "max-content",
     borderBottom: `1px solid transparent`,
-    borderBottomColor: colors.black,
     listStyle: "none",
     transition: "all 0.2s ease-in-out",
     padding: "12px 8px",
-    backgroundColor: colors["black.dark"],
-    borderRadius: 0,
-    ":hover": {
-      borderRadius: borderRadius.small,
-      backgroundColor: colors.black,
-      borderBottomColor: colors.black,
-    },
     ":last-child": {
       borderBottom: "none",
     },
     cursor: "pointer",
   },
+  open: (props: AccordionItemProps) => ({
+    borderRadius: props.open
+      ? borderRadius.small
+      : `${borderRadius.small} ${borderRadius.small} 0px 0px`,
+    backgroundColor: props.open ? colors.primary : colors["black.dark"],
+    borderBottomColor: props.open ? colors["primary.dark"] : colors.black,
+    ":hover": {
+      borderRadius: borderRadius.small,
+      backgroundColor: props.open ? colors["primary.dark"] : colors.black,
+      borderBottomColor: props.open ? colors["primary.dark"] : colors.black,
+    },
+  }),
 });
 
 export const trigger = stylex.create({
@@ -58,6 +63,8 @@ export const trigger = stylex.create({
     cursor: "pointer",
     transition: "all 0.2s ease-in-out",
     gap: "18px",
+    userSelect: "none",
+    pointerEvents: "none",
   },
 });
 
@@ -70,6 +77,22 @@ export const content = stylex.create({
     fontWeight: 500,
     color: colors["white.dark"],
     cursor: "pointer",
+    transition: "all 0.2s ease-in-out,  max-height 0.3s ease-out",
+    paddingRight: "24px",
+    userSelect: "none",
+    pointerEvents: "none",
+  },
+});
+
+export const icon = stylex.create({
+  icon: {},
+  wrapper: {
+    width: "max-content",
+    height: "max-content",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     transition: "all 0.2s ease-in-out",
+    gap: "8px",
   },
 });

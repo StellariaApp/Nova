@@ -9,5 +9,5 @@ export const Styles = (props: WrapperProps) => {
 
   const styles = stylex.props(wrapper.base);
 
-  return StyleWithProps(styles, spread);
+  return StyleWithProps(styles, spread, props);
 };
