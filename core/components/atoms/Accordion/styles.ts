@@ -43,7 +43,7 @@ export const ContentStyles = (props: AccordionContentProps) => {
 };
 
 export const IconStyles = (props: AccordionIconProps) => {
-  const stylesWrapper = stylex.props(icon.wrapper);
+  const stylesWrapper = stylex.props(icon.wrapper, icon.rotate(props));
   const stylesIcon = stylex.props(icon.icon);
 
   const propsWrapper = props?.components?.wrapper ?? {};

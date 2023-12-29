@@ -7,8 +7,7 @@ import { useId } from "react";
 import { AccordionIcon } from "./components/Icons";
 
 export const Accordion = (props: AccordionProps) => {
-  const { iconRotate = true } = props;
-  const { items, icon, components, autoClose } = props;
+  const { items, icon, iconRotate, components, autoClose } = props;
 
   const hash = useId();
 
@@ -28,6 +27,7 @@ export const Accordion = (props: AccordionProps) => {
             <AccordionIcon
               hash={hash}
               hashItem={hash + index}
+              open={item.open}
               icon={icon}
               iconRotate={iconRotate}
               {...components?.icon}

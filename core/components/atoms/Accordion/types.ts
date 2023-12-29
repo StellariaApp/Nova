@@ -39,6 +39,7 @@ export type ItemAccordion = {
 };
 
 export type AccordionIconProps = {
+  open?: boolean;
   hash?: string;
   hashItem?: string;
   icon?: IconStringArray;

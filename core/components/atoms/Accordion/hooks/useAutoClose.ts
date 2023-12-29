@@ -35,9 +35,8 @@ export const useAutoClose = (props: AccordionItemProps) => {
     const nextValue = !value;
     const nextStatus = nextValue ? "open" : "close";
 
-    SwitchObject[nextStatus](detail);
     ChangeStorage(nextValue);
-    ChangeParagraphHeight(detail);
+    SwitchObject[nextStatus](detail);
   };
 
   return {
@@ -52,13 +51,4 @@ const SwitchObject = {
   close: (detail: HTMLDetailsElement) => {
     detail.removeAttribute("open");
   },
-};
-
-const ChangeParagraphHeight = (detail: HTMLDetailsElement) => {
-  const paragraph = detail.querySelector("p");
-  if (!paragraph) return;
-  const isOpen = typeof detail.getAttribute("open") === "string";
-  paragraph.style.maxHeight = isOpen ? `${paragraph.scrollHeight}px` : "0px";
-  paragraph.style.opacity = isOpen ? "1" : "0";
-  paragraph.style.animation = "all 0.8s ease-in-out";
 };

@@ -6,7 +6,7 @@ import {
   fonts,
   sizes,
 } from "../../../themes/index.stylex";
-import { AccordionItemProps } from ".";
+import { AccordionIconProps, AccordionItemProps } from ".";
 
 export const container = stylex.create({
   base: {
@@ -91,7 +91,15 @@ export const icon = stylex.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    transition: "all 0.2s ease-in-out",
     gap: "8px",
+    transition: "all 0.3s ease-in-out",
   },
+  rotate: (props: AccordionIconProps) => ({
+    transform:
+      (props.icon && Array.isArray(props.icon)
+        ? props.iconRotate ?? false
+        : props.iconRotate ?? true) && props.open
+        ? "rotate(180deg)"
+        : "rotate(0deg)",
+  }),
 });

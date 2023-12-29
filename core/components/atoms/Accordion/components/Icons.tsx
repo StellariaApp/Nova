@@ -7,13 +7,16 @@ import { useAtom } from "jotai";
 import { StorageAccordionAtom } from "../jotai/storage";
 
 export const AccordionIcon = (props: AccordionIconProps) => {
-  const { icon } = props;
+  const { icon, hashItem } = props;
 
-  const { stylesIcon, stylesWrapper } = IconStyles(props);
+  const [storage] = useAtom(StorageAccordionAtom);
 
-  // const [open] = useAtom(StorageAccordionAtom(props));
+  const open = storage[hashItem ?? ""] ?? props.open;
 
-  const open = true;
+  const { stylesIcon, stylesWrapper } = IconStyles({
+    ...props,
+    open,
+  });
 
   return (
     <Wrapper {...stylesWrapper}>
