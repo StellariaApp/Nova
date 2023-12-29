@@ -9,12 +9,17 @@ import type {
 } from "./types";
 import { container, content, icon, item, trigger } from "./css";
 import { StyleWithProps } from "../../../utils";
-import { SpreadAccordionItemsProps } from "../../../utils/spread";
+import {
+  SpreadAccordionContainerProps,
+  SpreadAccordionItemsProps,
+} from "../../../utils/spread";
 
 export const ContainerStyles = (props: AccordionContainerProps) => {
   const styles = stylex.props(container.base);
 
-  return StyleWithProps(styles, props, props);
+  const { spread } = SpreadAccordionContainerProps(props);
+
+  return StyleWithProps(styles, spread, props);
 };
 
 export const ItemStyles = (props: AccordionItemProps) => {

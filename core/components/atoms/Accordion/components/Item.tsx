@@ -6,26 +6,27 @@ import type { AccordionItemProps } from "../types";
 import { ItemStyles } from "../styles";
 import { useAtom } from "jotai";
 import { StorageAccordionAtom } from "../jotai/storage";
+import { useAutoClose } from "../hooks/useAutoClose";
 
 const AccordionItemRef = (
   props: AccordionItemProps,
   ref: Ref<HTMLDetailsElement>
 ) => {
-  const { children, hash, hashId } = props;
+  const { children, hashItem } = props;
 
-  const [open, toggle] = useAtom(StorageAccordionAtom(props));
+  const [storage] = useAtom(StorageAccordionAtom);
 
-  const styles = ItemStyles({ ...props, open });
+  const open = storage[hashItem ?? ""] ?? props.open;
+
+  const styles = ItemStyles({
+    ...props,
+    open,
+  });
+
+  const { onClick } = useAutoClose(props);
 
   return (
-    <details
-      {...styles}
-      ref={ref}
-      onClick={toggle}
-      open={open}
-      data-accordion-item-hash={hash}
-      data-accordion-item-hash-id={hashId}
-    >
+    <details data-hash-item={hashItem} onClick={onClick} {...styles} ref={ref}>
       {children}
     </details>
   );

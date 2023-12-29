@@ -10,6 +10,8 @@ import { AccordionItemProps } from ".";
 
 export const container = stylex.create({
   base: {
+    display: "flex",
+    flexDirection: "column",
     width: "100%",
     height: "max-content",
     userSelect: "none",
@@ -18,6 +20,7 @@ export const container = stylex.create({
     overflow: "hidden",
     padding: "8px",
     transition: "all 0.2s ease-in-out",
+    gap: "8px",
   },
 });
 
@@ -25,28 +28,19 @@ export const item = stylex.create({
   base: {
     width: "100%",
     height: "max-content",
-    borderBottom: `1px solid transparent`,
     listStyle: "none",
     transition: "all 0.2s ease-in-out",
-    padding: "12px 8px",
+    padding: "14px 8px",
     ":last-child": {
       borderBottom: "none",
     },
+    borderRadius: borderRadius.small,
     cursor: "pointer",
-    ":focus": {
-      outline: `1px solid ${colors.sweet}`,
-    },
   },
   open: (props: AccordionItemProps) => ({
-    borderRadius: props.open
-      ? borderRadius.small
-      : `${borderRadius.small} ${borderRadius.small} 0px 0px`,
-    backgroundColor: props.open ? colors.primary : colors["black.dark"],
-    borderBottomColor: props.open ? colors["primary.dark"] : colors.black,
+    backgroundColor: props.open ? colors.black : colors["black.dark"],
     ":hover": {
-      borderRadius: borderRadius.small,
-      backgroundColor: props.open ? colors["primary.dark"] : colors.black,
-      borderBottomColor: props.open ? colors["primary.dark"] : colors.black,
+      backgroundColor: colors.black,
     },
   }),
 });
@@ -82,7 +76,7 @@ export const content = stylex.create({
     fontWeight: 500,
     color: colors["white.dark"],
     cursor: "pointer",
-    transition: "all 0.2s ease-in-out,  max-height 0.3s ease-out",
+    transition: "all 0.4s ease-out",
     paddingRight: "24px",
     userSelect: "none",
     pointerEvents: "none",

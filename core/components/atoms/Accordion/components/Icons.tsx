@@ -11,7 +11,9 @@ export const AccordionIcon = (props: AccordionIconProps) => {
 
   const { stylesIcon, stylesWrapper } = IconStyles(props);
 
-  const [open] = useAtom(StorageAccordionAtom(props));
+  // const [open] = useAtom(StorageAccordionAtom(props));
+
+  const open = true;
 
   return (
     <Wrapper {...stylesWrapper}>

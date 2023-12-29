@@ -7,12 +7,12 @@ const AccordionContainerRef = (
   props: AccordionContainerProps,
   ref: Ref<HTMLElement>
 ) => {
-  const { children } = props;
+  const { children, hash } = props;
 
   const styles = ContainerStyles(props);
 
   return (
-    <section {...styles} ref={ref}>
+    <section data-hash={hash} {...styles} ref={ref}>
       {children}
     </section>
   );

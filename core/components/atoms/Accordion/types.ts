@@ -7,11 +7,17 @@ import { StylexComponent } from "../../../types/stylex";
 import { IconProps } from "../Icon/types";
 import { WrapperProps } from "../Wrapper/types";
 
-export type AccordionContainerProps = StylexComponent<{}, AccordionContainer>;
+export type AccordionContainerProps = StylexComponent<
+  {
+    hash?: string;
+  },
+  AccordionContainer
+>;
+
 export type AccordionItemProps = StylexComponent<
   {
     hash?: string;
-    hashId?: string;
+    hashItem?: string;
     open?: boolean;
     autoClose?: boolean;
   },
@@ -34,7 +40,7 @@ export type ItemAccordion = {
 
 export type AccordionIconProps = {
   hash?: string;
-  hashId?: string;
+  hashItem?: string;
   icon?: IconStringArray;
   iconRotate?: boolean;
   components?: {

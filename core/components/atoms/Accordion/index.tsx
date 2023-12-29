@@ -13,12 +13,12 @@ export const Accordion = (props: AccordionProps) => {
   const hash = useId();
 
   return (
-    <AccordionContainer {...components?.container}>
-      {items?.map((item) => (
+    <AccordionContainer hash={hash} {...components?.container}>
+      {items?.map((item, index) => (
         <AccordionItem
           key={item.id}
           hash={hash}
-          hashId={item.id}
+          hashItem={hash + index}
           autoClose={autoClose}
           open={item.open}
           {...components?.item}
@@ -27,7 +27,7 @@ export const Accordion = (props: AccordionProps) => {
             {item.title}
             <AccordionIcon
               hash={hash}
-              hashId={item.id}
+              hashItem={hash + index}
               icon={icon}
               iconRotate={iconRotate}
               {...components?.icon}
