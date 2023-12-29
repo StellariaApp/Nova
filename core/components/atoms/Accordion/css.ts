@@ -30,7 +30,7 @@ export const item = stylex.create({
     height: "max-content",
     listStyle: "none",
     transition: "all 0.2s ease-in-out",
-    padding: "14px 8px",
+    padding: "14px 8px 12px 8px",
     ":last-child": {
       borderBottom: "none",
     },
