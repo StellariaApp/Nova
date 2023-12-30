@@ -12,16 +12,6 @@ const Home = () => (
   <Wrapper as="main" stylex={page.container}>
     <Wrapper as="section" stylex={page.wrapper}>
       <Accordion autoClose items={ACCORDION_ITEMS} />
-      <Accordion variant="outline" autoClose items={ACCORDION_ITEMS} />
-      <Accordion
-        variant="glow"
-        color="primary"
-        autoClose
-        items={ACCORDION_ITEMS}
-      />
-      <Accordion variant="gradient" autoClose items={ACCORDION_ITEMS} />
-      <Accordion variant="none" autoClose items={ACCORDION_ITEMS} />
-      <Accordion items={ACCORDION_ITEMS} icon={["plus", "minus"]} />
     </Wrapper>
     <Wrapper as="section" stylex={page.wrapper}>
       <RefButton />
