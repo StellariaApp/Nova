@@ -21,14 +21,11 @@ type IconStringArray =
   | IconProps["icon"]
   | [IconProps["icon"], IconProps["icon"]];
 
-type HashItem = {
+export type HashItem = {
   hash?: string;
   hashItem?: string;
   open?: boolean;
-  icon?: IconStringArray;
-  iconRotate?: boolean;
-  autoClose?: boolean;
-};
+} & Pick<AccordionProps, "icon" | "iconRotate" | "autoClose">;
 
 export type AccordionProps = {
   icon?: IconStringArray;
@@ -47,7 +44,7 @@ export type AccordionProps = {
   };
 };
 
-export type AccordionCollectorProps = AccordionProps & HashItem;
+export type AccordionCollectorProps = AccordionProps | HashItem;
 
 export type ItemAccordion = {
   id: string;

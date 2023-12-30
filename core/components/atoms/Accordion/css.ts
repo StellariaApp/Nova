@@ -6,7 +6,7 @@ import {
   fonts,
   sizes,
 } from "../../../themes/index.stylex";
-import { AccordionItemProps, AccordionWrapperProps } from ".";
+import { AccordionWrapperProps } from ".";
 
 export const container = stylex.create({
   base: {
@@ -36,11 +36,15 @@ export const item = stylex.create({
     },
     borderRadius: borderRadius.small,
     cursor: "pointer",
-  },
-  open: (props: AccordionItemProps) => ({
-    backgroundColor: props.open ? colors.black : colors["black.dark"],
+    backgroundColor: colors["black.dark"],
     ":hover": {
       backgroundColor: colors.black,
+    },
+  },
+  open: () => ({
+    backgroundColor: colors.black,
+    ":hover": {
+      backgroundColor: colors["black.light"],
     },
   }),
 });
@@ -83,10 +87,6 @@ export const content = stylex.create({
   },
 });
 
-export const icon = stylex.create({
-  base: {},
-});
-
 export const wrapper = stylex.create({
   base: {
     width: "max-content",
@@ -105,4 +105,8 @@ export const wrapper = stylex.create({
         ? "rotate(180deg)"
         : "rotate(0deg)",
   }),
+});
+
+export const icon = stylex.create({
+  base: {},
 });

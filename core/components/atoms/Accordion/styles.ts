@@ -10,7 +10,7 @@ import type {
 } from "./types";
 import { container, content, icon, item, trigger, wrapper } from "./css";
 import { StyleWithProps } from "../../../utils";
-import { SpreadAccordionProps } from "../../../utils/spread";
+import { SpreadAccordionProps } from "./utils/spread";
 
 export const ContainerStyles = (props: AccordionContainerProps) => {
   const styles = stylex.props(container.base);
@@ -20,7 +20,8 @@ export const ContainerStyles = (props: AccordionContainerProps) => {
 };
 
 export const ItemStyles = (props: AccordionItemProps) => {
-  const styles = stylex.props(item.base, item.open(props));
+  const { open } = props;
+  const styles = stylex.props(item.base, open && item.open());
 
   const { spread } = SpreadAccordionProps(props);
   return StyleWithProps(styles, spread, props);
@@ -39,7 +40,8 @@ export const ContentStyles = (props: AccordionContentProps) => {
 export const IconStyles = (props: AccordionIconProps) => {
   const styles = stylex.props(icon.base);
 
-  return StyleWithProps(styles, props);
+  const { spread } = SpreadAccordionProps(props);
+  return StyleWithProps(styles, spread, props);
 };
 
 export const WrapperStyles = (props: AccordionWrapperProps) => {

@@ -14,35 +14,28 @@ export const Accordion = (props: AccordionProps) => {
 
   return (
     <AccordionContainer hash={hash} {...components?.container}>
-      {items?.map((item, index) => (
-        <AccordionItem
-          key={item.id}
-          hash={hash}
-          hashItem={hash + index}
-          open={item.open}
-          {...components?.item}
-        >
-          <AccordionTrigger {...components?.trigger}>
-            {item.title}
-            <AccordionWrapper
-              hash={hash}
-              hashItem={hash + index}
-              open={item.open}
-              iconRotate={props?.iconRotate}
-              {...components?.wrapper}
-            >
-              <AccordionIcons
-                hashItem={hash + index}
-                icon={item.icon ?? props?.icon}
-                {...components?.icons}
-              />
-            </AccordionWrapper>
-          </AccordionTrigger>
-          <AccordionContent {...components?.content}>
-            {item.content}
-          </AccordionContent>
-        </AccordionItem>
-      ))}
+      {items?.map((item, index) => {
+        const hashItem = {
+          hash: hash,
+          hashItem: hash + index,
+          open: item.open,
+          iconRotate: props?.iconRotate,
+          icon: item.icon ?? props?.icon,
+        };
+        return (
+          <AccordionItem key={item.id} {...hashItem} {...components?.item}>
+            <AccordionTrigger {...components?.trigger}>
+              {item.title}
+              <AccordionWrapper {...hashItem} {...components?.wrapper}>
+                <AccordionIcons {...hashItem} {...components?.icons} />
+              </AccordionWrapper>
+            </AccordionTrigger>
+            <AccordionContent {...components?.content}>
+              {item.content}
+            </AccordionContent>
+          </AccordionItem>
+        );
+      })}
     </AccordionContainer>
   );
 };
