@@ -1,7 +1,7 @@
 import type { Ref } from "react";
 
 import { forwardRef } from "react";
-import { Styles } from "./styles";
+import { Styles } from "./styles/wrapper";
 import { WrapperProps } from "./types";
 import { SelectorWrapper } from "./constants/selector";
 
