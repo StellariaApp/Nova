@@ -1,8 +1,8 @@
 import stylex from "@stylexjs/stylex";
 
-import { TemplateProps } from "./types";
-import { StyleWithProps } from "../../utils/style";
-import { template } from "./css";
+import { TemplateProps } from "../types";
+import { StyleWithProps } from "../../../utils/style";
+import { template } from "../css/template";
 
 export const TemplateStyles = (props: TemplateProps) => {
   const styles = stylex.props(template.base);

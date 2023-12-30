@@ -6,20 +6,20 @@ import {
   sizes,
   spacing,
   text,
-} from "../../../themes/index.stylex";
-import { ButtonProps } from "./types";
+} from "../../../../themes/index.stylex";
+import { ButtonProps } from "../types";
 import {
   ValueByColorKey,
   ColorVariable,
   ColorVariableGradient,
-} from "../../../utils/theme";
+} from "../../../../utils/theme";
 import {
   ChangeOpacity,
   ChangeOpacityByColorKey,
   ColorContrast,
-} from "../../../utils/color";
-import { CreateBoxShadow, CreateGradient } from "../../../utils/css";
-import { NextShade } from "../../../utils/shade";
+} from "../../../../utils/color";
+import { CreateBoxShadow, CreateGradient } from "../../../../utils/css";
+import { NextShade } from "../../../../utils/shade";
 
 export const button = stylex.create({
   base: {
@@ -39,7 +39,7 @@ export const button = stylex.create({
   },
   disabled: {
     backgroundColor: colors.disabled,
-    boxShadow: "0px 0px 4px #0000001e",
+    boxShadow: "none",
     borderColor: colors["disabled.900"],
     color: colors["disabled.900"],
     cursor: "not-allowed",

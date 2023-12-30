@@ -1,8 +1,8 @@
 import stylex from "@stylexjs/stylex";
-import { ButtonProps } from "./types";
-import { StyleWithProps } from "../../../utils/style";
-import { button, variants } from "./css";
-import { SpreadColorGradient } from "../../../utils/spread";
+import { ButtonProps } from "../types";
+import { StyleWithProps } from "../../../../utils/style";
+import { button, variants } from "../css/button";
+import { SpreadColorGradient } from "../../../../utils/spread";
 
 export const Styles = (props: ButtonProps) => {
   const { variant = "flat", spread } = SpreadColorGradient(props);

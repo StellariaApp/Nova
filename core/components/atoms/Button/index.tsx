@@ -1,7 +1,7 @@
 import type { Ref } from "react";
 import type { ButtonProps } from "./types";
 import { forwardRef } from "react";
-import { Styles } from "./styles";
+import { Styles } from "./styles/button";
 
 const ButtonRef = (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
   const { children } = props;

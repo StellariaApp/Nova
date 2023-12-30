@@ -4,10 +4,10 @@ import {
   borderRadius,
   colors,
   fonts,
-  properties,
   sizes,
   spacing,
-} from "../../themes/index.stylex";
+  text,
+} from "../../../themes/index.stylex";
 
 export const template = stylex.create({
   base: {
@@ -21,22 +21,22 @@ export const template = stylex.create({
     lineHeight: "1.125rem",
     fontWeight: 600,
     fontFamily: fonts.primary,
-    color: colors.white,
+    color: text.base,
     userSelect: "none",
     transition: "all 0.32s ease",
   },
   disabled: {
     backgroundColor: colors.disabled,
-    boxShadow: "0px 0px 4px #0000001e",
-    borderColor: colors["disabled.dark"],
-    color: colors["disabled.dark"],
+    boxShadow: "none",
+    borderColor: colors["disabled.900"],
+    color: colors["disabled.900"],
     cursor: "not-allowed",
     opacity: 0.8,
     ":hover": {
       boxShadow: "none",
       backgroundColor: colors.disabled,
-      borderColor: colors["disabled.dark"],
-      color: colors["disabled.dark"],
+      borderColor: colors["disabled.900"],
+      color: colors["disabled.900"],
     },
   },
 });

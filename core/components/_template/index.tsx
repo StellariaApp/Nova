@@ -1,4 +1,4 @@
-import { TemplateStyles } from "./styles";
+import { TemplateStyles } from "./styles/template";
 import { TemplateProps } from "./types";
 
 export const Template = (props: TemplateProps) => {
