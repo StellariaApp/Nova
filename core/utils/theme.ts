@@ -24,13 +24,21 @@ export const ColorKey = (args?: ArgsColor) => {
   return `${color}${shade === "500" ? "" : `.${shade}`}` as ColorsKeys;
 };
 
-export const ColorVariable = (
-  args?: ArgsColor,
-  shade = args?.shade,
-  color = args?.color
-) => {
-  const newArgs = { ...args, shade, color };
+export const ColorVariable = (args?: ArgsColor, shade = args?.shade) => {
+  const newArgs = { ...args, shade };
   const keyColor = ColorKey(newArgs);
+
+  return colors[keyColor]?.toString() ?? "";
+};
+
+export const ColorVariableWithDefault = (
+  args?: ArgsColor,
+  def: string = "#000000"
+) => {
+  const { color } = args ?? {};
+  if (!color) return def;
+
+  const keyColor = ColorKey(args);
 
   return colors[keyColor]?.toString() ?? "";
 };
@@ -54,7 +62,7 @@ export const ValueByColorKey = (
   return cssVariable;
 };
 
-export const ColorVariableGradient = (args?: ArgsGradient, index = 0) => {
+export const ColorVariableGradient = (args?: ArgsGradient) => {
   const { gradient = ["sweet", "sweet"], gradientShade = ["500", "400"] } =
     args ?? {};
 

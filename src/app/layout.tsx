@@ -1,6 +1,5 @@
 import { background, type RC } from "@stellaria/nova";
 import type { Metadata } from "next";
-import stylex from "@stylexjs/stylex";
 
 import "./main.css";
 

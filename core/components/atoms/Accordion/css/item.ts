@@ -1,7 +1,11 @@
 import stylex from "@stylexjs/stylex";
-import { borderRadius } from "../../../../themes/index.stylex";
+import { background, borderRadius } from "../../../../themes/index.stylex";
 import { AccordionItemProps } from "..";
-import { ValueByColorKey, ColorVariable } from "../../../../utils";
+import {
+  ValueByColorKey,
+  ColorVariable,
+  ColorVariableWithDefault,
+} from "../../../../utils";
 import { CreateBoxShadow, CreateGradient } from "../../../../utils/css";
 
 export const item = stylex.create({
@@ -21,22 +25,13 @@ export const item = stylex.create({
 
 export const open = stylex.create({
   flat: (props: AccordionItemProps) => ({
-    backgroundColor: ColorVariable({
-      color: props.color ?? "black",
-      shade: props.shade,
-    }),
+    backgroundColor: ColorVariableWithDefault(props, background.base),
     ":hover": {
-      backgroundColor: ColorVariable({
-        color: props.color ?? "black",
-        shade: props.shade ?? "light",
-      }),
+      backgroundColor: ColorVariableWithDefault(props, background["base.400"]),
     },
   }),
   outline: (props: AccordionItemProps) => ({
-    backgroundColor: ColorVariable({
-      color: props.color ?? "black",
-      shade: props.shade ?? "light",
-    }),
+    backgroundColor: ColorVariableWithDefault(props, background.base),
     borderColor: ColorVariable({
       color: props.color ?? "black",
       shade: props.shade ?? "light",
@@ -90,9 +85,9 @@ export const open = stylex.create({
 
 export const variants = stylex.create({
   flat: (props: AccordionItemProps) => ({
-    backgroundColor: ColorVariable(props, "dark", "black"),
+    backgroundColor: ColorVariableWithDefault(props, background["base.600"]),
     ":hover": {
-      backgroundColor: ColorVariable(props, undefined, "black"),
+      backgroundColor: ColorVariableWithDefault(props, background.base),
     },
   }),
   outline: (props: AccordionItemProps) => ({

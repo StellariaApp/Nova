@@ -6,17 +6,50 @@ import {
   ItemAccordion,
 } from "@stellaria/nova";
 import { page } from "./styles";
+import { NextShade } from "../../core/utils/shade";
 
 const Home = () => (
   <Wrapper as="main" stylex={page.container}>
     <Wrapper as="section" stylex={page.wrapper}>
       <Accordion autoClose items={ACCORDION_ITEMS} />
     </Wrapper>
+    <Button disabled />
+    {VARIANTS.map((variant) => (
+      <Wrapper key={variant} as="section" stylex={page.wrapper}>
+        {COLORS.map((color) =>
+          SHADE.map((shade) => (
+            <Button
+              key={variant + color + shade}
+              color={color}
+              shade={shade}
+              variant={variant}
+              gradient={[color, color]}
+              gradientShade={[shade, NextShade(shade)]}
+            />
+          ))
+        )}
+      </Wrapper>
+    ))}
     <Wrapper as="section" stylex={page.wrapper}>
-      {VARIANTS.map((variant) => (
-        <Button key={variant} variant={variant} />
+      {ALLCOLORCOMBINATIONS.map(([color1, color2]) => (
+        <Button
+          key={color1 + color2}
+          variant="gradient"
+          gradient={[color1, color2]}
+        />
       ))}
-      <Button disabled />
+    </Wrapper>
+    <Wrapper as="section" stylex={page.wrapper}>
+      {ALLCOLORCOMBINATIONS.map(([color1, color2]) =>
+        SHADE.map((shade) => (
+          <Button
+            key={color1 + color2 + shade}
+            variant="gradient"
+            gradient={[color1, color2]}
+            gradientShade={[shade, NextShade(shade)]}
+          />
+        ))
+      )}
     </Wrapper>
     <Wrapper as="section" stylex={page.wrapper}>
       <Icon icon="arrow-up" />
@@ -36,7 +69,31 @@ const Home = () => (
 
 export default Home;
 
-const VARIANTS = ["flat", "outline", "glow", "gradient"] as const;
+const VARIANTS = ["flat", "outline", "glow"] as const;
+const COLORS = [
+  "primary",
+  "secondary",
+  "success",
+  "warning",
+  "danger",
+  "info",
+  "sweet",
+  "disabled",
+] as const;
+const SHADE = [
+  "100",
+  "200",
+  "300",
+  "400",
+  "500",
+  "600",
+  "700",
+  "800",
+  "900",
+] as const;
+const ALLCOLORCOMBINATIONS = COLORS.flatMap((color) =>
+  COLORS.map((colorComb) => [color, colorComb] as const)
+);
 const ACCORDION_ITEMS = [
   {
     id: "1",

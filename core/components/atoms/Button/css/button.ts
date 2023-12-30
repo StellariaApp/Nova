@@ -18,7 +18,11 @@ import {
   ChangeOpacityByColorKey,
   ColorContrast,
 } from "../../../../utils/color";
-import { CreateBoxShadow, CreateGradient } from "../../../../utils/css";
+import {
+  CreateBoxShadow,
+  CreateGradient,
+  CreateGradientAnimation,
+} from "../../../../utils/css";
 import { NextShade } from "../../../../utils/shade";
 
 export const button = stylex.create({
@@ -57,7 +61,7 @@ export const variants = stylex.create({
   flat: (props: ButtonProps) => ({
     backgroundColor: ColorVariable(props),
     borderColor: ColorVariable(props),
-    color: ColorContrast(ValueByColorKey(props)),
+    color: text.base,
     ":hover": {
       backgroundColor: ColorVariable(props, NextShade(props.shade)),
       borderColor: ColorVariable(props, NextShade(props.shade)),
@@ -84,7 +88,7 @@ export const variants = stylex.create({
     ]),
     fontWeight: 500,
     backgroundColor: ChangeOpacityByColorKey(props, 0.2),
-    color: ChangeOpacity(ColorContrast(ColorVariable(props)), 0.6),
+    color: ChangeOpacityByColorKey(props, 0.9),
     borderColor: ColorVariable(props),
     ":hover": {
       boxShadow: CreateBoxShadow([
@@ -97,15 +101,19 @@ export const variants = stylex.create({
         Object.assign({}, props, { shade: NextShade(props.shade) }),
         0.6
       ),
-      color: ColorContrast(ColorVariable(props, NextShade(props.shade))),
+      color: text.base,
     },
   }),
   gradient: (props: ButtonProps) => ({
-    color: ColorContrast(ValueByColorKey(props)),
-    backgroundImage: CreateGradient(props),
-    borderColor: ColorVariableGradient(props)[0],
+    position: "relative",
+    color: text.base,
+    background: CreateGradientAnimation(props),
+    backgroundSize: "250% auto",
+    borderColor: ColorVariableGradient(props)[1],
+    transition: "background-position 0.54s ease",
+
     ":hover": {
-      borderColor: ColorVariableGradient(props)[1],
+      backgroundPosition: "right center",
     },
   }),
   none: (props: ButtonProps) => ({

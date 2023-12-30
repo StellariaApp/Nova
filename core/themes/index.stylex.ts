@@ -15,7 +15,7 @@ export const colorsRaw = {
 
   "secondary.100": "#F1D8FD",
   "secondary.200": "#E1B2FB",
-  "secondary.300": "##C889F3",
+  "secondary.300": "#C889F3",
   "secondary.400": "#AE6AE7",
   secondary: "#893cd7",
   "secondary.600": "#6A2BB8",
@@ -85,15 +85,25 @@ export const colorsRaw = {
 };
 
 export const backgroundRaw = {
-  "base.100": { default: "#ffffff", [DARK]: "#080808" },
-  "base.200": { default: "#fdfdfd", [DARK]: "#070707" },
-  "base.300": { default: "#fbfbfb", [DARK]: "#060606" },
-  "base.400": { default: "#fcfcfc", [DARK]: "#050505" },
-  base: { default: "#fafafa", [DARK]: "#111111" },
-  "base.600": { default: "#cccccc", [DARK]: "#030303" },
-  "base.700": { default: "#c2c2c2", [DARK]: "#020202" },
-  "base.800": { default: "#b8b8b8", [DARK]: "#010101" },
+  "base.100": { default: "#ffffff", [DARK]: "#525252" },
+  "base.200": { default: "#fcfcfc", [DARK]: "#474747" },
+  "base.300": { default: "#fafafa", [DARK]: "#3d3d3d" },
+  "base.400": { default: "#fcfcfc", [DARK]: "#333333" },
+  base: { default: "#fafafa", [DARK]: "#292929" },
+  "base.600": { default: "#cccccc", [DARK]: "#1f1f1f" },
+  "base.700": { default: "#c2c2c2", [DARK]: "#141414" },
+  "base.800": { default: "#b8b8b8", [DARK]: "#0a0a0a" },
   "base.900": { default: "#adadad", [DARK]: "#000000" },
+
+  "alt.100": { default: "#525252", [DARK]: "#ffffff" },
+  "alt.200": { default: "#474747", [DARK]: "#fdfdfd" },
+  "alt.300": { default: "#3d3d3d", [DARK]: "#fbfbfb" },
+  "alt.400": { default: "#333333", [DARK]: "#fcfcfc" },
+  alt: { default: "#292929", [DARK]: "#fafafa" },
+  "alt.600": { default: "#1f1f1f", [DARK]: "#cccccc" },
+  "alt.700": { default: "#141414", [DARK]: "#c2c2c2" },
+  "alt.800": { default: "#0a0a0a", [DARK]: "#b8b8b8" },
+  "alt.900": { default: "#000000", [DARK]: "#adadad" },
 };
 
 export const textRaw = {

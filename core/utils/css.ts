@@ -1,12 +1,23 @@
 import { ArgsGradient, ChangeOpacity, ColorVariableGradient } from "..";
 
-export const CreateGradient = (args?: ArgsGradient) => {
-  const { gradientDirection = "to right" } = args ?? {};
-
+export const CreateGradient = (
+  args?: ArgsGradient,
+  direction = args?.gradientDirection ?? "to right"
+) => {
   const initialColor = ColorVariableGradient(args)[0];
   const finalColor = ColorVariableGradient(args)[1];
 
-  return `linear-gradient(${gradientDirection}, ${initialColor}, ${finalColor})`;
+  return `linear-gradient(${direction}, ${initialColor}, ${finalColor})`;
+};
+
+export const CreateGradientAnimation = (
+  args?: ArgsGradient,
+  direction = args?.gradientDirection ?? "to right"
+) => {
+  const initialColor = ColorVariableGradient(args)[0];
+  const finalColor = ColorVariableGradient(args)[1];
+
+  return `linear-gradient(${direction}, ${initialColor}, ${finalColor}, ${initialColor})`;
 };
 
 type BoxShadow = {
