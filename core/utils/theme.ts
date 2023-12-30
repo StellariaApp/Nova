@@ -5,11 +5,11 @@ import {
 } from "../types/theme";
 
 import { colors, colorsRaw } from "..";
-import { Colors, ColorsKeys, ColorsVariant } from "../types/theme";
+import { Colors, ColorsKeys, ColorsShade } from "../types/theme";
 
 export type ArgscolorVariant = {
   color?: Colors;
-  colorVariant?: ColorsVariant;
+  colorVariant?: ColorsShade;
 };
 
 export type ArgsGradient = {

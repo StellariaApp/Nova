@@ -15,19 +15,21 @@ export type Colors =
   | "sweet"
   | "info"
   | "disabled"
-  | "black"
-  | "white";
+  | "base";
 
-export type ColorsVariant =
-  | "dark"
-  | "darker"
-  | "light"
-  | "lightness"
-  | undefined;
+export type ColorsShade =
+  | "100"
+  | "200"
+  | "300"
+  | "400"
+  | "500"
+  | "600"
+  | "700"
+  | "800"
+  | "900";
 
 export type ColorsGradient = [Colors, Colors];
-
-export type ColorsgradientVariant = [ColorsVariant, ColorsVariant];
+export type ColorsGradientShade = [ColorsShade, ColorsShade];
 
 export type ColorsgradientDirection =
   | "to top"
@@ -38,12 +40,12 @@ export type ColorsgradientDirection =
 export type ColorProps = {
   variant?: VariantColors;
   color?: Colors;
-  colorVariant?: ColorsVariant;
+  colorShade?: ColorsShade;
 };
 
 export type GradientProps = {
   gradient?: ColorsGradient;
-  gradientVariant?: ColorsgradientVariant;
+  gradientShade?: ColorsGradientShade;
   gradientDirection?: ColorsgradientDirection;
 };
 
