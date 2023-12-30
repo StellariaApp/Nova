@@ -1,7 +1,7 @@
 import stylex from "@stylexjs/stylex";
 import { borderRadius } from "../../../../themes/index.stylex";
 import { AccordionItemProps } from "..";
-import { GetCSSVariableByColorKey, GetColorVariable } from "../../../../utils";
+import { ValueByColorKey, ColorVariable } from "../../../../utils";
 import { CreateBoxShadow, CreateGradient } from "../../../../utils/css";
 
 export const item = stylex.create({
@@ -21,30 +21,30 @@ export const item = stylex.create({
 
 export const open = stylex.create({
   flat: (props: AccordionItemProps) => ({
-    backgroundColor: GetColorVariable({
+    backgroundColor: ColorVariable({
       color: props.color ?? "black",
-      colorVariant: props.colorVariant,
+      shade: props.shade,
     }),
     ":hover": {
-      backgroundColor: GetColorVariable({
+      backgroundColor: ColorVariable({
         color: props.color ?? "black",
-        colorVariant: props.colorVariant ?? "light",
+        shade: props.shade ?? "light",
       }),
     },
   }),
   outline: (props: AccordionItemProps) => ({
-    backgroundColor: GetColorVariable({
+    backgroundColor: ColorVariable({
       color: props.color ?? "black",
-      colorVariant: props.colorVariant ?? "light",
+      shade: props.shade ?? "light",
     }),
-    borderColor: GetColorVariable({
+    borderColor: ColorVariable({
       color: props.color ?? "black",
-      colorVariant: props.colorVariant ?? "light",
+      shade: props.shade ?? "light",
     }),
     ":hover": {
-      backgroundColor: GetColorVariable({
+      backgroundColor: ColorVariable({
         color: props.color ?? "black",
-        colorVariant: props.colorVariant ?? "lightness",
+        shade: props.shade ?? "lightness",
       }),
     },
   }),
@@ -52,18 +52,18 @@ export const open = stylex.create({
     boxShadow: CreateBoxShadow([
       {
         blur: 8,
-        color: GetCSSVariableByColorKey({
+        color: ValueByColorKey({
           color: props.color ?? "black",
-          colorVariant: props.colorVariant ?? "light",
+          shade: props.shade ?? "light",
         }),
       },
     ]),
-    backgroundColor: GetColorVariable({
+    backgroundColor: ColorVariable({
       color: props.color ?? "black",
-      colorVariant: props.colorVariant,
+      shade: props.shade,
     }),
     ":hover": {
-      backgroundColor: GetColorVariable(
+      backgroundColor: ColorVariable(
         {
           color: props.color ?? "black",
         },
@@ -74,13 +74,13 @@ export const open = stylex.create({
   gradient: (props: AccordionItemProps) => ({
     backgroundImage: CreateGradient({
       gradient: ["danger", "danger"],
-      gradientVariant: ["light", undefined],
+      gradientShade: ["light", undefined],
       ...props,
     }),
     ":hover": {
       backgroundImage: CreateGradient({
         gradient: ["danger", "danger"],
-        gradientVariant: [undefined, "dark"],
+        gradientShade: [undefined, "dark"],
         ...props,
       }),
     },
@@ -90,35 +90,35 @@ export const open = stylex.create({
 
 export const variants = stylex.create({
   flat: (props: AccordionItemProps) => ({
-    backgroundColor: GetColorVariable(props, "dark", "black"),
+    backgroundColor: ColorVariable(props, "dark", "black"),
     ":hover": {
-      backgroundColor: GetColorVariable(props, undefined, "black"),
+      backgroundColor: ColorVariable(props, undefined, "black"),
     },
   }),
   outline: (props: AccordionItemProps) => ({
     position: "relative",
     border: `1px solid transparent`,
-    borderBottomColor: GetColorVariable(props, "light", "black"),
+    borderBottomColor: ColorVariable(props, "light", "black"),
     ":hover": {
-      backgroundColor: GetColorVariable(props, "light", "black"),
+      backgroundColor: ColorVariable(props, "light", "black"),
     },
   }),
   glow: (props: AccordionItemProps) => ({
-    backgroundColor: GetColorVariable(props, undefined, "black"),
+    backgroundColor: ColorVariable(props, undefined, "black"),
     ":hover": {
-      backgroundColor: GetColorVariable(props, "light", "black"),
+      backgroundColor: ColorVariable(props, "light", "black"),
     },
   }),
   gradient: (props: AccordionItemProps) => ({
     backgroundImage: CreateGradient({
       gradient: ["black", "black"],
-      gradientVariant: [undefined, "dark"],
+      gradientShade: [undefined, "dark"],
       ...props,
     }),
     ":hover": {
       backgroundImage: CreateGradient({
         gradient: ["black", "black"],
-        gradientVariant: ["light", undefined],
+        gradientShade: ["light", undefined],
         ...props,
       }),
     },

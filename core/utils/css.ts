@@ -1,10 +1,10 @@
-import { ArgsGradient, ChangeColorOpacity, GetColorVariableGradient } from "..";
+import { ArgsGradient, ChangeOpacity, ColorVariableGradient } from "..";
 
 export const CreateGradient = (args?: ArgsGradient) => {
   const { gradientDirection = "to right" } = args ?? {};
 
-  const initialColor = GetColorVariableGradient(args)[0];
-  const finalColor = GetColorVariableGradient(args)[1];
+  const initialColor = ColorVariableGradient(args)[0];
+  const finalColor = ColorVariableGradient(args)[1];
 
   return `linear-gradient(${gradientDirection}, ${initialColor}, ${finalColor})`;
 };
@@ -39,7 +39,7 @@ export const CreateBoxShadow = (args?: BoxShadow[]) => {
         throw new Error("Variable CSS with opacity not supported");
 
       const colorWithOpacity = hasOpacity
-        ? ChangeColorOpacity(color, opacity)
+        ? ChangeOpacity(color, opacity)
         : color;
 
       return `${x}px ${y}px ${blur}px ${spread}px ${colorWithOpacity}`;

@@ -1,3 +1,4 @@
+import { ArgsColor, ValueByColorKey } from ".";
 import { NetColor } from "./net";
 
 export const HexToRGB = (hex = "#ffffff") => {
@@ -35,7 +36,7 @@ export const RGBToHex = (rgb = "rgb(255,255,255)") => {
   );
 };
 
-export const GetColorContrast = (
+export const ColorContrast = (
   hex = "#ffffff",
   opt?: { black?: string; white?: string }
 ) => {
@@ -56,11 +57,16 @@ export const isColorDark = (hex = "#ffffff") => {
   return false;
 };
 
-export const ChangeColorOpacity = (hex = "#ffffff", alpha = 0.5) => {
+export const ChangeOpacity = (hex = "#ffffff", alpha = 0.5) => {
   const isHex = hex.indexOf("#") !== -1;
   const color = isHex ? hex : RGBToHex(hex);
   if (!isHex) throw new Error("Color must be in hex format");
   const value = Math.min(Math.max(0, alpha * 100), 100);
   const hexAlpha = Math.round(value * 2.55).toString(16);
   return color + hexAlpha;
+};
+
+export const ChangeOpacityByColorKey = (args?: ArgsColor, alpha = 0.5) => {
+  const color = ValueByColorKey(args);
+  return ChangeOpacity(color, alpha);
 };

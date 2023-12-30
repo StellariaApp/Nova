@@ -1,6 +1,6 @@
 import stylex from "@stylexjs/stylex";
 
-const DARK = "@media (prefers-color-scheme: 600)";
+const DARK = "@media (prefers-color-scheme: dark)";
 
 export const colorsRaw = {
   "primary.100": "#D6E4FF",
@@ -82,52 +82,54 @@ export const colorsRaw = {
   "disabled.700": "#858585",
   "disabled.800": "#757575",
   "disabled.900": "#666666",
+};
 
-  "base.100": { default: "#ffffff", [DARK]: "#525252" },
-  "base.200": { default: "#f5f5f5", [DARK]: "#474747" },
-  "base.300": { default: "#ebebeb", [DARK]: "#3d3d3d" },
-  "base.400": { default: "#e0e0e0", [DARK]: "#333333" },
-  base: { default: "#d6d6d6", [DARK]: "#292929" },
-  "base.600": { default: "#cccccc", [DARK]: "#1f1f1f" },
-  "base.700": { default: "#c2c2c2", [DARK]: "#141414" },
-  "base.800": { default: "#b8b8b8", [DARK]: "#0a0a0a" },
+export const backgroundRaw = {
+  "base.100": { default: "#ffffff", [DARK]: "#080808" },
+  "base.200": { default: "#fdfdfd", [DARK]: "#070707" },
+  "base.300": { default: "#fbfbfb", [DARK]: "#060606" },
+  "base.400": { default: "#fcfcfc", [DARK]: "#050505" },
+  base: { default: "#fafafa", [DARK]: "#111111" },
+  "base.600": { default: "#cccccc", [DARK]: "#030303" },
+  "base.700": { default: "#c2c2c2", [DARK]: "#020202" },
+  "base.800": { default: "#b8b8b8", [DARK]: "#010101" },
   "base.900": { default: "#adadad", [DARK]: "#000000" },
 };
 
 export const textRaw = {
-  "text.100": { default: "#525252", [DARK]: "#cccccc" },
-  "text.200": { default: "#474747", [DARK]: "#c2c2c2" },
-  "text.300": { default: "#3d3d3d", [DARK]: "#b8b8b8" },
-  "text.400": { default: "#333333", [DARK]: "#adadad" },
-  text: { default: "#000000", [DARK]: "#ffffff" },
-  "text.600": { default: "#0a0a0a", [DARK]: "#f5f5f5" },
-  "text.700": { default: "#141414", [DARK]: "#ebebeb" },
-  "text.800": { default: "#1f1f1f", [DARK]: "#e0e0e0" },
-  "text.900": { default: "#292929", [DARK]: "#d6d6d6" },
+  "base.100": { default: "#525252", [DARK]: "#cccccc" },
+  "base.200": { default: "#474747", [DARK]: "#c2c2c2" },
+  "base.300": { default: "#3d3d3d", [DARK]: "#b8b8b8" },
+  "base.400": { default: "#333333", [DARK]: "#adadad" },
+  base: { default: "#000000", [DARK]: "#ffffff" },
+  "base.600": { default: "#0a0a0a", [DARK]: "#f5f5f5" },
+  "base.700": { default: "#141414", [DARK]: "#ebebeb" },
+  "base.800": { default: "#1f1f1f", [DARK]: "#e0e0e0" },
+  "base.900": { default: "#292929", [DARK]: "#d6d6d6" },
 
-  "textAlt.100": { default: "#cccccc", [DARK]: "#525252" },
-  "textAlt.200": { default: "#c2c2c2", [DARK]: "#474747" },
-  "textAlt.300": { default: "#b8b8b8", [DARK]: "#3d3d3d" },
-  "textAlt.400": { default: "#adadad", [DARK]: "#333333" },
-  textAlt: { default: "#ffffff", [DARK]: "#000000" },
-  "textAlt.600": { default: "#f5f5f5", [DARK]: "#0a0a0a" },
-  "textAlt.700": { default: "#ebebeb", [DARK]: "#141414" },
-  "textAlt.800": { default: "#e0e0e0", [DARK]: "#1f1f1f" },
-  "textAlt.900": { default: "#d6d6d6", [DARK]: "#292929" },
+  "alt.100": { default: "#cccccc", [DARK]: "#525252" },
+  "alt.200": { default: "#c2c2c2", [DARK]: "#474747" },
+  "alt.300": { default: "#b8b8b8", [DARK]: "#3d3d3d" },
+  "alt.400": { default: "#adadad", [DARK]: "#333333" },
+  alt: { default: "#ffffff", [DARK]: "#000000" },
+  "alt.600": { default: "#f5f5f5", [DARK]: "#0a0a0a" },
+  "alt.700": { default: "#ebebeb", [DARK]: "#141414" },
+  "alt.800": { default: "#e0e0e0", [DARK]: "#1f1f1f" },
+  "alt.900": { default: "#d6d6d6", [DARK]: "#292929" },
 };
 
 export const propertiesRaw = {
   white: "#ffffff",
   black: "#000000",
 
-  background: "#ffffff",
-  foreground: "#ffffff",
-
   border: "1px solid #d6d6d6",
   borderAlt: "1px solid #3f3f3f",
 
-  shadow: "0px 0px 8px #00000080",
-  shadowAlt: "0px 0px 4px #0000003a",
+  shadow: { default: "0px 0px 8px #00000020", [DARK]: "0px 0px 8px #ffffff20" },
+  shadowAlt: {
+    default: "0px 0px 8px #00000040",
+    [DARK]: "0px 0px 8px #ffffff40",
+  },
 };
 
 export const sizesRaw = {
@@ -167,6 +169,7 @@ export const fontsRaw = {
 
 export const colors = stylex.defineVars(colorsRaw);
 export const text = stylex.defineVars(textRaw);
+export const background = stylex.defineVars(backgroundRaw);
 export const properties = stylex.defineVars(propertiesRaw);
 export const sizes = stylex.defineVars(sizesRaw);
 export const spacing = stylex.defineVars(spacingRaw);
@@ -176,6 +179,7 @@ export const fonts = stylex.defineVars(fontsRaw);
 export const theme = {
   colors,
   text,
+  background,
   properties,
   sizes,
   spacing,

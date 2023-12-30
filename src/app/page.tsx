@@ -6,7 +6,6 @@ import {
   ItemAccordion,
 } from "@stellaria/nova";
 import { page } from "./styles";
-import { RefButton } from "@/components/RefButton";
 
 const Home = () => (
   <Wrapper as="main" stylex={page.container}>
@@ -14,8 +13,6 @@ const Home = () => (
       <Accordion autoClose items={ACCORDION_ITEMS} />
     </Wrapper>
     <Wrapper as="section" stylex={page.wrapper}>
-      <RefButton />
-      <Button color="white" />
       {VARIANTS.map((variant) => (
         <Button key={variant} variant={variant} />
       ))}
@@ -39,7 +36,7 @@ const Home = () => (
 
 export default Home;
 
-const VARIANTS = ["flat", "glow", "gradient", "outline"] as const;
+const VARIANTS = ["flat", "outline", "glow", "gradient"] as const;
 const ACCORDION_ITEMS = [
   {
     id: "1",

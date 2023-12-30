@@ -1,7 +1,7 @@
 import stylex from "@stylexjs/stylex";
 import { borderRadius, colors } from "../../../../themes/index.stylex";
 import { AccordionContainerProps } from "..";
-import { GetCSSVariableByColorKey, GetColorVariable } from "../../../../utils";
+import { ValueByColorKey, ColorVariable } from "../../../../utils";
 
 export const container = stylex.create({
   base: {
@@ -21,20 +21,20 @@ export const container = stylex.create({
 
 export const variants = stylex.create({
   flat: (props: AccordionContainerProps) => ({
-    backgroundColor: GetColorVariable(props, "dark", "black"),
+    backgroundColor: ColorVariable(props, "dark", "black"),
   }),
   outline: (props: AccordionContainerProps) => ({
     backgroundColor: "transparent",
     border: `1px solid transparent`,
-    borderColor: GetColorVariable(props, "light", "black"),
+    borderColor: ColorVariable(props, "light", "black"),
   }),
   glow: (props: AccordionContainerProps) => ({
-    backgroundColor: GetCSSVariableByColorKey(props, "dark", "black"),
-    borderColor: GetColorVariable(props, "lightness"),
+    backgroundColor: ValueByColorKey(props, "dark", "black"),
+    borderColor: ColorVariable(props, "lightness"),
   }),
   gradient: (props: AccordionContainerProps) => ({
-    backgroundColor: GetCSSVariableByColorKey(props, "dark", "black"),
-    borderColor: GetColorVariable(props, "lightness"),
+    backgroundColor: ValueByColorKey(props, "dark", "black"),
+    borderColor: ColorVariable(props, "lightness"),
   }),
   none: (props: AccordionContainerProps) => ({
     padding: 0,

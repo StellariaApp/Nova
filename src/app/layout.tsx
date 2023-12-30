@@ -1,5 +1,6 @@
-import type { RC } from "@stellaria/nova";
+import { background, type RC } from "@stellaria/nova";
 import type { Metadata } from "next";
+import stylex from "@stylexjs/stylex";
 
 import "./main.css";
 
@@ -12,7 +13,12 @@ const Layout: RC = (props) => {
   const { children } = props;
 
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      style={{
+        backgroundColor: background.base,
+      }}
+    >
       <body>{children}</body>
     </html>
   );

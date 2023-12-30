@@ -1,80 +1,76 @@
 import {
   ColorsGradient,
-  ColorsgradientDirection,
-  ColorsgradientVariant,
+  ColorsGradientDirection,
+  ColorsGradientShade,
 } from "../types/theme";
 
 import { colors, colorsRaw } from "..";
-import { Colors, ColorsKeys, ColorsShade } from "../types/theme";
+import { Colors, ColorsKeys, Shade } from "../types/theme";
 
-export type ArgscolorVariant = {
+export type ArgsColor = {
   color?: Colors;
-  colorVariant?: ColorsShade;
+  shade?: Shade;
 };
 
 export type ArgsGradient = {
   gradient?: ColorsGradient;
-  gradientVariant?: ColorsgradientVariant;
-  gradientDirection?: ColorsgradientDirection;
+  gradientShade?: ColorsGradientShade;
+  gradientDirection?: ColorsGradientDirection;
 };
 
-export const GetColorKey = (args?: ArgscolorVariant) => {
-  const { color = "primary", colorVariant } = args ?? {};
+export const ColorKey = (args?: ArgsColor) => {
+  const { color = "primary", shade = "500" } = args ?? {};
 
-  const key = color;
-  const variant = colorVariant ? `.${colorVariant}` : "";
-
-  return `${key}${variant}` as ColorsKeys;
+  return `${color}${shade === "500" ? "" : `.${shade}`}` as ColorsKeys;
 };
 
-export const GetColorVariable = (
-  args?: ArgscolorVariant,
-  colorVariant = args?.colorVariant,
+export const ColorVariable = (
+  args?: ArgsColor,
+  shade = args?.shade,
   color = args?.color
 ) => {
-  const newArgs = { ...args, colorVariant, color };
-  const keyColor = GetColorKey(newArgs);
+  const newArgs = { ...args, shade, color };
+  const keyColor = ColorKey(newArgs);
 
   return colors[keyColor]?.toString() ?? "";
 };
 
-export const GetCSSVariable = (variable?: ColorsKeys) => {
+export const CSSVariable = (variable?: ColorsKeys) => {
   const keyColor = (variable ?? "primary") as keyof typeof colorsRaw;
   const color = colorsRaw[keyColor];
+
   return color;
 };
 
-export const GetCSSVariableByColorKey = (
-  args?: ArgscolorVariant,
-  colorVariant = args?.colorVariant,
+export const ValueByColorKey = (
+  args?: ArgsColor,
+  shade = args?.shade,
   color = args?.color
 ) => {
-  const newArgs = { ...args, colorVariant, color };
-  const key = GetColorKey(newArgs);
-  const cssVariable = GetCSSVariable(key);
+  const newArgs = { ...args, shade, color };
+  const key = ColorKey(newArgs);
+  const cssVariable = CSSVariable(key);
 
   return cssVariable;
 };
 
-export const GetColorVariableGradient = (args?: ArgsGradient, index = 0) => {
-  const {
-    gradient = ["danger", "danger"],
-    gradientVariant = [undefined, "light"],
-  } = args ?? {};
+export const ColorVariableGradient = (args?: ArgsGradient, index = 0) => {
+  const { gradient = ["sweet", "sweet"], gradientShade = ["500", "400"] } =
+    args ?? {};
 
   const args1 = {
     color: gradient[0],
-    colorVariant: gradientVariant[0],
+    shade: gradientShade[0],
   };
 
-  const color1 = GetColorVariable(args1);
+  const color1 = ColorVariable(args1);
 
   const args2 = {
     color: gradient[1],
-    colorVariant: gradientVariant[1],
+    shade: gradientShade[1],
   };
 
-  const color2 = GetColorVariable(args2);
+  const color2 = ColorVariable(args2);
 
   return [color1, color2];
 };

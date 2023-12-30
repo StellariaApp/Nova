@@ -1,10 +1,10 @@
-import { colors, theme } from "..";
+import { colors, colorsRaw, theme } from "..";
 
 export type Theme = typeof theme;
 
 export type VariantColors = "flat" | "outline" | "glow" | "gradient" | "none";
 
-export type ColorsKeys = keyof typeof colors;
+export type ColorsKeys = keyof typeof colorsRaw;
 
 export type Colors =
   | "primary"
@@ -14,10 +14,9 @@ export type Colors =
   | "warning"
   | "sweet"
   | "info"
-  | "disabled"
-  | "base";
+  | "disabled";
 
-export type ColorsShade =
+export type Shade =
   | "100"
   | "200"
   | "300"
@@ -29,9 +28,9 @@ export type ColorsShade =
   | "900";
 
 export type ColorsGradient = [Colors, Colors];
-export type ColorsGradientShade = [ColorsShade, ColorsShade];
+export type ColorsGradientShade = [Shade, Shade];
 
-export type ColorsgradientDirection =
+export type ColorsGradientDirection =
   | "to top"
   | "to right"
   | "to bottom"
@@ -40,13 +39,13 @@ export type ColorsgradientDirection =
 export type ColorProps = {
   variant?: VariantColors;
   color?: Colors;
-  colorShade?: ColorsShade;
+  shade?: Shade;
 };
 
 export type GradientProps = {
   gradient?: ColorsGradient;
   gradientShade?: ColorsGradientShade;
-  gradientDirection?: ColorsgradientDirection;
+  gradientDirection?: ColorsGradientDirection;
 };
 
 export type ColorGradientProps = ColorProps & GradientProps;

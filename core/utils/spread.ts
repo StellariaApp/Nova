@@ -6,10 +6,10 @@ export const SpreadColorGradient = <P extends ColorGradientProps>(props: P) => {
   const {
     variant,
     color,
-    colorVariant,
+    shade,
     gradient,
     gradientDirection,
-    gradientVariant,
+    gradientShade,
     ...spread
   } = props;
 
