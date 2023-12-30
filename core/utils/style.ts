@@ -6,7 +6,7 @@ import { IStyle } from "../types/style";
 export const StyleWithProps = <P extends object, OG extends object>(
   styles: IStyle,
   spread: P,
-  ogProps: OG & P
+  ogProps = spread as OG & P
 ) => {
   const { stylex: stylexProps, ...rest } = spread as StylexComponent<P & OG>;
 

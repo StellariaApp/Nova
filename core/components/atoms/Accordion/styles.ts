@@ -6,55 +6,44 @@ import type {
   AccordionIconProps,
   AccordionItemProps,
   AccordionTriggerProps,
+  AccordionWrapperProps,
 } from "./types";
-import { container, content, icon, item, trigger } from "./css";
+import { container, content, icon, item, trigger, wrapper } from "./css";
 import { StyleWithProps } from "../../../utils";
-import {
-  SpreadAccordionContainerProps,
-  SpreadAccordionItemsProps,
-} from "../../../utils/spread";
+import { SpreadAccordionProps } from "../../../utils/spread";
 
 export const ContainerStyles = (props: AccordionContainerProps) => {
   const styles = stylex.props(container.base);
 
-  const { spread } = SpreadAccordionContainerProps(props);
-
+  const { spread } = SpreadAccordionProps(props);
   return StyleWithProps(styles, spread, props);
 };
 
 export const ItemStyles = (props: AccordionItemProps) => {
-  const { spread } = SpreadAccordionItemsProps(props);
-
   const styles = stylex.props(item.base, item.open(props));
 
+  const { spread } = SpreadAccordionProps(props);
   return StyleWithProps(styles, spread, props);
 };
 
 export const TriggerStyles = (props: AccordionTriggerProps) => {
   const styles = stylex.props(trigger.base);
-
-  return StyleWithProps(styles, props, props);
+  return StyleWithProps(styles, props);
 };
 
 export const ContentStyles = (props: AccordionContentProps) => {
   const styles = stylex.props(content.base);
-
-  return StyleWithProps(styles, props, props);
+  return StyleWithProps(styles, props);
 };
 
 export const IconStyles = (props: AccordionIconProps) => {
-  const stylesWrapper = stylex.props(icon.wrapper, icon.rotate(props));
-  const stylesIcon = stylex.props(icon.icon);
+  const styles = stylex.props(icon.base);
+  return StyleWithProps(styles, props);
+};
 
-  const propsWrapper = props?.components?.wrapper ?? {};
-  const propsIcon = props?.components?.icon ?? {};
+export const WrapperStyles = (props: AccordionWrapperProps) => {
+  const styles = stylex.props(wrapper.base, wrapper.rotate(props));
 
-  const wrapperProps = StyleWithProps(
-    stylesWrapper,
-    propsWrapper,
-    propsWrapper
-  );
-  const iconProps = StyleWithProps(stylesIcon, propsIcon, propsIcon);
-
-  return { stylesWrapper: wrapperProps, stylesIcon: iconProps };
+  const { spread } = SpreadAccordionProps(props);
+  return StyleWithProps(styles, spread, props);
 };

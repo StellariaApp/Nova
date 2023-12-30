@@ -2,30 +2,24 @@
 
 import type { AccordionIconProps } from "../types";
 import { IconStyles } from "../styles";
-import { Icon, Wrapper } from "../..";
+import { Icon } from "../..";
 import { useAtom } from "jotai";
 import { StorageAccordionAtom } from "../jotai/storage";
 
-export const AccordionIcon = (props: AccordionIconProps) => {
+export const AccordionIcons = (props: AccordionIconProps) => {
   const { icon, hashItem } = props;
 
   const [storage] = useAtom(StorageAccordionAtom);
-
   const open = storage[hashItem ?? ""] ?? props.open;
 
-  const { stylesIcon, stylesWrapper } = IconStyles({
-    ...props,
-    open,
-  });
+  const styles = IconStyles(props);
 
   return (
-    <Wrapper {...stylesWrapper}>
-      <Icon
-        color="white"
-        size="16px"
-        icon={Array.isArray(icon) ? icon[open ? 1 : 0] : icon ?? "chevron-down"}
-        {...stylesIcon}
-      />
-    </Wrapper>
+    <Icon
+      color="white"
+      size="16px"
+      {...styles}
+      icon={Array.isArray(icon) ? icon[open ? 1 : 0] : icon ?? "chevron-down"}
+    />
   );
 };

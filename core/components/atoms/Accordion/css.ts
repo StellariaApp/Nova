@@ -6,7 +6,7 @@ import {
   fonts,
   sizes,
 } from "../../../themes/index.stylex";
-import { AccordionIconProps, AccordionItemProps } from ".";
+import { AccordionItemProps, AccordionWrapperProps } from ".";
 
 export const container = stylex.create({
   base: {
@@ -84,8 +84,11 @@ export const content = stylex.create({
 });
 
 export const icon = stylex.create({
-  icon: {},
-  wrapper: {
+  base: {},
+});
+
+export const wrapper = stylex.create({
+  base: {
     width: "max-content",
     height: "max-content",
     display: "flex",
@@ -94,7 +97,7 @@ export const icon = stylex.create({
     gap: "8px",
     transition: "all 0.3s ease-in-out",
   },
-  rotate: (props: AccordionIconProps) => ({
+  rotate: (props: AccordionWrapperProps) => ({
     transform:
       (props.icon && Array.isArray(props.icon)
         ? props.iconRotate ?? false

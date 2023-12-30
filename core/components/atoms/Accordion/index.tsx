@@ -3,11 +3,12 @@ import { AccordionContent } from "./components/Content";
 import { AccordionTrigger } from "./components/Trigger";
 import { AccordionItem } from "./components/Item";
 import { AccordionProps } from "./types";
+import { AccordionIcons } from "./components/Icons";
+import { AccordionWrapper } from "./components/Wrapper";
 import { useId } from "react";
-import { AccordionIcon } from "./components/Icons";
 
 export const Accordion = (props: AccordionProps) => {
-  const { items, icon, iconRotate, components, autoClose } = props;
+  const { items, icon, iconRotate, components } = props;
 
   const hash = useId();
 
@@ -18,20 +19,21 @@ export const Accordion = (props: AccordionProps) => {
           key={item.id}
           hash={hash}
           hashItem={hash + index}
-          autoClose={autoClose}
           open={item.open}
+          autoClose={props.autoClose}
           {...components?.item}
         >
           <AccordionTrigger {...components?.trigger}>
             {item.title}
-            <AccordionIcon
+            <AccordionWrapper
               hash={hash}
               hashItem={hash + index}
               open={item.open}
-              icon={icon}
               iconRotate={iconRotate}
-              {...components?.icon}
-            />
+              {...components?.wrapper}
+            >
+              <AccordionIcons icon={icon} {...components?.icons} />
+            </AccordionWrapper>
           </AccordionTrigger>
           <AccordionContent {...components?.content}>
             {item.content}
@@ -47,7 +49,8 @@ export {
   AccordionContent,
   AccordionTrigger,
   AccordionItem,
-  AccordionIcon,
+  AccordionIcons,
+  AccordionWrapper,
 };
 
 export * from "./types";

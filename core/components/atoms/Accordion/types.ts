@@ -5,30 +5,49 @@ import {
 } from "react";
 import { StylexComponent } from "../../../types/stylex";
 import { IconProps } from "../Icon/types";
-import { WrapperProps } from "../Wrapper/types";
 
 export type AccordionContainerProps = StylexComponent<
-  {
-    hash?: string;
-  },
+  HashItem,
   AccordionContainer
 >;
 
-export type AccordionItemProps = StylexComponent<
-  {
-    hash?: string;
-    hashItem?: string;
-    open?: boolean;
-    autoClose?: boolean;
-  },
-  AccordionItem
->;
-export type AccordionTriggerProps = StylexComponent<{}, AccordionTrigger>;
 export type AccordionContentProps = StylexComponent<{}, AccordionContent>;
+export type AccordionIconProps = HashItem & Omit<IconProps, "icon">;
+export type AccordionItemProps = StylexComponent<HashItem, AccordionItem>;
+export type AccordionTriggerProps = StylexComponent<{}, AccordionTrigger>;
+export type AccordionWrapperProps = StylexComponent<HashItem, AccordionWrapper>;
 
 type IconStringArray =
   | IconProps["icon"]
   | [IconProps["icon"], IconProps["icon"]];
+
+type HashItem = {
+  hash?: string;
+  hashItem?: string;
+  open?: boolean;
+  icon?: IconStringArray;
+  iconRotate?: boolean;
+  autoClose?: boolean;
+};
+
+export type AccordionProps = {
+  icon?: IconStringArray;
+  iconRotate?: boolean;
+  autoClose?: boolean;
+
+  items?: ItemAccordion[];
+
+  components?: {
+    container?: AccordionContainerProps;
+    content?: AccordionContentProps;
+    icons?: AccordionIconProps;
+    item?: AccordionItemProps;
+    trigger?: AccordionTriggerProps;
+    wrapper?: AccordionWrapperProps;
+  };
+};
+
+export type AccordionCollectorProps = AccordionProps & HashItem;
 
 export type ItemAccordion = {
   id: string;
@@ -36,32 +55,6 @@ export type ItemAccordion = {
   content?: string;
   open?: boolean;
   icon?: IconStringArray;
-};
-
-export type AccordionIconProps = {
-  open?: boolean;
-  hash?: string;
-  hashItem?: string;
-  icon?: IconStringArray;
-  iconRotate?: boolean;
-  components?: {
-    wrapper?: WrapperProps;
-    icon?: IconProps;
-  };
-};
-
-export type AccordionProps = {
-  items?: ItemAccordion[];
-  icon?: IconStringArray;
-  iconRotate?: boolean;
-  autoClose?: boolean;
-  components?: {
-    container?: AccordionContainerProps;
-    item?: AccordionItemProps;
-    trigger?: AccordionTriggerProps;
-    content?: AccordionContentProps;
-    icon?: AccordionIconProps;
-  };
 };
 
 type AccordionContainer = DetailedHTMLProps<
@@ -82,4 +75,9 @@ type AccordionTrigger = DetailedHTMLProps<
 export type AccordionContent = DetailedHTMLProps<
   HTMLAttributes<HTMLParagraphElement>,
   HTMLParagraphElement
+>;
+
+export type AccordionWrapper = DetailedHTMLProps<
+  HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
 >;
