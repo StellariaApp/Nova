@@ -107,10 +107,10 @@ export const variants = stylex.create({
   gradient: (props: ButtonProps) => ({
     position: "relative",
     color: text.base,
-    background: CreateGradientAnimation(props),
+    background: CreateGradientAnimation(props, "-70deg"),
     backgroundSize: "250% auto",
     borderColor: ColorVariableGradient(props)[1],
-    transition: "background-position 0.54s ease",
+    transition: "background-position 0.45s ease-in-out",
 
     ":hover": {
       backgroundPosition: "right center",

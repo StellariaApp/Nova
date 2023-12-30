@@ -34,7 +34,8 @@ export type ColorsGradientDirection =
   | "to top"
   | "to right"
   | "to bottom"
-  | "to left";
+  | "to left"
+  | `${number}deg`;
 
 export type ColorProps = {
   variant?: VariantColors;
