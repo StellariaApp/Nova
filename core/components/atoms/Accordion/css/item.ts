@@ -1,17 +1,7 @@
 import stylex from "@stylexjs/stylex";
-import {
-  borderRadius,
-  colors,
-  properties,
-} from "../../../../themes/index.stylex";
+import { borderRadius } from "../../../../themes/index.stylex";
 import { AccordionItemProps } from "..";
-import {
-  ChangeColorOpacity,
-  GetCSSVariableByColorKey,
-  GetColorContrast,
-  GetColorVariable,
-  GetColorVariableGradient,
-} from "../../../../utils";
+import { GetCSSVariableByColorKey, GetColorVariable } from "../../../../utils";
 import { CreateBoxShadow, CreateGradient } from "../../../../utils/css";
 
 export const item = stylex.create({
