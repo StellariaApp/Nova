@@ -10,8 +10,8 @@ export const AccordionIcons = (props: AccordionIconProps) => {
   const { icon, hashItem } = props;
 
   const [storage] = useAtom(StorageAccordionAtom);
-  const open = storage[hashItem ?? ""] ?? props.open;
 
+  const open = storage[hashItem ?? ""] ?? props.open;
   const styles = IconStyles(props);
 
   return (

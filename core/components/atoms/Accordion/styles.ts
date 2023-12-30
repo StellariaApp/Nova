@@ -38,6 +38,7 @@ export const ContentStyles = (props: AccordionContentProps) => {
 
 export const IconStyles = (props: AccordionIconProps) => {
   const styles = stylex.props(icon.base);
+
   return StyleWithProps(styles, props);
 };
 

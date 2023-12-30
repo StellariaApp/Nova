@@ -8,7 +8,7 @@ import { AccordionWrapper } from "./components/Wrapper";
 import { useId } from "react";
 
 export const Accordion = (props: AccordionProps) => {
-  const { items, icon, iconRotate, components } = props;
+  const { items, components } = props;
 
   const hash = useId();
 
@@ -20,7 +20,6 @@ export const Accordion = (props: AccordionProps) => {
           hash={hash}
           hashItem={hash + index}
           open={item.open}
-          autoClose={props.autoClose}
           {...components?.item}
         >
           <AccordionTrigger {...components?.trigger}>
@@ -29,10 +28,14 @@ export const Accordion = (props: AccordionProps) => {
               hash={hash}
               hashItem={hash + index}
               open={item.open}
-              iconRotate={iconRotate}
+              iconRotate={props?.iconRotate}
               {...components?.wrapper}
             >
-              <AccordionIcons icon={icon} {...components?.icons} />
+              <AccordionIcons
+                hashItem={hash + index}
+                icon={item.icon ?? props?.icon}
+                {...components?.icons}
+              />
             </AccordionWrapper>
           </AccordionTrigger>
           <AccordionContent {...components?.content}>
