@@ -1,8 +1,8 @@
 import stylex from "@stylexjs/stylex";
-import { IconProps } from "./types";
-import { StyleWithProps } from "../../../utils/style";
-import { svg, path, pathVariants } from "./css";
-import { SpreadIconProps } from "../../../utils/spread";
+import { IconProps } from "../types";
+import { StyleWithProps } from "../../../../utils/style";
+import { svg, path, pathVariants } from "../css/icon";
+import { SpreadIconProps } from "../../../../utils/spread";
 
 const SvgStyles = (props: IconProps) => {
   const { components, spread } = SpreadIconProps(props);

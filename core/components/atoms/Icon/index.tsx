@@ -2,7 +2,7 @@ import type { Ref } from "react";
 
 import { forwardRef } from "react";
 import { GetIcon } from "../../../utils/icon";
-import { Styles } from "./styles";
+import { Styles } from "./styles/icon";
 import { IconProps } from "./types";
 
 const IconRef = (props: IconProps, ref: Ref<SVGSVGElement>) => {
