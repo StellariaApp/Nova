@@ -73,10 +73,12 @@ export const open = stylex.create({
       colorVariant: props.colorVariant,
     }),
     ":hover": {
-      backgroundColor: GetColorVariable({
-        color: props.color ?? "black",
-        colorVariant: props.colorVariant ?? "dark",
-      }),
+      backgroundColor: GetColorVariable(
+        {
+          color: props.color ?? "black",
+        },
+        "dark"
+      ),
     },
   }),
   gradient: (props: AccordionItemProps) => ({
@@ -112,14 +114,9 @@ export const variants = stylex.create({
     },
   }),
   glow: (props: AccordionItemProps) => ({
-    backgroundColor: GetColorVariable(props, "dark", "black"),
+    backgroundColor: GetColorVariable(props, undefined, "black"),
     ":hover": {
-      backgroundColor: GetColorVariable(
-        {
-          color: props.color ?? "black",
-        },
-        "dark"
-      ),
+      backgroundColor: GetColorVariable(props, "light", "black"),
     },
   }),
   gradient: (props: AccordionItemProps) => ({
