@@ -95,9 +95,9 @@ export const variants = stylex.create({
   gradient: (props: ButtonProps) => ({
     color: GetColorContrast(GetCSSVariableByColorKey(props)),
     backgroundImage: CreateGradient(props),
-    borderColor: GetColorVariableGradient(props, 0),
+    borderColor: GetColorVariableGradient(props)[0],
     ":hover": {
-      borderColor: GetColorVariableGradient(props, 1),
+      borderColor: GetColorVariableGradient(props)[1],
     },
   }),
   none: (props: ButtonProps) => ({

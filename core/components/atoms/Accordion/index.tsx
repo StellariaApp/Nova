@@ -8,29 +8,43 @@ import { AccordionWrapper } from "./components/Wrapper";
 import { useId } from "react";
 
 export const Accordion = (props: AccordionProps) => {
-  const { items, components } = props;
+  const { items, components, autoClose, icon, iconRotate, ...rest } = props;
 
   const hash = useId();
 
   return (
-    <AccordionContainer hash={hash} {...components?.container}>
+    <AccordionContainer hash={hash} {...rest} {...components?.container}>
       {items?.map((item, index) => {
         const hashItem = {
           hash: hash,
           hashItem: hash + index,
           open: item.open,
-          iconRotate: props?.iconRotate,
-          icon: item.icon ?? props?.icon,
+          iconRotate,
+          autoClose,
+          icon: item.icon ?? icon,
         };
         return (
-          <AccordionItem key={item.id} {...hashItem} {...components?.item}>
-            <AccordionTrigger {...components?.trigger}>
+          <AccordionItem
+            key={item.id}
+            {...hashItem}
+            {...rest}
+            {...components?.item}
+          >
+            <AccordionTrigger {...rest} {...components?.trigger}>
               {item.title}
-              <AccordionWrapper {...hashItem} {...components?.wrapper}>
-                <AccordionIcons {...hashItem} {...components?.icons} />
+              <AccordionWrapper
+                {...hashItem}
+                {...rest}
+                {...components?.wrapper}
+              >
+                <AccordionIcons
+                  {...hashItem}
+                  {...rest}
+                  {...components?.icons}
+                />
               </AccordionWrapper>
             </AccordionTrigger>
-            <AccordionContent {...components?.content}>
+            <AccordionContent {...rest} {...components?.content}>
               {item.content}
             </AccordionContent>
           </AccordionItem>

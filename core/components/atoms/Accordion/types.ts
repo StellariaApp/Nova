@@ -5,17 +5,26 @@ import {
 } from "react";
 import { StylexComponent } from "../../../types/stylex";
 import { IconProps } from "../Icon/types";
+import { ColorGradientProps } from "../../../types";
 
 export type AccordionContainerProps = StylexComponent<
   HashItem,
-  AccordionContainer
+  AccordionContainer & ColorGradientProps
 >;
 
-export type AccordionContentProps = StylexComponent<{}, AccordionContent>;
+export type AccordionContentProps = StylexComponent<{}, AccordionContent> &
+  ColorGradientProps;
 export type AccordionIconProps = HashItem & Omit<IconProps, "icon">;
-export type AccordionItemProps = StylexComponent<HashItem, AccordionItem>;
-export type AccordionTriggerProps = StylexComponent<{}, AccordionTrigger>;
-export type AccordionWrapperProps = StylexComponent<HashItem, AccordionWrapper>;
+export type AccordionItemProps = StylexComponent<HashItem, AccordionItem> &
+  ColorGradientProps;
+export type AccordionTriggerProps = StylexComponent<
+  {},
+  AccordionTrigger & ColorGradientProps
+>;
+export type AccordionWrapperProps = StylexComponent<
+  HashItem,
+  AccordionWrapper & ColorGradientProps
+>;
 
 type IconStringArray =
   | IconProps["icon"]
@@ -42,9 +51,7 @@ export type AccordionProps = {
     trigger?: AccordionTriggerProps;
     wrapper?: AccordionWrapperProps;
   };
-};
-
-export type AccordionCollectorProps = AccordionProps | HashItem;
+} & ColorGradientProps;
 
 export type ItemAccordion = {
   id: string;
