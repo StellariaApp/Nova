@@ -63,7 +63,7 @@ export const ValueByColorKey = (
 };
 
 export const ColorVariableGradient = (args?: ArgsGradient) => {
-  const { gradient = ["sweet", "sweet"], gradientShade = ["500", "400"] } =
+  const { gradient = ["primary", "sweet"], gradientShade = ["500", "400"] } =
     args ?? {};
 
   const args1 = {

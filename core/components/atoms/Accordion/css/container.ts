@@ -33,7 +33,7 @@ export const variants = stylex.create({
     borderColor: ColorVariableWithDefault(props, background["base.600"]),
   }),
   glow: (props: AccordionContainerProps) => ({
-    backgroundColor: ChangeOpacityByColorKey(props, 0.2),
+    backgroundColor: ChangeOpacityByColorKey(props, 0.1),
     border: `1px solid transparent`,
     borderColor: ChangeOpacityByColorKey(props, 0.2),
     backdropFilter: "blur(12px)",
