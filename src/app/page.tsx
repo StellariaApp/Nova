@@ -4,36 +4,48 @@ import {
   Icon,
   Accordion,
   ItemAccordion,
+  colors,
+  fonts,
+  sizes,
 } from "@stellaria/nova";
 import { page } from "./styles";
 import { ToggleTheme } from "@/components/ToggleTheme";
+import stylex from "@stylexjs/stylex";
 
 const Home = () => (
   <Wrapper as="main" stylex={page.container}>
     <ToggleTheme />
     <Wrapper as="section" stylex={page.wrapper}>
       {VARIANTS.map((variant) => (
-        <Accordion
-          key={variant}
-          variant={variant}
-          autoClose
-          items={ACCORDION_ITEMS}
-        />
+        <Wrapper key={variant} stylex={page.wrapper}>
+          <span {...stylex.props(page.title())}>{variant.toUpperCase()}</span>
+          <Accordion variant={variant} autoClose items={ACCORDION_ITEMS} />
+        </Wrapper>
       ))}
     </Wrapper>
-    <Button disabled />
-    {VARIANTS.map((variant) => (
-      <Wrapper key={variant} as="section" stylex={page.wrapper}>
-        {COLORS.map((color) => (
-          <Button
-            key={variant + color}
-            color={color}
-            variant={variant}
-            gradient={[color, "sweet"]}
-          />
-        ))}
+    <Wrapper as="section" stylex={page.wrapper}>
+      <Wrapper stylex={page.wrapper}>
+        <span {...stylex.props(page.title())}>DISABLE</span>
+        <Wrapper stylex={page.wrapper}>
+          <Button disabled />
+        </Wrapper>
       </Wrapper>
-    ))}
+      {VARIANTS.map((variant) => (
+        <Wrapper key={variant} stylex={page.wrapper}>
+          <span {...stylex.props(page.title())}>{variant.toUpperCase()}</span>
+          <Wrapper key={variant} stylex={page.wrapper}>
+            {COLORS.map((color) => (
+              <Button
+                key={variant + color}
+                color={color}
+                variant={variant}
+                gradient={[color, "sweet"]}
+              />
+            ))}
+          </Wrapper>
+        </Wrapper>
+      ))}
+    </Wrapper>
 
     <Wrapper as="section" stylex={page.wrapper}>
       <Icon icon="arrow-up" />
@@ -64,22 +76,10 @@ const COLORS = [
   "sweet",
   "disabled",
 ] as const;
-const SHADE = [
-  "100",
-  "200",
-  "300",
-  "400",
-  "500",
-  "600",
-  "700",
-  "800",
-  "900",
-] as const;
 
 const ACCORDION_ITEMS = [
   {
     id: "1",
-    open: true,
     title:
       "Is it possible to use the same component for the accordion and the accordion item?",
     content:
