@@ -12,11 +12,22 @@ export const page = stylex.create({
   wrapper: {
     display: "flex",
     width: "100%",
+    height: "max-content",
     flexDirection: "row",
     flexWrap: "wrap",
     gap: "1rem",
     padding: "1rem",
     justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  content: {
+    display: "flex",
+    width: "100%",
+    gap: "1rem",
+    flexWrap: "wrap",
+    height: "max-content",
+    flexDirection: "row",
+    justifyContent: "center",
     alignItems: "center",
   },
   title: () => ({

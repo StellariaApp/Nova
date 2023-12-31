@@ -4,36 +4,34 @@ import {
   Icon,
   Accordion,
   ItemAccordion,
-  colors,
-  fonts,
-  sizes,
 } from "@stellaria/nova";
 import { page } from "./styles";
 import { ToggleTheme } from "@/components/ToggleTheme";
 import stylex from "@stylexjs/stylex";
+import { Fragment } from "react";
 
 const Home = () => (
   <Wrapper as="main" stylex={page.container}>
     <ToggleTheme />
     <Wrapper as="section" stylex={page.wrapper}>
       {VARIANTS.map((variant) => (
-        <Wrapper key={variant} stylex={page.wrapper}>
+        <Fragment key={variant}>
           <span {...stylex.props(page.title())}>{variant.toUpperCase()}</span>
-          <Accordion variant={variant} autoClose items={ACCORDION_ITEMS} />
-        </Wrapper>
+          <Wrapper stylex={page.content}>
+            <Accordion variant={variant} autoClose items={ACCORDION_ITEMS} />
+          </Wrapper>
+        </Fragment>
       ))}
     </Wrapper>
     <Wrapper as="section" stylex={page.wrapper}>
-      <Wrapper stylex={page.wrapper}>
-        <span {...stylex.props(page.title())}>DISABLE</span>
-        <Wrapper stylex={page.wrapper}>
-          <Button disabled />
-        </Wrapper>
+      <span {...stylex.props(page.title())}>DISABLE</span>
+      <Wrapper stylex={page.content}>
+        <Button disabled />
       </Wrapper>
       {VARIANTS.map((variant) => (
-        <Wrapper key={variant} stylex={page.wrapper}>
+        <Fragment key={variant}>
           <span {...stylex.props(page.title())}>{variant.toUpperCase()}</span>
-          <Wrapper key={variant} stylex={page.wrapper}>
+          <Wrapper key={variant} stylex={page.content}>
             {COLORS.map((color) => (
               <Button
                 key={variant + color}
@@ -43,27 +41,43 @@ const Home = () => (
               />
             ))}
           </Wrapper>
-        </Wrapper>
+        </Fragment>
       ))}
     </Wrapper>
 
     <Wrapper as="section" stylex={page.wrapper}>
-      <Icon icon="arrow-up" />
-      <Icon icon="arrow-up" />
-      <Icon icon="arrow-down" />
-      <Icon icon="arrow-down" />
-      <Icon icon="arrow-left" />
-      <Icon icon="arrow-right" />
-      <Icon icon="arrow-left" />
-      <Icon icon="arrow-right" />
-      <Icon icon="b" />
-      <Icon icon="a" />
-      <Icon icon="star" />
+      {VARIANTS.map((variant) => (
+        <Fragment key={variant}>
+          <span {...stylex.props(page.title())}>{variant.toUpperCase()}</span>
+          <Wrapper key={variant} stylex={page.content}>
+            {COLORS.map((color, idx) => (
+              <Icon
+                key={variant + color}
+                color={color}
+                variant={variant}
+                gradient={[color, "sweet"]}
+                icon={ICONS[idx]}
+              />
+            ))}
+          </Wrapper>
+        </Fragment>
+      ))}
     </Wrapper>
   </Wrapper>
 );
 
 export default Home;
+
+const ICONS = [
+  "arrow-up",
+  "arrow-down",
+  "arrow-left",
+  "arrow-right",
+  "a",
+  "b",
+  "star",
+  "heart",
+] as const;
 
 const VARIANTS = ["flat", "outline", "glow", "gradient"] as const;
 const COLORS = [
