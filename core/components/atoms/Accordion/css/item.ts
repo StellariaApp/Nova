@@ -1,12 +1,24 @@
 import stylex from "@stylexjs/stylex";
-import { background, borderRadius } from "../../../../themes/index.stylex";
+import {
+  background,
+  borderRadius,
+  text,
+} from "../../../../themes/index.stylex";
 import { AccordionItemProps } from "..";
 import {
   ValueByColorKey,
   ColorVariable,
   ColorVariableWithDefault,
+  ChangeOpacityByColorKey,
+  ChangeOpacity,
+  ColorVariableGradient,
 } from "../../../../utils";
-import { CreateBoxShadow, CreateGradient } from "../../../../utils/css";
+import {
+  CreateBoxShadow,
+  CreateGradient,
+  CreateGradientAnimation,
+} from "../../../../utils/css";
+import { NextShade } from "../../../../utils/shade";
 
 export const item = stylex.create({
   base: {
@@ -31,53 +43,46 @@ export const open = stylex.create({
     },
   }),
   outline: (props: AccordionItemProps) => ({
-    backgroundColor: ColorVariableWithDefault(props, background.base),
-    borderColor: ColorVariable({
-      color: props.color ?? "black",
-      shade: props.shade ?? "light",
-    }),
+    backgroundColor: ColorVariableWithDefault(props, background["base.400"]),
+    borderColor: ColorVariableWithDefault(props, background["base.600"]),
     ":hover": {
-      backgroundColor: ColorVariable({
-        color: props.color ?? "black",
-        shade: props.shade ?? "lightness",
-      }),
+      backgroundColor: ColorVariableWithDefault(props, background["base.300"]),
     },
   }),
   glow: (props: AccordionItemProps) => ({
     boxShadow: CreateBoxShadow([
       {
-        blur: 8,
-        color: ValueByColorKey({
-          color: props.color ?? "black",
-          shade: props.shade ?? "light",
-        }),
+        blur: 4,
+        color: ColorVariable(props),
       },
     ]),
-    backgroundColor: ColorVariable({
-      color: props.color ?? "black",
-      shade: props.shade,
-    }),
+    backgroundColor: ChangeOpacityByColorKey(props, 0.2),
+    color: ChangeOpacityByColorKey(props, 0.9),
+    borderColor: ColorVariable(props),
+    backdropFilter: "blur(12px)",
     ":hover": {
-      backgroundColor: ColorVariable(
+      boxShadow: CreateBoxShadow([
         {
-          color: props.color ?? "black",
+          blur: 6,
+          color: ColorVariable(props, NextShade(props.shade)),
         },
-        "dark"
+      ]),
+      backdropFilter: "blur(12px)",
+      backgroundColor: ChangeOpacityByColorKey(
+        Object.assign({}, props, { shade: NextShade(props.shade) }),
+        0.2
       ),
+      color: text.base,
     },
   }),
   gradient: (props: AccordionItemProps) => ({
-    backgroundImage: CreateGradient({
-      gradient: ["danger", "danger"],
-      gradientShade: ["light", undefined],
-      ...props,
-    }),
+    background: CreateGradientAnimation(props, "-70deg"),
+    backgroundSize: "250% auto",
+    borderColor: ColorVariableGradient(props)[1],
+    transition: "background-position 0.45s ease-in-out",
+
     ":hover": {
-      backgroundImage: CreateGradient({
-        gradient: ["danger", "danger"],
-        gradientShade: [undefined, "dark"],
-        ...props,
-      }),
+      backgroundPosition: "right center",
     },
   }),
   none: (props: AccordionItemProps) => ({}),
@@ -95,27 +100,21 @@ export const variants = stylex.create({
     border: `1px solid transparent`,
     borderBottomColor: ColorVariableWithDefault(props, background["base.600"]),
     ":hover": {
-      backgroundColor: ColorVariableWithDefault(props, background["base.600"]),
+      backgroundColor: ColorVariableWithDefault(props, background["base.400"]),
     },
   }),
   glow: (props: AccordionItemProps) => ({
-    backgroundColor: ColorVariable(props, undefined, "black"),
+    backgroundColor: ChangeOpacity("#464646", 0.2),
+    borderColor: ColorVariableWithDefault(props, background["base.400"]),
+    backdropFilter: "blur(12px)",
     ":hover": {
-      backgroundColor: ColorVariable(props, "light", "black"),
+      backgroundColor: ChangeOpacity("#464646", 0.4),
     },
   }),
   gradient: (props: AccordionItemProps) => ({
-    backgroundImage: CreateGradient({
-      gradient: ["black", "black"],
-      gradientShade: [undefined, "dark"],
-      ...props,
-    }),
+    backgroundColor: ColorVariableWithDefault(props, background["base.600"]),
     ":hover": {
-      backgroundImage: CreateGradient({
-        gradient: ["black", "black"],
-        gradientShade: ["light", undefined],
-        ...props,
-      }),
+      backgroundColor: ColorVariableWithDefault(props, background.base),
     },
   }),
   none: (props: AccordionItemProps) => ({

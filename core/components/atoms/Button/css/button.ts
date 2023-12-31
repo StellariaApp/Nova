@@ -105,7 +105,6 @@ export const variants = stylex.create({
     },
   }),
   gradient: (props: ButtonProps) => ({
-    position: "relative",
     color: text.base,
     background: CreateGradientAnimation(props, "-70deg"),
     backgroundSize: "250% auto",

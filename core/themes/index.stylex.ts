@@ -131,15 +131,6 @@ export const textRaw = {
 export const propertiesRaw = {
   white: "#ffffff",
   black: "#000000",
-
-  border: "1px solid #d6d6d6",
-  borderAlt: "1px solid #3f3f3f",
-
-  shadow: { default: "0px 0px 8px #00000020", [DARK]: "0px 0px 8px #ffffff20" },
-  shadowAlt: {
-    default: "0px 0px 8px #00000040",
-    [DARK]: "0px 0px 8px #ffffff40",
-  },
 };
 
 export const sizesRaw = {

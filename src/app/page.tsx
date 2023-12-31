@@ -21,55 +21,21 @@ const Home = () => (
           items={ACCORDION_ITEMS}
         />
       ))}
-
-      {ALLCOLORCOMBINATIONS.map(([color1, color2]) => (
-        <Accordion
-          autoClose
-          items={ACCORDION_ITEMS}
-          key={color1 + color2}
-          variant="gradient"
-          gradient={[color1, color2]}
-        />
-      ))}
     </Wrapper>
     <Button disabled />
     {VARIANTS.map((variant) => (
       <Wrapper key={variant} as="section" stylex={page.wrapper}>
-        {COLORS.map((color) =>
-          SHADE.map((shade) => (
-            <Button
-              key={variant + color + shade}
-              color={color}
-              shade={shade}
-              variant={variant}
-              gradient={[color, color]}
-              gradientShade={[shade, NextShade(shade)]}
-            />
-          ))
-        )}
+        {COLORS.map((color) => (
+          <Button
+            key={variant + color}
+            color={color}
+            variant={variant}
+            gradient={[color, "sweet"]}
+          />
+        ))}
       </Wrapper>
     ))}
-    <Wrapper as="section" stylex={page.wrapper}>
-      {ALLCOLORCOMBINATIONS.map(([color1, color2]) => (
-        <Button
-          key={color1 + color2}
-          variant="gradient"
-          gradient={[color1, color2]}
-        />
-      ))}
-    </Wrapper>
-    <Wrapper as="section" stylex={page.wrapper}>
-      {ALLCOLORCOMBINATIONS.map(([color1, color2]) =>
-        SHADE.map((shade) => (
-          <Button
-            key={color1 + color2 + shade}
-            variant="gradient"
-            gradient={[color1, color2]}
-            gradientShade={[shade, NextShade(shade)]}
-          />
-        ))
-      )}
-    </Wrapper>
+
     <Wrapper as="section" stylex={page.wrapper}>
       <Icon icon="arrow-up" />
       <Icon icon="arrow-up" />
@@ -88,7 +54,7 @@ const Home = () => (
 
 export default Home;
 
-const VARIANTS = ["flat", "outline", "glow"] as const;
+const VARIANTS = ["flat", "outline", "glow", "gradient"] as const;
 const COLORS = [
   "primary",
   "secondary",
@@ -110,9 +76,7 @@ const SHADE = [
   "800",
   "900",
 ] as const;
-const ALLCOLORCOMBINATIONS = COLORS.flatMap((color) =>
-  COLORS.map((colorComb) => [color, colorComb] as const)
-);
+
 const ACCORDION_ITEMS = [
   {
     id: "1",
