@@ -18,7 +18,8 @@ export const SpreadColorGradient = <P extends ColorGradientProps>(props: P) => {
 
 export const SpreadIconProps = (props: IconProps) => {
   const { spread: ColorGradient } = SpreadColorGradient(props);
-  const { icon, iconVariant, size, components, ...spread } = ColorGradient;
+  const { icon, iconVariant, size, components, fill, ...spread } =
+    ColorGradient;
 
   return { ...props, spread };
 };

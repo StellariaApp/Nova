@@ -1,5 +1,5 @@
 import stylex from "@stylexjs/stylex";
-import { colors, fonts, sizes } from "../../../../themes/index.stylex";
+import { fonts, sizes, text } from "../../../../themes/index.stylex";
 
 export const trigger = stylex.create({
   base: {
@@ -13,7 +13,7 @@ export const trigger = stylex.create({
     lineHeight: "135%",
     fontFamily: fonts.primary,
     fontWeight: 500,
-    color: colors.white,
+    color: text.base,
     cursor: "pointer",
     transition: "all 0.2s ease-in-out",
     gap: "18px",

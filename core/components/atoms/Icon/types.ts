@@ -8,6 +8,7 @@ type Path = SVGProps<SVGPathElement>;
 
 export type IconProps = StylexComponent<
   {
+    fill?: string;
     iconVariant?: iconVariant;
     icon?: IconName;
     size?: number | string;

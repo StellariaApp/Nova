@@ -7,11 +7,30 @@ import {
 } from "@stellaria/nova";
 import { page } from "./styles";
 import { NextShade } from "../../core/utils/shade";
+import { ToggleTheme } from "@/components/ToggleTheme";
 
 const Home = () => (
   <Wrapper as="main" stylex={page.container}>
+    <ToggleTheme />
     <Wrapper as="section" stylex={page.wrapper}>
-      <Accordion autoClose items={ACCORDION_ITEMS} />
+      {VARIANTS.map((variant) => (
+        <Accordion
+          key={variant}
+          variant={variant}
+          autoClose
+          items={ACCORDION_ITEMS}
+        />
+      ))}
+
+      {ALLCOLORCOMBINATIONS.map(([color1, color2]) => (
+        <Accordion
+          autoClose
+          items={ACCORDION_ITEMS}
+          key={color1 + color2}
+          variant="gradient"
+          gradient={[color1, color2]}
+        />
+      ))}
     </Wrapper>
     <Button disabled />
     {VARIANTS.map((variant) => (
@@ -109,11 +128,5 @@ const ACCORDION_ITEMS = [
       "What's the difference between a controlled and an uncontrolled component?",
     content:
       "A controlled component has its state controlled by React. An uncontrolled component has its state controlled by the DOM.",
-  },
-  {
-    id: "3",
-    title: "What is the difference between a fragment and a document fragment?",
-    content:
-      "A fragment is a component that does not render a DOM element. A document fragment is a DOM node that is not part of the main DOM tree.",
   },
 ] as ItemAccordion[];

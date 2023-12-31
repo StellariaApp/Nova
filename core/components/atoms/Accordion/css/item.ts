@@ -93,9 +93,9 @@ export const variants = stylex.create({
   outline: (props: AccordionItemProps) => ({
     position: "relative",
     border: `1px solid transparent`,
-    borderBottomColor: ColorVariable(props, "light", "black"),
+    borderBottomColor: ColorVariableWithDefault(props, background["base.600"]),
     ":hover": {
-      backgroundColor: ColorVariable(props, "light", "black"),
+      backgroundColor: ColorVariableWithDefault(props, background["base.600"]),
     },
   }),
   glow: (props: AccordionItemProps) => ({

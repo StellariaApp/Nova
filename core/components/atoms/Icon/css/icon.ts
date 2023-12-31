@@ -1,5 +1,5 @@
 import stylex from "@stylexjs/stylex";
-import { colors } from "../../../../themes/index.stylex";
+import { text } from "../../../../themes/index.stylex";
 import { IconProps } from "../types";
 import { GetSize } from "../utils/size";
 import { ColorVariable } from "../../../../utils";
@@ -13,9 +13,10 @@ export const svg = stylex.create({
 });
 
 export const path = stylex.create({
-  base: {
-    fill: colors.primary,
-  },
+  base: {},
+  fill: (props: IconProps) => ({
+    fill: props.fill ?? text.base,
+  }),
 });
 
 export const pathVariants = stylex.create({

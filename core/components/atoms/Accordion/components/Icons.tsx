@@ -14,7 +14,6 @@ export const AccordionIcons = (props: AccordionIconProps) => {
 
   return (
     <Icon
-      color="white"
       size="16px"
       icon={Array.isArray(icon) ? icon[open ? 1 : 0] : icon ?? "chevron-down"}
     />

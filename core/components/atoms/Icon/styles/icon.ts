@@ -16,9 +16,11 @@ const SvgStyles = (props: IconProps) => {
 };
 
 const PathStyles = (props: IconProps) => {
-  const { variant = "flat", components, spread } = SpreadIconProps(props);
+  const { variant, components, spread } = SpreadIconProps(props);
 
-  const styles = stylex.props(path.base, pathVariants[variant]?.(props));
+  const getVariant = variant ? pathVariants[variant] : path.fill;
+
+  const styles = stylex.props(path.base, getVariant(props));
   const propsStyles = {
     ...spread,
     ...components?.path,
