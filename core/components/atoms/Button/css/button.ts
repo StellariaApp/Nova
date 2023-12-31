@@ -86,8 +86,9 @@ export const variants = stylex.create({
         color: ColorVariable(props),
       },
     ]),
-    fontWeight: 500,
     backgroundColor: ChangeOpacityByColorKey(props, 0.2),
+    backdropFilter: "blur(12px)",
+    fontWeight: 500,
     color: ChangeOpacityByColorKey(props, 0.9),
     borderColor: ColorVariable(props),
     ":hover": {
@@ -99,8 +100,9 @@ export const variants = stylex.create({
       ]),
       backgroundColor: ChangeOpacityByColorKey(
         Object.assign({}, props, { shade: NextShade(props.shade) }),
-        0.6
+        0.4
       ),
+      backdropFilter: "blur(12px)",
       color: text.base,
     },
   }),

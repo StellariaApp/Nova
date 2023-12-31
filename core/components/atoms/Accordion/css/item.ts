@@ -52,7 +52,7 @@ export const open = stylex.create({
   glow: (props: AccordionItemProps) => ({
     boxShadow: CreateBoxShadow([
       {
-        blur: 4,
+        blur: 8,
         color: ColorVariable(props),
       },
     ]),
@@ -63,14 +63,13 @@ export const open = stylex.create({
     ":hover": {
       boxShadow: CreateBoxShadow([
         {
-          blur: 6,
+          blur: 12,
           color: ColorVariable(props, NextShade(props.shade)),
         },
       ]),
-      backdropFilter: "blur(12px)",
       backgroundColor: ChangeOpacityByColorKey(
         Object.assign({}, props, { shade: NextShade(props.shade) }),
-        0.2
+        0.4
       ),
       color: text.base,
     },

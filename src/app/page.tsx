@@ -6,7 +6,6 @@ import {
   ItemAccordion,
 } from "@stellaria/nova";
 import { page } from "./styles";
-import { NextShade } from "../../core/utils/shade";
 import { ToggleTheme } from "@/components/ToggleTheme";
 
 const Home = () => (
