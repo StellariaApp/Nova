@@ -94,6 +94,7 @@ const COLORS = [
 const ACCORDION_ITEMS = [
   {
     id: "1",
+    open: true,
     title:
       "Is it possible to use the same component for the accordion and the accordion item?",
     content:
@@ -101,6 +102,13 @@ const ACCORDION_ITEMS = [
   },
   {
     id: "2",
+    title:
+      "What's the difference between a controlled and an uncontrolled component?",
+    content:
+      "A controlled component has its state controlled by React. An uncontrolled component has its state controlled by the DOM.",
+  },
+  {
+    id: "3",
     title:
       "What's the difference between a controlled and an uncontrolled component?",
     content:
