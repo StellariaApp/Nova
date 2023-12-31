@@ -86,14 +86,14 @@ export const colorsRaw = {
 
 export const backgroundRaw = {
   "base.100": { default: "#ffffff", [DARK]: "#525252" },
-  "base.200": { default: "#fcfcfc", [DARK]: "#474747" },
-  "base.300": { default: "#fafafa", [DARK]: "#3d3d3d" },
+  "base.200": { default: "#fefefe", [DARK]: "#474747" },
+  "base.300": { default: "#fdfdfd", [DARK]: "#3d3d3d" },
   "base.400": { default: "#fcfcfc", [DARK]: "#333333" },
   base: { default: "#fafafa", [DARK]: "#292929" },
-  "base.600": { default: "#cccccc", [DARK]: "#1f1f1f" },
-  "base.700": { default: "#c2c2c2", [DARK]: "#141414" },
-  "base.800": { default: "#b8b8b8", [DARK]: "#0a0a0a" },
-  "base.900": { default: "#adadad", [DARK]: "#000000" },
+  "base.600": { default: "#ededed", [DARK]: "#1f1f1f" },
+  "base.700": { default: "#e0e0e0", [DARK]: "#141414" },
+  "base.800": { default: "#cccccc", [DARK]: "#0a0a0a" },
+  "base.900": { default: "#b8b8b8", [DARK]: "#000000" },
 
   "alt.100": { default: "#525252", [DARK]: "#ffffff" },
   "alt.200": { default: "#474747", [DARK]: "#fdfdfd" },

@@ -8,7 +8,7 @@ export const content = stylex.create({
     fontSize: sizes.regular,
     lineHeight: "135%",
     fontFamily: fonts.primary,
-    fontWeight: 500,
+    fontWeight: 600,
     color: background["alt.600"],
     cursor: "pointer",
     transition: "all 0.4s ease-out",

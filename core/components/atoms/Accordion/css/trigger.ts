@@ -12,7 +12,7 @@ export const trigger = stylex.create({
     fontSize: sizes.regular,
     lineHeight: "135%",
     fontFamily: fonts.primary,
-    fontWeight: 500,
+    fontWeight: 600,
     color: text.base,
     cursor: "pointer",
     transition: "all 0.2s ease-in-out",

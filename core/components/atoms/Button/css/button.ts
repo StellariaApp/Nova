@@ -61,7 +61,7 @@ export const variants = stylex.create({
   flat: (props: ButtonProps) => ({
     backgroundColor: ColorVariable(props),
     borderColor: ColorVariable(props),
-    color: text.base,
+    color: ColorContrast(ValueByColorKey(props)),
     ":hover": {
       backgroundColor: ColorVariable(props, NextShade(props.shade)),
       borderColor: ColorVariable(props, NextShade(props.shade)),
@@ -108,7 +108,7 @@ export const variants = stylex.create({
     },
   }),
   gradient: (props: ButtonProps) => ({
-    color: text.base,
+    color: ColorContrast(ColorVariableGradient(props)[0]),
     background: CreateGradientAnimation(props, "-70deg"),
     backgroundSize: "250% auto",
     borderColor: ColorVariableGradient(props)[1],
