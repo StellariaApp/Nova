@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import stylex from "@stylexjs/stylex";
 
 import "./main.css";
-import { theme } from "../../core/themes/index.stylex";
 import ProviderTheme from "../../core/providers/theme";
+import { html } from "./styles";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +16,7 @@ const Layout: RC = (props) => {
 
   return (
     <ProviderTheme>
-      <html lang="en" {...html}>
+      <html lang="en" {...stylex.props(html.dynamic())}>
         <body>{children}</body>
       </html>
     </ProviderTheme>
@@ -24,13 +24,3 @@ const Layout: RC = (props) => {
 };
 
 export default Layout;
-
-const styles = stylex.create({
-  base: {},
-  dynamic: () => ({
-    colorScheme: "light",
-    backgroundColor: theme.background,
-  }),
-});
-
-const html = stylex.props(styles.dynamic());

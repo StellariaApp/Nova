@@ -1,7 +1,7 @@
 import stylex, { StyleXStyles } from "@stylexjs/stylex";
-import { theme } from "..";
 import { StylexComponent } from "../types/stylex";
 import { IStyle } from "../types/style";
+import { tokens } from "..";
 
 export const StyleWithProps = <P extends object, OG extends object>(
   styles: IStyle,
@@ -15,7 +15,7 @@ export const StyleWithProps = <P extends object, OG extends object>(
 
   const stylexComponent = stylex.props(
     typeof stylexProps === "function"
-      ? stylexProps(theme, ogProps)
+      ? stylexProps(tokens, ogProps)
       : stylexProps,
     componentWithStyle?.style ?? {}
   );

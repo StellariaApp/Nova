@@ -2,6 +2,14 @@ import stylex from "@stylexjs/stylex";
 import { fonts } from "../../core/tokens/fonts.stylex";
 import { colors } from "../../core/tokens/colors.stylex";
 import { sizes } from "../../core/tokens/sizes.stylex";
+import { theme } from "../../core/themes/index.stylex";
+
+export const html = stylex.create({
+  dynamic: () => ({
+    colorScheme: "light",
+    backgroundColor: theme.background,
+  }),
+});
 
 export const page = stylex.create({
   container: {
