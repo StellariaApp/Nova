@@ -51,17 +51,24 @@ export const open = stylex.create({
   glow: (props: AccordionItemProps) => ({
     boxShadow: CreateBoxShadow([
       {
-        blur: 12,
+        blur: 2,
         color: ColorVariable(props),
       },
     ]),
+    fontWeight: 600,
     backgroundColor: ChangeOpacityByColorKey(props, 0.2),
-    color: ChangeOpacityByColorKey(props, 0.9),
     borderColor: ChangeOpacityByColorKey(props, 0.8),
     backdropFilter: "blur(12px)",
     ":hover": {
+      boxShadow: CreateBoxShadow([
+        {
+          blur: 4,
+          color: ColorVariable(props, NextShade(props.shade)),
+        },
+      ]),
+      backgroundColor: ChangeOpacityByColorKey(props, 0.25),
       borderColor: ChangeOpacityByColorKey(props, 0.9),
-      backgroundColor: ChangeOpacityByColorKey(props, 0.3),
+      backdropFilter: "blur(12px)",
     },
   }),
   gradient: (props: AccordionItemProps) => ({
@@ -99,12 +106,12 @@ export const variants = stylex.create({
   glow: (props: AccordionItemProps) => ({
     border: `1px solid transparent`,
 
-    backgroundColor: ChangeOpacityByColorKey(props, 0.1),
+    backgroundColor: ChangeOpacityByColorKey(props, 0.09),
     borderColor: ChangeOpacityByColorKey(props, 0.1),
     backdropFilter: "blur(12px)",
     ":hover": {
+      backgroundColor: ChangeOpacityByColorKey(props, 0.15),
       borderColor: ChangeOpacityByColorKey(props, 0.2),
-      backgroundColor: ChangeOpacityByColorKey(props, 0.2),
       backdropFilter: "blur(12px)",
     },
   }),

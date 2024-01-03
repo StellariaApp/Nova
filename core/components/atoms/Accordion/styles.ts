@@ -12,8 +12,16 @@ import { StyleWithProps } from "../../../utils";
 import { SpreadAccordionProps } from "./utils/spread";
 import { container, variants as containerVariants } from "./css/container";
 import { item, variants as itemVariants, open as itemOpen } from "./css/item";
-import { trigger } from "./css/trigger";
-import { content } from "./css/content";
+import {
+  trigger,
+  variants as triggerVariants,
+  open as triggerOpen,
+} from "./css/trigger";
+import {
+  content,
+  variants as contentVariants,
+  open as contentOpen,
+} from "./css/content";
 import { icon } from "./css/icon";
 import { wrapper } from "./css/wrapper";
 
@@ -43,13 +51,32 @@ export const ItemStyles = (props: AccordionItemProps) => {
 };
 
 export const TriggerStyles = (props: AccordionTriggerProps) => {
-  const styles = stylex.props(trigger.base);
-  return StyleWithProps(styles, props);
+  const { variant = "flat" } = props;
+
+  const { open } = props;
+  const styles = stylex.props(
+    trigger.base,
+    triggerVariants[variant](props),
+    open && triggerOpen[variant](props)
+  );
+
+  const { spread } = SpreadAccordionProps(props);
+  return StyleWithProps(styles, spread, props);
 };
 
 export const ContentStyles = (props: AccordionContentProps) => {
-  const styles = stylex.props(content.base);
-  return StyleWithProps(styles, props);
+  const { variant = "flat" } = props;
+
+  const { open } = props;
+  const styles = stylex.props(
+    content.base,
+    contentVariants[variant](props),
+    open && contentOpen[variant](props)
+  );
+
+  const { spread } = SpreadAccordionProps(props);
+
+  return StyleWithProps(styles, spread, props);
 };
 
 export const IconStyles = (props: AccordionIconProps) => {

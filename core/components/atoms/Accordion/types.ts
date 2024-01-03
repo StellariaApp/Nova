@@ -13,13 +13,14 @@ export type AccordionContainerProps = StylexComponent<
 >;
 
 export type AccordionContentProps = StylexComponent<{}, AccordionContent> &
-  ColorGradientProps;
+  ColorGradientProps &
+  HashItem;
 export type AccordionIconProps = HashItem & Omit<IconProps, "icon">;
 export type AccordionItemProps = StylexComponent<HashItem, AccordionItem> &
   ColorGradientProps;
 export type AccordionTriggerProps = StylexComponent<
   {},
-  AccordionTrigger & ColorGradientProps
+  AccordionTrigger & ColorGradientProps & HashItem
 >;
 export type AccordionWrapperProps = StylexComponent<
   HashItem,

@@ -2,6 +2,12 @@ import stylex from "@stylexjs/stylex";
 import { sizes } from "../../../../tokens/sizes.stylex";
 import { fonts } from "../../../../tokens/fonts.stylex";
 import { theme } from "../../../../themes/index.stylex";
+import { AccordionContentProps } from "..";
+import {
+  ChangeOpacityByColorKey,
+  ColorContrast,
+  ColorVariableGradient,
+} from "../../../../utils";
 
 export const content = stylex.create({
   base: {
@@ -18,4 +24,24 @@ export const content = stylex.create({
     userSelect: "none",
     pointerEvents: "none",
   },
+});
+
+export const open = stylex.create({
+  flat: (props: AccordionContentProps) => ({}),
+  outline: (props: AccordionContentProps) => ({}),
+  glow: (props: AccordionContentProps) => ({
+    color: ChangeOpacityByColorKey(props, 0.8),
+  }),
+  gradient: (props: AccordionContentProps) => ({
+    color: ColorContrast(ColorVariableGradient(props)[1]),
+  }),
+  none: (props: AccordionContentProps) => ({}),
+});
+
+export const variants = stylex.create({
+  flat: (props: AccordionContentProps) => ({}),
+  outline: (props: AccordionContentProps) => ({}),
+  glow: (props: AccordionContentProps) => ({}),
+  gradient: (props: AccordionContentProps) => ({}),
+  none: (props: AccordionContentProps) => ({}),
 });

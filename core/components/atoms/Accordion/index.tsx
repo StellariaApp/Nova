@@ -30,7 +30,7 @@ export const Accordion = (props: AccordionProps) => {
             {...rest}
             {...components?.item}
           >
-            <AccordionTrigger {...rest} {...components?.trigger}>
+            <AccordionTrigger {...hashItem} {...rest} {...components?.trigger}>
               {item.title}
               <AccordionWrapper
                 {...hashItem}
@@ -44,7 +44,7 @@ export const Accordion = (props: AccordionProps) => {
                 />
               </AccordionWrapper>
             </AccordionTrigger>
-            <AccordionContent {...rest} {...components?.content}>
+            <AccordionContent {...hashItem} {...rest} {...components?.content}>
               {item.content}
             </AccordionContent>
           </AccordionItem>

@@ -2,6 +2,13 @@ import stylex from "@stylexjs/stylex";
 import { fonts } from "../../../../tokens/fonts.stylex";
 import { sizes } from "../../../../tokens/sizes.stylex";
 import { theme } from "../../../../themes/index.stylex";
+import { AccordionTriggerProps } from "..";
+import {
+  ChangeOpacityByColorKey,
+  ColorContrast,
+  ColorVariableGradient,
+  ValueByColorKey,
+} from "../../../../utils";
 
 export const trigger = stylex.create({
   base: {
@@ -22,4 +29,26 @@ export const trigger = stylex.create({
     userSelect: "none",
     pointerEvents: "none",
   },
+});
+
+export const open = stylex.create({
+  flat: (props: AccordionTriggerProps) => ({}),
+  outline: (props: AccordionTriggerProps) => ({}),
+  glow: (props: AccordionTriggerProps) => ({
+    color: ValueByColorKey(props),
+  }),
+  gradient: (props: AccordionTriggerProps) => ({
+    color: ColorContrast(ColorVariableGradient(props)[1]),
+  }),
+  none: (props: AccordionTriggerProps) => ({}),
+});
+
+export const variants = stylex.create({
+  flat: (props: AccordionTriggerProps) => ({}),
+  outline: (props: AccordionTriggerProps) => ({}),
+  glow: (props: AccordionTriggerProps) => ({
+    color: ChangeOpacityByColorKey(props, 0.9),
+  }),
+  gradient: (props: AccordionTriggerProps) => ({}),
+  none: (props: AccordionTriggerProps) => ({}),
 });
