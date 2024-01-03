@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import stylex from "@stylexjs/stylex";
 
 import "./main.css";
-import { base } from "../../core/tokens/base.stylex";
+import { theme } from "../../core/themes/index.stylex";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,7 +26,7 @@ const styles = stylex.create({
   base: {},
   dynamic: () => ({
     colorScheme: "light",
-    backgroundColor: base.background,
+    backgroundColor: theme.background,
   }),
 });
 

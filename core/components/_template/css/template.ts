@@ -5,7 +5,7 @@ import { borderRadius } from "../../../tokens/border.stylex";
 import { sizes } from "../../../tokens/sizes.stylex";
 import { fonts } from "../../../tokens/fonts.stylex";
 import { colors } from "../../../tokens/colors.stylex";
-import { base } from "../../../tokens/base.stylex";
+import { theme } from "../../../themes/index.stylex";
 
 export const template = stylex.create({
   base: {
@@ -19,7 +19,7 @@ export const template = stylex.create({
     lineHeight: "1.125rem",
     fontWeight: 600,
     fontFamily: fonts.primary,
-    color: base.text,
+    color: theme.text,
     userSelect: "none",
     transition: "all 0.32s ease",
   },

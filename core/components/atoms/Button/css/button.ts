@@ -19,7 +19,7 @@ import { borderRadius } from "../../../../tokens/border.stylex";
 import { sizes } from "../../../../tokens/sizes.stylex";
 import { fonts } from "../../../../tokens/fonts.stylex";
 import { colors } from "../../../../tokens/colors.stylex";
-import { base } from "../../../../tokens/base.stylex";
+import { theme } from "../../../../themes/index.stylex";
 
 export const button = stylex.create({
   base: {
@@ -33,7 +33,7 @@ export const button = stylex.create({
     lineHeight: "135%",
     fontWeight: 600,
     fontFamily: fonts.primary,
-    color: base.text,
+    color: theme.text,
     userSelect: "none",
     transition: "all 0.32s ease",
   },
@@ -100,7 +100,7 @@ export const variants = stylex.create({
         0.4
       ),
       backdropFilter: "blur(12px)",
-      color: base.text,
+      color: theme.text,
     },
   }),
   gradient: (props: ButtonProps) => ({

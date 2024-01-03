@@ -5,7 +5,7 @@ import {
   ColorVariableWithDefault,
 } from "../../../../utils";
 import { borderRadius } from "../../../../tokens/border.stylex";
-import { base } from "../../../../tokens/base.stylex";
+import { theme } from "../../../../themes/index.stylex";
 
 export const container = stylex.create({
   base: {
@@ -14,7 +14,7 @@ export const container = stylex.create({
     width: "100%",
     height: "max-content",
     userSelect: "none",
-    backgroundColor: base["background.600"],
+    backgroundColor: theme["background.600"],
     borderRadius: borderRadius.regular,
     overflow: "hidden",
     padding: "8px",
@@ -25,12 +25,12 @@ export const container = stylex.create({
 
 export const variants = stylex.create({
   flat: (props: AccordionContainerProps) => ({
-    backgroundColor: base["background.600"],
+    backgroundColor: theme["background.600"],
   }),
   outline: (props: AccordionContainerProps) => ({
     backgroundColor: "transparent",
     border: `1px solid transparent`,
-    borderColor: ColorVariableWithDefault(props, base["background.600"]),
+    borderColor: ColorVariableWithDefault(props, theme["background.600"]),
   }),
   glow: (props: AccordionContainerProps) => ({
     backgroundColor: ChangeOpacityByColorKey(props, 0.1),
@@ -39,8 +39,8 @@ export const variants = stylex.create({
     backdropFilter: "blur(12px)",
   }),
   gradient: (props: AccordionContainerProps) => ({
-    backgroundColor: base["background.600"],
-    borderColor: base["background.400"],
+    backgroundColor: theme["background.600"],
+    borderColor: theme["background.400"],
   }),
   none: (props: AccordionContainerProps) => ({
     padding: 0,
