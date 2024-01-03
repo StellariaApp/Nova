@@ -4,6 +4,7 @@ import stylex from "@stylexjs/stylex";
 
 import "./main.css";
 import { theme } from "../../core/themes/index.stylex";
+import ProviderTheme from "../../core/providers/theme";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,9 +15,11 @@ const Layout: RC = (props) => {
   const { children } = props;
 
   return (
-    <html lang="en" {...html}>
-      <body>{children}</body>
-    </html>
+    <ProviderTheme>
+      <html lang="en" {...html}>
+        <body>{children}</body>
+      </html>
+    </ProviderTheme>
   );
 };
 

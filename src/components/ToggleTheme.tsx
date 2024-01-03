@@ -1,15 +1,12 @@
 "use client";
 import { Button } from "@stellaria/nova";
+import { ChangeTheme } from "../../core/providers/theme.client";
 
 export const ToggleTheme = () => {
   return (
     <Button
       onClick={() => {
-        const theme = document.documentElement.getAttribute("data-theme");
-        document.documentElement.setAttribute(
-          "data-theme",
-          theme === "dark" ? "light" : "dark"
-        );
+        ChangeTheme.set((theme) => (theme === "dark" ? "light" : "dark"));
       }}
     >
       Toogle Theme

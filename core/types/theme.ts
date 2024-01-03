@@ -1,6 +1,8 @@
 import { tokens } from "..";
+import { themes } from "../themes/index.stylex";
 import { colorsRaw } from "../tokens/colors.stylex";
 
+export type ThemeKeys = keyof typeof themes;
 export type Tokens = typeof tokens;
 
 export type VariantColors = "flat" | "outline" | "glow" | "gradient" | "none";
