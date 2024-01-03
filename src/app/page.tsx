@@ -12,7 +12,6 @@ import { Fragment } from "react";
 
 const Home = () => (
   <Wrapper as="main" stylex={page.container}>
-    <ToggleTheme />
     <Wrapper as="section" stylex={page.wrapper}>
       {VARIANTS.map((variant) => (
         <Fragment key={variant}>
@@ -63,6 +62,7 @@ const Home = () => (
         </Fragment>
       ))}
     </Wrapper>
+    <ToggleTheme />
   </Wrapper>
 );
 

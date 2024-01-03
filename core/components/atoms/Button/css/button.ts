@@ -78,29 +78,26 @@ export const variants = stylex.create({
   glow: (props: ButtonProps) => ({
     boxShadow: CreateBoxShadow([
       {
-        blur: 8,
+        blur: 2,
         color: ColorVariable(props),
       },
     ]),
-    backgroundColor: ChangeOpacityByColorKey(props, 0.2),
-    fontWeight: 500,
+    fontWeight: 600,
     color: ChangeOpacityByColorKey(props, 0.9),
+    backgroundColor: ChangeOpacityByColorKey(props, 0.2),
     borderColor: ColorVariable(props),
     backdropFilter: "blur(12px)",
     ":hover": {
       boxShadow: CreateBoxShadow([
         {
-          blur: 12,
+          blur: 4,
           color: ColorVariable(props, NextShade(props.shade)),
         },
       ]),
-      borderColor: ColorVariable(props, NextShade(props.shade, "BACK")),
-      backgroundColor: ChangeOpacityByColorKey(
-        Object.assign({}, props, { shade: NextShade(props.shade) }),
-        0.4
-      ),
+      color: ChangeOpacityByColorKey(props, 0.9),
+      backgroundColor: ChangeOpacityByColorKey(props, 0.3),
+      borderColor: ColorVariable(props),
       backdropFilter: "blur(12px)",
-      color: theme.text,
     },
   }),
   gradient: (props: ButtonProps) => ({
