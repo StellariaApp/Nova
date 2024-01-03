@@ -9,7 +9,7 @@ export const ToggleTheme = () => {
         ChangeTheme.set((theme) => (theme === "dark" ? "light" : "dark"));
       }}
     >
-      Toogle Theme
+      Toggle Theme
     </Button>
   );
 };
