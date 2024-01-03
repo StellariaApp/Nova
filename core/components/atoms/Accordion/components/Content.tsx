@@ -2,24 +2,17 @@
 import type { Ref } from "react";
 import { forwardRef } from "react";
 import type { AccordionContentProps } from "../types";
-import { ContentStyles } from "../styles";
-import { useAtom } from "jotai";
-import { StorageAccordionAtom } from "../jotai/storage";
+import useOpen from "../hooks/useOpen";
+import { ContentStyles } from "../styles/content";
 
 const AccordionContentRef = (
   props: AccordionContentProps,
   ref: Ref<HTMLParagraphElement>
 ) => {
-  const { children, hashItem } = props;
+  const { children } = props;
 
-  const [storage] = useAtom(StorageAccordionAtom);
-
-  const open = storage[hashItem ?? ""] ?? props.open;
-
-  const styles = ContentStyles({
-    ...props,
-    open,
-  });
+  const openProps = useOpen(props);
+  const styles = ContentStyles(openProps);
 
   return (
     <p {...styles} ref={ref}>

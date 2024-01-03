@@ -3,24 +3,18 @@
 import type { Ref } from "react";
 import { forwardRef } from "react";
 import type { AccordionTriggerProps } from "../types";
-import { TriggerStyles } from "../styles";
-import { useAtom } from "jotai";
-import { StorageAccordionAtom } from "../jotai/storage";
+import useOpen from "../hooks/useOpen";
+import { TriggerStyles } from "../styles/trigger";
 
 const AccordionTriggerRef = (
   props: AccordionTriggerProps,
   ref: Ref<HTMLElement>
 ) => {
-  const { children, hashItem } = props;
+  const { children } = props;
 
-  const [storage] = useAtom(StorageAccordionAtom);
+  const openProps = useOpen(props);
 
-  const open = storage[hashItem ?? ""] ?? props.open;
-
-  const styles = TriggerStyles({
-    ...props,
-    open,
-  });
+  const styles = TriggerStyles(openProps);
 
   return (
     <summary {...styles} ref={ref}>

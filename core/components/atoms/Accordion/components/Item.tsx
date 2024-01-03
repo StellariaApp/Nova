@@ -3,11 +3,9 @@
 import type { Ref } from "react";
 import { forwardRef } from "react";
 import type { AccordionItemProps } from "../types";
-import { ItemStyles } from "../styles";
-
-import { useAtom } from "jotai";
-import { StorageAccordionAtom } from "../jotai/storage";
 import { useAutoClose } from "../hooks/useAutoClose";
+import useOpen from "../hooks/useOpen";
+import { ItemStyles } from "../styles/item";
 
 const AccordionItemRef = (
   props: AccordionItemProps,
@@ -15,14 +13,9 @@ const AccordionItemRef = (
 ) => {
   const { children, hashItem } = props;
 
-  const [storage] = useAtom(StorageAccordionAtom);
+  const openProps = useOpen(props);
 
-  const open = storage[hashItem ?? ""] ?? props.open;
-
-  const styles = ItemStyles({
-    ...props,
-    open,
-  });
+  const styles = ItemStyles(openProps);
 
   const { onClick } = useAutoClose(props);
 

@@ -1,7 +1,7 @@
 import type { Ref } from "react";
 import { forwardRef } from "react";
 import type { AccordionContainerProps } from "../types";
-import { ContainerStyles } from "../styles";
+import { ContainerStyles } from "../styles/container";
 
 const AccordionContainerRef = (
   props: AccordionContainerProps,

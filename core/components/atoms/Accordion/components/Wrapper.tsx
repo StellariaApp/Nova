@@ -2,20 +2,18 @@
 import type { Ref } from "react";
 import { forwardRef } from "react";
 import type { AccordionWrapperProps } from "../types";
-import { WrapperStyles } from "../styles";
-import { useAtom } from "jotai";
-import { StorageAccordionAtom } from "../jotai/storage";
+import useOpen from "../hooks/useOpen";
+import { WrapperStyles } from "../styles/wrapper";
 
 const AccordionWrapperRef = (
   props: AccordionWrapperProps,
   ref: Ref<HTMLDivElement>
 ) => {
-  const { children, hashItem } = props;
+  const { children } = props;
 
-  const [storage] = useAtom(StorageAccordionAtom);
-  const open = storage[hashItem ?? ""] ?? props.open;
+  const openProps = useOpen(props);
 
-  const styles = WrapperStyles(Object.assign({}, props, { open }));
+  const styles = WrapperStyles(openProps);
 
   return (
     <div {...styles} ref={ref}>

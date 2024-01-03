@@ -2,15 +2,12 @@
 
 import type { AccordionIconProps } from "../types";
 import { Icon } from "../..";
-import { useAtom } from "jotai";
-import { StorageAccordionAtom } from "../jotai/storage";
+import useOpen from "../hooks/useOpen";
 
 export const AccordionIcons = (props: AccordionIconProps) => {
-  const { icon, hashItem } = props;
+  const { icon } = props;
 
-  const [storage] = useAtom(StorageAccordionAtom);
-
-  const open = storage[hashItem ?? ""] ?? props.open;
+  const { open } = useOpen(props);
 
   return (
     <Icon
