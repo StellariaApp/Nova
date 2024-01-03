@@ -1,6 +1,7 @@
-import { colors, colorsRaw, theme } from "..";
+import { tokens } from "..";
+import { colorsRaw } from "../tokens/colors.stylex";
 
-export type Theme = typeof theme;
+export type Tokens = typeof tokens;
 
 export type VariantColors = "flat" | "outline" | "glow" | "gradient" | "none";
 

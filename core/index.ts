@@ -1,4 +1,4 @@
-export * from "./themes/index.stylex";
+export * from "./tokens/index.stylex";
 
 export * from "./components";
 export * from "./types";

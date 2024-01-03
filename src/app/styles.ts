@@ -1,5 +1,7 @@
 import stylex from "@stylexjs/stylex";
-import { colors, fonts, sizes } from "../../core/themes/index.stylex";
+import { fonts } from "../../core/tokens/fonts.stylex";
+import { colors } from "../../core/tokens/colors.stylex";
+import { sizes } from "../../core/tokens/sizes.stylex";
 
 export const page = stylex.create({
   container: {

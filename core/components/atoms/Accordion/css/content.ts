@@ -1,5 +1,7 @@
 import stylex from "@stylexjs/stylex";
-import { background, fonts, sizes } from "../../../../themes/index.stylex";
+import { sizes } from "../../../../tokens/sizes.stylex";
+import { fonts } from "../../../../tokens/fonts.stylex";
+import { base } from "../../../../tokens/base.stylex";
 
 export const content = stylex.create({
   base: {
@@ -9,7 +11,7 @@ export const content = stylex.create({
     lineHeight: "135%",
     fontFamily: fonts.primary,
     fontWeight: 600,
-    color: background["alt.600"],
+    color: base["backgroundAlt.600"],
     cursor: "pointer",
     transition: "all 0.4s ease-out",
     paddingRight: "24px",

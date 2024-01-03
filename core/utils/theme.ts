@@ -4,7 +4,7 @@ import {
   ColorsGradientShade,
 } from "../types/theme";
 
-import { colors, colorsRaw } from "..";
+import { colors, colorsRaw } from "../tokens/colors.stylex";
 import { Colors, ColorsKeys, Shade } from "../types/theme";
 
 export type ArgsColor = {

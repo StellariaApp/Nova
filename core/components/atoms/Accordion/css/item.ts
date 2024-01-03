@@ -1,24 +1,18 @@
 import stylex from "@stylexjs/stylex";
-import {
-  background,
-  borderRadius,
-  text,
-} from "../../../../themes/index.stylex";
 import { AccordionItemProps } from "..";
 import {
-  ValueByColorKey,
   ColorVariable,
   ColorVariableWithDefault,
   ChangeOpacityByColorKey,
-  ChangeOpacity,
   ColorVariableGradient,
 } from "../../../../utils";
 import {
   CreateBoxShadow,
-  CreateGradient,
   CreateGradientAnimation,
 } from "../../../../utils/css";
 import { NextShade } from "../../../../utils/shade";
+import { borderRadius } from "../../../../tokens/border.stylex";
+import { base } from "../../../../tokens/base.stylex";
 
 export const item = stylex.create({
   base: {
@@ -35,22 +29,22 @@ export const item = stylex.create({
 
 export const open = stylex.create({
   flat: (props: AccordionItemProps) => ({
-    backgroundColor: ColorVariableWithDefault(props, background.base),
+    backgroundColor: ColorVariableWithDefault(props, base.background),
     ":hover": {
-      backgroundColor: ColorVariableWithDefault(props, background["base.400"]),
+      backgroundColor: ColorVariableWithDefault(props, base["background.400"]),
     },
   }),
   outline: (props: AccordionItemProps) => ({
-    backgroundColor: ColorVariableWithDefault(props, background["base.400"]),
-    borderColor: ColorVariableWithDefault(props, background["base.600"]),
+    backgroundColor: ColorVariableWithDefault(props, base["background.400"]),
+    borderColor: ColorVariableWithDefault(props, base["background.600"]),
     ":hover": {
-      backgroundColor: ColorVariableWithDefault(props, background["base.300"]),
+      backgroundColor: ColorVariableWithDefault(props, base["background.300"]),
       borderColor: ColorVariableWithDefault(
         {
           ...props,
           shade: NextShade(props.shade, "BACK"),
         },
-        background["base.600"]
+        base["background.600"]
       ),
     },
   }),
@@ -85,20 +79,20 @@ export const open = stylex.create({
 
 export const variants = stylex.create({
   flat: (props: AccordionItemProps) => ({
-    backgroundColor: background["base.600"],
+    backgroundColor: base["background.600"],
     ":hover": {
-      backgroundColor: background.base,
+      backgroundColor: base.background,
     },
   }),
   outline: (props: AccordionItemProps) => ({
     position: "relative",
     border: `1px solid transparent`,
-    borderColor: ColorVariableWithDefault(props, background["base.600"]),
+    borderColor: ColorVariableWithDefault(props, base["background.600"]),
     ":hover": {
-      backgroundColor: ColorVariableWithDefault(props, background["base.400"]),
+      backgroundColor: ColorVariableWithDefault(props, base["background.400"]),
       borderBottomColor: ColorVariableWithDefault(
         props,
-        background["base.600"]
+        base["background.600"]
       ),
     },
   }),
@@ -115,9 +109,9 @@ export const variants = stylex.create({
     },
   }),
   gradient: (props: AccordionItemProps) => ({
-    backgroundColor: background["base.600"],
+    backgroundColor: base["background.600"],
     ":hover": {
-      backgroundColor: background.base,
+      backgroundColor: base.background,
     },
   }),
   none: (props: AccordionItemProps) => ({

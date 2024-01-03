@@ -1,8 +1,9 @@
-import { background, type RC } from "@stellaria/nova";
+import { type RC } from "@stellaria/nova";
 import type { Metadata } from "next";
 import stylex from "@stylexjs/stylex";
 
 import "./main.css";
+import { base } from "../../core/tokens/base.stylex";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +26,7 @@ const styles = stylex.create({
   base: {},
   dynamic: () => ({
     colorScheme: "light",
-    backgroundColor: background.base,
+    backgroundColor: base.background,
   }),
 });
 

@@ -1,5 +1,5 @@
 import { Ref } from "react";
-import { Theme } from "./theme";
+import { Tokens } from "./theme";
 import { CSSPropertiesWithExtras } from "@stylexjs/stylex/lib/StyleXTypes";
 
 export type StylexComponent<P = {}, A = {}> = {
@@ -10,5 +10,5 @@ export type StylexComponent<P = {}, A = {}> = {
   A;
 
 export type StylexProp<OG = {}> =
-  | ((theme: Theme, _: OG) => CSSPropertiesWithExtras)
+  | ((theme: Tokens, _: OG) => CSSPropertiesWithExtras)
   | object;
