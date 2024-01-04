@@ -6,8 +6,10 @@ import { AccordionContentProps } from "..";
 import {
   ChangeOpacityByColorKey,
   ColorContrast,
+  ColorContrastOpacityByColorKeyWithDefault,
   ColorVariableGradient,
 } from "../../../../utils";
+import { properties } from "../../../../tokens/properties.stylex";
 
 export const content = stylex.create({
   base: {
@@ -22,13 +24,25 @@ export const content = stylex.create({
     paddingRight: "24px",
     userSelect: "none",
     pointerEvents: "none",
-    transition: "all 0.0s ease-out",
+    transition: properties.transition,
   },
 });
 
 export const open = stylex.create({
-  flat: (props: AccordionContentProps) => ({}),
-  outline: (props: AccordionContentProps) => ({}),
+  flat: (props: AccordionContentProps) => ({
+    color: ColorContrastOpacityByColorKeyWithDefault(
+      props,
+      0.8,
+      theme["text.200"]
+    ),
+  }),
+  outline: (props: AccordionContentProps) => ({
+    color: ColorContrastOpacityByColorKeyWithDefault(
+      props,
+      0.8,
+      theme["text.200"]
+    ),
+  }),
   glow: (props: AccordionContentProps) => ({
     color: ChangeOpacityByColorKey(props, 0.8),
   }),

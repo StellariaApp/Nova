@@ -4,6 +4,7 @@ import { sizes } from "./sizes.stylex";
 import { spacing } from "./spacing.stylex";
 import { borderRadius } from "./border.stylex";
 import { fonts } from "./fonts.stylex";
+import { properties } from "./properties.stylex";
 
 export const tokens = {
   theme,
@@ -12,4 +13,5 @@ export const tokens = {
   spacing,
   borderRadius,
   fonts,
+  properties,
 };

@@ -6,9 +6,11 @@ import { AccordionTriggerProps } from "..";
 import {
   ChangeOpacityByColorKey,
   ColorContrast,
+  ColorContrastByColorKeyWithDefault,
   ColorVariableGradient,
   ValueByColorKey,
 } from "../../../../utils";
+import { properties } from "../../../../tokens/properties.stylex";
 
 export const trigger = stylex.create({
   base: {
@@ -27,13 +29,17 @@ export const trigger = stylex.create({
     gap: "18px",
     userSelect: "none",
     pointerEvents: "none",
-    transition: "all 0s ease-in-out",
+    transition: properties.transition,
   },
 });
 
 export const open = stylex.create({
-  flat: (props: AccordionTriggerProps) => ({}),
-  outline: (props: AccordionTriggerProps) => ({}),
+  flat: (props: AccordionTriggerProps) => ({
+    color: ColorContrastByColorKeyWithDefault(props, theme["text.600"]),
+  }),
+  outline: (props: AccordionTriggerProps) => ({
+    color: ColorContrastByColorKeyWithDefault(props, theme["text.600"]),
+  }),
   glow: (props: AccordionTriggerProps) => ({
     color: ValueByColorKey(props),
   }),

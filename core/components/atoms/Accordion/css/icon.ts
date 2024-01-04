@@ -12,8 +12,12 @@ export const icon = stylex.create({
 });
 
 export const open = stylex.create({
-  flat: (props: AccordionIconProps) => ({}),
-  outline: (props: AccordionIconProps) => ({}),
+  flat: (props: AccordionIconProps) => ({
+    fill: ColorContrast(ValueByColorKey(props)),
+  }),
+  outline: (props: AccordionIconProps) => ({
+    fill: ColorContrast(ValueByColorKey(props)),
+  }),
   glow: (props: AccordionIconProps) => ({
     fill: ValueByColorKey(props),
   }),

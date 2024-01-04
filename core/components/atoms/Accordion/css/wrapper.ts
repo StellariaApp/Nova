@@ -1,5 +1,6 @@
 import stylex from "@stylexjs/stylex";
 import { AccordionWrapperProps } from "..";
+import { properties } from "../../../../tokens/properties.stylex";
 
 export const wrapper = stylex.create({
   base: {
@@ -9,7 +10,7 @@ export const wrapper = stylex.create({
     alignItems: "center",
     justifyContent: "center",
     gap: "8px",
-    transition: "all 0.35s ease-in-out",
+    transition: properties.transition,
   },
   rotate: (props: AccordionWrapperProps) => ({
     transform:

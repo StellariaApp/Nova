@@ -70,3 +70,31 @@ export const ChangeOpacityByColorKey = (args?: ArgsColor, alpha = 0.5) => {
   const color = ValueByColorKey(args);
   return ChangeOpacity(color, alpha);
 };
+
+export const ColorContrastByColorKey = (args?: ArgsColor) => {
+  const color = ValueByColorKey(args);
+  return ColorContrast(color);
+};
+
+export const ColorContrastByColorKeyWithDefault = (
+  args?: ArgsColor,
+  def = "#ffffff"
+) => {
+  const { color } = args ?? {};
+  if (!color) return def;
+
+  const colorKey = ValueByColorKey(args);
+  return ColorContrast(colorKey);
+};
+
+export const ColorContrastOpacityByColorKeyWithDefault = (
+  args?: ArgsColor,
+  alpha = 0.5,
+  def = "#ffffff"
+) => {
+  const { color } = args ?? {};
+  if (!color) return def;
+
+  const colorKey = ValueByColorKey(args);
+  return ChangeOpacity(ColorContrast(colorKey), alpha);
+};

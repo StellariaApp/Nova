@@ -5,6 +5,8 @@ import {
   ColorVariableWithDefault,
   ChangeOpacityByColorKey,
   ColorVariableGradient,
+  ColorContrast,
+  ColorContrastByColorKeyWithDefault,
 } from "../../../../utils";
 import {
   CreateBoxShadow,
@@ -13,13 +15,14 @@ import {
 import { NextShade } from "../../../../utils/shade";
 import { borderRadius } from "../../../../tokens/border.stylex";
 import { theme } from "../../../../themes/index.stylex";
+import { properties } from "../../../../tokens/properties.stylex";
 
 export const item = stylex.create({
   base: {
     width: "100%",
     height: "max-content",
     listStyle: "none",
-    transition: "all 0.2s ease-in-out",
+    transition: properties.transition,
     padding: "14px 8px 12px 8px",
 
     borderRadius: borderRadius.small,
@@ -31,7 +34,13 @@ export const open = stylex.create({
   flat: (props: AccordionItemProps) => ({
     backgroundColor: ColorVariableWithDefault(props, theme.background),
     ":hover": {
-      backgroundColor: ColorVariableWithDefault(props, theme["background.400"]),
+      backgroundColor: ColorVariableWithDefault(
+        {
+          ...props,
+          shade: NextShade(props.shade, "NEXT"),
+        },
+        theme["background.400"]
+      ),
     },
   }),
   outline: (props: AccordionItemProps) => ({
@@ -88,7 +97,13 @@ export const variants = stylex.create({
   flat: (props: AccordionItemProps) => ({
     backgroundColor: theme["background.600"],
     ":hover": {
-      backgroundColor: theme.background,
+      backgroundColor: ColorVariableWithDefault(props, theme.background),
+    },
+    ":hover > summary": {
+      color: ColorContrastByColorKeyWithDefault(props, theme["text.600"]),
+    },
+    ":hover > summary > div > svg > path": {
+      fill: ColorContrastByColorKeyWithDefault(props, theme.text),
     },
   }),
   outline: (props: AccordionItemProps) => ({
@@ -101,6 +116,12 @@ export const variants = stylex.create({
         props,
         theme["background.600"]
       ),
+    },
+    ":hover > summary": {
+      color: ColorContrastByColorKeyWithDefault(props, theme["text.600"]),
+    },
+    ":hover > summary > div > svg > path": {
+      fill: ColorContrastByColorKeyWithDefault(props, theme.text),
     },
   }),
   glow: (props: AccordionItemProps) => ({

@@ -20,6 +20,7 @@ import { sizes } from "../../../../tokens/sizes.stylex";
 import { fonts } from "../../../../tokens/fonts.stylex";
 import { colors } from "../../../../tokens/colors.stylex";
 import { theme } from "../../../../themes/index.stylex";
+import { properties } from "../../../../tokens/properties.stylex";
 
 export const button = stylex.create({
   base: {
@@ -35,7 +36,7 @@ export const button = stylex.create({
     fontFamily: fonts.primary,
     color: theme.text,
     userSelect: "none",
-    transition: "all 0.32s ease",
+    transition: properties.transition,
   },
   disabled: {
     backgroundColor: colors.disabled,

@@ -6,6 +6,7 @@ import {
 } from "../../../../utils";
 import { borderRadius } from "../../../../tokens/border.stylex";
 import { theme } from "../../../../themes/index.stylex";
+import { properties } from "../../../../tokens/properties.stylex";
 
 export const container = stylex.create({
   base: {
@@ -18,7 +19,7 @@ export const container = stylex.create({
     borderRadius: borderRadius.regular,
     overflow: "hidden",
     padding: "8px",
-    transition: "all 0.2s ease-in-out",
+    transition: properties.transition,
     gap: "8px",
   },
 });
