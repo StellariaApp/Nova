@@ -17,12 +17,7 @@ const Home = () => (
         <Fragment key={variant}>
           <span {...stylex.props(page.title())}>{variant.toUpperCase()}</span>
           <Wrapper stylex={page.content}>
-            <Accordion
-              color="sweet"
-              variant={variant}
-              autoClose
-              items={ACCORDION_ITEMS}
-            />
+            <Accordion variant={variant} autoClose items={ACCORDION_ITEMS} />
           </Wrapper>
         </Fragment>
       ))}
