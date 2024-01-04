@@ -19,10 +19,10 @@ export const content = stylex.create({
     fontWeight: 600,
     color: theme["backgroundAlt.600"],
     cursor: "pointer",
-    transition: "all 0.4s ease-out",
     paddingRight: "24px",
     userSelect: "none",
     pointerEvents: "none",
+    transition: "all 0.4s ease-out",
   },
 });
 

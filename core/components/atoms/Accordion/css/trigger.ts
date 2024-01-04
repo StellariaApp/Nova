@@ -24,10 +24,10 @@ export const trigger = stylex.create({
     fontWeight: 600,
     color: theme.text,
     cursor: "pointer",
-    transition: "all 0.2s ease-in-out",
     gap: "18px",
     userSelect: "none",
     pointerEvents: "none",
+    transition: "all 0s ease-in-out",
   },
 });
 
