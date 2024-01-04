@@ -9,7 +9,7 @@ export const wrapper = stylex.create({
     alignItems: "center",
     justifyContent: "center",
     gap: "8px",
-    transition: "all 0.3s ease-in-out",
+    transition: "all 0.35s ease-in-out",
   },
   rotate: (props: AccordionWrapperProps) => ({
     transform:

@@ -15,9 +15,9 @@ const AccordionContentRef = (
   const styles = ContentStyles(openProps);
 
   return (
-    <p {...styles} ref={ref}>
+    <div {...styles} ref={ref}>
       {children}
-    </p>
+    </div>
   );
 };
 

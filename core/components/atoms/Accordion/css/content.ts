@@ -22,7 +22,7 @@ export const content = stylex.create({
     paddingRight: "24px",
     userSelect: "none",
     pointerEvents: "none",
-    transition: "all 0.4s ease-out",
+    transition: "all 0.0s ease-out",
   },
 });
 

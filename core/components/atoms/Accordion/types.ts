@@ -1,4 +1,4 @@
-import {
+import React, {
   DetailedHTMLProps,
   DetailsHTMLAttributes,
   HTMLAttributes,
@@ -56,10 +56,10 @@ export type AccordionProps = {
 
 export type ItemAccordion = {
   id: string;
-  title?: string;
-  content?: string;
-  open?: boolean;
+  title?: React.ReactNode | string;
+  content?: React.ReactNode | string;
   icon?: IconStringArray;
+  open?: boolean;
 };
 
 type AccordionContainer = DetailedHTMLProps<
@@ -78,8 +78,8 @@ type AccordionTrigger = DetailedHTMLProps<
 >;
 
 export type AccordionContent = DetailedHTMLProps<
-  HTMLAttributes<HTMLParagraphElement>,
-  HTMLParagraphElement
+  HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
 >;
 
 export type AccordionWrapper = DetailedHTMLProps<

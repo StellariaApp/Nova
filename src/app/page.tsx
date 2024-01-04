@@ -95,6 +95,7 @@ const ACCORDION_ITEMS = [
   {
     id: "1",
     open: true,
+    icon: ["plus", "minus"],
     title:
       "Is it possible to use the same component for the accordion and the accordion item?",
     content:
