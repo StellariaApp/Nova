@@ -33,7 +33,5 @@ export const variants = stylex.create({
     strokeWidth: "10px",
     paintOrder: "stroke",
   }),
-  gradient: (props: IconProps) => ({
-    fill: props.fill ?? C(C.Variable(props), theme.text),
-  }),
+  gradient: (props: IconProps) => ({}),
 });

@@ -1,12 +1,13 @@
 import { IconProps } from "../types";
 import FilterGlass from "./FilterGlass";
 import FilterGlow from "./FilterGlow";
+import FilterGradient from "./FilterGradient";
 
-export type FilterSvgProps = IconProps & {
+export type FilterProps = IconProps & {
   filter?: string;
 };
 
-export const FilterSvg = (props: FilterSvgProps) => {
+export const Filter = (props: FilterProps) => {
   const { variant } = props;
 
   switch (variant) {
@@ -14,7 +15,9 @@ export const FilterSvg = (props: FilterSvgProps) => {
       return <FilterGlow {...props} />;
     case "glass":
       return <FilterGlass {...props} />;
+    case "gradient":
+      return <FilterGradient {...props} />;
+    default:
+      return null;
   }
-
-  return null;
 };

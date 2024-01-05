@@ -1,4 +1,4 @@
-export type RC = <P>(
+export type RC<P = {}> = (
   props: P & {
     children?: JSX.Element | JSX.Element[];
   }

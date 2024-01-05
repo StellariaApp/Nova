@@ -10,12 +10,12 @@ const IconRef = (props: IconProps, ref: Ref<SVGSVGElement>) => {
   const { pathStyles, svgStyles } = Styles(props);
   const { viewBox, svgPath } = GetIcon(props);
 
-  const { ComponentFilter, filterProps } = useFilter(props);
+  const { ComponentFilter, filter, filterId } = useFilter(props);
 
   return (
-    <svg {...filterProps} viewBox={viewBox} {...svgStyles} ref={ref}>
+    <svg {...filter} viewBox={viewBox} {...svgStyles} ref={ref}>
       {ComponentFilter}
-      <path d={svgPath} {...pathStyles} />
+      <path {...filterId} d={svgPath} {...pathStyles} />
     </svg>
   );
 };

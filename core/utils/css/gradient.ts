@@ -1,18 +1,18 @@
 import { ColorVariable } from ".";
+import { DIRECTIONS } from "../../constants/directions";
 import { GradientsProps } from "../../types";
 
 export const Gradient = (args?: GradientsProps) => {
-  const { gradient = ["primary", "sweet"] } = args ?? {};
-  const { gradientShade = ["500", "400"] } = args ?? {};
+  const { gradient, gradientShade } = args ?? {};
 
   const gradient1 = {
-    color: gradient[0],
-    shade: gradientShade[0],
+    color: gradient?.[0] ?? "primary",
+    shade: gradientShade?.[0] ?? "500",
   };
 
   const gradient2 = {
-    color: gradient[1],
-    shade: gradientShade[1],
+    color: gradient?.[1] ?? "sweet",
+    shade: gradientShade?.[1] ?? "400",
   };
 
   const color1 = ColorVariable(gradient1);
@@ -39,7 +39,24 @@ export const GradientAnimation = (
   return `linear-gradient(${direction}, ${color1}, ${color2}, ${color1})`;
 };
 
+export const DirectionToDeg = (args?: GradientsProps) => {
+  if (!args?.gradientDirection) return "rotate(0deg)";
+
+  const direction = args.gradientDirection;
+  const deg = DIRECTIONS[direction];
+  if (!deg) return direction;
+  return deg;
+};
+export const DirectionToRotate = (args?: GradientsProps) => {
+  if (!args?.gradientDirection) return "rotate(0deg)";
+
+  const degs = DirectionToDeg(args);
+  return `rotate(${degs}deg)`;
+};
+
 export const G = Object.assign(Gradient, {
   Linear: GradientLinear,
   Animation: GradientAnimation,
+  ToDeg: DirectionToDeg,
+  ToRotate: DirectionToRotate,
 });

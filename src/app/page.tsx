@@ -4,6 +4,9 @@ import {
   Icon,
   Accordion,
   ItemAccordion,
+  RC,
+  Variants,
+  Colors,
 } from "@stellaria/nova";
 import { page } from "./styles";
 import { ToggleTheme } from "@/components/ToggleTheme";
@@ -43,35 +46,25 @@ const Home = () => (
         </Fragment>
       ))}
     </Wrapper> */}
+    <Section title="Icons" subtitle="Icons with different variants and colors">
+      {(variant, color, idx = 0) => (
+        <Icon
+          color={color}
+          variant={variant}
+          gradient={[color, "sweet"]}
+          icon={ICONS[idx]}
+          size={ICONSIZE}
+        />
+      )}
+    </Section>
 
-    <Wrapper as="section" stylex={page.wrapper}>
-      {VARIANTS.map((variant) => (
-        <Fragment key={variant ?? "none"}>
-          <span {...stylex.props(page.title())}>
-            {variant?.toUpperCase() ?? "NONE"}
-          </span>
-          <Wrapper key={variant} stylex={page.content}>
-            {COLORS.map((color, idx) => (
-              <Icon
-                key={variant ?? "none" + color ?? "none"}
-                color={color}
-                variant={variant}
-                gradient={[color, "sweet"]}
-                icon={ICONS[idx]}
-                size={ICONSIZE}
-              />
-            ))}
-          </Wrapper>
-        </Fragment>
-      ))}
-    </Wrapper>
     <ToggleTheme />
   </Wrapper>
 );
 
 export default Home;
 
-const ICONSIZE = 32;
+const ICONSIZE = 24;
 const ICONS = [
   "plus",
   "arrow-up",
@@ -136,3 +129,35 @@ const ACCORDION_ITEMS = [
       "A controlled component has its state controlled by React. An uncontrolled component has its state controlled by the DOM.",
   },
 ] as ItemAccordion[];
+
+type Section = {
+  title: string;
+  subtitle: string;
+  children?: (variant?: Variants, color?: Colors, idx?: number) => JSX.Element;
+};
+
+const Section = (props: Section) => {
+  const { title, subtitle, children } = props;
+  return (
+    <Wrapper as="section" stylex={page.wrapper}>
+      <Wrapper as="section" stylex={page.content_title}>
+        <span {...stylex.props(page.title())}>{title}</span>
+        <span {...stylex.props(page.subtitle())}>{subtitle}</span>
+      </Wrapper>
+      {VARIANTS.map((variant) => (
+        <Wrapper key={variant} stylex={page.grid}>
+          <span {...stylex.props(page.title_content())}>
+            {variant?.toUpperCase() ?? "NONE"}
+          </span>
+          <Wrapper key={variant} stylex={page.content}>
+            {COLORS.map((color, idx) => (
+              <Fragment key={variant ?? "none" + color ?? "none"}>
+                {children?.(variant, color, idx)}
+              </Fragment>
+            ))}
+          </Wrapper>
+        </Wrapper>
+      ))}
+    </Wrapper>
+  );
+};

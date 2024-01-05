@@ -1,9 +1,9 @@
 import React from "react";
-import { FilterSvgProps } from "./FilterSvg";
+import { FilterProps } from "./Filter";
 import { C } from "../../../../utils";
 import { theme } from "../../../../themes/index.stylex";
 
-const FilterGlow = (props: FilterSvgProps) => {
+const FilterGlow = (props: FilterProps) => {
   const { filter } = props;
   return (
     <filter id={filter}>

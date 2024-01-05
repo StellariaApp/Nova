@@ -1,14 +1,15 @@
 import { useId } from "react";
-import { FilterSvg } from "../components/FilterSvg";
+import { Filter } from "../components/Filter";
 import { IconProps } from "../types";
 
 const useFilter = (props: IconProps) => {
-  const filter = useId();
-  const ComponentFilter = FilterSvg({ ...props, filter });
+  const id = useId();
+  const ComponentFilter = Filter({ ...props, filter: id });
 
-  const filterProps = ComponentFilter ? { filter: `url(#${filter})` } : {};
+  const filter = ComponentFilter ? { filter: `url(#${id})` } : {};
+  const filterId = ComponentFilter ? { fill: `url(#${id})` } : {};
 
-  return { filter, ComponentFilter, filterProps };
+  return { id, ComponentFilter, filter, filterId };
 };
 
 export default useFilter;

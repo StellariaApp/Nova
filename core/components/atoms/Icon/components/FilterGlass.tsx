@@ -1,7 +1,7 @@
 import React from "react";
-import { FilterSvgProps } from "./FilterSvg";
+import { FilterProps } from "./Filter";
 
-const FilterGlass = (props: FilterSvgProps) => {
+const FilterGlass = (props: FilterProps) => {
   const { filter } = props;
   return (
     <filter id={filter}>
