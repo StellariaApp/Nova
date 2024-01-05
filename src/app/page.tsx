@@ -47,16 +47,18 @@ const Home = () => (
     <Wrapper as="section" stylex={page.wrapper}>
       {VARIANTS.map((variant) => (
         <Fragment key={variant}>
-          <span {...stylex.props(page.title())}>{variant.toUpperCase()}</span>
+          <span {...stylex.props(page.title())}>
+            {variant?.toUpperCase() ?? "NONE"}
+          </span>
           <Wrapper key={variant} stylex={page.content}>
             {COLORS.map((color, idx) => (
               <Icon
-                key={variant + color}
+                key={variant ?? "none" + color ?? "none"}
                 color={color}
                 variant={variant}
                 gradient={[color, "sweet"]}
                 icon={ICONS[idx]}
-                size={120}
+                size={64}
               />
             ))}
           </Wrapper>
@@ -70,6 +72,7 @@ const Home = () => (
 export default Home;
 
 const ICONS = [
+  "plus",
   "arrow-up",
   "arrow-down",
   "arrow-left",
@@ -78,10 +81,16 @@ const ICONS = [
   "b",
   "star",
   "heart",
+  "facebook",
+  "twitter",
+  "instagram",
+  "github",
+  "linkedin",
 ] as const;
 
-const VARIANTS = ["none", "flat", "outline", "glow", "gradient"] as const;
+const VARIANTS = [undefined, "flat", "outline", "glow", "gradient"] as const;
 const COLORS = [
+  undefined,
   "primary",
   "secondary",
   "success",
@@ -90,6 +99,11 @@ const COLORS = [
   "info",
   "sweet",
   "disabled",
+  "white",
+  "black",
+  "#ff0000",
+  "#00ff00",
+  "#0000ff",
 ] as const;
 
 const ACCORDION_ITEMS = [

@@ -1,4 +1,4 @@
-import { StylexComponent } from "../../types/stylex";
+import { StylexComponent } from "../../types";
 
 export type TemplateProps = StylexComponent<{
   disabled?: boolean;

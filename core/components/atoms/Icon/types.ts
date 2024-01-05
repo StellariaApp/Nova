@@ -1,7 +1,9 @@
-import { SVGProps } from "react";
-import { StylexComponent } from "../../../types/stylex";
-import { IconName, iconVariant } from "../../../utils/icon";
-import { ColorGradientProps } from "../../../types";
+import type { SVGProps } from "react";
+import type {
+  IconArgs,
+  StylexComponent,
+  AppearanceProps,
+} from "../../../types";
 
 type SVG = SVGProps<SVGSVGElement>;
 type Path = SVGProps<SVGPathElement>;
@@ -9,13 +11,11 @@ type Path = SVGProps<SVGPathElement>;
 export type IconProps = StylexComponent<
   {
     fill?: string;
-    iconVariant?: iconVariant;
-    icon?: IconName;
     size?: number | string;
     components?: {
       svg?: SVG;
       path?: Path;
     };
   },
-  ColorGradientProps
+  AppearanceProps & IconArgs
 >;

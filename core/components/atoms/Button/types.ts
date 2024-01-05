@@ -1,10 +1,10 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
-import { StylexComponent } from "../../../types/stylex";
-import { ColorGradientProps } from "../../../types/theme";
+import { StylexComponent } from "../../../types";
+import { AppearanceProps } from "../../../types/theme";
 
 type Button = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >;
 
-export type ButtonProps = StylexComponent<{}, Button & ColorGradientProps>;
+export type ButtonProps = StylexComponent<{}, Button & AppearanceProps>;

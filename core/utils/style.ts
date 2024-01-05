@@ -1,10 +1,9 @@
-import stylex, { StyleXStyles } from "@stylexjs/stylex";
-import { StylexComponent } from "../types/stylex";
-import { IStyle } from "../types/style";
+import type { StylexComponent, StyleXStyles, Style } from "../types";
+import stylex from "@stylexjs/stylex";
 import { tokens } from "..";
 
 export const StyleWithProps = <P extends object, OG extends object>(
-  styles: IStyle,
+  styles: Style,
   spread: P,
   ogProps = spread as OG & P
 ) => {

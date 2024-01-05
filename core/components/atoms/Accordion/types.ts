@@ -3,28 +3,28 @@ import React, {
   DetailsHTMLAttributes,
   HTMLAttributes,
 } from "react";
-import { StylexComponent } from "../../../types/stylex";
+import { StylexComponent } from "../../../types";
 import { IconProps } from "../Icon/types";
-import { ColorGradientProps } from "../../../types";
+import { AppearanceProps } from "../../../types";
 
 export type AccordionContainerProps = StylexComponent<
   HashItem,
-  AccordionContainer & ColorGradientProps
+  AccordionContainer & AppearanceProps
 >;
 
 export type AccordionContentProps = StylexComponent<{}, AccordionContent> &
-  ColorGradientProps &
+  AppearanceProps &
   HashItem;
 export type AccordionIconProps = HashItem & Omit<IconProps, "icon">;
 export type AccordionItemProps = StylexComponent<HashItem, AccordionItem> &
-  ColorGradientProps;
+  AppearanceProps;
 export type AccordionTriggerProps = StylexComponent<
   {},
-  AccordionTrigger & ColorGradientProps & HashItem
+  AccordionTrigger & AppearanceProps & HashItem
 >;
 export type AccordionWrapperProps = StylexComponent<
   HashItem,
-  AccordionWrapper & ColorGradientProps
+  AccordionWrapper & AppearanceProps
 >;
 
 type IconStringArray =
@@ -52,7 +52,7 @@ export type AccordionProps = {
     trigger?: AccordionTriggerProps;
     wrapper?: AccordionWrapperProps;
   };
-} & ColorGradientProps;
+} & AppearanceProps;
 
 export type ItemAccordion = {
   id: string;

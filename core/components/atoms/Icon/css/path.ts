@@ -2,7 +2,7 @@ import stylex from "@stylexjs/stylex";
 import { properties } from "../../../../tokens/properties.stylex";
 import { IconProps } from "../types";
 import { theme } from "../../../../themes/index.stylex";
-import { ColorVariable } from "../../../../utils";
+import { C } from "../../../../utils";
 
 export const path = stylex.create({
   base: {
@@ -12,21 +12,18 @@ export const path = stylex.create({
 
 export const variants = stylex.create({
   flat: (props: IconProps) => ({
-    fill: ColorVariable(props),
+    fill: props.fill ?? C(C.Variable(props), theme.text),
   }),
   outline: (props: IconProps) => ({
     fill: "none",
-    stroke: ColorVariable(props),
+    stroke: props.fill ?? C(C.Variable(props), theme.text),
     strokeWidth: "10px",
     paintOrder: "stroke",
   }),
   glow: (props: IconProps) => ({
-    fill: ColorVariable(props),
+    fill: props.fill ?? C(C.Variable(props), theme.text),
   }),
   gradient: (props: IconProps) => ({
-    fill: ColorVariable(props),
-  }),
-  none: (props: IconProps) => ({
-    fill: props.fill ?? theme.text,
+    fill: props.fill ?? C(C.Variable(props), theme.text),
   }),
 });

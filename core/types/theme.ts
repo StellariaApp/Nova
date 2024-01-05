@@ -1,15 +1,16 @@
-import { tokens } from "..";
+import { CSSColorsNames, tokens } from "..";
 import { themes } from "../themes/index.stylex";
 import { colorsRaw } from "../tokens/colors.stylex";
 
 export type ThemeKeys = keyof typeof themes;
 export type Tokens = typeof tokens;
 
-export type VariantColors = "flat" | "outline" | "glow" | "gradient" | "none";
+export type Variants = "flat" | "outline" | "glow" | "gradient";
 
 export type ColorsKeys = keyof typeof colorsRaw;
 
 export type Colors =
+  | CSSColorsNames
   | "primary"
   | "secondary"
   | "success"
@@ -17,9 +18,11 @@ export type Colors =
   | "warning"
   | "sweet"
   | "info"
-  | "disabled";
+  | "disabled"
+  | `#${string}`
+  | undefined;
 
-export type Shade =
+export type Shades =
   | "100"
   | "200"
   | "300"
@@ -30,26 +33,25 @@ export type Shade =
   | "800"
   | "900";
 
-export type ColorsGradient = [Colors, Colors];
-export type ColorsGradientShade = [Shade, Shade];
+export type Directions = "top" | "right" | "bottom" | "left";
 
-export type ColorsGradientDirection =
-  | "to top"
-  | "to right"
-  | "to bottom"
-  | "to left"
-  | `${number}deg`;
+export type Gradients = [Colors, Colors];
+export type GradientsShades = [Shades, Shades];
+export type GradientsDirections = `to ${Directions}` | `${number}deg`;
 
-export type ColorProps = {
-  variant?: VariantColors;
+export type VariantsProps = {
+  variant?: Variants;
+};
+
+export type ColorsProps = {
   color?: Colors;
-  shade?: Shade;
+  shade?: Shades;
 };
 
-export type GradientProps = {
-  gradient?: ColorsGradient;
-  gradientShade?: ColorsGradientShade;
-  gradientDirection?: ColorsGradientDirection;
+export type GradientsProps = {
+  gradient?: Gradients;
+  gradientShade?: GradientsShades;
+  gradientDirection?: GradientsDirections;
 };
 
-export type ColorGradientProps = ColorProps & GradientProps;
+export type AppearanceProps = ColorsProps & GradientsProps & VariantsProps;

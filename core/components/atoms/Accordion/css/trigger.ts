@@ -4,9 +4,9 @@ import { sizes } from "../../../../tokens/sizes.stylex";
 import { theme } from "../../../../themes/index.stylex";
 import { AccordionTriggerProps } from "..";
 import {
-  ChangeOpacityByColorKey,
-  ColorContrast,
-  ColorContrastByColorKeyWithDefault,
+  OpacityByColorKey,
+  Contrast,
+  ContrastByColorKeyWithDefault,
   ColorVariableGradient,
   ValueByColorKey,
 } from "../../../../utils";
@@ -35,16 +35,16 @@ export const trigger = stylex.create({
 
 export const open = stylex.create({
   flat: (props: AccordionTriggerProps) => ({
-    color: ColorContrastByColorKeyWithDefault(props, theme["text.600"]),
+    color: ContrastByColorKeyWithDefault(props, theme["text.600"]),
   }),
   outline: (props: AccordionTriggerProps) => ({
-    color: ColorContrastByColorKeyWithDefault(props, theme["text.600"]),
+    color: ContrastByColorKeyWithDefault(props, theme["text.600"]),
   }),
   glow: (props: AccordionTriggerProps) => ({
     color: ValueByColorKey(props),
   }),
   gradient: (props: AccordionTriggerProps) => ({
-    color: ColorContrast(ColorVariableGradient(props)[1]),
+    color: Contrast(ColorVariableGradient(props)[1]),
   }),
   none: (props: AccordionTriggerProps) => ({}),
 });
@@ -53,7 +53,7 @@ export const variants = stylex.create({
   flat: (props: AccordionTriggerProps) => ({}),
   outline: (props: AccordionTriggerProps) => ({}),
   glow: (props: AccordionTriggerProps) => ({
-    color: ChangeOpacityByColorKey(props, 0.9),
+    color: OpacityByColorKey(props, 0.9),
   }),
   gradient: (props: AccordionTriggerProps) => ({}),
   none: (props: AccordionTriggerProps) => ({}),

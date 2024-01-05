@@ -1,4 +1,4 @@
-import { StylexComponent } from "../../../types/stylex";
+import { StylexComponent } from "../../../types";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export type AsWrapper =

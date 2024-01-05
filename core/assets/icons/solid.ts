@@ -1,4 +1,4 @@
-export const iconsSolid = {
+export const IconsSolid = {
   '0': [
     320,
     512,

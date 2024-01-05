@@ -1,7 +1,6 @@
-import { ColorGradientProps } from "..";
-import { WrapperProps } from "../components/atoms/Wrapper/types";
+import { AppearanceProps } from "..";
 
-export const SpreadColorGradient = <P extends ColorGradientProps>(props: P) => {
+export const SpreadColorGradient = <P extends AppearanceProps>(props: P) => {
   const {
     variant,
     color,
@@ -11,12 +10,6 @@ export const SpreadColorGradient = <P extends ColorGradientProps>(props: P) => {
     gradientShade,
     ...spread
   } = props;
-
-  return { ...props, spread };
-};
-
-export const SpreadWrapperProps = (props: WrapperProps) => {
-  const { as, ...spread } = props;
 
   return { ...props, spread };
 };

@@ -1,51 +1,35 @@
-import { iconsBrands } from "../assets/icons/brands";
-import { iconsRegular } from "../assets/icons/regular";
-import { iconsSolid } from "../assets/icons/solid";
+import type { IconFind, IconName, IconVariant, IconArgs, IconSvg } from "..";
 
-type Icon = [
-  width: number,
-  height: number,
-  paths: [number, string][],
-  unicode: string,
-  svgPathData: string
-];
-
-export type iconVariant = "brands" | "regular" | "solid";
-
-export type IconName =
-  | keyof typeof iconsBrands
-  | keyof typeof iconsRegular
-  | keyof typeof iconsSolid;
-
-const Icons = {
-  brands: iconsBrands,
-  regular: iconsRegular,
-  solid: iconsSolid,
-};
+import { Icons } from "../assets/icons";
 
 export const IconsArray = Object.entries(Icons).flatMap(
   ([keyVariant, valueVariant]) =>
     Object.entries(valueVariant).map(([keyIcon]) => ({
       icon: keyIcon as IconName,
-      variant: keyVariant as iconVariant,
+      variant: keyVariant as IconVariant,
     }))
 );
 
-export type ArgsIcon = {
-  icon?: IconName;
-  iconVariant?: iconVariant;
-};
-
-export const GetIcon = (args: ArgsIcon) => {
+const FindIconSvg = (args: IconArgs) => {
   const { iconVariant = "solid", icon = "trash-can" } = args;
 
-  const findiconVariant = Icons[iconVariant ?? "solid"] as unknown as Record<
-    IconName,
-    Icon
-  >;
-  const findIcon = findiconVariant[icon ?? "trash-alt"];
+  const Variant = Icons[iconVariant] as IconFind;
+  const IconSvg = Variant[icon];
+  if (IconSvg) return IconSvg as IconSvg;
+  const isSolid = Icons.solid[icon as keyof typeof Icons["solid"]];
+  if (isSolid) return isSolid as IconSvg;
+  const isRegular = Icons.regular[icon as keyof typeof Icons["regular"]];
+  if (isRegular) return isRegular as IconSvg;
+  const isBrands = Icons.brands[icon as keyof typeof Icons["brands"]];
+  if (isBrands) return isBrands as IconSvg;
 
-  const [width, height, _, __, svgPath] = findIcon;
+  return Icons.solid["trash-can"] as IconSvg;
+};
+
+export const GetIcon = (args: IconArgs) => {
+  const IconSvg = FindIconSvg(args);
+
+  const [width, height, _, __, svgPath] = IconSvg;
 
   const viewBox = `0 0 ${width} ${height}`;
 

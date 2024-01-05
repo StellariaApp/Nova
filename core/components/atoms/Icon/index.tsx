@@ -1,9 +1,9 @@
 import type { Ref } from "react";
+import type { IconProps } from "./types";
 
 import { forwardRef } from "react";
 import { GetIcon } from "../../../utils/icon";
 import { Styles } from "./styles/icon";
-import { IconProps } from "./types";
 
 const IconRef = (props: IconProps, ref: Ref<SVGSVGElement>) => {
   const { pathStyles, svgStyles } = Styles(props);

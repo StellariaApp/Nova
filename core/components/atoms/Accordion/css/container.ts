@@ -1,9 +1,6 @@
 import stylex from "@stylexjs/stylex";
 import { AccordionContainerProps } from "..";
-import {
-  ChangeOpacityByColorKey,
-  ColorVariableWithDefault,
-} from "../../../../utils";
+import { OpacityByColorKey, ColorVariableWithDefault } from "../../../../utils";
 import { borderRadius } from "../../../../tokens/border.stylex";
 import { theme } from "../../../../themes/index.stylex";
 import { properties } from "../../../../tokens/properties.stylex";
@@ -34,9 +31,9 @@ export const variants = stylex.create({
     borderColor: ColorVariableWithDefault(props, theme["background.600"]),
   }),
   glow: (props: AccordionContainerProps) => ({
-    backgroundColor: ChangeOpacityByColorKey(props, 0.1),
+    backgroundColor: OpacityByColorKey(props, 0.1),
     border: `1px solid transparent`,
-    borderColor: ChangeOpacityByColorKey(props, 0.2),
+    borderColor: OpacityByColorKey(props, 0.2),
     backdropFilter: "blur(12px)",
   }),
   gradient: (props: AccordionContainerProps) => ({
