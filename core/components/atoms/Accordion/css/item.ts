@@ -43,7 +43,7 @@ export const open = stylex.create({
     //   ),
     // },
   }),
-  glow: (props: AccordionItemProps) => ({
+  glass: (props: AccordionItemProps) => ({
     // boxShadow: BoxShadow([
     //   {
     //     blur: 2,
@@ -109,7 +109,7 @@ export const variants = stylex.create({
     //   fill: ContrastByColorKeyWithDefault(props, theme.text),
     // },
   }),
-  glow: (props: AccordionItemProps) => ({
+  glass: (props: AccordionItemProps) => ({
     // border: `1px solid transparent`,
     // backgroundColor: OpacityByColorKey(props, 0.09),
     // borderColor: OpacityByColorKey(props, 0.1),

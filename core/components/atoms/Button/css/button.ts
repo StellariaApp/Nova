@@ -60,7 +60,7 @@ export const variants = stylex.create({
     //   color: Contrast(ValueByColorKey(props, NextShade(props.shade ?? "400"))),
     // },
   }),
-  glow: (props: ButtonProps) => ({
+  glass: (props: ButtonProps) => ({
     // boxShadow: BoxShadow([
     //   {
     //     blur: 2,

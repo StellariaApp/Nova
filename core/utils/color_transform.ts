@@ -1,4 +1,5 @@
 import { isColorDark } from ".";
+import { Maths } from "./math";
 
 export const HexToRGB = (hex = "#ffffff") => {
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])([a-f\d])?$/i;
@@ -41,13 +42,45 @@ export const Contrast = (
   return opt?.white ?? "#ffffff";
 };
 
-export const Opacity = (hex = "#ffffff", alpha = 0.5) => {
+export const Opacity = (hex?: string, alpha = 0.5) => {
+  if (!hex) return hex;
   const isHex = /^#([0-9A-F]{3}){1,2}$/i.test(hex);
   const isRGB = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/i.test(hex);
-  if (!isHex && !isRGB) throw new Error("Color must be in hex or rgb format");
+  if (!isHex && !isRGB) return hex;
   const color = isHex ? hex : RGBToHex(hex);
 
   const value = Math.min(Math.max(0, alpha * 100), 100);
   const hexAlpha = Math.round(value * 2.55).toString(16);
   return color + hexAlpha;
 };
+
+export const Brightness = (hex?: string, alpha = 0.5) => {
+  if (!hex) return hex;
+  const isHex = /^#([0-9A-F]{3}){1,2}$/i.test(hex);
+  const isRGB = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/i.test(hex);
+  if (!isHex && !isRGB) return hex;
+  const color = isHex ? hex : RGBToHex(hex);
+  return `#${color
+    .replace(/^#/, "")
+    .replace(/../g, (color) =>
+      `0${Math.min(
+        Math.max(
+          parseInt(color, 16) +
+            parseInt(color, 16) * Maths.MapRange(alpha, -1, 1, -10, 10),
+          0
+        ),
+        255
+      ).toString(16)}`.substr(-2)
+    )}`;
+};
+
+export const CT = Object.assign(
+  {},
+  {
+    Contrast,
+    Brightness,
+    Opacity,
+    HexToRGB,
+    RGBToHex,
+  }
+);

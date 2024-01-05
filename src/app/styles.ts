@@ -29,6 +29,9 @@ export const page = stylex.create({
     padding: "1rem",
     justifyContent: "flex-start",
     alignItems: "center",
+    backgroundImage:
+      "url(https://png.pngtree.com/thumb_back/fh260/background/20231027/pngtree-hexagonal-abstract-background-with-a-black-textured-surface-image_13704307.png)",
+    backgroundSize: "cover",
   },
   content: {
     display: "flex",

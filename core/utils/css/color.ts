@@ -18,7 +18,9 @@ export const ColorKey = (args?: ColorsProps) => {
 export const ColorCSS = (args?: ColorsProps) => {
   const key = ColorKey(args);
   if (!key) return;
-  return colors[key]?.toString();
+  const color = colors[key];
+  if (!color) return args?.color;
+  return color.toString();
 };
 
 export const ColorVariableKey = (variable?: ColorsKeys) => {

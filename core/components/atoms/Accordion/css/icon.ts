@@ -18,7 +18,7 @@ export const open = stylex.create({
   outline: (props: AccordionIconProps) => ({
     fill: Contrast(ValueByColorKey(props)),
   }),
-  glow: (props: AccordionIconProps) => ({
+  glass: (props: AccordionIconProps) => ({
     fill: ValueByColorKey(props),
   }),
   gradient: (props: AccordionIconProps) => ({
@@ -30,7 +30,7 @@ export const open = stylex.create({
 export const variants = stylex.create({
   flat: (props: AccordionIconProps) => ({}),
   outline: (props: AccordionIconProps) => ({}),
-  glow: (props: AccordionIconProps) => ({
+  glass: (props: AccordionIconProps) => ({
     fill: OpacityByColorKey(props, 0.9),
   }),
   gradient: (props: AccordionIconProps) => ({}),

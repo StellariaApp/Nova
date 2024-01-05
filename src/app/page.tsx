@@ -46,7 +46,7 @@ const Home = () => (
 
     <Wrapper as="section" stylex={page.wrapper}>
       {VARIANTS.map((variant) => (
-        <Fragment key={variant}>
+        <Fragment key={variant ?? "none"}>
           <span {...stylex.props(page.title())}>
             {variant?.toUpperCase() ?? "NONE"}
           </span>
@@ -58,7 +58,7 @@ const Home = () => (
                 variant={variant}
                 gradient={[color, "sweet"]}
                 icon={ICONS[idx]}
-                size={64}
+                size={ICONSIZE}
               />
             ))}
           </Wrapper>
@@ -71,6 +71,7 @@ const Home = () => (
 
 export default Home;
 
+const ICONSIZE = 82;
 const ICONS = [
   "plus",
   "arrow-up",
@@ -81,14 +82,20 @@ const ICONS = [
   "b",
   "star",
   "heart",
-  "facebook",
-  "twitter",
-  "instagram",
-  "github",
-  "linkedin",
+  "check",
+  "clone",
+  "filter",
 ] as const;
 
-const VARIANTS = [undefined, "flat", "outline", "glow", "gradient"] as const;
+const VARIANTS = [
+  undefined,
+  "flat",
+  "outline",
+  "glow",
+  "glass",
+  "gradient",
+] as const;
+
 const COLORS = [
   undefined,
   "primary",
@@ -99,11 +106,9 @@ const COLORS = [
   "info",
   "sweet",
   "disabled",
-  "white",
-  "black",
-  "#ff0000",
-  "#00ff00",
-  "#0000ff",
+  "#e42727",
+  "#3bda3b",
+  "#3131df",
 ] as const;
 
 const ACCORDION_ITEMS = [

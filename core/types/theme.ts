@@ -5,7 +5,7 @@ import { colorsRaw } from "../tokens/colors.stylex";
 export type ThemeKeys = keyof typeof themes;
 export type Tokens = typeof tokens;
 
-export type Variants = "flat" | "outline" | "glow" | "gradient";
+export type Variants = "flat" | "outline" | "glow" | "glass" | "gradient";
 
 export type ColorsKeys = keyof typeof colorsRaw;
 
