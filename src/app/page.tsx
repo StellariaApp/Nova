@@ -12,7 +12,7 @@ import { Fragment } from "react";
 
 const Home = () => (
   <Wrapper as="main" stylex={page.container}>
-    <Wrapper as="section" stylex={page.wrapper}>
+    {/* <Wrapper as="section" stylex={page.wrapper}>
       {VARIANTS.map((variant) => (
         <Fragment key={variant}>
           <span {...stylex.props(page.title())}>{variant.toUpperCase()}</span>
@@ -42,7 +42,7 @@ const Home = () => (
           </Wrapper>
         </Fragment>
       ))}
-    </Wrapper>
+    </Wrapper> */}
 
     <Wrapper as="section" stylex={page.wrapper}>
       {VARIANTS.map((variant) => (
@@ -56,6 +56,7 @@ const Home = () => (
                 variant={variant}
                 gradient={[color, "sweet"]}
                 icon={ICONS[idx]}
+                size={120}
               />
             ))}
           </Wrapper>
@@ -79,7 +80,7 @@ const ICONS = [
   "heart",
 ] as const;
 
-const VARIANTS = ["flat", "outline", "glow", "gradient"] as const;
+const VARIANTS = ["none", "flat", "outline", "glow", "gradient"] as const;
 const COLORS = [
   "primary",
   "secondary",
