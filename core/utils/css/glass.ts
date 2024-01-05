@@ -1,6 +1,6 @@
 import { CT, RGBToHex } from "..";
 
-export const Glass = (hex?: string, alpha = 0.15) => {
+export const Glass = (hex?: string, alpha = 0.1) => {
   if (!hex) return hex;
   const isHex = /^#([0-9A-F]{3}){1,2}$/i.test(hex);
   const isRGB = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/i.test(hex);
