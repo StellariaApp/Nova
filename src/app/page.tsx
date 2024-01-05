@@ -71,7 +71,7 @@ const Home = () => (
 
 export default Home;
 
-const ICONSIZE = 82;
+const ICONSIZE = 32;
 const ICONS = [
   "plus",
   "arrow-up",
