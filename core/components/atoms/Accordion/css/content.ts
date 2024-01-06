@@ -3,12 +3,6 @@ import { sizes } from "../../../../tokens/sizes.stylex";
 import { fonts } from "../../../../tokens/fonts.stylex";
 import { theme } from "../../../../themes/index.stylex";
 import { AccordionContentProps } from "..";
-import {
-  OpacityByColorKey,
-  Contrast,
-  ContrastOpacityByColorKeyWithDefault,
-  ColorVariableGradient,
-} from "../../../../utils";
 import { properties } from "../../../../tokens/properties.stylex";
 
 export const content = stylex.create({
@@ -30,16 +24,16 @@ export const content = stylex.create({
 
 export const open = stylex.create({
   flat: (props: AccordionContentProps) => ({
-    color: ContrastOpacityByColorKeyWithDefault(props, 0.8, theme["text.200"]),
+    // color: ContrastOpacityByColorKeyWithDefault(props, 0.8, theme["text.200"]),
   }),
   outline: (props: AccordionContentProps) => ({
-    color: ContrastOpacityByColorKeyWithDefault(props, 0.8, theme["text.200"]),
+    // color: ContrastOpacityByColorKeyWithDefault(props, 0.8, theme["text.200"]),
   }),
   glass: (props: AccordionContentProps) => ({
-    color: OpacityByColorKey(props, 0.8),
+    // color: OpacityByColorKey(props, 0.8),
   }),
   gradient: (props: AccordionContentProps) => ({
-    color: Contrast(ColorVariableGradient(props)[1]),
+    // color: Contrast(ColorVariableGradient(props)[1]),
   }),
   none: (props: AccordionContentProps) => ({}),
 });

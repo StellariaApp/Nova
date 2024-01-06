@@ -96,12 +96,12 @@ export const variants = stylex.create({
   }),
   gradient: (props: ButtonProps) => ({
     color: CT.Contrast(G(props)[0]),
-    background: G.Animation(props, "-60deg"),
-    backgroundSize: "250% auto",
+    background: G.Animation(props, "-70deg"),
+    backgroundSize: "200% auto",
     borderColor: G(props)[1],
     transition: "background-position 0.45s ease-in-out",
     ":hover": {
-      backgroundPosition: "right center",
+      backgroundPosition: "99% 0",
     },
   }),
 });
