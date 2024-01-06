@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { COLORS } from "../../../core/constants/colors";
+import { COLORS, COLORSDATAMODEL } from "../../../core/constants/colors";
 import { Button } from "../../../core/components";
 
 type Props = {};
 
 const Page = (props: Props) => {
   const [contrast, setContrast] = useState(COLORS.map(() => "#1d1d1d"));
+
+  console.log(COLORSDATAMODEL);
 
   return (
     <div>

@@ -1,13 +1,13 @@
-type NetColorOutput = {
+type ModelColorOutput = {
   black: number;
   white: number;
 };
-type NetColorInput = {
+type ModelColorInput = {
   r: number;
   g: number;
   b: number;
 };
-export const NetColor = (input: NetColorInput): NetColorOutput => {
+export const ModelColor = (input: ModelColorInput): ModelColorOutput => {
   const inputFloat = new Float32Array([input["r"], input["g"], input["b"]]);
   return {
     white:

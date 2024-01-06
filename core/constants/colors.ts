@@ -1,4 +1,5 @@
 import { colorsRaw } from "../tokens/colors.stylex";
+import { CT } from "..";
 
 export const COLORS = Object.values(colorsRaw) as string[];
 
@@ -75,4 +76,12 @@ export const COLORSWITHSHADE = [
   ["#858585", true],
   ["#757575", true],
   ["#666666", true],
-];
+] as const;
+
+export const COLORSDATAMODEL = COLORSWITHSHADE.map((color) => ({
+  input: CT.HexToRGB(color[0]),
+  output: {
+    dark: color[1] === false ? 1 : 0,
+    light: color[1] === true ? 1 : 0,
+  },
+}));

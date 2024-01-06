@@ -1,8 +1,8 @@
-import { HexToRGB, NetColor } from ".";
+import { HexToRGB, ModelColor } from ".";
 
 export const isColorDark = (hex = "#ffffff") => {
   const color = HexToRGB(hex);
-  const output = NetColor(color);
+  const output = ModelColor(color);
   if (output.black > output.white) {
     return true;
   }
