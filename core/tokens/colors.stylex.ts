@@ -64,7 +64,7 @@ export const colorsRaw = {
   "info.100": "#D9FCFE",
   "info.200": "#B4F4FD",
   "info.300": "#8EE7FB",
-  "info.400": "#44BCF4",
+  "info.400": "#72D6F8",
   info: "#44BCF4",
   "info.600": "#3194D1",
   "info.700": "#2270AF",
