@@ -50,7 +50,7 @@ const Home = () => (
       title="Buttons"
       subtitle="Buttons with different variants and colors"
       disable={<Button disabled />}
-      content={(variant, color, idx = 0) => (
+      content={(variant, color) => (
         <Button color={color} variant={variant} gradient={[color, "sweet"]} />
       )}
     ></Section>

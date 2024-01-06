@@ -134,15 +134,17 @@ export const Brightness = (hex?: string, alpha = 0) => {
   const color = isHex ? hex : RGBToHex(StringRGBToRGB(hex));
   const { h, s, l } = HexToHSL(color);
 
-  if (alpha === 0) return color;
+  const same = alpha === 0;
   const moreBright = alpha > 0;
   const moreDark = alpha < 0;
+
+  if (same) return color;
   if (moreBright) {
-    const newL = Maths.MapRange(alpha, 0, 1, l, 1);
+    const newL = Maths.MapRange(alpha, 0, 1, l, 100);
     return HSLToHex({ h, s, l: newL });
   }
   if (moreDark) {
-    const newL = Maths.MapRange(alpha, 0, -1, l, 0);
+    const newL = Maths.MapRange(alpha, -1, 0, 0, l);
     return HSLToHex({ h, s, l: newL });
   }
   return color;

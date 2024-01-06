@@ -7,7 +7,8 @@ import { fonts } from "../../../../tokens/fonts.stylex";
 import { colors } from "../../../../tokens/colors.stylex";
 import { theme } from "../../../../themes/index.stylex";
 import { properties } from "../../../../tokens/properties.stylex";
-import { C, CT, SH } from "../../../../utils";
+import { C, CT, G, SH } from "../../../../utils";
+import { BS } from "../../../../utils/css/boxShadow";
 
 export const button = stylex.create({
   base: {
@@ -53,49 +54,54 @@ export const variants = stylex.create({
     },
   }),
   outline: (props: ButtonProps) => ({
-    // backgroundColor: "transparent",
-    // borderColor: ColorVariable(props),
-    // color: ColorVariable(props),
-    // fontWeight: 500,
-    // ":hover": {
-    //   backgroundColor: ColorVariable(props, NextShade(props.shade ?? "400")),
-    //   color: Contrast(ValueByColorKey(props, NextShade(props.shade ?? "400"))),
-    // },
+    backgroundColor: "transparent",
+    borderColor: C.CSS(C.Default(props)),
+    color: C.CSS(C.Default(props)),
+    fontWeight: 500,
+    ":hover": {
+      backgroundColor: C.CSS(C.Default(props)),
+      borderColor: C.CSS(SH.Props(C.Default(props))),
+      color: CT.Contrast(C.Variable(C.Default(props))),
+    },
   }),
-  glass: (props: ButtonProps) => ({}),
   glow: (props: ButtonProps) => ({
-    // boxShadow: BoxShadow([
-    //   {
-    //     blur: 2,
-    //     color: ColorVariable(props),
-    //   },
-    // ]),
-    // fontWeight: 600,
-    // color: OpacityByColorKey(props, 0.9),
-    // backgroundColor: OpacityByColorKey(props, 0.2),
-    // borderColor: ColorVariable(props),
-    // backdropFilter: "blur(12px)",
-    // ":hover": {
-    //   boxShadow: BoxShadow([
-    //     {
-    //       blur: 4,
-    //       color: ColorVariable(props, NextShade(props.shade)),
-    //     },
-    //   ]),
-    //   color: OpacityByColorKey(props, 0.9),
-    //   backgroundColor: OpacityByColorKey(props, 0.3),
-    //   borderColor: ColorVariable(props),
-    //   backdropFilter: "blur(12px)",
-    // },
+    boxShadow: BS({ blur: 2, color: C.CSS(C.Default(props)) }),
+    fontWeight: 600,
+    color: CT.Opacity(C.Variable(C.Default(props)), 0.9),
+    backgroundColor: CT.Opacity(C.Variable(C.Default(props)), 0.2),
+    borderColor: C.CSS(C.Default(props)),
+    ":hover": {
+      boxShadow: BS({ blur: 6, color: C.CSS(SH.Props(C.Default(props))) }),
+      backgroundColor: CT.Opacity(C.Variable(SH.Props(C.Default(props))), 0.3),
+    },
+  }),
+  glass: (props: ButtonProps) => ({
+    fontWeight: 400,
+    backdropFilter: "blur(12px)",
+    color: CT.Opacity(CT.Contrast(C.Variable(C.Default(props))), 0.8),
+    backgroundColor: CT.Opacity(
+      CT.Brightness(C.Variable(C.Default(props)), 0.4),
+      0.4
+    ),
+    borderColor: CT.Opacity(
+      CT.Brightness(C.Variable(C.Default(props)), 0.4),
+      0.8
+    ),
+    ":hover": {
+      backgroundColor: CT.Opacity(
+        CT.Brightness(C.Variable(C.Default(props)), 0.4),
+        0.6
+      ),
+    },
   }),
   gradient: (props: ButtonProps) => ({
-    // color: Contrast(ColorVariableGradient(props)[0]),
-    // background: GradientAnimation(props, "-70deg"),
-    // backgroundSize: "250% auto",
-    // borderColor: ColorVariableGradient(props)[1],
-    // transition: "background-position 0.45s ease-in-out",
-    // ":hover": {
-    //   backgroundPosition: "right center",
-    // },
+    color: CT.Contrast(G(props)[0]),
+    background: G.Animation(props, "-60deg"),
+    backgroundSize: "250% auto",
+    borderColor: G(props)[1],
+    transition: "background-position 0.45s ease-in-out",
+    ":hover": {
+      backgroundPosition: "right center",
+    },
   }),
 });

@@ -24,10 +24,9 @@ export const BoxShadow = (args?: BoxShadowArgs) => {
 
   const isVariableWithOpacity = isVariable && hasOpacity;
 
-  if (isVariableWithOpacity)
-    throw new Error("Variable CSS with opacity not supported");
+  const isOpacityPermitted = !isVariableWithOpacity && hasOpacity;
 
-  const colorWithOpacity = hasOpacity ? Opacity(color, opacity) : color;
+  const colorWithOpacity = isOpacityPermitted ? Opacity(color, opacity) : color;
 
   return `${x}px ${y}px ${blur}px ${spread}px ${colorWithOpacity}`;
 };

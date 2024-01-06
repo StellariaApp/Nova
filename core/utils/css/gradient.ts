@@ -26,8 +26,8 @@ export const GradientLinear = (
   direction = args?.gradientDirection ?? "to right"
 ) => {
   const [color1, color2] = Gradient(args);
-
-  return `linear-gradient(${direction}, ${color1}, ${color2})`;
+  const linear = `linear-gradient(${direction}, ${color1}, ${color2})`;
+  return linear;
 };
 
 export const GradientAnimation = (
