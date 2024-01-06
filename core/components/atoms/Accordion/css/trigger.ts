@@ -33,9 +33,10 @@ export const open = stylex.create({
   outline: (props: AccordionTriggerProps) => ({
     // color: ContrastByColorKeyWithDefault(props, theme["text.600"]),
   }),
-  glass: (props: AccordionTriggerProps) => ({
+  glow: (props: AccordionTriggerProps) => ({
     // color: ValueByColorKey(props),
   }),
+  glass: (props: AccordionTriggerProps) => ({}),
   gradient: (props: AccordionTriggerProps) => ({
     // color: Contrast(ColorVariableGradient(props)[1]),
   }),
@@ -45,9 +46,10 @@ export const open = stylex.create({
 export const variants = stylex.create({
   flat: (props: AccordionTriggerProps) => ({}),
   outline: (props: AccordionTriggerProps) => ({}),
-  glass: (props: AccordionTriggerProps) => ({
+  glow: (props: AccordionTriggerProps) => ({
     // color: OpacityByColorKey(props, 0.9),
   }),
+  glass: (props: AccordionTriggerProps) => ({}),
   gradient: (props: AccordionTriggerProps) => ({}),
   none: (props: AccordionTriggerProps) => ({}),
 });

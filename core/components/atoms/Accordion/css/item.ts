@@ -43,7 +43,7 @@ export const open = stylex.create({
     //   ),
     // },
   }),
-  glass: (props: AccordionItemProps) => ({
+  glow: (props: AccordionItemProps) => ({
     // boxShadow: BoxShadow([
     //   {
     //     blur: 2,
@@ -66,6 +66,7 @@ export const open = stylex.create({
     //   backdropFilter: "blur(12px)",
     // },
   }),
+  glass: (props: AccordionItemProps) => ({}),
   gradient: (props: AccordionItemProps) => ({
     // background: GradientAnimation(props, "-70deg"),
     // backgroundSize: "250% auto",
@@ -109,7 +110,7 @@ export const variants = stylex.create({
     //   fill: ContrastByColorKeyWithDefault(props, theme.text),
     // },
   }),
-  glass: (props: AccordionItemProps) => ({
+  glow: (props: AccordionItemProps) => ({
     // border: `1px solid transparent`,
     // backgroundColor: OpacityByColorKey(props, 0.09),
     // borderColor: OpacityByColorKey(props, 0.1),
@@ -120,6 +121,7 @@ export const variants = stylex.create({
     //   backdropFilter: "blur(12px)",
     // },
   }),
+  glass: (props: AccordionItemProps) => ({}),
   gradient: (props: AccordionItemProps) => ({
     // backgroundColor: theme["background.600"],
     // ":hover": {

@@ -29,12 +29,13 @@ export const variants = stylex.create({
     // border: `1px solid transparent`,
     // borderColor: ColorVariableWithDefault(props, theme["background.600"]),
   }),
-  glass: (props: AccordionContainerProps) => ({
+  glow: (props: AccordionContainerProps) => ({
     // backgroundColor: OpacityByColorKey(props, 0.1),
     // border: `1px solid transparent`,
     // borderColor: OpacityByColorKey(props, 0.2),
     // backdropFilter: "blur(12px)",
   }),
+  glass: (props: AccordionContainerProps) => ({}),
   gradient: (props: AccordionContainerProps) => ({
     // backgroundColor: theme["background.600"],
     // borderColor: theme["background.400"],
