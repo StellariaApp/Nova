@@ -9,13 +9,13 @@ const FilterGlow = (props: FilterProps) => {
     <filter id={filter}>
       <feGaussianBlur
         in="SourceAlpha"
-        stdDeviation="6"
+        stdDeviation="2"
         result="blur"
       ></feGaussianBlur>
       <feOffset in="blur" dx="0" dy="0" result="offsetBlur"></feOffset>
       <feFlood
         floodColor={props.fill ?? C(C.CSS(props), theme.text)}
-        floodOpacity="0.8"
+        floodOpacity="1"
         result="offsetColor"
       ></feFlood>
       <feComposite
