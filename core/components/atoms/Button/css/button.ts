@@ -46,10 +46,6 @@ export const variants = stylex.create({
     backgroundColor: C.CSS(C.Default(props)),
     borderColor: C.CSS(C.Default(props)),
     color: CT.Contrast(C.Variable(C.Default(props))),
-    // ":hover": {
-    //   backgroundColor: ColorVariable(props, NextShade(props.shade)),
-    //   borderColor: ColorVariable(props, NextShade(props.shade)),
-    // },
     ":hover": {
       backgroundColor: C.CSS(SH.Props(C.Default(props))),
       borderColor: C.CSS(SH.Props(C.Default(props))),

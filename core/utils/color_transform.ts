@@ -67,7 +67,7 @@ export const Brightness = (hex?: string, alpha = 0.5) => {
       `0${Math.min(
         Math.max(
           parseInt(color, 16) +
-            parseInt(color, 16) * Maths.MapRange(alpha, -1, 1, -10, 10),
+            parseInt(color, 16) * Maths.MapRange(alpha, 0, 1, -10, 10),
           0
         ),
         255

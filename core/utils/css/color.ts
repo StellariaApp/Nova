@@ -12,6 +12,13 @@ export const ColorKeyToProps = (key?: ColorsKeys) => {
   return [color, shade] as [Colors, Shades];
 };
 
+export const ColorExist = (key?: Colors) => {
+  if (!key) return false;
+  const existKey = colorsRaw[key as ColorsKeys];
+  if (!existKey) return false;
+  return true;
+};
+
 export const ColorWithDefault = <P extends ColorsProps>(
   props?: P,
   def?: ColorsKeys
@@ -49,6 +56,7 @@ export const ColorCSS = (args?: ColorsProps) => {
 export const ColorVariableKey = (variable?: ColorsKeys) => {
   if (!variable) return;
   const color = colorsRaw[variable];
+  if (!color) return;
   return color;
 };
 
@@ -61,6 +69,7 @@ export const ColorVariable = (args?: ColorsProps) => {
 
 export const C = Object.assign(Color, {
   Default: ColorWithDefault,
+  Exist: ColorExist,
   Key: ColorKey,
   CSS: ColorCSS,
   Variable: ColorVariable,

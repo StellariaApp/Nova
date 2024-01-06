@@ -1,4 +1,10 @@
-import { ColorsProps, Shades } from "..";
+import {
+  Brightness,
+  ColorExist,
+  ColorVariableKey,
+  ColorsProps,
+  Shades,
+} from "..";
 import { ShadeStateMachine } from "../constants/shade";
 
 type Direction = "NEXT" | "BACK" | Shades;
@@ -23,11 +29,21 @@ export const NextShadeProps = <P extends ColorsProps>(
   props: P,
   direction: Direction = "NEXT"
 ) => {
-  const { shade = "500", ...rest } = props;
+  const { shade = "500", color } = props;
+  const isColor = ColorExist(color);
+
+  if (!isColor)
+    return {
+      ...props,
+      color: Brightness(
+        color,
+        direction === "NEXT" ? 0.6 : direction === "BACK" ? 0.6 : 0
+      ),
+    };
 
   const nextShade = NextShade(shade, direction);
 
-  return { ...rest, shade: nextShade };
+  return { ...props, shade: nextShade };
 };
 
 export const SH = Object.assign(NextShade, {
