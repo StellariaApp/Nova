@@ -8,8 +8,8 @@ const FilterGradient = (props: FilterProps) => {
   return (
     <defs>
       <linearGradient id={filter} gradientTransform={G.ToRotate(props)}>
-        <stop offset="0%" stop-color={color1} />
-        <stop offset="100%" stop-color={color2} />
+        <stop offset="0%" stopColor={color1} />
+        <stop offset="100%" stopColor={color2} />
       </linearGradient>
     </defs>
   );

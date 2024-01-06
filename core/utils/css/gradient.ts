@@ -40,18 +40,24 @@ export const GradientAnimation = (
 };
 
 export const DirectionToDeg = (args?: GradientsProps) => {
-  if (!args?.gradientDirection) return "rotate(0deg)";
+  if (!args?.gradientDirection) return 0;
 
   const direction = args.gradientDirection;
   const deg = DIRECTIONS[direction];
-  if (!deg) return direction;
+  if (!deg) return Number(direction.replace("deg", ""));
   return deg;
 };
-export const DirectionToRotate = (args?: GradientsProps) => {
+export const DirectionToRotateDeg = (args?: GradientsProps) => {
   if (!args?.gradientDirection) return "rotate(0deg)";
 
   const degs = DirectionToDeg(args);
   return `rotate(${degs}deg)`;
+};
+export const DirectionToRotate = (args?: GradientsProps) => {
+  if (!args?.gradientDirection) return "rotate(0)";
+
+  const degs = DirectionToDeg(args);
+  return `rotate(${degs})`;
 };
 
 export const G = Object.assign(Gradient, {
@@ -59,4 +65,5 @@ export const G = Object.assign(Gradient, {
   Animation: GradientAnimation,
   ToDeg: DirectionToDeg,
   ToRotate: DirectionToRotate,
+  ToRotateDeg: DirectionToRotateDeg,
 });

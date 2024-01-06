@@ -11,7 +11,7 @@ import {
 import { page } from "./styles";
 import { ToggleTheme } from "@/components/ToggleTheme";
 import stylex from "@stylexjs/stylex";
-import { Fragment } from "react";
+import { Fragment, useId } from "react";
 
 const Home = () => (
   <Wrapper as="main" stylex={page.container}>
@@ -53,7 +53,7 @@ const Home = () => (
       content={(variant, color) => (
         <Button color={color} variant={variant} gradient={[color, "sweet"]} />
       )}
-    ></Section>
+    />
 
     <Section
       title="Icons"
@@ -150,6 +150,7 @@ type Section = {
 
 const Section = (props: Section) => {
   const { title, subtitle, content, disable } = props;
+  const id = useId();
   return (
     <Wrapper as="section" stylex={page.wrapper}>
       <Wrapper as="section" stylex={page.content_title}>
@@ -164,13 +165,13 @@ const Section = (props: Section) => {
       )}
 
       {VARIANTS.map((variant) => (
-        <Wrapper key={variant} stylex={page.grid}>
+        <Wrapper key={id + variant} stylex={page.grid}>
           <span {...stylex.props(page.title_content())}>
             {variant?.toUpperCase() ?? "UNDEFINED"}
           </span>
-          <Wrapper key={variant} stylex={page.content}>
+          <Wrapper stylex={page.content}>
             {COLORS.map((color, idx) => (
-              <Fragment key={variant ?? "none" + color ?? "none"}>
+              <Fragment key={id + variant ?? "none" + color ?? "none"}>
                 {content?.(variant, color, idx)}
               </Fragment>
             ))}
