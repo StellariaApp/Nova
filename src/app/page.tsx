@@ -167,7 +167,7 @@ const Section = (props: Section) => {
       {VARIANTS.map((variant) => (
         <Wrapper key={id + variant} stylex={page.grid}>
           <span {...stylex.props(page.title_content())}>
-            {variant?.toUpperCase() ?? "UNDEFINED"}
+            {variant?.toUpperCase() ?? "DEFAULT"}
           </span>
           <Wrapper stylex={page.content}>
             {COLORS.map((color, idx) => (
