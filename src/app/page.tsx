@@ -29,8 +29,8 @@ const Home = () => (
       <span {...stylex.props(page.title())}>DISABLE</span>
       <Wrapper stylex={page.content}>
         <Button disabled />
-      </Wrapper>
-      {VARIANTS.map((variant) => (
+        </Wrapper>
+        {VARIANTS.map((variant) => (
         <Fragment key={variant}>
           <span {...stylex.props(page.title())}>{variant.toUpperCase()}</span>
           <Wrapper key={variant} stylex={page.content}>
@@ -46,8 +46,19 @@ const Home = () => (
         </Fragment>
       ))}
     </Wrapper> */}
-    <Section title="Icons" subtitle="Icons with different variants and colors">
-      {(variant, color, idx = 0) => (
+    <Section
+      title="Buttons"
+      subtitle="Buttons with different variants and colors"
+      disable={<Button disabled />}
+      content={(variant, color, idx = 0) => (
+        <Button color={color} variant={variant} gradient={[color, "sweet"]} />
+      )}
+    ></Section>
+
+    <Section
+      title="Icons"
+      subtitle="Icons with different variants and colors"
+      content={(variant, color, idx = 0) => (
         <Icon
           color={color}
           variant={variant}
@@ -56,7 +67,7 @@ const Home = () => (
           size={ICONSIZE}
         />
       )}
-    </Section>
+    />
 
     <ToggleTheme />
   </Wrapper>
@@ -100,8 +111,8 @@ const COLORS = [
   "sweet",
   "disabled",
   "#e42727",
-  "#3bda3b",
-  "#3131df",
+  "#086331",
+  "#2323b9",
 ] as const;
 
 const ACCORDION_ITEMS = [
@@ -133,26 +144,34 @@ const ACCORDION_ITEMS = [
 type Section = {
   title: string;
   subtitle: string;
-  children?: (variant?: Variants, color?: Colors, idx?: number) => JSX.Element;
+  content?: (variant?: Variants, color?: Colors, idx?: number) => JSX.Element;
+  disable?: React.ReactNode;
 };
 
 const Section = (props: Section) => {
-  const { title, subtitle, children } = props;
+  const { title, subtitle, content, disable } = props;
   return (
     <Wrapper as="section" stylex={page.wrapper}>
       <Wrapper as="section" stylex={page.content_title}>
         <span {...stylex.props(page.title())}>{title}</span>
         <span {...stylex.props(page.subtitle())}>{subtitle}</span>
       </Wrapper>
+      {disable && (
+        <Wrapper stylex={page.grid}>
+          <span {...stylex.props(page.title_content())}>DISABLE</span>
+          <Wrapper stylex={page.content}>{disable}</Wrapper>
+        </Wrapper>
+      )}
+
       {VARIANTS.map((variant) => (
         <Wrapper key={variant} stylex={page.grid}>
           <span {...stylex.props(page.title_content())}>
-            {variant?.toUpperCase() ?? "NONE"}
+            {variant?.toUpperCase() ?? "UNDEFINED"}
           </span>
           <Wrapper key={variant} stylex={page.content}>
             {COLORS.map((color, idx) => (
               <Fragment key={variant ?? "none" + color ?? "none"}>
-                {children?.(variant, color, idx)}
+                {content?.(variant, color, idx)}
               </Fragment>
             ))}
           </Wrapper>

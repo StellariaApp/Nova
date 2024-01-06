@@ -33,9 +33,10 @@ export const RGBToHex = (rgb = "rgb(255,255,255)") => {
 };
 
 export const Contrast = (
-  hex = "#ffffff",
+  hex?: string,
   opt?: { black?: string; white?: string }
 ) => {
+  if (!hex) return;
   const isDark = isColorDark(hex);
 
   if (isDark) return opt?.black ?? "#000000";

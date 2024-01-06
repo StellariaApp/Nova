@@ -7,6 +7,7 @@ import { fonts } from "../../../../tokens/fonts.stylex";
 import { colors } from "../../../../tokens/colors.stylex";
 import { theme } from "../../../../themes/index.stylex";
 import { properties } from "../../../../tokens/properties.stylex";
+import { C, CT, SH } from "../../../../utils";
 
 export const button = stylex.create({
   base: {
@@ -42,13 +43,18 @@ export const button = stylex.create({
 
 export const variants = stylex.create({
   flat: (props: ButtonProps) => ({
-    // backgroundColor: ColorVariable(props),
-    // borderColor: ColorVariable(props),
-    // color: Contrast(ValueByColorKey(props)),
+    backgroundColor: C.CSS(C.Default(props)),
+    borderColor: C.CSS(C.Default(props)),
+    color: CT.Contrast(C.Variable(C.Default(props))),
     // ":hover": {
     //   backgroundColor: ColorVariable(props, NextShade(props.shade)),
     //   borderColor: ColorVariable(props, NextShade(props.shade)),
     // },
+    ":hover": {
+      backgroundColor: C.CSS(SH.Props(C.Default(props))),
+      borderColor: C.CSS(SH.Props(C.Default(props))),
+      color: CT.Contrast(C.Variable(SH.Props(C.Default(props)))),
+    },
   }),
   outline: (props: ButtonProps) => ({
     // backgroundColor: "transparent",
@@ -60,7 +66,8 @@ export const variants = stylex.create({
     //   color: Contrast(ValueByColorKey(props, NextShade(props.shade ?? "400"))),
     // },
   }),
-  glass: (props: ButtonProps) => ({
+  glass: (props: ButtonProps) => ({}),
+  glow: (props: ButtonProps) => ({
     // boxShadow: BoxShadow([
     //   {
     //     blur: 2,
@@ -94,9 +101,5 @@ export const variants = stylex.create({
     // ":hover": {
     //   backgroundPosition: "right center",
     // },
-  }),
-  none: (props: ButtonProps) => ({
-    padding: 0,
-    backgroundColor: "transparent",
   }),
 });

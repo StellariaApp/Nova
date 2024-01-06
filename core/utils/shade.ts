@@ -1,13 +1,20 @@
 import { ColorsProps, Shades } from "..";
 import { ShadeStateMachine } from "../constants/shade";
 
-type Direction = "NEXT" | "BACK";
+type Direction = "NEXT" | "BACK" | Shades;
 
 export const NextShade = (
   shade: Shades = "500",
   direction: Direction = "NEXT"
 ) => {
-  const state = ShadeStateMachine[shade][direction];
+  const isDirection = direction === "NEXT" || direction === "BACK";
+  const isShade = Object.keys(ShadeStateMachine).includes(direction);
+
+  const state = isDirection
+    ? ShadeStateMachine[shade][direction]
+    : isShade
+    ? direction
+    : shade;
 
   return state;
 };
