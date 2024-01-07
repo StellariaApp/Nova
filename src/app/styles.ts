@@ -1,13 +1,14 @@
 import stylex from "@stylexjs/stylex";
 import { fonts } from "../../core/tokens/fonts.stylex";
-import { colors } from "../../core/tokens/colors.stylex";
 import { sizes } from "../../core/tokens/sizes.stylex";
 import { theme } from "../../core/themes/index.stylex";
+import { properties } from "../../core/tokens/properties.stylex";
 
 export const html = stylex.create({
   dynamic: () => ({
     colorScheme: "light",
     backgroundColor: theme.background,
+    transition: properties.transition,
   }),
 });
 

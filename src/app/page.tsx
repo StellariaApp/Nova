@@ -16,10 +16,22 @@ import { Fragment, useId } from "react";
 const Home = () => (
   <Wrapper as="main" stylex={page.container}>
     <Section
+      title="Accordion"
+      subtitle="Accordion with different variants and colors"
+      variants={(variant) => (
+        <Accordion
+          variant={variant}
+          color={variant === "flat" ? "primary" : undefined}
+          autoClose
+          items={ACCORDION_ITEMS}
+        />
+      )}
+    />
+    <Section
       title="Buttons"
       subtitle="Buttons with different variants and colors"
       disable={<Button disabled />}
-      content={(variant, color) => (
+      colors={(variant, color) => (
         <Button color={color} variant={variant} gradient={[color, "sweet"]} />
       )}
     />
@@ -27,27 +39,13 @@ const Home = () => (
     <Section
       title="Icons"
       subtitle="Icons with different variants and colors"
-      content={(variant, color, idx = 0) => (
+      colors={(variant, color, idx = 0) => (
         <Icon
           color={color}
           variant={variant}
           gradient={[color, "sweet"]}
           icon={ICONS[idx]}
           size={ICONSIZE}
-        />
-      )}
-    />
-
-    <Section
-      title="Accordion"
-      subtitle="Accordion with different variants and colors"
-      content={(variant, color) => (
-        <Accordion
-          color={color}
-          variant={variant}
-          gradient={[color, "sweet"]}
-          autoClose
-          items={ACCORDION_ITEMS}
         />
       )}
     />
@@ -128,12 +126,13 @@ const ACCORDION_ITEMS = [
 type Section = {
   title: string;
   subtitle: string;
-  content?: (variant?: Variants, color?: Colors, idx?: number) => JSX.Element;
+  variants?: (variant?: Variants) => JSX.Element;
+  colors?: (variant?: Variants, color?: Colors, idx?: number) => JSX.Element;
   disable?: React.ReactNode;
 };
 
 const Section = (props: Section) => {
-  const { title, subtitle, content, disable } = props;
+  const { title, subtitle, colors, variants, disable } = props;
   const id = useId();
   return (
     <Wrapper as="section" stylex={page.wrapper}>
@@ -154,9 +153,10 @@ const Section = (props: Section) => {
             {variant?.toUpperCase() ?? "DEFAULT"}
           </span>
           <Wrapper stylex={page.content}>
-            {COLORS.map((color, idx) => (
+            {variants && variants?.(variant)}
+            {COLORS.map((color, idx = 0) => (
               <Fragment key={id + variant ?? "none" + color ?? "none"}>
-                {content?.(variant, color, idx)}
+                {colors && colors?.(variant, color, idx)}
               </Fragment>
             ))}
           </Wrapper>
