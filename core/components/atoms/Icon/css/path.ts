@@ -27,8 +27,8 @@ export const variants = stylex.create({
     paintOrder: "stroke",
   }),
   glass: (props: IconProps) => ({
-    fill: props.fill ?? C(GL.Glass(C.Variable(props)), theme.text),
-    stroke: props.fill ?? C(GL.Glass(C.Variable(props), 0.4), theme.text),
+    fill: props.fill ?? GL.Glass(C.Variable(C.Default(props))),
+    stroke: props.fill ?? GL.Glass(C.Variable(C.Default(props)), 0.4),
     strokeWidth: "10px",
     paintOrder: "stroke",
   }),
