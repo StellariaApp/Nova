@@ -36,7 +36,6 @@ const Page = (props: Props) => {
               e,
               contrast[idx],
             ]);
-            console.log(colorsWithContrast);
           }}
         >
           Log

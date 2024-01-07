@@ -1,6 +1,6 @@
 import { ColorVariable } from ".";
 import { DIRECTIONS } from "../../constants/directions";
-import { GradientsProps } from "../../types";
+import { Gradients, GradientsProps } from "../../types";
 
 export const Gradient = (args?: GradientsProps) => {
   const { gradient, gradientShade } = args ?? {};
@@ -18,7 +18,13 @@ export const Gradient = (args?: GradientsProps) => {
   const color1 = ColorVariable(gradient1);
   const color2 = ColorVariable(gradient2);
 
-  return [color1, color2];
+  return [color1, color2] as Gradients;
+};
+
+export const GradientInverse = <P extends GradientsProps>(props?: P) => {
+  const [color1, color2] = Gradient(props);
+  const newGradient = [color2, color1] as Gradients;
+  return { ...props, gradient: newGradient };
 };
 
 export const GradientLinear = (
@@ -62,6 +68,7 @@ export const DirectionToRotate = (args?: GradientsProps) => {
 
 export const G = Object.assign(Gradient, {
   Linear: GradientLinear,
+  Inverse: GradientInverse,
   Animation: GradientAnimation,
   ToDeg: DirectionToDeg,
   ToRotate: DirectionToRotate,

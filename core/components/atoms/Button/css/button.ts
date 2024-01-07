@@ -95,13 +95,29 @@ export const variants = stylex.create({
     },
   }),
   gradient: (props: ButtonProps) => ({
+    position: "relative",
     color: CT.Contrast(G(props)[0]),
     background: G.Animation(props, "-70deg"),
     backgroundSize: "200% auto",
-    borderColor: G(props)[1],
+    border: "none",
     transition: "background-position 0.45s ease-in-out",
+    "::before": {
+      position: "absolute",
+      content: "''",
+      top: -1,
+      left: -1,
+      width: "calc(100% + 2px)",
+      height: "calc(100% + 2px)",
+      zIndex: -1,
+      background: G.Linear(G.Inverse(props)),
+      borderRadius: borderRadius.small,
+    },
     ":hover": {
       backgroundPosition: "99% 0",
+      ":before": {
+        content: "'asd'",
+        background: G.Linear(props),
+      },
     },
   }),
 });
