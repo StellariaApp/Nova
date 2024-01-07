@@ -76,12 +76,19 @@ export const COLORSWITHSHADE = [
   ["#858585", true],
   ["#757575", true],
   ["#666666", true],
+
+  ["#000000", false],
+  ["#FFFFFF", true],
 ] as const;
 
-export const COLORSDATAMODEL = COLORSWITHSHADE.map((color) => ({
-  input: CT.HexToRGB(color[0]),
-  output: {
-    dark: color[1] === false ? 1 : 0,
-    light: color[1] === true ? 1 : 0,
-  },
-}));
+export const COLORSDATAMODEL = COLORSWITHSHADE.map((color) => {
+  const RGB = CT.HexToRGB(color[0]);
+  return {
+    input: {
+      r: Number(RGB.r.toPrecision(2)),
+      g: Number(RGB.g.toPrecision(2)),
+      b: Number(RGB.b.toPrecision(2)),
+    },
+    output: color[1] === false ? { light: 1 } : { dark: 1 },
+  };
+});
