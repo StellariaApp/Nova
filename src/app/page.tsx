@@ -15,37 +15,6 @@ import { Fragment, useId } from "react";
 
 const Home = () => (
   <Wrapper as="main" stylex={page.container}>
-    {/* <Wrapper as="section" stylex={page.wrapper}>
-      {VARIANTS.map((variant) => (
-        <Fragment key={variant}>
-          <span {...stylex.props(page.title())}>{variant.toUpperCase()}</span>
-          <Wrapper stylex={page.content}>
-            <Accordion variant={variant} autoClose items={ACCORDION_ITEMS} />
-          </Wrapper>
-        </Fragment>
-      ))}
-    </Wrapper>
-    <Wrapper as="section" stylex={page.wrapper}>
-      <span {...stylex.props(page.title())}>DISABLE</span>
-      <Wrapper stylex={page.content}>
-        <Button disabled />
-        </Wrapper>
-        {VARIANTS.map((variant) => (
-        <Fragment key={variant}>
-          <span {...stylex.props(page.title())}>{variant.toUpperCase()}</span>
-          <Wrapper key={variant} stylex={page.content}>
-            {COLORS.map((color) => (
-              <Button
-                key={variant + color}
-                color={color}
-                variant={variant}
-                gradient={[color, "sweet"]}
-              />
-            ))}
-          </Wrapper>
-        </Fragment>
-      ))}
-    </Wrapper> */}
     <Section
       title="Buttons"
       subtitle="Buttons with different variants and colors"
@@ -65,6 +34,20 @@ const Home = () => (
           gradient={[color, "sweet"]}
           icon={ICONS[idx]}
           size={ICONSIZE}
+        />
+      )}
+    />
+
+    <Section
+      title="Accordion"
+      subtitle="Accordion with different variants and colors"
+      content={(variant, color) => (
+        <Accordion
+          color={color}
+          variant={variant}
+          gradient={[color, "sweet"]}
+          autoClose
+          items={ACCORDION_ITEMS}
         />
       )}
     />
@@ -127,6 +110,7 @@ const ACCORDION_ITEMS = [
   },
   {
     id: "2",
+    disabled: true,
     title:
       "What's the difference between a controlled and an uncontrolled component?",
     content:
