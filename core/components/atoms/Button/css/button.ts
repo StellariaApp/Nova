@@ -54,10 +54,10 @@ export const variants = stylex.create({
     },
   }),
   outline: (props: ButtonProps) => ({
+    fontWeight: 500,
     backgroundColor: "transparent",
     borderColor: C.CSS(C.Default(props)),
     color: C.CSS(C.Default(props)),
-    fontWeight: 500,
     ":hover": {
       backgroundColor: C.CSS(C.Default(props)),
       borderColor: C.CSS(SH.Props(C.Default(props))),
@@ -66,7 +66,6 @@ export const variants = stylex.create({
   }),
   glow: (props: ButtonProps) => ({
     boxShadow: BS({ blur: 2, color: C.CSS(C.Default(props)) }),
-    fontWeight: 600,
     color: CT.Opacity(C.Variable(C.Default(props)), 0.9),
     backgroundColor: CT.Opacity(C.Variable(C.Default(props)), 0.2),
     borderColor: C.CSS(C.Default(props)),
@@ -76,7 +75,6 @@ export const variants = stylex.create({
     },
   }),
   glass: (props: ButtonProps) => ({
-    fontWeight: 400,
     backdropFilter: "blur(12px)",
     color: CT.Opacity(CT.Contrast(C.Variable(C.Default(props))), 0.8),
     backgroundColor: CT.Opacity(
