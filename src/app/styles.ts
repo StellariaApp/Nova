@@ -75,7 +75,7 @@ export const page = stylex.create({
   title_content: () => ({
     fontFamily: fonts.primary,
     color: theme["text.200"],
-    fontSize: sizes.regular,
+    fontSize: sizes.small,
     fontWeight: "bold",
   }),
 });
