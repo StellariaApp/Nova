@@ -80,3 +80,74 @@ export const ModelColor = (input: ModelColorInput): ModelColorOutput => {
           )),
   };
 };
+
+export const ColorModelNew = (input: any): any => {
+  var net = {
+    layers: [
+      { r: {}, g: {}, b: {} },
+      {
+        "0": {
+          bias: 93.18674486228824,
+          weights: {
+            r: -49.23710666820998,
+            g: -41.26038911690508,
+            b: -13.207081538684058,
+          },
+        },
+        "1": {
+          bias: 29.624393444967406,
+          weights: {
+            r: -73.37991424304838,
+            g: 14.654210806646807,
+            b: 23.54287461346147,
+          },
+        },
+        "2": {
+          bias: 50.9780280840309,
+          weights: {
+            r: -14.07710640593053,
+            g: -60.362594715040856,
+            b: -5.569210613131002,
+          },
+        },
+      },
+      {
+        light: {
+          bias: 1.3483593541357708,
+          weights: {
+            "0": -30.282484289769208,
+            "1": 27.737987907219818,
+            "2": -17.729778773782588,
+          },
+        },
+        dark: {
+          bias: -1.348359361133872,
+          weights: {
+            "0": 30.282484651942053,
+            "1": -27.73798826700474,
+            "2": 17.729779781332436,
+          },
+        },
+      },
+    ],
+    outputLookup: true,
+    inputLookup: true,
+  };
+
+  for (var i = 1; i < net.layers.length; i++) {
+    var layer = net.layers[i] as any;
+    var output = {} as any;
+
+    for (var id in layer) {
+      var node = layer[id];
+      var sum = node.bias;
+
+      for (var iid in node.weights) {
+        sum += node.weights[iid] * input[iid];
+      }
+      output[id] = 1 / (1 + Math.exp(-sum));
+    }
+    input = output;
+  }
+  return output;
+};

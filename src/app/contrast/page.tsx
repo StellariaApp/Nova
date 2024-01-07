@@ -9,8 +9,6 @@ type Props = {};
 const Page = (props: Props) => {
   const [contrast, setContrast] = useState(COLORS.map(() => "#1d1d1d"));
 
-  console.log(COLORSDATAMODEL);
-
   return (
     <div>
       {COLORS.map((e, idx) => (
