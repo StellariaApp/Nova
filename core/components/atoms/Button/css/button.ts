@@ -88,9 +88,14 @@ export const variants = stylex.create({
       0.8
     ),
     ":hover": {
+      color: CT.Opacity(CT.Contrast(C.Variable(C.Default(props))), 0.9),
       backgroundColor: CT.Opacity(
         CT.Brightness(C.Variable(C.Default(props)), 0.4),
         0.6
+      ),
+      borderColor: CT.Opacity(
+        CT.Brightness(C.Variable(C.Default(props)), 0.5),
+        0.9
       ),
     },
   }),
@@ -109,15 +114,11 @@ export const variants = stylex.create({
       width: "calc(100% + 2px)",
       height: "calc(100% + 2px)",
       zIndex: -1,
-      background: G.Linear(G.Inverse(props)),
+      background: G.Linear(SH.PropsGradient(props, ["300", "300"])),
       borderRadius: borderRadius.small,
     },
     ":hover": {
       backgroundPosition: "99% 0",
-      ":before": {
-        content: "'asd'",
-        background: G.Linear(props),
-      },
     },
   }),
 });
