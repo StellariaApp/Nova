@@ -7,8 +7,7 @@ import { fonts } from "../../../../tokens/fonts.stylex";
 import { colors } from "../../../../tokens/colors.stylex";
 import { theme } from "../../../../themes/index.stylex";
 import { properties } from "../../../../tokens/properties.stylex";
-import { C, CT, G, SH } from "../../../../utils";
-import { BS } from "../../../../utils/css/boxShadow";
+import { C, CT, G, SH, BS, CSS } from "../../../../utils";
 
 export const button = stylex.create({
   base: {
@@ -104,6 +103,9 @@ export const variants = stylex.create({
     backgroundSize: "200% auto",
     border: "none",
     transition: "background-position 0.45s ease-in-out",
+    ":hover": {
+      backgroundPosition: "99% 0",
+    },
     "::before": {
       position: "absolute",
       content: "''",
@@ -111,12 +113,15 @@ export const variants = stylex.create({
       left: -1,
       width: "calc(100% + 2px)",
       height: "calc(100% + 2px)",
+      background: G.AnimationBorder(SH.PropsGradient(props, ["300", "300"])),
+      backgroundSize: "400% auto",
+      backgroundPosition: "0 0",
       zIndex: -1,
-      background: G.Linear(SH.PropsGradient(props, ["300", "300"])),
       borderRadius: borderRadius.small,
+      transition: properties.transition,
     },
-    ":hover": {
-      backgroundPosition: "99% 0",
+    ":hover::before": {
+      backgroundPosition: "100% 0 !important",
     },
   }),
 });

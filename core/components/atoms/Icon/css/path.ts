@@ -2,8 +2,7 @@ import stylex from "@stylexjs/stylex";
 import { properties } from "../../../../tokens/properties.stylex";
 import { IconProps } from "../types";
 import { theme } from "../../../../themes/index.stylex";
-import { C, CT, SH } from "../../../../utils";
-import { GL } from "../../../../utils/css/glass";
+import { C, CT, GL } from "../../../../utils";
 
 export const path = stylex.create({
   base: {

@@ -45,6 +45,15 @@ export const GradientAnimation = (
   return `linear-gradient(${direction}, ${color1}, ${color2}, ${color1})`;
 };
 
+export const GradientAnimationBorder = (
+  args?: GradientsProps,
+  direction = args?.gradientDirection ?? "to right"
+) => {
+  const [color1, color2] = Gradient(args);
+
+  return `linear-gradient(${direction}, ${color1}, ${color2}, ${color2}, ${color1})`;
+};
+
 export const DirectionToDeg = (args?: GradientsProps) => {
   if (!args?.gradientDirection) return 0;
 
@@ -70,6 +79,7 @@ export const G = Object.assign(Gradient, {
   Linear: GradientLinear,
   Inverse: GradientInverse,
   Animation: GradientAnimation,
+  AnimationBorder: GradientAnimationBorder,
   ToDeg: DirectionToDeg,
   ToRotate: DirectionToRotate,
   ToRotateDeg: DirectionToRotateDeg,
