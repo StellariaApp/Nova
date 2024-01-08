@@ -15,7 +15,7 @@ import {
 import { useState } from "react";
 
 export const Navbar = () => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [showColors, setShowColors] = useAtom(ShowColorsAtom);
   const [showColorsCSS, setShowColorsCSS] = useAtom(ShowColorsCSSAtom);
   const [showGradientsColors, setShowGradientsColors] = useAtom(
