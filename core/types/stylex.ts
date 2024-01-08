@@ -11,6 +11,6 @@ export type StylexComponent<P = {}, A = {}> = {
 
 export type StylexProp<OG = {}> =
   | ((theme: Tokens, _: OG) => CSSPropertiesWithExtras)
-  | object;
-
+  | object
+  | object[];
 export type { StyleXStyles } from "@stylexjs/stylex";

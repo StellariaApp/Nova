@@ -50,7 +50,7 @@ export type ColorsProps = {
 
 export type GradientsProps = {
   gradient?: Gradients;
-  gradientShade?: GradientsShades;
+  gradientShades?: GradientsShades;
   gradientDirection?: GradientsDirections;
 };
 

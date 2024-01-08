@@ -1,7 +1,8 @@
 import { atom } from "jotai";
 import { themes } from "../themes/index.stylex";
+import { atomWithStorage } from "jotai/utils";
 
-export const ThemeAtom = atom({
+export const ThemeAtom = atomWithStorage("THEME", {
   theme: undefined,
   setTheme: (theme) => {},
   toggle: () => {},

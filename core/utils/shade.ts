@@ -48,14 +48,14 @@ export const NextShadePropsGradient = <P extends GradientsProps>(
   props: P,
   direction?: [Direction, Direction]
 ) => {
-  const { gradientShade } = props;
+  const { gradientShades } = props;
   const [direction1, direction2] = direction ?? ["NEXT", "NEXT"];
-  const [shade1, shade2] = gradientShade ?? ["500", "500"];
+  const [shade1, shade2] = gradientShades ?? ["500", "500"];
 
   const nextShade1 = NextShade(shade1, direction1);
   const nextShade2 = NextShade(shade2, direction2);
 
-  return { ...props, gradientShade: [nextShade1, nextShade2] };
+  return { ...props, gradientShades: [nextShade1, nextShade2] };
 };
 
 export const SH = Object.assign(NextShade, {

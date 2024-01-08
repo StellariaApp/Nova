@@ -12,12 +12,21 @@ export const StyleWithProps = <P extends object, OG extends object>(
   const componentWithStyle = spread as { style?: StyleXStyles };
   const comoonentWithClassName = spread as { className?: string };
 
-  const stylexComponent = stylex.props(
-    typeof stylexProps === "function"
-      ? stylexProps(tokens, ogProps)
-      : stylexProps,
-    componentWithStyle?.style ?? {}
-  );
+  const stylexComponent = Array.isArray(stylexProps)
+    ? stylex.props(
+        stylexProps.map((stylexProp) =>
+          typeof stylexProp === "function"
+            ? stylexProp(tokens, ogProps)
+            : stylexProp
+        ),
+        componentWithStyle?.style ?? {}
+      )
+    : stylex.props(
+        typeof stylexProps === "function"
+          ? stylexProps(tokens, ogProps)
+          : stylexProps,
+        componentWithStyle?.style ?? {}
+      );
 
   const className = [
     styles.className,

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { COLORS, COLORSDATAMODEL } from "../../../core/constants/colors";
+import { COLORS } from "../../../core/constants/colors";
 import { Button } from "../../../core/components";
 
 type Props = {};

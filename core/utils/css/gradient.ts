@@ -3,16 +3,16 @@ import { DIRECTIONS } from "../../constants/directions";
 import { Gradients, GradientsProps } from "../../types";
 
 export const Gradient = (args?: GradientsProps) => {
-  const { gradient, gradientShade } = args ?? {};
+  const { gradient, gradientShades } = args ?? {};
 
   const gradient1 = {
     color: gradient?.[0] ?? "primary",
-    shade: gradientShade?.[0] ?? "500",
+    shade: gradientShades?.[0] ?? "500",
   };
 
   const gradient2 = {
     color: gradient?.[1] ?? "sweet",
-    shade: gradientShade?.[1] ?? "400",
+    shade: gradientShades?.[1] ?? "400",
   };
 
   const color1 = ColorVariable(gradient1);
