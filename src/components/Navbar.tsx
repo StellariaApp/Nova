@@ -22,45 +22,47 @@ export const Navbar = () => {
   const [showShades, setShowShades] = useAtom(ShowShadesAtom);
   return (
     <Wrapper stylex={styles.nav}>
-      <Button
-        stylex={styles.button}
-        onClick={() => {
-          setShowColors(!showColors);
-        }}
-      >
-        {showColors ? "Hide Colors" : "Show Colors"}
-        <Icon icon="palette" size={16} />
-      </Button>
+      <Wrapper stylex={styles.wrapper}>
+        <Button
+          stylex={styles.button}
+          onClick={() => {
+            setShowColors(!showColors);
+          }}
+        >
+          {showColors ? "Hide Colors" : "Show Colors"}
+          <Icon icon="palette" size={16} />
+        </Button>
 
-      <Button
-        stylex={styles.button}
-        onClick={() => {
-          setShowColorsCSS(!showColorsCSS);
-        }}
-      >
-        {showColorsCSS ? "Hide Colors CSS" : "Show Colors CSS"}
-        <Icon icon="palette" size={16} />
-      </Button>
+        <Button
+          stylex={styles.button}
+          onClick={() => {
+            setShowColorsCSS(!showColorsCSS);
+          }}
+        >
+          {showColorsCSS ? "Hide Colors CSS" : "Show Colors CSS"}
+          <Icon icon="palette" size={16} />
+        </Button>
 
-      <Button
-        stylex={styles.button}
-        onClick={() => {
-          setShowGradientsColors(!showGradientsColors);
-        }}
-      >
-        {showGradientsColors ? "Hide Gradients" : "Show Gradients"}
-        <Icon icon="palette" size={16} />
-      </Button>
+        <Button
+          stylex={styles.button}
+          onClick={() => {
+            setShowGradientsColors(!showGradientsColors);
+          }}
+        >
+          {showGradientsColors ? "Hide Gradients" : "Show Gradients"}
+          <Icon icon="palette" size={16} />
+        </Button>
 
-      <Button
-        stylex={styles.button}
-        onClick={() => {
-          setShowShades(!showShades);
-        }}
-      >
-        {showShades ? "Hide Shades" : "Show Shades"}
-        <Icon icon="palette" size={16} />
-      </Button>
+        <Button
+          stylex={styles.button}
+          onClick={() => {
+            setShowShades(!showShades);
+          }}
+        >
+          {showShades ? "Hide Shades" : "Show Shades"}
+          <Icon icon="palette" size={16} />
+        </Button>
+      </Wrapper>
 
       <ToggleTheme />
     </Wrapper>
@@ -69,6 +71,12 @@ export const Navbar = () => {
 
 const styles = stylex.create({
   nav: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+    maxWidth: "calc(100% - 2rem)",
+
     backgroundColor: theme["background.100"],
     padding: spacing.small,
     borderRadius: borderRadius.small,
@@ -79,9 +87,19 @@ const styles = stylex.create({
     "z-index": 1000,
     gap: spacing.small,
   },
+  wrapper: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+    width: "max-content",
+    gap: spacing.small,
+  },
   button: {
     width: "max-content",
     height: "max-content",
+    flexBasis: "320px",
+    flexGrow: 1,
     padding: 0,
     margin: 0,
     display: "flex",
