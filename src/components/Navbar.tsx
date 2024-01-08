@@ -12,8 +12,10 @@ import {
   ShowGradientsColorsAtom,
   ShowShadesAtom,
 } from "../../core/jotai/show";
+import { useState } from "react";
 
 export const Navbar = () => {
+  const [show, setShow] = useState(true);
   const [showColors, setShowColors] = useAtom(ShowColorsAtom);
   const [showColorsCSS, setShowColorsCSS] = useAtom(ShowColorsCSSAtom);
   const [showGradientsColors, setShowGradientsColors] = useAtom(
@@ -22,49 +24,59 @@ export const Navbar = () => {
   const [showShades, setShowShades] = useAtom(ShowShadesAtom);
   return (
     <Wrapper stylex={styles.nav}>
-      <Wrapper stylex={styles.wrapper}>
-        <Button
-          stylex={styles.button}
-          onClick={() => {
-            setShowColors(!showColors);
-          }}
-        >
-          {showColors ? "Hide Colors" : "Show Colors"}
-          <Icon icon="palette" size={16} />
-        </Button>
+      {show && (
+        <Wrapper stylex={styles.wrapper}>
+          <Button
+            stylex={styles.button}
+            onClick={() => {
+              setShowColors(!showColors);
+            }}
+          >
+            {showColors ? "Hide Colors" : "Show Colors"}
+            <Icon icon="palette" size={16} />
+          </Button>
 
-        <Button
-          stylex={styles.button}
-          onClick={() => {
-            setShowColorsCSS(!showColorsCSS);
-          }}
-        >
-          {showColorsCSS ? "Hide Colors CSS" : "Show Colors CSS"}
-          <Icon icon="palette" size={16} />
-        </Button>
+          <Button
+            stylex={styles.button}
+            onClick={() => {
+              setShowColorsCSS(!showColorsCSS);
+            }}
+          >
+            {showColorsCSS ? "Hide Colors CSS" : "Show Colors CSS"}
+            <Icon icon="palette" size={16} />
+          </Button>
 
-        <Button
-          stylex={styles.button}
-          onClick={() => {
-            setShowGradientsColors(!showGradientsColors);
-          }}
-        >
-          {showGradientsColors ? "Hide Gradients" : "Show Gradients"}
-          <Icon icon="palette" size={16} />
-        </Button>
+          <Button
+            stylex={styles.button}
+            onClick={() => {
+              setShowGradientsColors(!showGradientsColors);
+            }}
+          >
+            {showGradientsColors ? "Hide Gradients" : "Show Gradients"}
+            <Icon icon="palette" size={16} />
+          </Button>
 
-        <Button
-          stylex={styles.button}
-          onClick={() => {
-            setShowShades(!showShades);
-          }}
-        >
-          {showShades ? "Hide Shades" : "Show Shades"}
-          <Icon icon="palette" size={16} />
-        </Button>
-      </Wrapper>
+          <Button
+            stylex={styles.button}
+            onClick={() => {
+              setShowShades(!showShades);
+            }}
+          >
+            {showShades ? "Hide Shades" : "Show Shades"}
+            <Icon icon="palette" size={16} />
+          </Button>
+        </Wrapper>
+      )}
 
       <ToggleTheme />
+      <Button
+        stylex={styles.buttonShow}
+        onClick={() => {
+          setShow(!show);
+        }}
+      >
+        <Icon icon={!show ? "chevron-left" : "chevron-right"} size={16} />
+      </Button>
     </Wrapper>
   );
 };
@@ -108,6 +120,25 @@ const styles = stylex.create({
     backgroundColor: theme.background,
     fontSize: "12px !important",
     borderColor: theme["background.700"],
+    color: theme["text"],
+    gap: "8px",
+    ":hover": {
+      backgroundColor: theme["background.600"],
+      borderColor: theme["background.700"],
+    },
+  },
+  buttonShow: {
+    width: "max-content",
+    height: "max-content",
+    padding: 0,
+    margin: 0,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: theme.background,
+    fontSize: "12px !important",
+    borderColor: theme["background.700"],
+    color: theme["text"],
     gap: "8px",
     ":hover": {
       backgroundColor: theme["background.600"],
