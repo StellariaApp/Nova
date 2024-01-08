@@ -9,13 +9,16 @@ import { useAtom } from "jotai";
 import {
   ShowColorsAtom,
   ShowColorsCSSAtom,
+  ShowGradientsColorsAtom,
   ShowShadesAtom,
 } from "../../core/jotai/show";
-import { sizes } from "../../core/tokens/sizes.stylex";
 
 export const Navbar = () => {
   const [showColors, setShowColors] = useAtom(ShowColorsAtom);
   const [showColorsCSS, setShowColorsCSS] = useAtom(ShowColorsCSSAtom);
+  const [showGradientsColors, setShowGradientsColors] = useAtom(
+    ShowGradientsColorsAtom
+  );
   const [showShades, setShowShades] = useAtom(ShowShadesAtom);
   return (
     <Wrapper stylex={styles.nav}>
@@ -36,6 +39,16 @@ export const Navbar = () => {
         }}
       >
         {showColorsCSS ? "Hide Colors CSS" : "Show Colors CSS"}
+        <Icon icon="palette" size={16} />
+      </Button>
+
+      <Button
+        stylex={styles.button}
+        onClick={() => {
+          setShowGradientsColors(!showGradientsColors);
+        }}
+      >
+        {showGradientsColors ? "Hide Gradients" : "Show Gradients"}
         <Icon icon="palette" size={16} />
       </Button>
 

@@ -3,7 +3,11 @@
 import { Fragment, useId } from "react";
 import { Wrapper } from "../../core/components";
 import { VARIANTS } from "@/constants/variants";
-import { COLORS, COLORS_GRADIENTS } from "@/constants/colors";
+import {
+  COLORS,
+  COLORS_GRADIENTS,
+  COLORS_GRADIENTS_DEFAULT,
+} from "@/constants/colors";
 import {
   Colors,
   Gradients,
@@ -42,6 +46,8 @@ export const Section = (props: Props) => {
   const showColors = useAtomValue(ShowColorsAtom);
   const showColorsCSS = useAtomValue(ShowColorsCSSAtom);
   const showShades = useAtomValue(ShowShadesAtom);
+
+  const showGradientsColors = useAtomValue(ShowGradientsColorsAtom);
 
   const id = useId();
   return (
@@ -123,19 +129,22 @@ export const Section = (props: Props) => {
             <span {...stylex.props(styles.title_content())}>GRADIENT</span>
             <Wrapper stylex={styles.content}>
               {gradients &&
-                COLORS_GRADIENTS.filter((_, idx) =>
-                  showColors ? true : idx === 0
-                ).map((colors, idx = 0) => (
-                  <Fragment
-                    key={id + colors[0] ?? "color0" + colors[1] ?? "color1"}
-                  >
-                    {showShades
-                      ? SHADES_COMBINED.map((shades, idx = 0) =>
-                          gradients?.(colors, shades, idx)
-                        )
-                      : gradients?.(colors, undefined, idx)}
-                  </Fragment>
-                ))}
+                (showGradientsColors
+                  ? COLORS_GRADIENTS
+                  : COLORS_GRADIENTS_DEFAULT
+                )
+                  .filter((_, idx) => (showColors ? true : idx === 0))
+                  .map((colors, idx = 0) => (
+                    <Fragment
+                      key={id + colors[0] ?? "color0" + colors[1] ?? "color1"}
+                    >
+                      {showShades
+                        ? SHADES_COMBINED.map((shades, idx = 0) =>
+                            gradients?.(colors, shades, idx)
+                          )
+                        : gradients?.(colors, undefined, idx)}
+                    </Fragment>
+                  ))}
               {showColorsCSS &&
                 gradients &&
                 COLORS_CSS_GRADIENTS.map((colors, idx = 0) => (
@@ -170,6 +179,7 @@ import { useAtomValue } from "jotai";
 import {
   ShowColorsAtom,
   ShowColorsCSSAtom,
+  ShowGradientsColorsAtom,
   ShowShadesAtom,
 } from "../../core/jotai/show";
 
