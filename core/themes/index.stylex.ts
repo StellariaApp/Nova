@@ -236,10 +236,15 @@ export const theme = stylex.defineVars({
   },
 });
 
-export const themes = {
+export const themesRaw = {
   dark,
   light,
 };
 
 export const themeDark = stylex.createTheme(theme, dark);
 export const themeLight = stylex.createTheme(theme, light);
+
+export const themes = {
+  dark: themeDark,
+  light: themeLight,
+};

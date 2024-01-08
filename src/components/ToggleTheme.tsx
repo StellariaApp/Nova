@@ -1,7 +1,7 @@
 "use client";
 import stylex from "@stylexjs/stylex";
 import { Button } from "@stellaria/nova";
-import { ChangeTheme } from "../../core/providers/theme.client";
+import useTheme from "../../core/hooks/useTheme";
 
 const styles = stylex.create({
   button: {
@@ -13,11 +13,12 @@ const styles = stylex.create({
 });
 
 export const ToggleTheme = () => {
+  const { toggle } = useTheme();
   return (
     <Button
       stylex={styles.button}
       onClick={() => {
-        ChangeTheme.set((theme) => (theme === "dark" ? "light" : "dark"));
+        toggle();
       }}
     >
       Toggle Theme
